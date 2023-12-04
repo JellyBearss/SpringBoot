@@ -9,5 +9,24 @@
         from creator
     </select>
 
+    <insert id="insertCreator" parameterType="com.jellybears.krowdpoping.creatorinfomation.model.dto.CreatorDTO">
+        insert into creator (
+            CR_TYPE,
+            CR_BUSINESS_NUM,
+            PHONE,
+            EMAIL,
+            ADDRESS,
+            INTRODUCE
+        )
+        values (
+                #{crType},
+                #{crBusinessNum},
+                #{phone},
+                #{email},
+                #{address},
+                #{introduce}
+               )
+    </insert>
+
 </mapper>
 
