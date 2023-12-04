@@ -1,0 +1,734 @@
+#header{
+    min-height:80px;
+    /* background-color: rgb(201, 233, 233); */
+    margin:auto;
+    width: 1170px;
+    position: relative; 
+}
+.logo img{
+    max-width: 20%; 
+    margin-left: 25px;
+    /* height: auto ; */
+}
+.upload_project { 
+	width:210px;
+	height:67px;
+	position:absolute;
+	left:190px;
+	top:38px;
+}
+.upload_box { 
+    max-width: 55%;
+    position: absolute;
+    width: 170px;
+    height: 32px;
+    right: 182px;
+    left: 700px;
+    top:0px;
+    background: #EDE9FE;
+    border-radius: 6px;
+}
+.upload_text { 
+    color:#7D1CD8;	
+    width:100px;
+	height:17px;
+	position:absolute;
+	left:20px;
+	top:7px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:11px;
+	letter-spacing:0;
+}
+.profile{
+    display: flex;
+    align-items: center;
+    width:500px;
+	height:67px;
+	position:absolute;
+	left:1030px;
+	top:38px;
+    text-decoration: none;
+}
+.nickname{
+    color: #6D6D6D;
+	width:157px;
+	height:27px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:13px;
+	letter-spacing:0;
+    margin-top: -28px;
+    margin-left: -5px;
+}
+.nickname_title{
+    color: #6D6D6D;
+	width:27px;
+	height:27px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:13px;
+	letter-spacing:0;
+    margin-top: -29px;
+    margin-left: -58px;
+}
+.default_profile_circle{
+    border-radius:500px;
+	background-color:#EDE9FE;
+	width:30px;
+	height:30px;
+	position:absolute;
+	left:10px;
+	top:0px;
+}
+.default_profile_face{
+    width:25px;
+	height:25px;
+	position:absolute;
+	left:12.9px;
+	top:4px;
+	background-image:url(/resources/icon/basicpic.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.title_section{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin:auto;
+}
+.section{
+    background-color: #EDE9FE;
+    width: 1170px;
+    height: 83px;
+    position: relative;
+    margin:auto;
+}
+.funding_title{
+    color: #0D0D0D;
+    width:100px;
+	height:26px;
+	position:absolute;
+    top: 25px;
+    left: 50px;
+	font-family:Noto Sans KR;
+	text-align:left;
+	font-size:23px;
+    font-weight: bold;
+}
+
+.funding_process{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
+    width: 1170px;
+    height: 196px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.product_description{
+    width:110px;
+	height:110px;
+    position: relative;
+}
+.delivery_address{
+    width:110px;
+	height:110px;
+    position: relative;
+    z-index: 1;
+}
+.payment_reservation{
+    width:110px;
+	height:110px;
+    position: relative;
+}
+.product_description,
+.payment_reservation {
+    margin: 0 100px; 
+    z-index: 1;
+}
+.purple_des{
+    border-radius:500px;
+    background-color: #D9D9D9;
+    width:110px;
+	height:110px;
+}
+
+.description{
+    color:#0D0D0D;
+    width:85px;
+	height:41px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:18px;
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.grey_add{
+    border-radius:500px;
+    background-color: #7D1CD8;
+    width:110px;
+	height:110px;
+}
+
+.address{
+    color:rgba(255, 255, 255, 1);
+    width:85px;
+	height:41px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:18px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.grey_res{
+    border-radius:500px;
+    background-color: #D9D9D9;
+    width:110px;
+	height:110px;
+}
+.reservation{
+    color:#0D0D0D;
+    width:85px;
+	height:41px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:18px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.process_line{
+    border-bottom: 2px dotted #6D6D6D;
+    position: absolute;
+    width: calc(100% - 750px);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 35%;
+    transform-origin: left;
+    z-index: -1;
+}
+.supporter_info{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
+    width: 1170px;
+    height: 350px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.supporter_info_title{
+    color:#0D0D0D;
+    top: 30px;
+    left: 50px;
+	font-family:Noto Sans KR;
+    position: absolute;
+	text-align:left;
+	font-size:20px;
+    font-weight: bold;
+}
+.supporter_nickname, .name, .phone_number, .email{
+    color: #767676;
+    font-family:Noto Sans KR;
+    position: absolute;
+	text-align:left;
+    font-size:15px;
+}
+.nickname_section{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 40px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.input_nickname_section{
+    position: absolute;
+    left: 80px;
+    top: 51px;
+}
+.input_nickname_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.name_section{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 80px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.input_name_section{
+    position: absolute;
+    left: 80px;
+    top: 51px;
+}
+.input_name_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.phone_number_section{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 120px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.input_phone_number_section{
+    position: absolute;
+    left: 80px;
+    top: 52px;
+}
+.input_phone_number_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.email_section{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 160px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.input_email_section{
+    position: absolute;
+    left: 80px;
+    top: 52px;
+}
+.input_email_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.same_as_profile{
+    color: #767676;
+    font-family:Noto Sans KR;
+    position: relative;
+	text-align:left;
+    font-size:15px;
+    position: absolute;
+    left: 65px;
+    top: 280px;
+}
+.same_as_profile label{
+    position: relative;
+    top: -1px;
+    left: 5px;
+}
+.default_address {
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing: border-box;
+    width: 1170px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+#subpage1 {
+    height: 350px;
+}
+#subpage2 {
+    height: 410px;
+}
+.address_title {
+    color: #0D0D0D;
+    top: 30px;
+    left: 50px;
+    font-family: Noto Sans KR;
+    position: absolute;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+.list_text, .input_text {
+    color: #767676;
+    font-family: Noto Sans KR;
+    font-size: 16px;
+}
+.address_navigator {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    width: 100%;
+}
+.address_list,
+.input_address {
+    cursor: pointer;
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #7D1CD8;
+    visibility: hidden; 
+}
+.active {
+    visibility: visible;
+}
+.subpage {
+    display: none;
+}
+.address_list span,
+.input_address span {
+    margin-bottom: 10px;
+}
+.address_list.active .underline,
+.input_address.active .underline {
+    visibility: visible; 
+}
+.subpage.active {
+    display: block; 
+}
+.default_address_section{
+    position: absolute;
+    left: 50px;
+    top: 130px;
+    display: flex;
+    align-items: center;
+}
+.default_address_name{
+    color: #0D0D0D;
+    font-family:Noto Sans KR;
+    font-size: 15px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+.default_address_icon{
+    width:110px;
+	height:110px;
+    position: relative;
+    top:1px;
+}
+.default_address_icon_box{
+    background-color: #D9D9D9;
+    width: 90px;
+    height: 28px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+}
+.default_address_icon_text{
+    color: #0D0D0D;
+    font-family:Noto Sans KR;
+    font-size: 15px;
+    width: 100px;
+    position: absolute;
+    top: 49%;
+    left: 63%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-weight: bold;
+}
+.default_name_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 180px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.default_address_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 220px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.default_phone_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 260px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.d_i_name, .d_i_address, .d_i_phone{
+    color: #767676;
+    font-family:Noto Sans KR;
+    position: absolute;
+	text-align:left;
+    font-size:15px;
+}
+.input_d_i_name_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_d_i_name_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.input_d_i_address_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_d_i_address_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.input_d_i_phone_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_d_i_phone_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.d_i_delivery_comment{
+    width: 500px;
+    height: 100px;
+    position: absolute;
+    top: 380px;
+    left: 70px;
+    display: flex;
+    flex-direction: column;
+}
+.d_i_delivery_comment_section{
+    color: #767676;
+    font-family:Noto Sans KR;
+    position: absolute;
+	text-align:left;
+    font-size:15px;
+    margin-bottom: 10px;
+}
+.d_i_delivery_comment select {
+    margin-top: 30px;
+    width: 350px; 
+    height: 20px; 
+    font-size: 15px; 
+}
+.next_step{
+    width: 260px;
+    height: 83px;
+    position: relative;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.next_step_box{
+    background-color: #7D1CD8;
+    width: 200px;
+    height: 65px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.next_step_text{
+    color:rgba(255, 255, 255, 1);
+    width: 200px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:23px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+body {
+    margin-bottom: 250px;
+}
+.add_address_section{
+    position: absolute;
+    left: 50px;
+    top: 130px;
+    display: flex;
+    align-items: center;
+}
+.add_address_name{
+    color: #0D0D0D;
+    font-family:Noto Sans KR;
+    font-size: 15px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+.add_address_icon{
+    width:110px;
+	height:110px;
+    position: relative;
+    top:1px;
+}
+.add_address_icon_box{
+    background-color: #D9D9D9;
+    width: 90px;
+    height: 28px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+}
+.add_address_icon_text{
+    color: #0D0D0D;
+    font-family:Noto Sans KR;
+    font-size: 15px;
+    width: 100px;
+    position: absolute;
+    top: 49%;
+    left: 63%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-weight: bold;
+}
+.add_name_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 170px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.add_address_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 210px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.add_phone_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 250px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.a_i_name, .a_i_address, .a_i_phone, .a_i_address_name{
+    color: #767676;
+    font-family:Noto Sans KR;
+    position: absolute;
+	text-align:left;
+    font-size:15px;
+}
+.input_a_i_name_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_a_i_name_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.input_a_i_address_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_a_i_address_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.input_a_i_phone_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_a_i_phone_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.a_i_delivery_comment{
+    width: 500px;
+    height: 100px;
+    position: absolute;
+    top: 370px;
+    left: 70px;
+    display: flex;
+    flex-direction: column;
+}
+.a_i_delivery_comment_section{
+    color: #767676;
+    font-family:Noto Sans KR;
+    position: absolute;
+	text-align:left;
+    font-size:15px;
+    margin-bottom: 10px;
+}
+.a_i_delivery_comment select {
+    margin-top: 35px;
+    width: 350px; 
+    height: 20px; 
+    font-size: 15px; 
+}
+.add_address_name_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 130px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.input_a_i_address_name_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_a_i_address_name_section input {
+    width: 350px; 
+    height: 15px; 
+    font-size: 15px; 
+}
+.add_to_default_address{
+    color: #767676;
+    font-family:Noto Sans KR;
+    position: relative;
+	text-align:left;
+    font-size:15px;
+    position: absolute;
+    left: 65px;
+    top: 465px;
+}
+.add_to_default_address label{
+    position: relative;
+    top: -1px;
+    left: 5px;
+}

@@ -1,0 +1,451 @@
+#header{
+    
+    min-height:80px;
+    /* background-color: rgb(201, 233, 233); */
+    margin:auto;
+    width: 1170px;
+    position: relative; 
+}
+.logo img{
+    max-width: 20%; 
+    margin-left: 25px;
+    /* height: auto ; */
+}
+.upload_project { 
+	width:210px;
+	height:67px;
+	position:absolute;
+	left:190px;
+	top:38px;
+}
+.upload_box { 
+    max-width: 55%;
+    position: absolute;
+    width: 170px;
+    height: 32px;
+    right: 182px;
+    left: 700px;
+    top:0px;
+    background: #EDE9FE;
+    border-radius: 6px;
+}
+.upload_text { 
+    color:#7D1CD8;	
+    width:100px;
+	height:17px;
+	position:absolute;
+	left:20px;
+	top:7px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:11px;
+	letter-spacing:0;
+}
+.profile{
+    display: flex;
+    align-items: center;
+    width:500px;
+	height:67px;
+	position:absolute;
+	left:1030px;
+	top:38px;
+    text-decoration: none;
+}
+.nickname{
+    color: #6D6D6D;
+	width:157px;
+	height:27px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:13px;
+	letter-spacing:0;
+    margin-top: -28px;
+    margin-left: -5px;
+}
+.nickname_title{
+    color: #6D6D6D;
+	width:27px;
+	height:27px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:13px;
+	letter-spacing:0;
+    margin-top: -29px;
+    margin-left: -58px;
+}
+.default_profile_circle{
+    border-radius:500px;
+	background-color:#EDE9FE;
+	width:30px;
+	height:30px;
+	position:absolute;
+	left:10px;
+	top:0px;
+}
+.default_profile_face{
+    width:25px;
+	height:25px;
+	position:absolute;
+	left:12.9px;
+	top:4px;
+	background-image:url(/images/noun_face_1891329_2.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.title_section{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin:auto;
+}
+.section{
+    background-color: #EDE9FE;
+    width: 1170px;
+    height: 83px;
+    position: relative;
+    margin:auto;
+}
+.funding_title{
+    color: #0D0D0D;
+    width:100px;
+	height:26px;
+	position:absolute;
+    top: 25px;
+    left: 50px;
+	font-family:Noto Sans KR;
+	text-align:left;
+	font-size:23px;
+    font-weight: bold;
+}
+
+.funding_process{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
+    width: 1170px;
+    height: 196px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.product_description{
+    width:110px;
+	height:110px;
+    position: relative;
+}
+.delivery_address{
+    width:110px;
+	height:110px;
+    position: relative;
+    z-index: 1;
+}
+.payment_reservation{
+    width:110px;
+	height:110px;
+    position: relative;
+}
+.product_description,
+.payment_reservation {
+    margin: 0 100px; 
+    z-index: 1;
+}
+.purple_des{
+    border-radius:500px;
+    background-color: #7D1CD8;
+    width:110px;
+	height:110px;
+}
+
+.description{
+    color:rgba(255, 255, 255, 1);
+    width:85px;
+	height:41px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:18px;
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.grey_add{
+    border-radius:500px;
+    background-color: #D9D9D9;
+    width:110px;
+	height:110px;
+}
+
+.address{
+    color:#0D0D0D;
+    width:85px;
+	height:41px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:18px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.grey_res{
+    border-radius:500px;
+    background-color: #D9D9D9;
+    width:110px;
+	height:110px;
+}
+.reservation{
+    color:#0D0D0D;
+    width:85px;
+	height:41px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:18px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.process_line{
+    border-bottom: 2px dotted #6D6D6D;
+    position: absolute;
+    width: calc(100% - 750px);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 35%;
+    transform-origin: left;
+    z-index: -1;
+}
+.product{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
+    width: 1170px;
+    height: 240px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.product_image{
+    width:230px;
+	height:230px;
+    position:absolute;
+	left:2.5px;
+	top:2.5px;
+    background-image:url(/images/unsplash_evaxjva2zhi.png);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+.category{
+    color: #767676;
+    width:90px;
+	height:24px;
+    left:320px;
+	top:40px;
+    position: absolute;
+    font-family:Noto Sans KR;
+	text-align:left;
+	font-size:13px;
+}
+.title{
+    color:rgba(0, 0, 0, 1);
+	width:528px;
+	height:30px;
+	position:absolute;
+	left:320px;
+	top:70px;
+	font-family:Noto Sans KR;
+	text-align:left;
+	font-size:20px;
+}
+.funding_amount{
+    width:528px;
+	height:30px;
+	position:absolute;
+	left:320px;
+	top:120px;
+}
+.percent {
+    color:#7D1CD8;
+    width:44px;
+	height:24px;
+	position:absolute;
+	left:0px;
+	top:-10px;
+	font-family:Noto Sans KR;
+	text-align:left;
+	font-size:18px;
+}
+.amount{
+    color:#4D4D4D;
+    width:84px;
+	height:24px;
+	position:absolute;
+	left:48px;
+	top:-6px;
+	font-family:Noto Sans KR;
+	text-align:left;
+	font-size:13px;
+}
+.funding_date{
+    width:528px;
+	height:30px;
+	position:absolute;
+	left:298px;
+	top:119px;
+}
+.purple_box{
+    background-color: #EDE9FE;
+    width: 68px;
+    height: 24px;
+    position: absolute;
+    left: 150px;
+    top: -7px;
+    border-radius: 4px;
+    border-top-left-radius:4px;
+	border-top-right-radius:4px;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+}
+.day_left{
+    color:#7D1CD8;
+    width:76px;
+	height:24px;
+	position:absolute;
+	left:161px;
+	top:-7px;
+	font-family:Noto Sans KR;
+	text-align:left;
+    line-height: 24px;
+	font-size:13px;
+}
+.options{
+    color: #767676;
+    width:528px;
+	height:30px;
+	position:absolute;
+	left:320px;
+	top:180px;
+    font-family:Noto Sans KR;
+	text-align:left;
+	font-size:13px;
+}
+.product_amount{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
+    width: 1170px;
+    height: 80px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.show_amount{
+    color: #767676;
+    position:absolute;
+    left:50px;
+    top: 50%; 
+    transform: translateY(-50%);
+    font-family:Noto Sans KR;
+	text-align:left;
+    font-size:18px;
+}
+.chosen_amount{
+    color: #767676;
+    position:absolute;
+    right: 92px;
+    top: 50%; 
+    transform: translateY(-50%);
+    font-family:Noto Sans KR;
+	text-align:left;
+    font-size:18px;
+}
+.unit{
+    color: #767676;
+    position:absolute;
+    right: 65px;
+    top: 50%; 
+    transform: translateY(-50%);
+    font-family:Noto Sans KR;
+	text-align:left;
+    font-size:18px;
+}
+.product_composition{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
+    width: 1170px;
+    height: 80px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.composition{
+    color: #767676;
+    position:absolute;
+    left:50px;
+    top: 50%; 
+    transform: translateY(-50%);
+    font-family:Noto Sans KR;
+	text-align:left;
+    font-size:18px;
+}
+.composition_detail{
+    color: #767676;
+    position:absolute;
+    right: 65px;
+    top: 50%; 
+    transform: translateY(-50%);
+    font-family:Noto Sans KR;
+	text-align:left;
+    font-size:18px;
+}
+.next_step{
+    width: 260px;
+    height: 83px;
+    position: relative;
+    left: 50%;
+    top: 100px;
+    transform: translateX(-50%);
+}
+.next_step_box{
+    background-color: #7D1CD8;
+    width: 200px;
+    height: 65px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.next_step_text{
+    color:rgba(255, 255, 255, 1);
+    width: 200px;
+	font-family:Noto Sans KR;
+	text-align:center;
+	font-size:23px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+body{
+    margin-bottom: 200px;
+}
+
+.supporter_info{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
+    width: 1170px;
+    height: 196px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
