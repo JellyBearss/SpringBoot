@@ -1,0 +1,143 @@
+body{
+    font-family: Noto Sans KR;
+}
+
+.btnWrapper{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.startText{
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.startBtn{
+    color: #EDE9FE;
+    background-color: #7D1CD8;
+    border-radius: 6px;
+    border: none;
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+    
+     display: flex;
+     cursor: pointer;
+     
+     margin-left:10px;
+     margin-right: 10px;
+
+     
+
+}
+
+.startIcon{
+    margin-left: 20px;
+    
+}
+
+.btnText{
+    padding-top: 10px;
+    font-weight: 800;
+}
+.startBtn:hover{
+    color:#7D1CD8;
+    background-color: #EDE9FE;
+}
+
+
+/********* 프로젝트 등록 과정 ************/
+
+.processWrapper{
+    color: rgb(74, 74, 74);
+    margin-top: 150px;
+    background-color: rgba(125, 28, 216, 0.08);
+    text-align: center;
+}
+
+
+.processIconWrapper{
+    display: inline-block;
+}
+
+#iconArrow{
+    margin: 50px;
+}
+
+
+/********* 프로젝트 등록 전 동의 *************/
+.purpleBackground { 
+	background-color:rgba(125.18853843212128, 27.85963576287031, 215.68750709295273, 0.07999999821186066);
+
+    text-align: center;
+    margin-top: -40px; /* 100-40 */
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-bottom: 100px;
+
+}
+
+#startTxt{
+
+    font-size: 26px;
+    color:rgb(68, 68, 68);
+    font-weight: 600;
+}
+
+.checkboxWrapper { 
+    padding-left: 300px;
+
+    /* width: 100%; */
+
+    
+   
+
+}
+
+.checkTxt{
+    color:rgba(112.62499898672104, 108.8708308339119, 108.8708308339119, 1);
+    font-size:20px;
+    
+}
+
+input[type=checkbox]{
+    
+    accent-color: #d9afffbd;
+    
+}
+
+input[type=checkbox]:checked{
+    /* width:30px; */
+    box-shadow: 0 0 0 5px #ce9affbd;
+    border-radius: 10px 10px 10px 10px;
+    
+}
+
+.checkStartBtn {
+	background-color:rgba(125.18853843212128, 27.85963576287031, 215.68750709295273, 0.8500000238418579);
+    margin-top: 50px;
+	width:300px;
+	height:55px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+    border : none;
+    cursor: pointer;
+
+}
+
+.checkStartBtn:hover{
+    
+}
+
+.checkStartBtnTxt{
+    color:rgba(237.0000010728836, 233.00000131130219, 254.00000005960464, 1);
+	font-family:Noto Sans KR;
+	font-size:20px;
+    font-weight: bold;
+}
+
+
+
