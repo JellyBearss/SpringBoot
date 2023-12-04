@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zen+Tokyo Zoo&display=swap" rel="stylesheet">
 
-            <link rel="stylesheet" href="/resources/css/funding_process/default_address.css">
+            <link rel="stylesheet" href="/css/funding_process/default_address.css">
     <style>
         body {
             margin: 0;
@@ -19,7 +20,7 @@
 <body>
 <div id="header">
     <a href="/home" class="logo">
-        <img src="/resources/icon/logo2.png" alt="">
+        <img src="/icon/logo2.png" alt="">
     </a>            
     <a href="/upload" class=upload_project>
         <div class=upload_box>
@@ -218,7 +219,7 @@
     </div>
 </div>
 <div>
-<a href="/3_pay_reservation/pay_reservation.html" class="next_step">
+    <a th:href="@{/funding_process/payReservation}" class="next_step">
     <div class="next_step_box"></div>
     <span class="next_step_text">다음 단계로</span>
 </a>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Zen+Tokyo Zoo&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="detailed_product.css">
+<link rel="stylesheet" href="/css/funding_process/detailed_product.css">
 
 <style>
     body {
@@ -21,7 +22,7 @@
 <body>
 <div id="header">
     <a href="/home" class="logo">
-        <img src="/resources/icon/logo2.png" alt="">
+        <img src="/icon/logo2.png" alt="">
     </a>            
     <a href="/upload" class=upload_project>
         <div class=upload_box>
@@ -97,9 +98,10 @@
         <span class="composition_detail">인형 + 리본 머리띠(옵션)</span>
     </div>
 
-    <a href="/2_default_address/default_address.html" class="next_step">
+    <a th:href="@{/funding_process/address}" class="next_step">
         <div class="next_step_box"></div>
         <span class="next_step_text">다음 단계로</span>
     </a>
+</div>
 </body>
 </html>

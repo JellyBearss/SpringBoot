@@ -307,7 +307,7 @@ div{
     left: 50%;
     top: 40%;
     transform: translate(-50%, -50%); 
-    background-image:url(./yeyy_grey.png);
+    background-image:url("/icon/yeyy_grey.png");
     background-repeat:no-repeat;
 	background-size: contain;
     background-position: center;
