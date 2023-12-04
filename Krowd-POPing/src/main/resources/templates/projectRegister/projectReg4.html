@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/registerHeader.css">
+<link rel="stylesheet" href="../css/projectReg.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>펀딩 계획 페이지</title>
+</head>
+
+
+<body>
+
+<header>    
+<div class="header">
+    <div class="container">
+        
+        <div class="backArrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 25 30" fill="none" >
+                <path d="M9.11701 29.6743C8.88368 29.6751 8.65314 29.6236 8.44233 29.5236C8.23152 29.4236 8.04579 29.2777 7.8988 29.0965L0.355291 19.7256C0.125579 19.4462 0 19.0956 0 18.7339C0 18.3721 0.125579 18.0216 0.355291 17.7421L8.16431 8.37133C8.4294 8.05239 8.81034 7.85181 9.22333 7.81374C9.63631 7.77566 10.0475 7.9032 10.3664 8.1683C10.6854 8.4334 10.886 8.81434 10.924 9.22732C10.9621 9.6403 10.8346 10.0515 10.5695 10.3704L3.58822 18.7417L10.3352 27.113C10.5262 27.3422 10.6475 27.6214 10.6848 27.9174C10.7221 28.2134 10.6738 28.514 10.5457 28.7834C10.4175 29.0529 10.2148 29.28 9.96166 29.4379C9.70848 29.5958 9.41536 29.6778 9.11701 29.6743Z" fill="#231F20"/>
+            </svg>
+            <span style="padding-top: 4px;">내가 만든 프로젝트</span>
+        </div>
+        
+
+
+        <div class="logo">
+            <img src="../../resources/icons/logo2.png" alt="로고">
+        </div>
+
+        <div class="menu">
+            <div class="menu-item" onclick="alert('프로젝트 심사 약관')"><img src ="../img/project_terms_btn.svg" alt="프로젝트 심사 약관"></div>
+            <div class="menu-item" onclick="alert('창작자 가이드')"><img src="../img/creator_guide_btn.svg"alt="창작자 가이드"></div>
+        </div>
+        
+    </div>
+
+    <div class="processTabWrapper">
+        <ul class="processTab">
+            <li class="tabItem ">기본 정보</li>
+            <li class="tabItem">창작자 정보</li>
+            <li class="tabItem tabBar">요금제</li>
+            <li class="tabItem">펀딩 계획</li>
+            <li class="tabItem">상세 정보</li>
+            <li class="tabItem">선물 구성</li>
+            <li class="tabItem">정책</li>
+        </ul>
+    </div>
+
+
+</div>    
+</header>
+ 
+<div id="article">
+    <div class="container2">
+        <!-- 여기에 내용을 추가하거나 필요한 구조를 만드세요 
+            여기가 하늘색 바디 부분-->
+        <h2>펀딩 계획</h2>
+        <br><br>
+        
+
+        <div class="subTitle">펀딩 기간</div>
+        
+        <div class="dateWrapper">
+            <div>
+                <div class="inputTitle">펀딩 시작</div>
+                <input type="datetime-local" id="currentDate">
+            </div>
+
+            <div style="margin: 25px 100px;">
+            <img src="../img/doublearrow right (2).svg">
+            <div style="color: rgba(125, 28, 216, 0.64); font-weight: 600;">30일</div>
+            </div>
+
+            <div>
+                <div class="inputTitle">펀딩 종료</div>
+                <input type="datetime-local" >
+            </div>
+        </div>
+        
+        <br><br>
+
+        <div class="subTitle">결제 기간</div>
+
+        <div class="dateWrapper">
+            <div>
+                <div class="inputTitle">결제 시작</div>
+                <input type="datetime-local" id="currentDate2">
+            </div>
+
+            <div style="margin: 25px 100px;">
+            <img src="../img/doublearrow right (2).svg">
+            <div style="color: rgba(125, 28, 216, 0.64); font-weight: 600;"">10일</div>
+            </div>
+
+            <div >
+                <div class="inputTitle">결제 종료</div>
+                <input type="datetime-local" >
+            </div>
+        </div>
+
+
+        <script>
+            const serverTime = new Date().getTime();
+            const koreaTimezoneOffset = 9 * 60; 
+            const koreaDate = new Date(serverTime + (koreaTimezoneOffset * 60 * 1000));
+            
+            document.getElementById('currentDate').value = koreaDate.toISOString().substring(0, 16);
+            document.getElementById('currentDate2').value = koreaDate.toISOString().substring(0, 16);
+            
+        </script>
+
+
+        <br><br>
+
+        <div class="dateWrapper">
+            <div>
+                <div class="subTitle">목표 금액</div>
+                <p class="subText">계획한 펀딩 프로젝트에 금액이 얼마나 필요할지<br>신중히 생각해보세요.</p>
+                <input type="text"><span>  원</span>
+            </div>
+
+            <div id="targetAmountDescription">
+                premium 요금제 - 수수료 10% <br>
+                소속사 대행 - 수수료 4%
+
+                <br><br><br><br>
+                ※ 목표 금액을 달성하지 못하면 펀딩이 실패합니다.<br>
+
+                ※ 목표 금액을 설정하기 어렵다면? <br>
+                -> <b>상세 일정에서 일정과 예산 기획</b>을 먼저 해보세요.<br>
+            </div>
+
+        </div>
+        
+        <!-- <br><br><br><br> -->
+
+        <div>
+            <div class="subTitle" style="margin-top: -100px">최종 금액</div>
+            <p class="subText">목표 금액 달성 시 수령되는 수수료가 적용된 금액입니다.</p>
+            <input type="text"><span>  원</span>
+            <!-- <div class="subText" style="font-size: 12px;" >수수료 적용된 금액</div> -->
+        </div>
+
+            <!-- <div>
+                <div class="subTitle">정산일</div>
+                <input type="date" data-placeholder="날짜 선택" style="margin-top: 5px;">
+            </div> -->
+            
+        <br><br>
+
+        
+        
+        <br><br><br><br>
+
+    </div>
+</div>
+
+    
+
+</body>
+
+
+</html>
