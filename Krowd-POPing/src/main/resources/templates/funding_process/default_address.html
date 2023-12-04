@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>default address</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Zen+Tokyo Zoo&display=swap" rel="stylesheet">
+
+            <link rel="stylesheet" href="/resources/css/funding_process/default_address.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <a href="/home" class="logo">
+        <img src="/resources/icon/logo2.png" alt="">
+    </a>            
+    <a href="/upload" class=upload_project>
+        <div class=upload_box>
+        <b><span  class="upload_text">프로젝트 올리기</span></b>
+        <svg viewBox="-12 -10 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.21429 16.0588H14.7857V8.64706H20.5L10.5 0L0.5 8.64706H6.21429V16.0588ZM0.5 18.5294H20.5V21H0.5V18.5294Z" fill="#7D1CD8"/>
+        </svg>
+        </div>
+    </a>
+    <a href="/profile" class="profile">
+        <div class="default_profile_circle"></div>
+        <div class="default_profile_face"></div>
+        <div class="nickname">체리토끼</div>
+        <div class="nickname_title">님</div>
+    </a>
+</div>
+
+<div id="content">
+    <div class="title_section">
+        <div class="section">
+            <div class="funding_title">후원하기</div>
+        </div>
+    </div>
+    <div class="funding_process">
+        <div class="product_description">
+            <div class="purple_des"></div>
+            <span class="description"><b>후원 상품 정보</b></span>
+        </div>
+        <div class="delivery_address">
+            <div class="grey_add"></div>
+            <span class="address"><b>배송지</b></span>
+        </div>
+        <div class="payment_reservation">
+            <div class="grey_res"></div>
+            <span class="reservation"><b>결제 예약</b></span>
+        </div>
+        <div class="process_line"></div>
+    </div>
+
+    <div class="supporter_info">
+        <div class="supporter_info_title">후원자 정보</div>
+
+        <div class="nickname_section">
+            <form action="#" method="get">
+                <span class="supporter_nickname">후원자명</span>
+                <div class="input_nickname_section">
+                    <input type="text" name ="input_nickname" placeholder="후원자명을 입력하세요.">
+                </div>
+            </form>
+        </div>
+
+        <div class="name_section">
+            <form action="#" method="get">
+                <span class="name">이름</span>
+                <div class="input_name_section">
+                    <input type="text" name ="input_name" placeholder="이름을 입력하세요.">
+                </div>
+            </form>
+        </div>
+
+        <div class="phone_number_section">
+            <form action="#" method="get">
+                <span class="phone_number">연락처</span>
+                <div class="input_phone_number_section">
+                    <input type="text" name ="input_phone_number" placeholder="연락처를 입력하세요.">
+                </div>
+            </form>
+        </div>
+
+        <div class="email_section">
+            <form action="#" method="get">
+                <span class="email">이메일</span>
+                <div class="input_email_section">
+                    <input type="text" name ="input_email" placeholder="이메일을 입력하세요.">
+                </div>
+            </form>
+        </div>
+
+        <div class="same_as_profile">
+            <input type="checkbox" id="same" name="whether_same" value="가입 정보와 동일">
+            <label for="same">가입 정보와 동일</label>
+        </div>
+    </div>
+</div>
+
+<div class="default_address">
+    <div class="address_title">배송지</div>
+    <div class="address_navigator">
+        <div class="address_list active" onclick="showSubpage('subpage1')">
+            <span class="list_text">배송지 목록</span>
+            <div class="underline"></div>
+        </div>
+        <div class="input_address" onclick="showSubpage('subpage2')">
+            <span class="input_text">직접 입력</span>
+            <div class="underline"></div>
+        </div>
+    </div>
+    <div id="subpage1" class="subpage">
+        <div class="default_address_section">
+            <span class="default_address_name">하이미디어</span>
+            <div class="default_address_icon">
+                <span class="default_address_icon_text">기본 배송지</span>
+                <div class="default_address_icon_box"></div>
+            </div>
+        </div>
+        <div class="default_name_info">
+            <form action="#" method="get">
+                <span class="d_i_name">받는 사람</span>
+                <div class="input_d_i_name_section">
+                    <input type="text" name ="input_d_i_name">
+                </div>
+            </form>
+        </div>
+
+        <div class="default_address_info">
+            <form action="#" method="get">
+                <span class="d_i_address">주소</span>
+                <div class="input_d_i_address_section">
+                    <input type="text" name ="input_d_i_address">
+                </div>
+            </form>
+        </div>
+
+        <div class="default_phone_info">
+            <form action="#" method="get">
+                <span class="d_i_phone">연락처</span>
+                <div class="input_d_i_phone_section">
+                    <input type="text" name ="input_d_i_phone">
+                </div>
+            </form>
+        </div>
+
+        <div class="d_i_delivery_comment">
+            <div class="d_i_delivery_comment_section">배송 요청 사항(선택)</div>
+            <select>
+                <option value="1">문 앞에 놓아주세요.</option>
+                <option value="2">경비(관리)실에 맡겨주세요.</option>
+                <option value="3">택배함에 넣어주세요.</option>
+                <option value="4">직접 받겠습니다.</option>
+                <option value="type">직접 입력</option>
+            </select>
+        </div>
+
+    </div>
+    <div id="subpage2" class="subpage">
+        <div class="add_address_name_info">
+            <form action="#" method="get">
+                <span class="a_i_address_name">배송지명</span>
+                <div class="input_a_i_address_name_section">
+                    <input type="text" name ="input_a_i_address_name">
+                </div>
+            </form>
+        </div>
+        <div class="add_name_info">
+            <form action="#" method="get">
+                <span class="a_i_name">받는 사람</span>
+                <div class="input_a_i_name_section">
+                    <input type="text" name ="input_a_i_name">
+                </div>
+            </form>
+        </div>
+
+        <div class="add_address_info">
+            <form action="#" method="get">
+                <span class="a_i_address">주소</span>
+                <div class="input_a_i_address_section">
+                    <input type="text" name ="input_a_i_address">
+                </div>
+            </form>
+        </div>
+
+        <div class="add_phone_info">
+            <form action="#" method="get">
+                <span class="a_i_phone">연락처</span>
+                <div class="input_a_i_phone_section">
+                    <input type="text" name ="input_a_i_phone">
+                </div>
+            </form>
+        </div>
+
+        <div class="a_i_delivery_comment">
+            <div class="a_i_delivery_comment_section">배송 요청 사항(선택)</div>
+            <select>
+                <option value="default" disabled selected>배송 시 요청사항을 선택해주세요.</option>
+                <option value="1">문 앞에 놓아주세요.</option>
+                <option value="2">경비(관리)실에 맡겨주세요.</option>
+                <option value="3">택배함에 넣어주세요.</option>
+                <option value="4">직접 받겠습니다.</option>
+                <option value="type">직접 입력</option>
+            </select>
+        </div>
+        <div class="add_to_default_address">
+            <input type="checkbox" id="add" name="whether_add" value="기본 배송지로 등록">
+            <label for="same">기본 배송지로 등록</label>
+        </div>
+    </div>
+</div>
+<div>
+<a href="/3_pay_reservation/pay_reservation.html" class="next_step">
+    <div class="next_step_box"></div>
+    <span class="next_step_text">다음 단계로</span>
+</a>
+</div>
+<script>
+    document.getElementById('deliveryOptions').value = 'default';
+    showSubpage('subpage1');
+    function showSubpage(subpageId) {
+        // 모든 subpage를 비활성화
+        var subpages = document.querySelectorAll('.subpage');
+        subpages.forEach(function(subpage) {
+            subpage.classList.remove('active');
+        });
+
+        // 클릭한 subpage를 활성화
+        var activeSubpage = document.getElementById(subpageId);
+        activeSubpage.classList.add('active');
+
+            // 추가: 선택한 서브페이지에 따라 언더라인 활성화
+        var addressList = document.querySelector('.address_list');
+        var inputAddress = document.querySelector('.input_address');
+
+        if (subpageId === 'subpage1') {
+            addressList.classList.add('active');
+            inputAddress.classList.remove('active');
+        } else if (subpageId === 'subpage2') {
+            addressList.classList.remove('active');
+            inputAddress.classList.add('active');
+        }
+
+            // 선택한 subpage의 텍스트 스타일 변경
+        var addressListText = document.querySelector('.address_list span');
+        var inputAddressText = document.querySelector('.input_address span');
+
+        if (subpageId === 'subpage1') {
+            addressListText.style.color = '#0D0D0D';
+            addressListText.style.fontWeight = 'bold';
+            inputAddressText.style.color = ''; // 원래 색으로 돌아오게 설정
+            inputAddressText.style.fontWeight = ''; // 원래 굵기로 돌아오게 설정
+        } else if (subpageId === 'subpage2') {
+            addressListText.style.color = ''; // 원래 색으로 돌아오게 설정
+            addressListText.style.fontWeight = ''; // 원래 굵기로 돌아오게 설정
+            inputAddressText.style.color = '#0D0D0D';
+            inputAddressText.style.fontWeight = 'bold';
+        }
+    }
+</script>
+
+</body>
+</html>

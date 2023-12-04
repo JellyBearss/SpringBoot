@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pay reservation</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Zen+Tokyo Zoo&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="pay_reservation.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <a href="/home" class="logo">
+        <img src="/resources/icon/logo2.png" alt="">
+    </a>            
+    <a href="/upload" class=upload_project>
+        <div class=upload_box>
+        <b><span  class="upload_text">프로젝트 올리기</span></b>
+        <svg viewBox="-12 -10 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.21429 16.0588H14.7857V8.64706H20.5L10.5 0L0.5 8.64706H6.21429V16.0588ZM0.5 18.5294H20.5V21H0.5V18.5294Z" fill="#7D1CD8"/>
+        </svg>
+        </div>
+    </a>
+    <a href="/profile" class="profile">
+        <div class="default_profile_circle"></div>
+        <div class="default_profile_face"></div>
+        <div class="nickname">체리토끼</div>
+        <div class="nickname_title">님</div>
+    </a>
+</div>
+
+<div id="content">
+    <div class="title_section">
+        <div class="section">
+            <div class="funding_title">후원하기</div>
+        </div>
+    </div>
+    <div class="funding_process">
+        <div class="product_description">
+            <div class="purple_des"></div>
+            <span class="description"><b>후원 상품 정보</b></span>
+        </div>
+        <div class="delivery_address">
+            <div class="grey_add"></div>
+            <span class="address"><b>배송지</b></span>
+        </div>
+        <div class="payment_reservation">
+            <div class="grey_res"></div>
+            <span class="reservation"><b>결제 예약</b></span>
+        </div>
+        <div class="process_line"></div>
+    </div>
+
+    <div class="pay_method">
+        <div class="pay_method_title">결제 수단</div>
+        <div class="kakao_pay">
+            <input type="checkbox" id="kakao" name="kakao" value="카카오 페이" checked>
+            <label for="same">카카오 페이로 결제</label>
+        </div>
+    </div>
+
+    <div class="product_price">
+        <span class="show_price">상품 금액</span>
+        <span class="chosen_price">52,000</span>
+        <span class="price_unit">원</span>
+    </div>
+    
+    <div class="additional_funding">
+        <span class="show_additional_funding">추가 후원금</span>
+        <span class="chosen_additional_funding">1,000</span>
+        <span class="additional_funding_unit">원</span>
+    </div>
+
+    <div class="delivery_fee">
+        <span class="show_delivery_fee">배송비</span>
+        <span class="chosen_delivery_fee">4,000</span>
+        <span class="delivery_fee_unit">원</span>
+    </div>
+
+    <div class="total_funding_amount">
+        <span class="show_total">최종 후원금액</span>
+        <span class="chosen_total">57,000</span>
+        <span class="total_unit">원</span>
+    </div>
+
+    <div class="comment_section">
+    <div class="confirm_comment">후원 목표 달성 시, 결제는 2023. 12.08 에 진행됩니다. 프로젝트가 무산되거나 중단된 경우, 예약된 결제는 자동으로 취소됩니다.</div>
+    <div class="term1">
+        <input type="checkbox" id="term1" name="term1" value="서비스 동의">
+        <label for="same">구매 조건, 결제 진행 및 결제 대행 서비스 동의</label>
+        <span class="term_detail1">
+        <a href="/term1.html">내용 보기</a>
+        </span>
+    </div>
+    <div class="term2">
+        <input type="checkbox" id="term2" name="term2" value="제공 동의">
+        <label for="same">개인정보 제3자 제공 동의</label>
+        <span class="term_detail2">
+        <a href="/term2.html">내용 보기</a>
+        </span>
+    </div>
+
+    <div class="next_step_section">
+        <a href="/4_process_finished/process_finished.html" class="finished">
+            <div class="next_step_box"></div>
+            <span class="next_step_text">후원하기</span>
+        </a>
+    </div>
+    </div>
+</div>
+</body>
+</html>
