@@ -4,3 +4,9 @@ spring:
     url: jdbc:mysql://mysql.coffit.today:3306/KrowdPoping
     username: jellybears
     password: jellybears
+
+mybatis:
+  # mapper.xml location Setting
+  mapper-locations: mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
