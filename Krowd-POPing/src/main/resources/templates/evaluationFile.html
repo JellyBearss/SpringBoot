@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심사 서류</title>
+    <link rel="stylesheet" href="css/evaluationFile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div id="wrap">
+        <h1><b>심사 서류</b></h1>
+        <h3>마지막에 [등록]을 눌러야 리워드가 정상 등록돼요.</h3>
+        <br>
+        <h2 id="h2"><b>서류 업로드</b></h2>
+        <h2>[필수 서류] 리워드의 종류와 제작 형태에 따라 꼭 필요한 필수 서류를 업로드 해주세요.</h2>
+        <p>1. 서류 제출 가이드를 먼저 확인해주세요.<br>
+            2. 창작자의 리워드와 가장 유사한 '리워드 종류'에서 요청하는 필수 서류들을 제출하면 담당자가 확인해요.
+        </p>
+        <fieldset class="fieldset">
+            <div>
+                <div id="example">
+                    <a href="https://www.google.com" target="_blank">예시보기</a>
+                </div>
+                <div>
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="button">
+                            <label for="chooseFile">
+                                서류 업로드
+                            </label>
+                        </div>
+                        <input type="file" class="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                    </form>
+                </div>
+                <div class="fileContainer">
+                    <div class="fileInput">
+                        <p>FILE NAME: </p>
+                        <p id="fileName"></p>
+                    </div>
+                    <div class="buttonContainer">
+                        <button class="submitButton" id="submitButton">업로드</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <br><br>
+        <h2>[선택 서류] 프로젝트 스토리에 작성한 내용을 증빙하는데 필요한 서류에요.</h2>
+        <p>업로드 전 유효기간이 만료된 서류는 아닌지 꼭 확인해주세요.</p>
+        <fieldset>
+            <div id="text">
+                <p><b>특정 표현의 경우 그 사실을 뒷받침할 수 있는 증빙 자료가 필요합니다.</b></p>
+                <p>증빙이 어려운 내용은 일부 삭제되거나 프로젝트가 취소될 수 있어요.</p>
+            </div>
+            <div id="file">
+                <div>
+                    <p id="p">지식 재산권</p>
+                </div>
+                <div>
+                    <ul>
+                        <li class="li">실용신안등록증</li>
+                        <li class="li">디자인등록증</li>
+                        <li class="li">상표등록증</li>
+                    </ul>
+                </div>
+            </div>
+        </fieldset>
+        <br>
+        <fieldset>
+            <div>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="button">
+                        <label for="chooseFile">
+                            서류 업로드
+                        </label>
+                    </div>
+                    <input type="file" class="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                </form>
+            </div>
+            <div class="fileContainer">
+                <div class="fileInput">
+                    <p>FILE NAME: </p>
+                    <p id="fileName"></p>
+                </div>
+                <div class="buttonContainer">
+                    <button class="submitButton" id="submitButton">업로드</button>
+                </div>
+            </div>
+        </fieldset>
+    <br><br>
+    <button id="submit" type="submit">등록</button>
+
+    </div>
+</body>
+</html>
