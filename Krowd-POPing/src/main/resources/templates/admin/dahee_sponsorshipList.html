@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>관리자 페이지</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="dahee_memberList.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Krowd-POPing</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">닉네임</span>
+          </a><!-- End Profile Iamge Icon -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>이름</h6>
+              <span>관리자</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>마이페이지</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>로그아웃</span>
+              </a>
+            </li>
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+      </ul>
+    </nav><!-- End Icons Navigation -->
+  </header><!-- End 헤더 -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <div class="card-body pt-4 d-flex flex-column align-items-center">
+        <img src="assets/img/profile-img.png" alt="Profile" class="rounded-circle" width="100%" height="100%">
+        <br>
+        <span style="color:white">프로필 수정 <i class="bi bi-gear"></i></span>
+      </div><!-- End 프로필 사진 & 수정  -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="dahee_memberList.html">
+          <i class="bi bi-person"></i>
+          <span>회원 관리</span>
+        </a>
+      </li><!-- End 회원 관리 -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="dahee_fundingList.html">
+          <i class="bi bi-alarm"></i><span>펀딩 관리</span>
+        </a>
+      </li><!-- End 펀딩 관리 -->
+      <li class="nav-item">
+        <a class="nav-link" href="dahee_sponsorshipList.html">
+          <i class="bi bi-gift"></i><span>후원 관리</span>
+        </a>
+      </li><!-- End 후원 관리v -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="dahee_applicationList.html">
+          <i class="bi bi-layout-text-window-reverse"></i><span>프로젝트 관리</span>
+        </a>
+      </li><!-- End 프로젝트 관리 -->
+      <li class="nav-item">
+        <a class="nav-link collapsed"  href="dahee_categoryList.html">
+          <i class="bi bi-diagram-3"></i><span>카테고리 관리</span>
+        </a>
+      </li><!-- End 카테고리 관리 -->
+      <br>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="dahee_noticeList.html">
+          <i class="bi bi-megaphone"></i><span>공지사항 관리</span>
+        </a>
+      </li><!-- End 공지사항 관리 -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="dahee_faqList.html">
+          <i class="bi bi-question-circle"></i><span>FAQ 관리</span>
+        </a>
+      </li><!-- End 공지사항 관리 -->
+      <br>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="dahee_reportList.html">
+          <i class="bi bi-exclamation-triangle"></i>
+          <span>신고 관리</span>
+        </a>
+      </li><!-- End 신고 관리 -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="dahee_inquiryList.html">
+          <i class="bi bi-envelope"></i><span>문의 관리</span>
+        </a>
+      </li><!-- End 문의 관리 -->
+    </ul>
+  </aside><!-- End 사이드바-->
+
+
+<!-- ======= main ======= ================================================================================================= -->
+
+<main id="main" class="main">
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">후원 내역 목록 페이지</h5>
+            
+            <!-- 드롭다운 메뉴와 검색창 -->
+            <div class="dropdown">
+              <select> 
+                <option value="">전체</option> 
+                <option value="apple">결제 완료</option> 
+                <option value="banana">결제 취소</option> 
+                <option value="orange">환불</option> 
+              </select>
+            </div>
+
+            <!-- 검색창 -->
+            <div class="search-box">
+            <input type="search" name="search" placeholder="회원 검색...">
+            <button type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+            </div>
+            
+            <!-- <div class="box">
+              <div class="container-4">
+                <input type="search" id="search" placeholder="펀딩 명칭 검색..."/>
+                <button class="icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+            </div> -->
+            <!-- Default Table -->
+            <table class="table">     
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">펀딩 명칭</th>
+                  <th scope="col">선물명</th>
+                  <th scope="col">후원자 아이디</th>
+                  <th scope="col">펀딩률</th>
+                  <th scope="col">금액</th>
+                  <th scope="col">결제일</th>
+                  <th scope="col">결제 정보</th>
+                  <th scope="col">결제 상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>크리스마스 단 하루를 위해 1년을 준비한 장인정신 슈톨렌</td>
+                  <td>델리타스 슈톨렌 3종 세트</td>
+                  <td>qwe456</td>
+                  <td>1357%</td>
+                  <td>45,900원</td>
+                  <td>2023/11/11</td>
+                  <td>카카오페이</td>
+                  <td class="badge bg-success" style="color: white; margin: 6px;">결제 완료</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Default Table Example -->
+            <div class="pagination">
+              <a href="#">1</a>
+              <a href="#">2</a>
+              <a href="#" class="active">3</a>
+              <a href="#">4</a>
+              <a href="#">5</a>
+
+              <a href="#">&gt;</a>
+              <a href="#">&raquo;</a>
+            </div>
+            <!-- End 페이징 처리 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main ================================================================================================= -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
