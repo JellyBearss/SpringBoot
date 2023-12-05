@@ -338,7 +338,7 @@ a {
     position:absolute;
 	left:20px;
 	top: 70px;
-    background-image:url(/unsplash_evaxjva2zhi.png);
+    background-image:url("/images/unsplash_eVaxJVA2zHI.png");
     background-repeat:no-repeat;
     background-size:cover;
     background-position: center;
@@ -448,7 +448,7 @@ a {
     height: 90px;
     top: 60px;
     position: absolute;
-    background-image: url(/resources/change_purple.png);
+    background-image: url("/icon/change_purple.png");
     background-repeat: no-repeat;
     background-size: cover;
 }

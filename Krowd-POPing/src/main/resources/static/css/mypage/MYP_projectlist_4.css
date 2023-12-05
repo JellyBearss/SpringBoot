@@ -267,7 +267,7 @@ body{
     height: 160px;
     display: flex;
     float: left;
-    background-image: url(/resources/icon/thumbnail.png);
+    background-image: url(/icon/thumbnail.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;}

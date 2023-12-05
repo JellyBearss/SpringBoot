@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/admin_layout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<th:block layout:fragment="content">
+<!-- ======= main ======= ================================================================================================= -->
+
+<main id="main" class="main">
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">공지사항 목록 페이지</h5>
+            <!-- 드롭다운 메뉴와 검색창 -->
+            <div class="dropdown">
+              <select> 
+                <option value="">전체</option> 
+                <option value="apple">일반 공지</option> 
+                <option value="banana">이벤트 공지</option> 
+                <option value="orange">업데이트 공지</option> 
+              </select>
+            </div>
+
+            <!-- 검색창 -->
+            <div class="search-box">
+            <input type="search" name="search" placeholder="회원 검색...">
+            <button type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+            </div>
+
+            <!-- Default Table -->
+            <table class="table">     
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">공지 유형</th>
+                  <th scope="col">제목</th>
+                  <th scope="col">작성자</th>
+                  <th scope="col">조회수</th>
+                  <th scope="col">작성 일자</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>일반 공지</td>
+                  <td>첫 번째 공지사항입니다.</td>
+                  <td>관리자</td>
+                  <td>3121</td>
+                  <td>2023/11/11</td>
+                </tr>
+              </tbody>
+            </table>
+            
+            <!-- End Default Table Example -->
+            <div class="pagination">
+              <a href="#">1</a>
+              <a href="#">2</a>
+              <a href="#" class="active">3</a>
+              <a href="#">4</a>
+              <a href="#">5</a>
+
+              <a href="#">&gt;</a>
+              <a href="#">&raquo;</a>
+            </div>
+            <!-- End 페이징 처리 -->
+            <!-- <button type="button" class="my-button right-align" href="admin_noticeWrite.html">작성하기</button> -->
+            <a href="/admin/noticeWrite" class="my-button right-align">작성하기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main ================================================================================================= -->
+</th:block>
+</html>

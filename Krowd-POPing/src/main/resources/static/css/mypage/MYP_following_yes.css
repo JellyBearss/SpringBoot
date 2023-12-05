@@ -270,7 +270,7 @@ body{
     height: 75px;
     display: flex;
     float: left;
-    background-image: url(/resources/icon/Ellipse\ 4.svg);
+    background-image: url(/icon/Ellipse\ 4.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;}
@@ -373,7 +373,7 @@ body{
     height: 75px;
     display: flex;
     float: left;
-    background-image: url(/resources/icon/Ellipse\ 4.svg);
+    background-image: url(/icon/Ellipse\ 4.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;}

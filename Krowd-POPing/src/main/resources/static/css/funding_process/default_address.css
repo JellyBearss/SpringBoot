@@ -87,7 +87,7 @@
 	position:absolute;
 	left:12.9px;
 	top:4px;
-	background-image:url(/resources/icon/basicpic.png);
+	background-image:url("/icon/basicpic.png");
 	background-repeat:no-repeat;
 	background-size:cover;
 }

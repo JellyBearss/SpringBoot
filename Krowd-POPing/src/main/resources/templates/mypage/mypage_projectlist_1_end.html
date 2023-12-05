@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/css/MYP_projectlist_1_end.css">
+    <link rel="stylesheet" href="/css/mypage//MYP_projectlist_1_end.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>header and footer</title>
@@ -23,14 +23,14 @@
                 </div>
             </div>
             <div class="logo">
-                <img src="/resources/icon/logo2.png" alt="">
+                <img src="/icon/logo2.png" alt="">
             </div>
             <div class="menu">
                 <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-                <a href="like.html" class="menu-item"><img src="/resources/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
-                <a href="alarm.html" class="menu-item"><img src="/resources/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
-                <a href="upload.html" class="menu-item"><img src="/resources/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
-                <a href="login.html" class="menu-item"><img src="/resources/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
+                <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
+                <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
+                <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
+                <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
             </div>               
             <div id="search-area">
                 <form id="search-form">
@@ -39,7 +39,7 @@
                         onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
                     </div>
                     <div id="search-btn-area">
-                        <button type="submit" id="search-btn" ><img src="/resources/icon/searchbutton.png"></button>
+                        <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
                     </div>
                 </form>
             </div>
@@ -50,26 +50,26 @@
             <!-- 여기가 중간 부분 여기에 코드 작성-->
             <div id="content-1">
                 <div id="profile-container">
-                    <div id="profilepic"><img src="/resources/icon/basicpic.png" alt=""></div>
+                    <div id="profilepic"><img src="/icon/basicpic.png" alt=""></div>
                     <div id="nickname">체리토끼 님</div>
                     <!-- <button type="submit" id="changepic">프로필 사진 변경</button> -->
                 </div>
 
                 <button type="submit" id="changepic" >프로필 사진 변경</button>
                 <ul class="mplist1">
-                    <li><a href="/mypage(done)/mypage_editprofile.html">내 정보 수정</a></li>
+                    <li><a href="/mypage/editprofile">내 정보 수정</a></li>
                     <li>나의 배송지</li>
                     <ul class="tree">
                         <a class="projectlink">프로젝트</a>
-                            <li class="project1"><a href="/mypage(done)/mypage_projectlist_1_ing.html">후원한 프로젝트</a></li>
-                            <li><a href="/mypage(done)/mypage_projectlist_2_no.html">찜한 프로젝트</a></li>
-                            <li><a href="/mypage(done)/mypage_projectlist_3_no.html">등록한 프로젝트</a></li>
-                            <li><a href="/mypage(done)/mypage_projectlist_4.html">최근 본 프로젝트</a></li>
+                            <li class="project1"><a href="/mypage/projectlist1_ing">후원한 프로젝트</a></li>
+                            <li><a href="/mypage/projectlist2_yes">찜한 프로젝트</a></li>
+                            <li><a href="/mypage/projectlist3_no">등록한 프로젝트</a></li>
+                            <li><a href="/mypage/projectlist4">최근 본 프로젝트</a></li>
                     </ul>
                     <ul class="mypageunder">
                         <li>결제 내역</li>
-                        <li><a href="/mypage(done)/mypage_followinglist_yes.html">팔로잉 목록</a></li>
-                        <li><a href="/mypage(done)/mypage_followerlist_yes.html">내 팔로워</a></li>
+                        <li><a href="/mypage/followinglist_yes">팔로잉 목록</a></li>
+                        <li><a href="/mypage/followerlist_yes">내 팔로워</a></li>
                         <li>알림</li>
                     </ul>
                 </ul>
@@ -86,17 +86,17 @@
                 </div>
                 <div id="under_line"></div>
                 <div id="projectlist_menucontainer">
-                    <div class="lm-1">후원한 프로젝트</div>
-                    <div class="lm-2">찜한 프로젝트</div>
-                    <div class="lm-3">등록한 프로젝트</div>
-                    <div class="lm-4">최근 본 프로젝트</div>
+                    <div class="lm-1"><a href="/mypage/projectlist1_ing">후원한 프로젝트</a></div>
+                    <div class="lm-2"><a href="/mypage/projectlist2_yes">찜한 프로젝트</a></div>
+                    <div class="lm-3"><a href="/mypage/projectlist3_no">등록한 프로젝트</a></div>
+                    <div class="lm-4"><a href="/mypage/projectlist4">최근 본 프로젝트</a></div>
                 </div>
                 <div id="pjminilist">
-                    <div class="mini-1">진행중(1)</div>
-                    <div class="mini-2">종료된(0)</div>
+                    <div class="mini-1"><a href="/mypage/projectlist1_ing">진행중(1)</a></div>
+                    <div class="mini-2"><a href="/mypage/projectlist1_end">종료된(0)</a></div>
                 </div>
                 <div id="project_empty_container">
-                    <img src="/resources/icon/empty 2.svg" alt="" class="emptyboximage">
+                    <img src="/icon/empty 2.svg" alt="" class="emptyboximage">
                     <div class="emptytext">후원한 프로젝트가 없습니다 </div>
                     <button type="button" class="gotobuybutton">후원하러 가기</button>
                 </div>
@@ -106,7 +106,7 @@
 
     <div id="footer">
         <div id="footer-1">
-            <img src="/resources/icon/logo2.png" alt="" class="img-responsive">
+            <img src="/icon/logo2.png" alt="" class="img-responsive">
             <div class="text-container">
                 <p><a href="https://github.com/JellyBearss" target="_blank" class="my-link">https://github.com/JellyBearss</a></p>
                 <p> Team :  JellyBears</p></div>
@@ -149,10 +149,10 @@
 
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                toggleButton.innerHTML = '<img src="/resources/icon/hide.png" alt="eye-close-icon">';
+                toggleButton.innerHTML = '<img src="/icon/hide.png" alt="eye-close-icon">';
             } else {
                 passwordInput.type = 'password';
-                toggleButton.innerHTML = '<img src="/resources/icon/show.png" alt="eye-open-icon">';
+                toggleButton.innerHTML = '<img src="/icon/show.png" alt="eye-open-icon">';
             }
         }
     </script>

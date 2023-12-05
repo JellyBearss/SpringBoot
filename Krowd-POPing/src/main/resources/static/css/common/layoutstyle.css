@@ -1,8 +1,8 @@
-html,body{
-    height: 100%;
-    margin:0;
+/*html,body{*/
+/*    height: 100%;*/
+/*    margin:0;*/
 
-}
+/*}*/
 
 a {
     color: inherit; /* 링크 색상을 부모 요소의 색상으로 상속받습니다. */
@@ -11,7 +11,7 @@ a {
 div{
     /* div 별 경계선 표현 */
     /* border:1px solid red; */
-    box-sizing: border-box;/* div box-sizing 변경 */
+    /*box-sizing: border-box;!* div box-sizing 변경 *!*/
 }
 #wrapper{
     
@@ -305,8 +305,6 @@ div{
     color: rgb(77, 77, 77);
     
 }
-
-
 
 
 #content>div{

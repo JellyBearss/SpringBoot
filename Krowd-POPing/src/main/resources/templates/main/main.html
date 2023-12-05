@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,14 +23,14 @@
             </div>
         </div>
         <div class="logo">
-            <img src="/resources/icon/logo2.png" alt="">
+            <img src="/icon/logo2.png" alt="">
         </div>
         <div class="menu">
             <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-            <a href="like.html" class="menu-item"><img src="/resources/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
-            <a href="alarm.html" class="menu-item"><img src="/resources/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
-            <a href="upload.html" class="menu-item"><img src="/resources/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
-            <a href="login.html" class="menu-item"><img src="/resources/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
+            <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
+            <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
+            <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
+            <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
         </div>               
         <div id="search-area">
             <form id="search-form">
@@ -39,7 +39,7 @@
                     onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
                 </div>
                 <div id="search-btn-area">
-                    <button type="submit" id="search-btn" ><img src="/resources/icon/searchbutton.png"></button>
+                    <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
                 </div>
             </form>
         </div>
@@ -56,77 +56,80 @@
 
 
                 <div class="categorycontainer">
-                    <ul>
+                    <ul th:onclick="'location.href=\'/category/category-all\''">
                         <li>
-                            <a href="https://naver.com" aria-current="page">
-                                <span class="categoryimg"><img src="/resources/icon/CategoryIcon1_all.png"
+                           <div>
+                                <span class="categoryimg"><img src="/icon/CategoryIcon1_all.png"
                                         alt="전체"></span>
                                 <span class="categorytext">전체</span>
-                            </a>
+                            </div>
                         </li>
                     </ul>
-                    <ul>
+                    <ul th:onclick="'location.href=\'/category/category-all\''">
                         <li>
-                            <a href="https://naver.com" target="_blank">
+                            <div>
                                 <span class="categoryimg Acc"><img
-                                        src="/resources/icon/CategoryIcon2_accessory.png" alt="액세서리"></span>
+                                        src="/icon/CategoryIcon2_accessory.png" alt="액세서리"></span>
                                 <span class="categorytext" >액세서리</span>
-                            </a>
+                            </div>
                         </li>
                     </ul>
-                    <ul>
+                    <ul th:onclick="'location.href=\'/category/category-all\''">
                         <li>
-                            <a href="https://naver.com" aria-current="page">
+                            <div>
                                 <span class="categoryimg Digit"><img
-                                        src="/resources/icon/CategoryIcon4_doll.png" alt="디지털액세서리"></span>
+                                        src="/icon/CategoryIcon4_doll.png" alt="디지털액세서리"></span>
                                 <span class="categorytext">디지털<br>액세서리</span>
-                            </a>
+                            </div>
+
                         </li>
                     </ul>
-                    <ul>
+                    <ul th:onclick="'location.href=\'/category/category-all\''">
                         <li>
-                            <a href="https://naver.com" aria-current="page">
+                            <div>
                                 <span class="categoryimg Doll">
-                                    <img src="/resources/icon/CategoryIcon4_doll.png" alt="인형"></span>
+                                    <img src="/icon/CategoryIcon4_doll.png" alt="인형"></span>
 
                                     <span class="categorytext">인형</span>
-                            </a>
+                            </div>
+
                         </li>
                     </ul>
-                    <ul>
+                    <ul th:onclick="'location.href=\'/category/category-all\''">
                         <li>
-                            <a href="https://naver.com" aria-current="page">
+                            <div>
                                 <span class="categoryimg Sta"><img
-                                        src="/resources/icon/CategoryIcon5_stationery.png" alt="문구"></span>
+                                        src="/icon/CategoryIcon5_stationery.png" alt="문구"></span>
                                 <span class="categorytext">문구</span>
-                            </a>
+                            </div>
+
                         </li>
                     </ul>
-                    <ul>
+                    <ul th:onclick="'location.href=\'/category/category-all\''">
                         <li>
-                            <a href="https://naver.com" aria-current="page">
+                            <div>
                                 <span class="categoryimg Fan"><img
-                                        src="/resources/icon/CategoryIcon6_fancyGoods.png" alt="잡화"></span>
+                                        src="/icon/CategoryIcon6_fancyGoods.png" alt="잡화"></span>
                                 <span class="categorytext">잡화</span>
-                            </a>
+                            </div>
                         </li>
                     </ul>
-                    <ul>
+                    <ul th:onclick="'location.href=\'/category/category-all\''">
                         <li>
-                            <a href="https://naver.com" aria-current="page">
-                                <span class="categoryimg App"><img src="/resources/icon/CategoryIcon7_apparel.png"
+                            <div>
+                                <span class="categoryimg App"><img src="/icon/CategoryIcon7_apparel.png"
                                         alt="의류"></span>
                                 <span class="categorytext">의류</span>
-                            </a>
+                            </div>
                         </li>
                     </ul>
-                    <ul>
+                    <ul th:onclick="'location.href=\'/category/category-all\''">
                         <li>
-                            <a href="https://naver.com" aria-current="page">
-                                <span class="categoryimg Etc"><img src="/resources/icon/CategoryIcon8_etc.png"
+                            <div>
+                                <span class="categoryimg Etc"><img src="/icon/CategoryIcon8_etc.png"
                                         alt="기타"></span>
                                 <span class="categorytext">기타</span>
-                            </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -147,7 +150,7 @@
                 
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/imase.jpeg" alt="Ohmygirl">
+                    <img src="/images/imase.jpeg" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -161,7 +164,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/BTS.png" alt="Ohmygirl">
+                    <img src="/images/BTS.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -175,7 +178,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/CLASSy.png" alt="Ohmygirl">
+                    <img src="/images/CLASSy.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -189,7 +192,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/DreamAcademyHQ.png" alt="Ohmygirl">
+                    <img src="/images/DreamAcademyHQ.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -214,7 +217,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/EXO.png" alt="Ohmygirl">
+                    <img src="/images/EXO.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -228,7 +231,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/FTisland.png" alt="Ohmygirl">
+                    <img src="/images/FTisland.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">100%</span>
@@ -243,7 +246,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/JustB.jpeg" alt="Ohmygirl">
+                    <img src="/images/JustB.jpeg" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -257,7 +260,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/KangTa.png" alt="Ohmygirl">
+                    <img src="/images/KangTa.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -283,7 +286,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/Ohmygirl.png" alt="Ohmygirl">
+                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -297,7 +300,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/PurpleKiss.jpeg" alt="Ohmygirl">
+                    <img src="/images/PurpleKiss.jpeg" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">100%</span>
@@ -312,7 +315,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/RedVelvet.png" alt="Ohmygirl">
+                    <img src="/images/RedVelvet.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -326,7 +329,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/Tribe.png" alt="Ohmygirl">
+                    <img src="/images/Tribe.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -351,7 +354,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/WayV.jpeg" alt="Ohmygirl">
+                    <img src="/images/WayV.jpeg" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -365,7 +368,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/WheelIn.jpeg" alt="Ohmygirl">
+                    <img src="/images/WheelIn.jpeg" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">100%</span>
@@ -380,7 +383,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/XG.png" alt="Ohmygirl">
+                    <img src="/images/XG.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -394,7 +397,7 @@
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/image/imase.jpeg" alt="Ohmygirl">
+                    <img src="/images/imase.jpeg" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -415,13 +418,14 @@
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
     </div>
+
     </div>
 
 </body>
 
 <div id="footer">
     <div id="footer-1">
-        <img src="/resources/icon/logo2.png" alt="" class="img-responsive">
+        <img src="/icon/logo2.png" alt="" class="img-responsive">
         <div class="text-container">
             <p><a href="https://github.com/JellyBearss" target="_blank" class="my-link">https://github.com/JellyBearss</a></p>
             <p> Team :  JellyBears</p></div>
