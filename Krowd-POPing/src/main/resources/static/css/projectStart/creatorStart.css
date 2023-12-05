@@ -1,5 +1,14 @@
+
+
 body{
     font-family: Noto Sans KR;
+}
+
+.container2{
+
+    padding-top: 50px;
+    width: 65%;
+    margin: auto;
 }
 
 .btnWrapper{
@@ -54,6 +63,7 @@ body{
     margin-top: 150px;
     background-color: rgba(125, 28, 216, 0.08);
     text-align: center;
+    height: 570px;
 }
 
 
@@ -61,7 +71,7 @@ body{
     display: inline-block;
 }
 
-#iconArrow{
+.iconArrow{
     margin: 50px;
 }
 
@@ -79,7 +89,8 @@ body{
 }
 
 #startTxt{
-
+    width: auto;
+    height: auto;
     font-size: 26px;
     color:rgb(68, 68, 68);
     font-weight: 600;
@@ -87,11 +98,6 @@ body{
 
 .checkboxWrapper { 
     padding-left: 300px;
-
-    /* width: 100%; */
-
-    
-   
 
 }
 
