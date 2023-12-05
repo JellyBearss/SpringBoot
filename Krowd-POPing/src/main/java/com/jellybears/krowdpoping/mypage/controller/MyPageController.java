@@ -31,6 +31,25 @@ public class MyPageController {
 
         return "/mypage/mypage_projectlist_1_end.html";
     }
+
+    /**
+     * 마이페이지-찜한 프로젝트(있을때)
+     */
+    @GetMapping("projectlist2_yes")
+    public String projectList2_yes() {
+
+        return "/mypage/mypage_projectlist_2_yes.html";
+    }
+
+    /**
+     * 마이페이지-찜한 프로젝트(없을때)
+     */
+    @GetMapping("projectlist2_no")
+    public String projectList2_no() {
+
+        return "/mypage/mypage_projectlist_2_no.html";
+    }
+
     /**
      * 마이페이지-등록한 프로젝트()
      */
