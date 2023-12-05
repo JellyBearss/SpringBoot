@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CreatorMapper {
 
-    CreatorDTO selectCreator();
+    String selectCreator();
 
     int insertCreator(CreatorDTO creatorDTO);
 }

@@ -11,9 +11,9 @@ public class CreatorService {
 
     private final CreatorMapper creatorMapper;
 
-    public CreatorDTO getCreator() {
-        CreatorDTO creatorDTO = creatorMapper.selectCreator();
-        creatorDTO.setAddress("asdf");
+    public String getCreator() {
+        String creatorDTO = creatorMapper.selectCreator();
+       // creatorDTO.setAddress("asdf");
 
         return creatorDTO;
     }

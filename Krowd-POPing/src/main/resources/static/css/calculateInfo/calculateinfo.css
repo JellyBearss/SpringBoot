@@ -1,0 +1,83 @@
+
+*{
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    padding: 50px;
+}
+header{
+    display: block;
+    text-align: center;
+    width: 1200px;
+}
+img{
+    width:160px;
+    height:80px;
+}
+
+main {
+    width: 1200px;
+    margin: 0 auto;
+}
+.info-section {
+    margin-bottom: 40px;
+}
+
+.info-title {
+    color:#7C1CD8;
+    font-size: 24px;
+    font-weight: 700;
+    border-bottom: 2px solid #EDEAFF;
+    padding-bottom: 10px;
+}
+
+.info-row {
+    display: flex;
+    padding: 15px 0;
+}
+
+.info-label {
+    width: 200px;
+    color: #6D6D6D;
+    font-weight: bold;
+}
+
+.info-label.bolder {
+    font-weight: 900;
+}
+
+.info-data {
+    flex: 1;
+}
+
+.info-label-total{
+    width: 200px;
+    font-weight: 700;
+}
+
+.info-data-total{
+    flex: 1;
+    font-weight: 700;
+}
+
+a:link , a:visited {
+    text-decoration: none;
+}
+
+li{
+    list-style-type: none;   
+}
+
+.fee{
+    display: flex;
+    margin: 20px 0;
+}
+
+.fee-label{
+    color: #6D6D6D;
+    font-weight: bold;
+    margin-right: 100px;
+}
+
+

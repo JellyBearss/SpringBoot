@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>창작자 정보</title>
-  <link rel="stylesheet" href="css/reset2.css">
-  <link rel="stylesheet" href="css/creatorInfo2.css">
+  <link rel="stylesheet" href="/css/creatorInfo/reset2.css">
+  <link rel="stylesheet" href="/css/creatorInfo/creatorInfo2.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -37,7 +37,7 @@
       <div><button class="btn1">개인 사업자</button></div>
     </div>
 
-    <h2 th:text="${creator.introduce}"></h2>
+    <h2 th:text="${creator}"></h2>
     <p>개인 사업자는 주민등록상 성명 또는 상호 / 개인은 주민등록상 성명을 입력해주세요.</p>
     <input class="input" type="text" placeholder="창작자명을 입력하세요">
     <br><br>

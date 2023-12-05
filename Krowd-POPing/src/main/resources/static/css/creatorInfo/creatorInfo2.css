@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  padding: 20px 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 9999;
+  height: 148px;
+  box-shadow: 0 0 10px;
+  min-width: 1200px;
+}
+header .guide {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+
+}
+
+.guide-btn{
+  color: #7C1CD8;
+  background-color: #EDEAFF;
+  border-style: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin:10px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+a {
+  display: block;
+  padding: 6px 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  color: #6D6D6D;
+}
+
+a:hover {
+  color: #7C1CD8;
+  background: #EDEAFF;
+}
+
+#wrap {
+  padding-top: 148px;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+h1{
+  font-weight: bold;
+  font-size: 30px;
+  color:#7C1CD8;
+}
+
+h2{
+  font-size: 20px;
+  color:#6D6D6D;
+  font-weight: bold;
+}
+
+.button-type {
+  display: flex;
+  justify-content: center;
+}
+
+.btn1 {
+  background-color: #EDEAFF;
+  color: #7C1CD8;
+  border: none;
+  width: 180px;
+  height: 70px;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin:40px;
+  cursor: pointer;
+}
+
+p {
+  color: #6D6D6D;
+}
+
+.input{
+    width: 600px;
+    height: 30px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  cursor: pointer;
+  color: #7C1CD8;
+  font-weight: bold;
+}
+
+label:hover {
+  background-color: #EDEAFF;
+}
+
+.choose-file {
+  visibility: hidden;
+}
+
+.file-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-input {
+  display: flex;
+  align-items: center;
+  border-bottom: solid 2px black;
+  width: 60%;
+  height: 30px;
+}
+
+.submit-button {
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 140px;
+  color: #7C1CD8;
+  background-color: #EDEAFF;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 0.8em;
+  cursor: pointer;
+  border-style: none;
+}
+
+.input2 {
+  width: 600px;
+  height: 100px;
+}
+
+.email-div{
+  display:flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.email-label{
+  width: 100px;
+  color: #7C1CD8;
+}
+
+.btn2 {
+  width: 100px;
+  height: 30px;
+  background-color: #EDEAFF;
+  color: #7C1CD8;
+  margin-left: 50px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#input-email {
+  width: 400px;
+  heigth: 200px;
+}
+
+section.active {
+  display: block;
+}
+
+
+.fa-solid{
+  color:#7C1CD8;
+}
+
+
+.input-sns {
+  width: 500px;
+  height: 30px;
+  margin-top: 12px;
+}
+
+.final-button{
+  color:#7C1CD8;
+  background-color: #EDEAFF;
+  width:100px;
+  height:40px;
+  font-size: 20px;
+  font-weight: bold;
+  border-style: none;
+  border-radius: 10px;
+  text-align: center;
+  margin: 60px auto ;
+  display: block;
+  cursor: pointer;
+}

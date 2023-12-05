@@ -7,15 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RequiredArgsConstructor
 @Controller
+@RequestMapping("/creatorInfo/*")
 public class CreatorInformationController {
 
     private final CreatorService creatorService;
 
-    @GetMapping("/creator")
+    @GetMapping("creator")
     public String goCreator(Model model) {
         model.addAttribute("creator", creatorService.getCreator());
         return "creatorInfo/CreatorInfo2";
