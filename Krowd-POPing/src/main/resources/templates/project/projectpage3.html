@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/projectpage3.css">
+    <link rel="stylesheet" href="/css/project/projectpage3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -25,14 +26,14 @@
                 </div>
             </div>
             <div class="logo">
-                <img src="/resources/icon/logo2.png" alt="">
+                <img src="/icon/logo2.png" alt="">
             </div>
             <div class="menu">
-                <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-                <a href="like.html" class="menu-item"><img src="/resources/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
-                <a href="alarm.html" class="menu-item"><img src="/resources/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
-                <a href="upload.html" class="menu-item"><img src="/resources/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
-                <a href="login.html" class="menu-item"><img src="/resources/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
+                <!-- <div class="menu-item"><img src ="/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
+                <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
+                <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
+                <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
+                <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
             </div>               
             <div id="search-area">
                 <form id="search-form">
@@ -41,7 +42,7 @@
                         onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
                     </div>
                     <div id="search-btn-area">
-                        <button type="submit" id="search-btn" ><img src="/resources/icon/searchbutton.png"></button>
+                        <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
                     </div>
                 </form>
             </div>
@@ -49,6 +50,7 @@
 
 
         </div>
+    </div>
     </header>
 
 
@@ -56,7 +58,7 @@
         <div id="content">
             <section class="proMain">
                 <div class="proMainImg">
-                    <img src="/image/unsplash_eVaxJVA2zHI.png" alt="대표이미지">
+                    <img src="/images/unsplash_eVaxJVA2zHI.png" alt="대표이미지">
                 <div class="proMainSlide">
                     <i class="fa-solid fa-chevron-left"></i>
                     <i class="fa-solid fa-chevron-right"></i>
@@ -64,12 +66,13 @@
                 </div>
                 <div class="proIntro">
                     <div class="i-procategory">
-                        <a href="categorypage.html">
-                            <span class="cateBtn">액세서리</span>
-                        </a>
+<!--                        <a href="category/category-acc">-->
+                            <span class="cateBtn"
+                            th:onclick="'location.href=\'/category/category-acc\''">액세서리</span>
+<!--                        </a>-->
                         <i class="fa-solid fa-angle-right"></i>
                         <a href="categorypage.html">
-                            <span class="cateBtn">겨울핫팩</span>
+                            <span class="cateBtn">지비츠</span>
                         </a>
                     </div>
                     <div class="protitle">
@@ -128,7 +131,7 @@
 
                 <div class="creatorCard-wrapper">
                     <div>
-                        <img class="ctimg" src="/image/imase.jpeg">
+                        <img class="ctimg" src="/images/imase.jpeg">
                     </div>
                     <div class="ctInfo">
                         <div class="ctInner"><h4>비타민젤리</h4>
@@ -178,7 +181,7 @@
                                 
                                 <h3>소개</h3>
                                 <br>
-                                <img src="/image/WheelIn.jpeg">
+                                <img src="/images/WheelIn.jpeg">
                                 <br>
                             <p>
                                 "지하철을 타면 요즘은 모두 핸드폰만 보고 있더라.
@@ -204,7 +207,7 @@
                             <div id="budget" class="proContentMainInner">
                                 <h3>예산</h3>
                                 <br>
-                                <img src="/image/DreamAcademyHQ.png">
+                                <img src="/images/DreamAcademyHQ.png">
                                 <br>
                                 <p>
                                 "잠시 기계들로부터 벗어나 오로지 나에게 집중 할 수 있는 시간을 갖는 거야.
@@ -251,7 +254,7 @@
                             <div id="schedule" class="proContentMainInner">
                                 <h3>일정</h3>
                                 <br>
-                                <img src="/image/CLASSy.png">
+                                <img src="/images/CLASSy.png">
                                 <br>
                             <p>
                                 예나 지금이나 글을 쓰는 행위는 인간 사회의 가장 필수적인 요소입니다.
@@ -373,7 +376,7 @@
 <!-- <footer>
     <div id="footer">
         <div id="footer-1">
-            <img src="/resources/icon/logo2.png" alt="" class="img-responsive">
+            <img src="/icon/logo2.png" alt="" class="img-responsive">
             <div class="text-container">
                 <p><a href="https://github.com/JellyBearss" target="_blank" class="my-link">https://github.com/JellyBearss</a></p>
                 <p> Team :  JellyBears</p></div>

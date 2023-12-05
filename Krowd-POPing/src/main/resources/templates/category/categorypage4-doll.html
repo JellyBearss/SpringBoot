@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main/main.css">
+    <link rel="stylesheet" href="/css/category/categorypage4-doll.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>main</title>
+    <title>category</title>
 </head>
 <div id="wrapper">
     <div id="header">
@@ -26,7 +26,7 @@
             <img src="/icon/logo2.png" alt="">
         </div>
         <div class="menu">
-            <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
+            <!-- <div class="menu-item"><img src ="/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
             <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
             <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
             <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
@@ -55,102 +55,121 @@
         <div class="proCategoryInner">
 
 
-                <div class="categorycontainer">
-                    <ul th:onclick="'location.href=\'/category/category-all\''">
-                        <li>
-                           <div>
-                                <span class="categoryimg"><img src="/icon/CategoryIcon1_all.png"
-                                        alt="전체"></span>
-                                <span class="categorytext">전체</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul th:onclick="'location.href=\'/category/category-all\''">
-                        <li>
-                            <div>
+            <div class="categorycontainer">
+                <ul>
+                    <li>
+                        <a href="/category/category-all">                                <span class="categoryimg">
+                                    <img src="/icon/CategoryIcon1_all.png" alt="전체"></span>
+                            <span class="categorytext">전체</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="/category/category-acc">
                                 <span class="categoryimg Acc"><img
                                         src="/icon/CategoryIcon2_accessory.png" alt="액세서리"></span>
-                                <span class="categorytext" >액세서리</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul th:onclick="'location.href=\'/category/category-all\''">
-                        <li>
-                            <div>
+                            <span class="categorytext">액세서리</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="/category/category-digit">
                                 <span class="categoryimg Digit"><img
                                         src="/icon/CategoryIcon4_doll.png" alt="디지털액세서리"></span>
-                                <span class="categorytext">디지털<br>액세서리</span>
-                            </div>
-
-                        </li>
-                    </ul>
-                    <ul th:onclick="'location.href=\'/category/category-all\''">
-                        <li>
-                            <div>
+                            <span class="categorytext">디지털<br>액세서리</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="/category/category-doll">
                                 <span class="categoryimg Doll">
                                     <img src="/icon/CategoryIcon4_doll.png" alt="인형"></span>
 
-                                    <span class="categorytext">인형</span>
-                            </div>
-
-                        </li>
-                    </ul>
-                    <ul th:onclick="'location.href=\'/category/category-all\''">
-                        <li>
-                            <div>
+                            <span class="categorytext cateActive">인형</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="/category/category-stationery">
                                 <span class="categoryimg Sta"><img
                                         src="/icon/CategoryIcon5_stationery.png" alt="문구"></span>
-                                <span class="categorytext">문구</span>
-                            </div>
-
-                        </li>
-                    </ul>
-                    <ul th:onclick="'location.href=\'/category/category-all\''">
-                        <li>
-                            <div>
+                            <span class="categorytext">문구</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="/category/category-fancyGoods">
                                 <span class="categoryimg Fan"><img
                                         src="/icon/CategoryIcon6_fancyGoods.png" alt="잡화"></span>
-                                <span class="categorytext">잡화</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul th:onclick="'location.href=\'/category/category-all\''">
-                        <li>
-                            <div>
+                            <span class="categorytext">잡화</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="/category/category-apparel">
                                 <span class="categoryimg App"><img src="/icon/CategoryIcon7_apparel.png"
-                                        alt="의류"></span>
-                                <span class="categorytext">의류</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul th:onclick="'location.href=\'/category/category-all\''">
-                        <li>
-                            <div>
+                                                                   alt="의류"></span>
+                            <span class="categorytext">의류</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="/category/category-etc">
                                 <span class="categoryimg Etc"><img src="/icon/CategoryIcon8_etc.png"
-                                        alt="기타"></span>
-                                <span class="categorytext">기타</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mainbanner">
+                                                                   alt="기타"></span>
+                            <span class="categorytext">기타</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-                    <div>공개 예정 프로젝트</div>
-                    <div>보러가기</div>
-                    <i class="fa-solid fa-chevron-left"></i>
-                    <i class="fa-solid fa-chevron-right"></i>
+            <div  class="cateResult">
+                <div class="mainCateIndicate">인형</div>
+                <!-- <i class="fa-solid fa-angle-right"></i>
+                <div class="subCateIndicate">지비츠</div> -->
+            </div>
+
+            <div class="dropdown-cate-wrapper">
+
+                <div class="cate-dropdown">
+                    <span class="cateBtn">상태</span>
+                    <div class="cate-content">
+                        <a href="">진행중 프로젝트</a>
+                        <a href="">완료된 프로젝트</a>
+                        <a href="">공개 예정 프로젝트</a>
+                    </div>
                 </div>
-                <div class="proStatusTitle">
-                    <span>체리토끼님이 최근에 본 프로젝트</span>
+                <!-- <div class="cate-dropdown">
+                    <span class="cateBtn">세부 카테고리</span>
+                    <div class="cate-content">
+                        <a href="">그립톡</a>
+                        <a href="">에어팟 케이스</a>
+                        <a href="">버즈 케이스</a>
+                        <a href="">핸드폰 케이스</a>
+
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="cateMiddle">
+                <div class="proCount">
+                    53,043개의 프로젝트가 있습니다.
                 </div>
-                
-            
+                <div class="cateRow">최신순 | 인기순 | 마감임박순</div>
+            </div>
+
             <div class="card-wrapper">
             <div class="cards">
-                
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/images/imase.jpeg" alt="Ohmygirl">
+                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -158,13 +177,14 @@
                     <span id="dayleft">18일 남음</span>
                 </div>
                 <h4>프로젝트 제목</h4>
+                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
                 <div class="creatorname">창작자명</div>
             </div>
 
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/images/BTS.png" alt="Ohmygirl">
+                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -172,13 +192,14 @@
                     <span id="dayleft">18일 남음</span>
                 </div>
                 <h4>프로젝트 제목</h4>
+                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
                 <div class="creatorname">창작자명</div>
             </div>
 
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/images/CLASSy.png" alt="Ohmygirl">
+                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -186,13 +207,14 @@
                     <span id="dayleft">18일 남음</span>
                 </div>
                 <h4>프로젝트 제목</h4>
+                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
                 <div class="creatorname">창작자명</div>
             </div>
 
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/images/DreamAcademyHQ.png" alt="Ohmygirl">
+                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -200,87 +222,12 @@
                     <span id="dayleft">18일 남음</span>
                 </div>
                 <h4>프로젝트 제목</h4>
+                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
                 <div class="creatorname">창작자명</div>
             </div>
             <br><br>
             <hr>
         </div>
-
-        <div class="proStatusTitle">
-            <span>신규 프로젝트</span>
-        </div>
-        <div class="proStatusSub">
-        <span class="proStatusSubText">오늘 올라온 따끈따끈한 프로젝트</span>
-        </div>
-
-        <div class="card-wrapper">
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/EXO.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">88일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/FTisland.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">100%</span>
-                    <span id="amount">268,000원</span>
-                    <span id="dayleft">8일 남음</span>
-                </div>
-                
-                <h4>프로젝트 제목</h4>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/JustB.jpeg" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/KangTa.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <div class="creatorname">창작자명</div>
-            </div>
-            <br><br>
-            <hr>
-        </div>
-
-        <div class="proStatusTitle">
-            <span>오늘 마감! 프로젝트</span>
-        </div>
-        <div class="proStatusSub">
-            <span class="proStatusSubTime">19:40:48</span>
-            <span class="proStatusSubText">남았어요</span>
-            </div>
 
         <div class="card-wrapper">
             <div class="cards">
@@ -294,13 +241,14 @@
                     <span id="dayleft">88일 남음</span>
                 </div>
                 <h4>프로젝트 제목</h4>
+                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
                 <div class="creatorname">창작자명</div>
             </div>
 
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/images/PurpleKiss.jpeg" alt="Ohmygirl">
+                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">100%</span>
@@ -309,13 +257,14 @@
                 </div>
                 
                 <h4>프로젝트 제목</h4>
+                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
                 <div class="creatorname">창작자명</div>
             </div>
 
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/images/RedVelvet.png" alt="Ohmygirl">
+                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -323,13 +272,14 @@
                     <span id="dayleft">18일 남음</span>
                 </div>
                 <h4>프로젝트 제목</h4>
+                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
                 <div class="creatorname">창작자명</div>
             </div>
 
             <div class="cards">
                 <a target="_blank" href="projectpage3.html">
                     <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Tribe.png" alt="Ohmygirl">
+                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
                 </a>
                 <div class="card-body">
                     <span id="percent">38%</span>
@@ -337,74 +287,7 @@
                     <span id="dayleft">18일 남음</span>
                 </div>
                 <h4>프로젝트 제목</h4>
-                <div class="creatorname">창작자명</div>
-            </div>
-            <br><br>
-            <hr>
-        </div>
-
-        <div class="proStatusTitle">
-            <span>얼리버드 혜택</span>
-        </div>
-        <div class="proStatusSub">
-            <span class="proStatusSubText">선물이 듬뿍!</span>
-            </div>
-
-        <div class="card-wrapper">
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/WayV.jpeg" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">88일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/WheelIn.jpeg" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">100%</span>
-                    <span id="amount">268,000원</span>
-                    <span id="dayleft">8일 남음</span>
-                </div>
-                
-                <h4>프로젝트 제목</h4>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/XG.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/imase.jpeg" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
+                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
                 <div class="creatorname">창작자명</div>
             </div>
             <br><br>
@@ -418,7 +301,6 @@
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
     </div>
-
     </div>
 
 </body>

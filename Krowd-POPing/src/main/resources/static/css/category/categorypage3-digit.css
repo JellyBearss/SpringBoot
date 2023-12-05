@@ -354,7 +354,6 @@ div{
     padding-bottom: 0;
 }
 
-
 /*=================카테고리 아이콘 ============*/
 
 .categorycontainer{
@@ -366,11 +365,7 @@ div{
 
 }
 
-.categorycontainer ul{
-    cursor:pointer;
-}
-
-.categorycontainer li div {
+.categorycontainer li a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -394,69 +389,138 @@ div{
     color: #767676;
 }
 
+.cateActive{
+    color: #7d1cdb;
+    font-weight: bold;
+
+}
+
+/* .categorycontainer li:hover .categoryimg img{
+
+content: url('/html/resources/icon/CategoryIcon2_accessory.png');
+}
+
+.categorycontainer li:hover .categoryimag.Digit img{
+
+    content: url('/html/resources/icon/CategoryIcon4_doll.png');
+} */
 
 .categorycontainer li:hover .categorytext{
     color: #7d1cdb;
     font-weight: bold;
 }
 
-/*================ 메인배너 ================*/
+/*================ 카테고리 필터 ======================*/
 
-.mainbanner{
-    width: 100%;
-    height: 250px;
-    background: #b6b6b6;
-    
-}
 
-.mainbanner div:nth-child(1){
+.cateBtn{
+    margin: 5px 0px 0px 5px;
+    border-radius: 4px;
+    text-align: center;
+    background: #e6e6e6;
+    padding: 5px 5px;
+    font-size:13px;
     font-weight: bold;
-    font-size: 24px;
-}
-
-.mainbanner div:nth-child(2){
-
-    font-size: 18px;
-}
-
-
-.proStatusTitle{
-    margin-top: 100px;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    font-weight: bold;
-    font-size: 16px;
-    margin-right: 10px;
-    
-}
-
-.proStatusTitle span{
-    background: linear-gradient(to top, #ffffff 10%, #EADBF9 70%, #ffffff 50%);
-
-}
-
-.proStatusSub{
-
-    margin-left: 10px;
-
-}
-.proStatusSubText{
-
-    color: #767676;
-    font-size: 14px;
-}
-
-.proStatusSubTime{
-
-    font-weight: bold;
-    font-size: 22px;
     color:#7d1cdb;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    
+}
+
+.cateResult{
+    display: flex;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    font-weight: bold;
+    align-items: center;
+    font-size: 16px;
+
 
 
 }
 
+.mainCateIndicate{
+    margin-right: 10px;
+    background: linear-gradient(to top, #ffffff 10%, #EADBF9 70%, #ffffff 50%);
+    /* padding: 10px 5px; */
+
+}
+
+.subCateIndicate{
+    margin-left: 10px;
+    background: linear-gradient(to top, #ffffff 10%, #EADBF9 70%, #ffffff 50%);
+    /* padding: 10px 5px; */
 
 
+
+}
+.dropdown-cate-wrapper{
+    display: flex;
+
+    
+}
+/* .cate-dropdown button{
+    
+    color:#767676;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 10px;
+} */
+
+.cate-dropdown a{
+    display: block;
+    color: #767676;
+    padding: 10px 15px;
+    font-weight: bold;
+
+
+}
+.cate-dropdown .cate-content{
+    display: none;
+    background-color:#fafafa;
+    position: absolute;
+    min-width: 100px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    margin-top: 3px;
+    font-size: 13px;
+    z-index: 100;
+}
+
+.cate-dropdown:hover .cate-content{
+    display: block;
+}
+
+.cate-dropdown:hover button{
+    background: #ede9fe;
+}
+.cate-dropdown a:hover{
+    background: #ede9fe;
+
+}
+
+.proCount{
+    margin: 15px 0px 10px 10px;
+    font-size:15px;
+    color:#4D4D4D
+}
+
+.cateMiddle{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+}
+
+.cateRow{
+
+    margin-top: 20px;
+    margin-right: 15px;
+    color:#4D4D4D
+}
 
 /*=================== 카테고리 카드 ====================*/
 
@@ -469,15 +533,15 @@ div{
     justify-content: space-between;
     margin: 11px;
     width: 266px;
-    /* transition: transform 0.3s ease; */
+    transition: transform 0.3s ease;
     position: relative;
 
 }
 
 
 .cards img{
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: auto;
 }
 
 
@@ -552,7 +616,7 @@ div{
 }
 
 .cards:hover {
-    /* transform: scale(1.02); */
+    transform: scale(1.02);
 }
 
 
