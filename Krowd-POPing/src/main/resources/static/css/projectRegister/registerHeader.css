@@ -1,40 +1,44 @@
 
 /* ==============================헤더 부분=========================== */
-.header{
-/* position: fixed; */
-/* left: 0; */
-/* top: 0; */
-width: 100%;
-background-color:rgb(255, 255, 255);
-border-bottom: 1px solid lightgray;
+header{
+    min-width: 1200px;
+
+    background-color:rgb(255, 255, 255);
+    border-bottom: 1px solid lightgray;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
 
 }
 
 .container{
-position: relative;
-background-color: rgb(255, 255, 255, 1);
-width: 70%;
-height: 115px;
-margin: auto;
-display: flex;
-justify-content: space-between;
+    position: relative;
+    background-color: rgb(255, 255, 255, 1);
+    width: 70%;
+    height: 115px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .backArrow{
     display: flex;
     margin-top: 20px;
+    cursor: pointer;
+    height: 20px;
 }
 
 .logo{
 
-margin-top:5px;
-margin-left: 40px;
-text-align: center;
+    margin-top:5px;
+    margin-left: 40px;
+    text-align: center;
 }
 
 .logo img{
-max-width: 40%; 
-height: auto ;
+    max-width: 40%;
+    height: auto ;
 
 }
 
@@ -42,7 +46,7 @@ height: auto ;
 
 .menu-item{
     float: left;
-    margin: 20px 13px 10px 5px; 
+    margin: 20px 13px 10px 5px;
 
 }
 
@@ -63,7 +67,7 @@ height: auto ;
     font-weight: bold;
     color: #4D4D4D;
     margin-bottom: 0;
-    
+
 }
 
 .tabItem{
@@ -71,32 +75,22 @@ height: auto ;
     padding-bottom: 15px;
 }
 
+.tabItem > a{
+    text-decoration: none;
+    color: #4D4D4D;
+
+}
+
 /* 선택하면 표시되는 보라색 바 */
 .tabBar {
-    /* content: ""; */
-    
-    /* position: absolute; */
-    /* display: block;
-    width: 100%;
-    height: 3px;
-    background: #7D1CD8; */
+
     border-bottom: 3px solid #7D1CD8;
     padding: 0px 3px;
 }
-
-
 
 .container2{
 
     padding-top: 50px;
     width: 65%;
     margin: auto;
-
 }
-
-
-
-
-
-
-
