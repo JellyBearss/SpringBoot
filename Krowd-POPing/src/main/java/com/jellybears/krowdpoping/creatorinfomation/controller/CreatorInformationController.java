@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/creatorInfo/*")
+@RequestMapping("/projectRegister/*")
 public class CreatorInformationController {
 
     private final CreatorService creatorService;
