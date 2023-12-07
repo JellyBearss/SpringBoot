@@ -366,7 +366,11 @@ div{
 
 }
 
-.categorycontainer li a {
+.categorycontainer ul{
+    cursor:pointer;
+}
+
+.categorycontainer li div {
     display: flex;
     flex-direction: column;
     align-items: center;

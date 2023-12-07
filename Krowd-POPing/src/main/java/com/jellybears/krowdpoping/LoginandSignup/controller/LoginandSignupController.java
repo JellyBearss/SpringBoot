@@ -25,4 +25,9 @@ public class LoginandSignupController {
             return "/loginandsignup/Signup_1.html";
         }
 
+        @GetMapping("entermemberinfo")
+        public String EnterMemberInfo(){
+            return"/loginandsignup/Signup_2.html";
+        }
+
 }

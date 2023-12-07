@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="sidebarFragment" class="header navbar-fixed-top">
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <div class="card-body pt-4 d-flex flex-column align-items-center">
+            <img src="/assets/img/profile-img.png" alt="Profile" class="rounded-circle" width="100%" height="100%">
+            <br>
+            <span style="color:white">프로필 수정 <i class="bi bi-gear"></i></span>
+        </div><!-- End 프로필 사진 & 수정  -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/memberList">
+                <i class="bi bi-person"></i>
+                <span>회원 관리</span>
+            </a>
+        </li><!-- End 회원 관리 -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/fundingList">
+                <i class="bi bi-alarm"></i><span>펀딩 관리</span>
+            </a>
+        </li><!-- End 펀딩 관리 -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/sponsorshipList">
+                <i class="bi bi-gift"></i><span>후원 관리</span>
+            </a>
+        </li><!-- End 후원 관리v -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/applicationList">
+                <i class="bi bi-layout-text-window-reverse"></i><span>프로젝트 관리</span>
+            </a>
+        </li><!-- End 프로젝트 관리 -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/categoryList">
+                <i class="bi bi-diagram-3"></i><span>카테고리 관리</span>
+            </a>
+        </li><!-- End 카테고리 관리 -->
+        <br>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/noticeList">
+                <i class="bi bi-megaphone"></i><span>공지사항 관리</span>
+            </a>
+        </li><!-- End 공지사항 관리 -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/faqList">
+                <i class="bi bi-question-circle"></i><span>FAQ 관리</span>
+            </a>
+        </li><!-- End FAQ 관리 -->
+        <br>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/reportList">
+                <i class="bi bi-exclamation-triangle"></i><span>신고 관리</span>
+            </a>
+        </li><!-- End 신고 관리 -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/inquiryList">
+                <i class="bi bi-envelope"></i><span>문의 관리</span>
+            </a>
+        </li><!-- End 문의 관리 -->
+    </ul>
+</aside><!-- End 사이드바-->
+</div>
+</html>

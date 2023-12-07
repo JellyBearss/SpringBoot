@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/admin_layout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<th:block layout:fragment="content">
+<!-- ======= main ======= ================================================================================================= -->
+
+<main id="main" class="main">
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">신청 프로젝트 목록 페이지</h5>
+            <!-- 드롭다운 메뉴와 검색창 -->
+            <div class="dropdown">
+              <select> 
+                <option value="">전체</option> 
+                <option value="apple">심사 중</option> 
+                <option value="banana">반려</option> 
+              </select>
+            </div>
+
+            <!-- 검색창 -->
+            <div class="search-box">
+            <input type="search" name="search" placeholder="회원 검색...">
+            <button type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+            </div>
+            <!-- Default Table -->
+            <table class="table">     
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">프로젝트 명칭</th>
+                  <th scope="col">신청일</th>
+                  <th scope="col">프로젝트 기간</th>
+                  <th scope="col">상호명</th>
+                  <th scope="col">창작자 아이디</th>
+                  <th scope="col">이메일</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>크리스마스 단 하루를 위해 1년을 준비한 장인정신 슈톨렌</td>
+                  <td>2023/09/09</td>
+                  <td>2023/11/25</td>
+                  <td>델리타스</td>
+                  <td>qwe123</td>
+                  <td>qwe123@gmail.com</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Default Table Example -->
+            <div class="pagination">
+              <a href="#">1</a>
+              <a href="#">2</a>
+              <a href="#" class="active">3</a>
+              <a href="#">4</a>
+              <a href="#">5</a>
+
+              <a href="#">&gt;</a>
+              <a href="#">&raquo;</a>
+            </div>
+            <!-- End 페이징 처리 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main ================================================================================================= -->
+</th:block>
+</html>
