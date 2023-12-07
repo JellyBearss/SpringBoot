@@ -26,6 +26,8 @@
         <br><br><br><br><br>
         <h2>프로젝트 기본 정보</h2>
         <br><br>
+
+        <form action="" method="post">
           <!-- 프로젝트 정보 입력 -->
         <div class="inputTitle" style="font-size: 18px;">프로젝트 제목</div>
         <input type="text" style="width: 450px;">
@@ -63,24 +65,30 @@
         <!-- 프로젝트 한 줄 소개 -->
         <br><br><br>
         <div class="inputTitle">프로젝트 한 줄 소개</div>
-        <div class="subText">최대 100자 이내로 간단하게 소개해주세요.</div>
+        <div class="subText">100자 이내로 간단하게 소개해주세요.</div>
         <textarea class="textareaCss" placeholder="프로젝트를 간단히 소개해주세요."></textarea>
         <div class="lengthText" style="width: 500px;">글자수 / 100</div>
 
+        </form>
+
         <!-- 대표 이미지 업로드하기 -->
         <br><br><br>
+        <form action="" method="post" enctype="multipart/form-data">
         <div class="inputTitle">대표 이미지</div>
         <div class="subText">어떤 프로젝트인지 한 눈에 알아 볼 수 있도록 이미지를 등록해주세요.</div>
         <div class="subText">(최대 5장까지)</div> <br>
         <input class="inputFile" type="file" multiple>
-        
+        </form>
 
         <!-- 관심사 태그 입력 -->
         <br><br><br><br><br>
+        <form action="" method="post">
+
         <div class="inputTitle">관심사 태그</div>
         <div class="subText">등록한 관심사 태그를 통해 검색한 후원자가 프로젝트를 발견할 수 있습니다.</div>
         <div class="subText">태그는 빈 칸없이 10자 이내로 입력해주세요.</div>
         <input type="text" style="margin-top: 10px;">
+        </form>
         
         <br><br>
         <div style="display: flex;">
