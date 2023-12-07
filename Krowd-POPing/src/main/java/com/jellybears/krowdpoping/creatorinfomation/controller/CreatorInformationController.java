@@ -12,16 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/creatorInfo/*")
+@RequestMapping("/projectRegister/*")
 public class CreatorInformationController {
 
     private final CreatorService creatorService;
 
+    /**
+     * 창작자 정보 페이지 이동
+     * @param model
+     * @return
+     */
     @GetMapping("creator")
     public String goCreator(Model model) {
         model.addAttribute("creator", creatorService.getCreator());
         return "creatorInfo/CreatorInfo2";
     }
+
 
     @GetMapping("insertCreator1")
     public String setCreatorPage() {

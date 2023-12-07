@@ -1,151 +1,345 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>창작자 정보</title>
-  <link rel="stylesheet" href="/css/creatorInfo/reset2.css">
-  <link rel="stylesheet" href="/css/creatorInfo/creatorInfo2.css">
+  <link rel="stylesheet" href="css/reset2.css">
+  <link rel="stylesheet" href="css/creatorInfo2.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="guide">
-      <div><button class="guide-btn">프로젝트 심사 약관</button></div>
-      <div><button class="guide-btn">창작자 가이드</button></div>
-    </div>
-
-    <nav>
-      <ul class="gnb-menu-list">
-        <li class="gnb-menu-item"><a href="#">기본 정보</a></li>
-        <li class="gnb-menu-item"><a href="#">창작자 정보</a></li>
-        <li class="gnb-menu-item"><a href="#">요금제 선택</a></li>
-        <li class="gnb-menu-item"><a href="#">펀딩 계획</a></li>
-        <li class="gnb-menu-item"><a href="#">상세 정보</a></li>
-        <li class="gnb-menu-item"><a href="#">선물 구성</a></li>
-        <li class="gnb-menu-item"><a href="#">정책</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div id="wrap">
-    <h1>창작자 정보</h1>
-    <h2>창작자 유형</h2>
-    <div class="button-type">
-      <div><button class="btn1">개인</button></div>
-      <div><button class="btn1">개인 사업자</button></div>
-    </div>
-
-    <h2 th:text="${creator}"></h2>
-    <p>개인 사업자는 주민등록상 성명 또는 상호 / 개인은 주민등록상 성명을 입력해주세요.</p>
-    <input class="input" type="text" placeholder="창작자명을 입력하세요">
-    <br><br>
-    <h2>창작자 프로필 이미지</h2>
-    <p>창작자 개인이나 팀의 사진을 올려주세요.</p>
-    <form method="post" enctype="multipart/form-data">
-      <div class="button">
-        <label id="file-button" for="choose-file">
-          이미지 파일 업로드
-        </label>
-      </div>
-      <input id="image-file-input" type="file" multiple class="choose-file" name="choose-file" accept="image/*">
-    </form>
-    <div class="file-container">
-      <div class="file-input">
-        <p>FILE NAME: </p>
-        <p id="file-name-list"></p>
-      </div>
-      <div>
-        <button class="submit-button" id="submit-button">업로드</button>
-      </div>
-    </div>
-    <div class="image-show" id="image-show"></div>
-    <h2>문의 전화번호</h2>
-    <input class="input" type="tel" placeholder="전화번호를 입력하세요">
-    <h2>문의 이메일</h2>
-    <input class="input" type="email" placeholder="이메일을 입력하세요">
-    <h2>창작자 소개</h2>
-    <p>2~3문장으로 창작자님의 이력과 간단한 소개를 써주세요.</p>
-    <input class="input2" type="text" placeholder="간단한 이력과 소개를 써주세요">
-    <h2>본인 인증</h2>
-    <p>창작자 본인 이메일로 인증해주세요.</p>
-    <fieldset>
-      <div class="email-div">
-        <div class="email-label">이메일</div>
-        <div>
-          <input id="input-email" type="email">
-        </div>
-        <div>
-          <button id="email-check" class="btn2" onclick="emailSend()">인증번호 받기</button>
-        </div>
-      </div>
-      <div class="email-div">
-        <div class="email-label">인증번호</div>
-        <div>
-          <input type="text" id="certificationNumber">
-        </div>
-        <div>
-          <button id="certificationBtn" class="btn2" onclick="emailCertification()">인증하기</button>
-          <input type="hidden" id="certificationYN" value="false">
-        </div>
-      </div>
-    </fieldset>
-    <h2>세금 계산서 발행</h2>
-    <p>수수료 세금 계산서 발행에 필요한 정보를 등록해주세요.</p>
+  <header>    
+    <div class="header">
+        <div class="container">
+            
+            <div class="backArrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 25 30" fill="none" >
+                    <path d="M9.11701 29.6743C8.88368 29.6751 8.65314 29.6236 8.44233 29.5236C8.23152 29.4236 8.04579 29.2777 7.8988 29.0965L0.355291 19.7256C0.125579 19.4462 0 19.0956 0 18.7339C0 18.3721 0.125579 18.0216 0.355291 17.7421L8.16431 8.37133C8.4294 8.05239 8.81034 7.85181 9.22333 7.81374C9.63631 7.77566 10.0475 7.9032 10.3664 8.1683C10.6854 8.4334 10.886 8.81434 10.924 9.22732C10.9621 9.6403 10.8346 10.0515 10.5695 10.3704L3.58822 18.7417L10.3352 27.113C10.5262 27.3422 10.6475 27.6214 10.6848 27.9174C10.7221 28.2134 10.6738 28.514 10.5457 28.7834C10.4175 29.0529 10.2148 29.28 9.96166 29.4379C9.70848 29.5958 9.41536 29.6778 9.11701 29.6743Z" fill="#231F20"/>
+                </svg>
+                <span style="padding-top: 4px;">내가 만든 프로젝트</span>
+            </div>
+            
     
-         
+    
+            <div class="logo">
+                <img src="../../resources/icons/logo2.png" alt="로고">
+            </div>
+    
+            <div class="menu">
+                <div class="menu-item" onclick="alert('프로젝트 심사 약관')"><img src ="../img/project_terms_btn.svg" alt="프로젝트 심사 약관"></div>
+                <div class="menu-item" onclick="alert('창작자 가이드')"><img src="../img/creator_guide_btn.svg"alt="창작자 가이드"></div>
+            </div>
+            
+        </div>
+    
+        <nav>
+        <div class="processTabWrapper">
+            <ul class="processTab">
+                <li class="tabItem "><a href="#">기본 정보</a></li>
+                <li class="tabItem tabBar"><a href="#">창작자 정보</a></li>
+                <li class="tabItem"><a href="#">요금제</a></li>
+                <li class="tabItem"><a href="#">펀딩 계획</a></li>
+                <li class="tabItem"><a href="#">상세 정보</a></li>
+                <li class="tabItem"><a href="#">선물 구성</a></li>
+                <li class="tabItem"><a href="#">정책</a></li>
+            </ul>
+        </div>
+        </nav>
+    
+    
+    </div>    
+  </header>
+  <main>
+    <form name="creator-form" action="#" method="get">
+      <div class="out-div">
+        <div class="title-div">
+          <ul>
+            <li class="title">창작자 이름 <i class="fa-solid fa-asterisk"></i></li>
+            <li class="title-content"><p>창작자 개인이나 팀을 대표할 수 있는 이름을 써주세요.</p></li>
+          </ul>
+        </div>
+        <div class="content-div">
+          <div>
+            <input id="input-name" class="input" type="text" maxlength="21" onkeyup="countern(this,20)" placeholder="창작자님의 이름을 입력해주세요">
+          </div>
+          <div class="text-length-check">
+            <span class="text-length-check" id="text-length-checkn">(0 / 20)</span>
+          </div>
+        </div>
+      </div>
+      <div class="out-div">
+        <div class="title-div">
+          <ul>
+            <li class="title">프로필 이미지 <i class="fa-solid fa-asterisk"></i></li>
+            <li class="title-content"><p> 창작자 개인이나 팀의 사진을 올려주세요.</p></li>
+          </ul>
+        </div>
+        <div class="content-idiv">
+          <div class="image-div">
+            <input id="file-input" class="file" type="file" accept="image/*" onchange="readURL(this)">
+            <div><img id="preview"></div>
+            <div><button id="image-button" class="image-button"><i class="fa-solid fa-arrow-up-from-bracket"></i> 이미지 파일 업로드</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="out-div">
+        <div class="title-div">
+          <ul>
+            <li class="title">창작자 소개 <i class="fa-solid fa-asterisk"></i></li>
+            <li class="title-content"><p> 창작자님의 이력과 간단한 소개를 써주세요.</p></li>
+          </ul>
+        </div>
+        <div class="content-div">
+          <div>
+            <textarea id="input-intro" class="input" maxlength="301" onkeyup="counteri(this,300)" placeholder="간단한 이력과 소개를 써주세요"></textarea>
+          </div>
+          <div class="text-length-check">
+            <span class="text-length-check" id="text-length-checki">(0 / 300)</span>
+          </div>
+        </div>
+      </div>
+      <div class="out-div">
+        <div class="title-div">
+          <ul>
+            <li class="title">문의 이메일 <i class="fa-solid fa-asterisk"></i></li>
+            <li class="title-content"><p>프로젝트 공개 후 후원자님들이 문의할 수 있는 이메일을 안내해 주세요</p></li>
+          </ul>
+        </div>
+        <div class="content-div">
+          <div>
+            <input id="input-email" class="input" type="email" maxlength="41" onkeyup="countere(this,40)" placeholder="창작자님의 이메일을 입력해주세요">
+          </div>
+          <div class="text-length-check">
+            <span class="text-length-check" id="text-length-checke">(0 / 40)</span>
+          </div>
+        </div>
+      </div>
+      <div class="out-div">
+        <div class="title-div">
+          <ul>
+            <li class="title">문의 전화번호 <i class="fa-solid fa-asterisk"></i></li>
+            <li class="title-content"><p>프로젝트 공개 후 후원자님들이 문의할 수 있는 전화번호를 안내해 주세요</p></li>
+          </ul>
+        </div>
+        <div class="content-div">
+          <div>
+            <input id="input-phone" class="input" type="tel" maxlength="21" onkeyup="counterp(this,20)" placeholder="창작자님의 전화번호를 입력해주세요">
+          </div>
+          <div class="text-length-check">
+            <span class="text-length-check" id="text-length-checkp">(0 / 20)</span>
+          </div>
+        </div>
+      </div>
+      <div class="out-div">
+        <div class="title-tax-div">
+          <ul>
+            <li class="title">세금 계산서 발행 <i class="fa-solid fa-asterisk"></i></li>
+            <li class="title-content"><p> 수수료 세금계산서 발행에 필요한 정보를 등록해주세요.</p></li>
+          </ul>
+        </div>
+        <div class="content-tax-div">
+          <div class="tax-button-div">
+            <button id="tax-button" class="tax-button active" onclick="showTax('sub')"><i class="fa-solid fa-receipt"></i> 등록하기</button>
+          </div>
+          <div id="sub" class="sub">
+            <h6>발행 종류 <i class="fa-regular fa-circle-question"></i></h6>
+                <div class="tax-nav active">
+                  <div>
+                      <button id="personal" class="personal-button active" onclick="showPage('subpage1')"><i class="fa-solid fa-user"></i> 개인</button>
+                  </div>
+                  <div>
+                      <button id="business" class="business-button" onclick="showPage('subpage2')"><i class="fa-solid fa-shop"></i> 개인 사업자</span>
+                  </div>
+                </div>
+                <div id="subpage1" class="subpage">
+                  <h6>이메일</h6>
+                  <input type="email" class="sub-input" placeholder="이메일을 입력해주세요">
+                  <div class="identi">
+                    <div>
+                      <h6>성명(개인)</h6>
+                      <input type="text" class="sub-input-half">
+                    </div>
+                    <div class="id-num">
+                      <h6>주민등록번호</h6>
+                      <div class="identinum">
+                        <div><input type="text" class="sub-input-dhalf"></div>
+                        <div class="dash">-</div>
+                        <div><input type="text" class="sub-input-dhalf"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <h6>주소</h6>
+                  <input type="text" class="sub-input" placeholder="주소를 입력해주세요">
+                  <h6>신분증 첨부</h6>
+                  <div class="id-text">
+                    개인 창작자의 경우 신분증의 주민등록번호 뒷 6자리를 가린 상태로 등록해주세요. 주민등록증, 운전면허증, 여권을 제출하실 수 있습니다. 가림 처리 없이 제출한 신분증은 즉시 파기되며, 본인확인이 이루어지지 않은 것으로 간주하여 프로젝트가 반려됩니다.
+                  </div>
+                  <button class="upload-button" onclick="onClickUpload()";><i class="fa-solid fa-arrow-up-from-bracket"></i> 파일 업로드</button>
+                  <input id="upload-input" type="file"/>
+                  <div class="tupload">
+                    <div>
+                      <button id="cancel1" class="tbutton">취소</button>
+                    </div>
+                    <div>
+                      <button id="register2" class="tbutton">등록</button>
+                    </div>
+                  </div>
+                </div>
+                <div id="subpage2" class="subpage">
+                  <h6>이메일</h6>
+                  <input type="email" class="sub-input" placeholder="이메일을 입력해주세요">
+                  <div class="identi">
+                    <div>
+                      <h6>상호명(사업자)</h6>
+                      <input type="text" class="sub-input-half">
+                    </div>
+                    <div class="id-num">
+                      <h6>사업자 번호</h6>
+                      <input type="text" class="sub-input-halft">
+                    </div>
+                  </div>
+                  <h6>대표자명</h6>
+                  <input type="email" class="sub-input" placeholder="세금 계산서 발행을 위해 대표자명을 입력해주세요">
+                  <h6>주소</h6>
+                  <input type="text" class="sub-input" placeholder="주소를 입력해주세요">
+                  <h6>사업자 등록증 첨부</h6>
+                  <button class="upload-button2" onclick="onClickUpload2()";><i class="fa-solid fa-arrow-up-from-bracket"></i> 파일 업로드</button>
+                  <input id="upload-input2" type="file"/>
+                  <div class="tupload">
+                    <div>
+                      <button id="cancel2" class="tbutton">취소</button>
+                    </div>
+                    <div>
+                      <button id="register2" class="tbutton">등록</button>
+                    </div>
+                  </div>
+                </div> 
+          </div>
+        </div>
+      
+      
+      
+    
 
-    <h2>카카오톡 채널(선택)</h2>
-    <input class="input-sns" type="text" placeholder="검색용 아이디 입력"><br>
-    <input class="input-sns" type="text" placeholder="URL 입력">
-    <br><br>
-    <h2>SNS(선택)</h2>
-    <input class="input-sns" type="text" placeholder="https://www.facebook.com/"><br>
-    <input class="input-sns" type="text" placeholder="https://www.instagram.com/"><br>
-    <input class="input-sns" type="text" placeholder="https://www.twitter.com/">
-    <br><br>
-    <h2>함께하는 멤버(선택)</h2>
-    <p>KROWD-POPING 회원으로 가입된 팀원이 있다면 함께 소개해 주세요. 후원자님들의 신뢰를 높을 수 있어요.</p>
-    <input class="input-sns" type="text" placeholder="팀원을 추가해주세요.">
-    <button class="btn2">추가</button>
-  </div>
-
-  <div><button class="final-button">저장</button></div>
+    
+    </form>
+  </main>
 
   <script>
-    const fileButton = document.querySelector('#file-button')
-    const imageFileInput = document.querySelector('#image-file-input')
-    const fileNameList = document.querySelector('#file-name-list')
-    const fileUpload=document.querySelector('#file-upload')
-    const identificationFile=document.querySelector('#identification-file')
-    const enroll=document.querySelector('#enroll')
-    const issueType1=document.querySelector('#issue-type1')
-    const issueType2=document.querySelector('#issue-type2')
-    const section=document.querySelector('.section')
+    const imageButton=document.getElementById('image-button')
+    const fileInput=document.getElementById('file-input')
+    const idContent=document.querySelector('#id-content')
+    const idContent2=document.querySelector('#id-content2')
+    const personalButton=document.querySelector('.personal-button')
+    const businessButton=document.querySelector('.business-button')
+    const taxButton=document.querySelector('.tax-button')
+  
 
-
-    fileButton.onclick = (e) => {
-      imageFileInput.click()
-    }
-
-    fileUpload.onclick= (e) => {
-      identificationFile.click()
-    }
-
-    imageFileInput.onchange = (e) => {
-      if (e?.target?.files?.length) {
-        const nameList = []
-        for (let i = 0; i < e?.target?.files?.length; i++) {
-          nameList.push(e.target.files[i].name)
-        }
-        fileNameList.textContent = nameList.join(',')
+    function countern(text,length) {
+      var limit=length;
+      var str=text.value.length;
+      if(str>limit) {
+        document.getElementById('text-length-checkn').innerHTML="20자 이상 입력했습니다.";
+        text.value=text.value.substring(0,limit);
+        text.focus();
+        alert('최대 글자수는 20자입니다.')
       }
+      document.getElementById('text-length-checkn').innerHTML=text.value.length+" / "+limit;
     }
 
-    
+    function counteri(text,length) {
+      var limit=length;
+      var str=text.value.length;
+      if(str>limit) {
+        document.getElementById('text-length-checki').innerHTML="300자 이상 입력했습니다.";
+        text.value=text.value.substring(0,limit);
+        text.focus();
+        alert('최대 글자수는 300자입니다.')
+      }
+      document.getElementById('text-length-checki').innerHTML=text.value.length+" / "+limit;
+    }
+
+    function countere(text,length) {
+      var limit=length;
+      var str=text.value.length;
+      if(str>limit) {
+        document.getElementById('text-length-checke').innerHTML="40자 이상 입력했습니다.";
+        text.value=text.value.substring(0,limit);
+        text.focus();
+        alert('최대 글자수는 40자입니다.')
+      }
+      document.getElementById('text-length-checke').innerHTML=text.value.length+" / "+limit;
+    }
+
+    function counterp(text,length) {
+      var limit=length;
+      var str=text.value.length;
+      if(str>limit) {
+        document.getElementById('text-length-checkp').innerHTML="20자 이상 입력했습니다.";
+        text.value=text.value.substring(0,limit);
+        text.focus();
+        alert('최대 글자수는 20자입니다.')
+      }
+      document.getElementById('text-length-checkp').innerHTML=text.value.length+" / "+limit;
+    }
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+      document.getElementById('preview').src = e.target.result;
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      document.getElementById('preview').src = "";
+    }
+  }
+
+
+  imageButton.onclick = (e) => {
+    fileInput.click()
+  }
+
+  showPage('subpage1');
+    function showPage(subpageId) {
+      
+       var subpage = document.querySelectorAll('.subpage');
+        subpage.forEach(function(sub) {
+          sub.classList.remove('active');
+
+          console.log(sub.classList)
+        });
+
+        var activeSubpage = document.getElementById(subpageId);
+        activeSubpage.classList.add('active');
+
+        if (subpageId === 'subpage1') {
+          personalButton.classList.add('active');
+          businessButton.classList.remove('active');
+        } else if (subpageId === 'subpage2') {
+          personalButton.classList.remove('active');
+          businessButton.classList.add('active');
+        }
+
+    }
+
+    function showTax(subpageId) {
+      
+      var subpage = document.querySelectorAll('.sub');
+       subpage.forEach(function(sub) {
+         sub.classList.remove('active');
+
+         console.log(sub.classList)
+       });
+
+       var activeSubpage = document.getElementById(subpageId);
+       activeSubpage.classList.add('active');
+
+
+   }
 
   </script>
-</body>
 
+</body>
 </html>
