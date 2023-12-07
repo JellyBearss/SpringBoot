@@ -8,5 +8,5 @@ public interface CreatorMapper {
 
     String selectCreator();
 
-    int insertCreator(CreatorDTO creatorDTO);
+//    int insertCreator(CreatorDTO creatorDTO);
 }
