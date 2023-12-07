@@ -1,5 +1,5 @@
 html,body{
-    height: 100%;
+    height: 1100px;
     margin:0;
     /* position: relative; */
 }
@@ -9,7 +9,7 @@ div{
     box-sizing: border-box;/* div box-sizing 변경 */
 }
 #wrapper{
-    
+
     width: 100%;
     /* height:800px; */
     height: 100%;
@@ -24,12 +24,12 @@ div{
 /* -------------------header 부분--------------------- */
 
 #header{
-    
+
     min-height:120px;
     /* background-color: rgb(201, 233, 233); */
     margin:auto;
     width: 1170px;
-    position: relative; 
+    position: relative;
 
 
 }
@@ -39,17 +39,17 @@ div{
     margin-left: 15px;
     width: 30px;
     height: 25px;
-    
+
 }
 
-.bar1,.bar2,.bar3 { 
-	background-color:rgb(109,109,109);
-	width:22px;
-	height:2.9px;
+.bar1,.bar2,.bar3 {
+    background-color:rgb(109,109,109);
+    width:22px;
+    height:2.9px;
     border-radius:2px;
-	position:absolute;
-	left:4.5px;
-	top:5.5px;
+    position:absolute;
+    left:4.5px;
+    top:5.5px;
     margin-bottom: 6px;}
 
 
@@ -62,10 +62,10 @@ div{
     float: left;
     margin-top:20px;
     margin-left: 60px;
-    }
-    
-    .logo img{
-    max-width: 40%; 
+}
+
+.logo img{
+    max-width: 40%;
     /* height: auto ; */
 }
 .category-box {
@@ -80,7 +80,7 @@ div{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out; 
+    transition: max-height 0.5s ease-in-out;
 }
 
 .cartbar:hover .category-box,
@@ -112,13 +112,13 @@ div{
 .menu-item:nth-child(3) img,.menu-item:nth-child(4) img {width: 100px;}
 
 #search-area{
-    top: 10px; 
-    right: 10px; 
+    top: 10px;
+    right: 10px;
     width: 300px;
     height: 150px;
-    position: absolute; } 
+    position: absolute; }
 
-#search-input:focus {   
+#search-input:focus {
     outline: none; /* 포커스 시 기본 테두리 없애기 */
     border: none /* 포커스 시 테두리 색상 설정 */}
 
@@ -171,7 +171,7 @@ div{
 #footer-1{
     overflow: hidden;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 
     /* align-items: center;  */
 }
@@ -180,101 +180,101 @@ div{
     height: auto;
     display: block;
     margin-left: 5px;
-    }
-    
-    .text-container {
+}
+
+.text-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
     margin-bottom:7px;
     margin-left: 5px;}
-    
-    .text-container p {
+
+.text-container p {
     margin: 0;
     font-size: 10px; }
-    .my-link {
-        text-decoration: none;
-        color: inherit;
-    
-    }
-    .my-link:hover{
-        color:rgb(125,28,216);
-    }
-    
-    #footer-2 li:hover,#footer-3 li:not(:nth-child(1)):hover, #footer-4 li:not(:nth-child(1)):hover  {
-    color: rgb(125,28,216); 
+.my-link {
+    text-decoration: none;
+    color: inherit;
+
+}
+.my-link:hover{
+    color:rgb(125,28,216);
+}
+
+#footer-2 li:hover,#footer-3 li:not(:nth-child(1)):hover, #footer-4 li:not(:nth-child(1)):hover  {
+    color: rgb(125,28,216);
     /* 마우스 호버 시 텍스트 색상을 보라색으로 변경 */}
-    
-    #footer-2,#footer-3,#footer-4 {
+
+#footer-2,#footer-3,#footer-4 {
     overflow: hidden;
     width: 20%;
     height: 100%;
     display: flex;
-    flex-direction: column;   
-    
-    }
-    
-    #footer-2 ul,#footer-3 ul,#footer-4 ul {
+    flex-direction: column;
+
+}
+
+#footer-2 ul,#footer-3 ul,#footer-4 ul {
     list-style: none;
     padding: 0;
-    margin-top: 10px; 
+    margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 30px;
     text-align: center; }
-    
-    #footer-2 li,#footer-3 li,#footer-4 li {
+
+#footer-2 li,#footer-3 li,#footer-4 li {
     text-align: left;
     margin-bottom: 5px;
     font-size: 10.5px;}
-    
-    #footer-2 li:nth-child(1), #footer-3 li:nth-child(1) , #footer-4 li:nth-child(1){
+
+#footer-2 li:nth-child(1), #footer-3 li:nth-child(1) , #footer-4 li:nth-child(1){
     font-weight: 900;
     font-size: 11.5px; }
-    
-    #footer-2 li:nth-child(1) {
+
+#footer-2 li:nth-child(1) {
     margin-left: 50px;}
-    
-    #footer-5 p {
-    
-    text-align: left; 
+
+#footer-5 p {
+
+    text-align: left;
     margin-bottom: 2px;
     margin-top:2px;
     margin-left:30px;
     font-size: 10.5px;}
-    
-    #footer-5 p:first-child {
-    font-size: 12px; 
+
+#footer-5 p:first-child {
+    font-size: 12px;
     font-weight: 900;/* "고객지원"에 대한 글자 크기 조절 */}
-    
-    #footer-5 {
+
+#footer-5 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    
-    justify-content:center; 
+
+    justify-content:center;
     /* margin-right: 3px; */
-    }
-    
-    #footer-5 button {    
-    margin-bottom: 15px; 
+}
+
+#footer-5 button {
+    margin-bottom: 15px;
     margin-top: 10px;
-    margin-left: 50px;  
+    margin-left: 50px;
     width: 110px;
-    height: 25px;    
+    height: 25px;
     border: 2px solid rgb(125, 28, 216);
-    border-radius: 4px; 
-    background-color: white;  
+    border-radius: 4px;
+    background-color: white;
     color: rgb(125,28,216);
-    font-size: 12px; 
-    font-weight: bold; 
-    text-align: center;  
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
     line-height: 12px;    }
-    
+
 #footer-5 button:hover {
     background-color: rgb(125, 28, 216); /* 버튼에 호버 효과 시 배경 색 변경 */
     color: white; /* 텍스트 색 변경 */
-    }
-    
+}
+
 #footer-1,#footer-2,#footer-3,#footer-4, #footer-5{
     float:left;
     width:20%;
@@ -283,7 +283,7 @@ div{
 #notify{
     font-family: 'Noto Sans KR', sans-serif;
     height:17px;
-    font-size: 10px; 
+    font-size: 10px;
     background-color: rgb(214, 211, 211);
     display: flex;
     justify-content: center;
@@ -312,20 +312,20 @@ a {
 .notice_title{
     color: #0D0D0D;
     width:300px;
-	height:26px;
-	position:absolute;
+    height:26px;
+    position:absolute;
     top: 25px;
     left: 50px;
-	font-family:Noto Sans KR;
-	text-align:left;
-	font-size:23px;
+    font-family:Noto Sans KR;
+    text-align:left;
+    font-size:23px;
     font-weight: bold;
 }
 .product{
     border: 2px solid rgba(104, 104, 104, 0.08);
     box-sizing:border-box;
     width: 1170px;
-    height: 220px;
+    height: 350px;
     margin:auto;
     display: flex;
     justify-content: center;
@@ -334,10 +334,10 @@ a {
 }
 .product_image{
     width: 120px;
-	height:120px;
+    height:120px;
     position:absolute;
-	left:20px;
-	top: 70px;
+    left:20px;
+    top: 70px;
     background-image:url("/images/unsplash_eVaxJVA2zHI.png");
     background-repeat:no-repeat;
     background-size:cover;
@@ -345,69 +345,69 @@ a {
 }
 .title{
     color:rgba(0, 0, 0, 1);
-	width:528px;
-	height:30px;
-	position:absolute;
-	left:20px;
-	top:20px;
-	font-family:Noto Sans KR;
-	text-align:left;
-	font-size:20px;
+    width:528px;
+    height:30px;
+    position:absolute;
+    left:20px;
+    top:20px;
+    font-family:Noto Sans KR;
+    text-align:left;
+    font-size:20px;
 }
 .amounts{
     color: #767676;
     width:528px;
-	height:30px;
-	position:absolute;
-	left:170px;
-	top:70px;
+    height:30px;
+    position:absolute;
+    left:170px;
+    top:70px;
     font-family:Noto Sans KR;
-	text-align:left;
-	font-size:15px;
+    text-align:left;
+    font-size:15px;
 }
 .packages{
     color: #767676;
     width:528px;
-	height:30px;
-	position:absolute;
-	left:170px;
-	top:95px;
+    height:30px;
+    position:absolute;
+    left:170px;
+    top:95px;
     font-family:Noto Sans KR;
-	text-align:left;
-	font-size:15px;
+    text-align:left;
+    font-size:15px;
 }
 .achievements{
     color: #767676;
     width:528px;
-	height:30px;
-	position:absolute;
-	left:170px;
-	top:120px;
+    height:30px;
+    position:absolute;
+    left:170px;
+    top:120px;
     font-family:Noto Sans KR;
-	text-align:left;
-	font-size:15px;
+    text-align:left;
+    font-size:15px;
 }
 .achieved_fundings{
     color: #767676;
     width:528px;
-	height:30px;
-	position:absolute;
-	left:170px;
-	top:145px;
+    height:30px;
+    position:absolute;
+    left:170px;
+    top:145px;
     font-family:Noto Sans KR;
-	text-align:left;
-	font-size:15px;
+    text-align:left;
+    font-size:15px;
 }
 .funding_periods{
     color: #767676;
     width:528px;
-	height:30px;
-	position:absolute;
-	left:170px;
-	top:170px;
+    height:30px;
+    position:absolute;
+    left:170px;
+    top:170px;
     font-family:Noto Sans KR;
-	text-align:left;
-	font-size:15px;
+    text-align:left;
+    font-size:15px;
 }
 
 .amount, .package, .achievement, .achieved_funding, .funding_period{
@@ -415,40 +415,290 @@ a {
     color: #252525;
     font-weight: 500;
 }
-.buttons{
+.buttons {
+    border: 1px solid;
+    border-color: #c9c9c9;
+    width: 700px;
+    height: 50px;
+    margin:auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 250px;
+    font-family:Noto Sans KR;
+    font-size:18px;
+    font-weight: 500;
+}
+.buttons>*{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.buttons::before,
+.buttons::after {
+    content: "";
+    height: 70%;
+    border-left: 1px solid #c9c9c9;
+    position: absolute;
+}
+#layer_popup + label {
+    display: inline-block;
+    cursor: pointer;
+}
+.buttons::before {
+    left: 33.33%;
+}
+
+.buttons::after {
+    left: 66.66%;
+}
+
+.buttons>* {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.change_address,
+.ask_creator,
+.cancel_funding {
+    flex: 1; /* 변경된 부분 */
+    text-align: center; /* 변경된 부분 */
+}
+
+.delivery_info{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
     width: 1170px;
     height: 220px;
     margin:auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     position: relative;
-}
-.change_address_box{
-    background-color: #EDE9FE;
-    width: 140px;
-    height: 140px;
-    border-radius: 10px;
-    display: flex;
+    margin-top: 10px;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 }
-.change_address_text{
-    color: #767676;
-    position: absolute;
-    top: 135px;
+.info_title{
+    color:rgba(0, 0, 0, 1);
+    width:528px;
+    height:30px;
+    position:absolute;
+    left:20px;
+    top:20px;
     font-family:Noto Sans KR;
     text-align:left;
-	font-size:18px;
-    margin: 0
+    font-size:20px;
 }
-.change_address_img{
-    width: 90px;
-    height: 90px;
-    top: 60px;
+.recipient,
+.address,
+.phone,
+.delivery_request {
+    color: #767676;
+    font-family: Noto Sans KR;
+    text-align: left;
+    font-size: 15px;
+    margin-left: 5px; /* 간격 설정 */
+    white-space: nowrap; /* 줄 바꿈 방지 */
+    position: relative;
+    left:50px;
+    top:70px;
+    margin-top: 5px;
+}
+
+.rec_name, .address_info, .phone_num, .request{
+    margin-left: 5px;
+    color: #252525;
+    font-weight: 500;
+}
+
+.payed_info{
+    border: 2px solid rgba(104, 104, 104, 0.08);
+    box-sizing:border-box;
+    width: 1170px;
+    height: 220px;
+    margin:auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    margin-top: 10px;
+    flex-direction: column;
+
+}
+.pay_info_title{
+    color:rgba(0, 0, 0, 1);
+    width:528px;
+    height:30px;
+    position:absolute;
+    left:20px;
+    top:20px;
+    font-family:Noto Sans KR;
+    text-align:left;
+    font-size:20px;
+}
+.product_price,
+.additional_pay,
+.delivery_fee,
+.total_pay {
+    color: #767676;
+    font-family: Noto Sans KR;
+    text-align: left;
+    font-size: 15px;
+    margin-left: 5px; /* 간격 설정 */
+    white-space: nowrap; /* 줄 바꿈 방지 */
+    position: relative;
+    left:50px;
+    top:70px;
+    margin-top: 5px;
+}
+.price_unit, .additional_unit, .fee_unit, .total_unit{
+    color: #252525;
+    font-weight: 500;
+    margin-left: 1px;
+}
+.price, .additional, .fee, .total{
+    margin-left: 5px;
+    color: #252525;
+    font-weight: 500;
+}
+#layer_popup{
+    display: none;
+}
+
+#layer_bg{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    font-family:Noto Sans KR;
+    font-size:13px;
+}
+#popup > h2{
+    margin-bottom: 25px;
+}
+#popup > h2 > label{
+    float: right;
+}
+#layer_popup:checked + label + #layer_bg{
+    display: block;
+}
+#layer_popup:checked + #layer_bg{
+    display: block;
+}
+
+/* 추가된 스타일 */
+#popup{
     position: absolute;
-    background-image: url("/icon/change_purple.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    width: 600px;
+    height: 470px;
+    overflow-y: auto;
+}
+.popup-close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+.change_address {
+    cursor: pointer;
+}
+.d_i_name{
+    color: #767676;
+    font-size:15px;
+    margin-left: 10px;
+}
+.input_d_i_name_section{
+    position: relative;
+    top: -19px;
+    left: 90px;
+}
+.input_d_i_name_section input{
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+.d_i_address{
+    color: #767676;
+    font-size:15px;
+    margin-left: 10px;
+}
+.input_d_i_address_section{
+    position: relative;
+    top: -19px;
+    left: 90px;
+}
+.input_d_i_address_section input{
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+.d_i_phone{
+    color: #767676;
+    font-size:15px;
+    margin-left: 10px;
+}
+.input_d_i_phone_section{
+    position: relative;
+    top: -19px;
+    left: 90px;
+}
+.input_d_i_phone_section input{
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+.d_i_delivery_comment_section {
+    color: #767676;
+    font-size:15px;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+.d_i_delivery_comment select {
+    width: 350px;
+    height: 20px;
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+.next_step{
+    width: 260px;
+    height: 83px;
+    position: relative;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.next_step_box{
+    background-color: #d1d1d1;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.next_step_text{
+    color:#4b4a4a;
+    width: 200px;
+    font-family:Noto Sans KR;
+    text-align:center;
+    font-size:17px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

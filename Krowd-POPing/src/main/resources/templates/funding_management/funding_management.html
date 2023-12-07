@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/funding_management/funding_management.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Funding management</title>
 </head>
 <body>
@@ -29,12 +29,12 @@
             <div class="menu-item"><img src ="/icon/alarmbutton.svg" alt=""width="37px" height="35.36px"></div>
             <div class="menu-item"><img src ="/icon/uploadbutton.svg" alt=""width="118px" height="35.36px"></div>
             <div class="menu-item"><img src="/icon/loginbutton.svg"alt=""width="118px" height="35.36px"></div>
-        </div>               
+        </div>
         <div id="search-area">
             <form id="search-form">
                 <div id="search-text-area">
-                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요." 
-                    onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
+                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
+                           onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
                 </div>
                 <div id="search-btn-area">
                     <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
@@ -74,13 +74,125 @@
                 <span class="funding_period_title">후원 기간 : </span>
                 <span class="funding_period">2024.01.29 - 2024.02.28</span>
             </div>
+
+            <div class="buttons">
+                <span class="change_address" id="changeAddressBtn">배송지 변경</span>
+                <input type="checkbox" id="layer_popup">
+                <label for="layer_popup"></label>
+                <div id="layer_bg">
+                    <div id="popup">
+                        <label class="popup-close" for="layer_popup">닫기</label>
+                        <h2>배송지 변경</h2>
+                        <div class="default_name_info">
+                            <form action="#" method="get">
+                                <span class="d_i_name">받는 사람</span>
+                                <div class="input_d_i_name_section">
+                                    <input type="text" name ="input_d_i_name">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="default_address_info">
+                            <form action="#" method="get">
+                                <span class="d_i_address">주소</span>
+                                <div class="input_d_i_address_section">
+                                    <input type="text" name ="input_d_i_address">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="default_phone_info">
+                            <form action="#" method="get">
+                                <span class="d_i_phone">연락처</span>
+                                <div class="input_d_i_phone_section">
+                                    <input type="text" name ="input_d_i_phone">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="d_i_delivery_comment">
+                            <div class="d_i_delivery_comment_section">배송 요청 사항(선택)</div>
+                            <select>
+                                <option value="default" disabled selected>배송 시 요청사항을 선택해주세요.</option>
+                                <option value="1">문 앞에 놓아주세요.</option>
+                                <option value="2">경비(관리)실에 맡겨주세요.</option>
+                                <option value="3">택배함에 넣어주세요.</option>
+                                <option value="4">직접 받겠습니다.</option>
+                                <option value="type">직접 입력</option>
+                            </select>
+                        </div>
+                        <div>
+                            <a onclick="window.location.reload()" style="cursor:pointer;" class="next_step">
+                                <div class="next_step_box"></div>
+                                <span class="next_step_text">변경 완료</span>
+                            </a>
+                        </div>
+                    </div>
+                    <script>
+                        document.getElementById("changeAddressBtn").addEventListener("click", function () {
+                            document.getElementById("layer_popup").checked = true;
+                            document.body.classList.add("popup-open");
+                        });
+
+                        // 팝업이 열릴 때 body에 클래스 추가
+                        document.getElementById("layer_popup").addEventListener("change", function () {
+                            document.body.classList.toggle("popup-open", this.checked);
+                        });
+
+                        // 팝업 외부 클릭 시 팝업 닫기
+                        document.getElementById("layer_bg").addEventListener("click", function (e) {
+                            if (e.target === this) {
+                                document.getElementById("layer_popup").checked = false;
+                                document.body.classList.remove("popup-open");
+                            }
+                        });
+                    </script>
+                </div>
+                <span class="ask_creator">창작자에게 문의하기</span>
+                <span class="cancel_funding">후원 취소하기</span>
+            </div>
         </div>
 
-        <div class="buttons">
-                <div class="change_address_box">
-                    <div class="change_address_text">배송지 변경</div>
-                    <div class="change_address_img"></div>
-                </div>
+        <div class="delivery_info">
+            <div class="info_title"><b>배송지 정보</b></div>
+            <div class="recipient">
+                <span class="recipient_title">받는 사람 : </span>
+                <span class="rec_name">연인지</span>
+            </div>
+            <div class="address">
+                <span class="address_title">주소 : </span>
+                <span class="address_info">[03163] 서울 종로구 인사동길 12</span>
+            </div>
+            <div class="phone">
+                <span class="phone_title">연락처 : </span>
+                <span class="phone_num">010-0000-0000</span>
+            </div>
+            <div class="delivery_request">
+                <span class="request_title">배송 요청 사항 : </span>
+                <span class="request">문 앞에 놓아주세요.</span>
+            </div>
+        </div>
+        <div class="payed_info">
+            <div class="pay_info_title"><b>결제 정보</b></div>
+            <div class="product_price">
+                <span class="price_title">상품 금액 : </span>
+                <span class="price">52,000</span>
+                <span class="price_unit">원</span>
+            </div>
+            <div class="additional_pay">
+                <span class="additional_title">추가 후원금 : </span>
+                <span class="additional">1,000</span>
+                <span class="additional_unit">원</span>
+            </div>
+            <div class="delivery_fee">
+                <span class="fee_title">배송비 : </span>
+                <span class="fee">4,000</span>
+                <span class="fee_unit">원</span>
+            </div>
+            <div class="total_pay">
+                <span class="total_title">최종 후원 금액 : </span>
+                <span class="total">57,000</span>
+                <span class="total_unit">원</span>
             </div>
         </div>
     </div>
@@ -92,7 +204,7 @@
         <div class="text-container">
             <p><a href="https://github.com/JellyBearss" target="_blank" class="my-link">https://github.com/JellyBearss</a></p>
             <p> Team :  JellyBears</p></div>
-            
+
     </div>
     <div id="footer-2">
         <ul><li>공지사항</li></ul>
@@ -118,10 +230,10 @@
         <p>평일 9:00 ~ 17:00 (12:00 ~14:00 제외)</p>
         <button>고객센터에 문의</button>
     </div>
-    
+
 </div>
 <div id="notify">
-    <p>크라우드 팝핑은 플랫폼 제공자로서 프로젝트의 당사자가 아니며, 
+    <p>크라우드 팝핑은 플랫폼 제공자로서 프로젝트의 당사자가 아니며,
         직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 선물제공의 책임은 해당 프로젝트의 창작자에게 있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자가 부담합니다. </p>
 </div>
 </body>
