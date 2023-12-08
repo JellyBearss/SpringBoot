@@ -1,4 +1,4 @@
-package com.jellybears.krowdpoping.projectRegister.controller;
+package com.jellybears.krowdpoping.projectRegister.section01.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,17 +41,17 @@ public class ProjectRegisterController {
         return "/projectRegister/projectReg6";
     }
 
-    @GetMapping("start")
-    public String startRegister() {
-
-        return "projectStart/projectStart";
-    }
-
-    @GetMapping("check")
-    public String startCheckRegister() {
-
-        return "projectStart/projectStartCheck";
-    }
+//    @GetMapping("start")
+//    public String startRegister() {
+//
+//        return "projectStart/projectStart";
+//    }
+//
+//    @GetMapping("check")
+//    public String startCheckRegister() {
+//
+//        return "projectStart/projectStartCheck";
+//    }
 
 
 
