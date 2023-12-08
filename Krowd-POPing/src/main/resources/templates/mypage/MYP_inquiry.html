@@ -116,7 +116,7 @@
                 <div class="inquiry-wrapper subpage" id="subpage1">
                     <div class="inquiryPush">
                         <div class="inquiryPushInner"></div>
-                        <div class="inq-write"><a href="#">문의 작성하기</a></div>
+                        <div class="inq-write" th:onclick="'location.href=\'/inquiry/inquiryForm\''">문의 작성하기</div>
                     </div>
                     <div class="space-description">*<span class="inquiry-type">고객센터</span>에 문의하신 내역입니다.</div>
 
@@ -172,7 +172,7 @@
 
                     <div class="inquiryPush">
                         <div class="inquiryPushInner"></div>
-                        <div class="inq-write-to-creator"><a href="#">후원한 프로젝트 보러가기</a></div>
+                        <div class="inq-write-to-creator" th:onclick="'location.href=\'/mypage/projectlist1_ing\''">후원한 프로젝트 보러가기</div>
                     </div>
                     <div class="space-description">*<span class="inquiry-type">창작자</span>에게 문의하신 내역입니다.</div>
                     <table class="inquiry-category">

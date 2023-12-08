@@ -19,4 +19,10 @@ public class InquiryController {
 
         return "/mypage/MYP_inquiryContent";
     }
+
+    @GetMapping("inquiryForm")
+    public String goInguiaryForm(){
+
+        return "/inquiry/inquiryForm";
+    }
 }

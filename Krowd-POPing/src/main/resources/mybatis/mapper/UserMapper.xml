@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.user.model.dao.UserMapper">
+    <select id="selectUserById" resultType="string">
+        SELECT
+            A.ID
+        FROM USER_INFO
+        WHERE A.USER_STATUS ='일반'
+         AND A.ID=#{ userId }
+    </select>
+
+    <select id="findByUserID" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+        SELECT
+                A.USER_CODE
+                ,A.ID
+                ,A.PASSWORD
+                ,A.NAME
+                ,A.NICKNAME
+                ,A.BIRTHDAY
+                ,A.EMAIL
+                ,A.PHONE_NUMBER
+                ,A.USER_STATUS
+        FROM     USER_INFO A
+        WHERE    A.USER_STATUS ='일반'
+         AND     A.ID = #{ userId }
+
+
+    </select>
+
+    <insert id="insertUser" parameterType="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+        INSERT
+            INTO USER_INFO  (
+                               ID
+                              ,PASSWORD
+                              ,NAME
+                              ,NICKNAME
+                              ,BIRTHDAY
+                              ,EMAIL
+                              ,PHONE_NUMBER
+               )
+        VALUES (
+               #{ userId }
+               ,#{ userPwd }
+               ,#{ nickname }
+               ,#{ nickname }
+               ,#{ birthday }
+               ,#{ email }
+               ,#{ phone }
+        )
+    </insert>
+    <select id="selectEncryptedPwd" resultType="string">
+        SELECT
+               A.PASSWORD
+          FROM USER_INFO A
+          WHERE A.USER_STATUS ='일반'
+          AND A.USER_ID = #{ userId }
+    </select>
+    <select id="selectUser" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+        SELECT
+              A.USER_CODE
+             ,A.ID
+             ,A.PASSWORD
+             ,A.NAME
+             ,A.NICKNAME
+             ,A.BIRTHDAY
+             ,A.EMAIL
+             ,A.PHONE_NUMBER
+             ,A.USER_STATUS
+         FROM USER_INFO A
+        WHERE A.USER_STATUS = '일반'
+          AND A.ID= #{ userId }
+    </select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
