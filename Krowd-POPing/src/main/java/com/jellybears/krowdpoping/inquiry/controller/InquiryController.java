@@ -11,6 +11,12 @@ public class InquiryController {
     @GetMapping("inquiry")
     public String goInguiary(){
 
-        return "/mypage/MYP_inquiryadmin.html";
+        return "/mypage/MYP_inquiry";
+    }
+
+    @GetMapping("inquiryContent")
+    public String goInguiaryContent(){
+
+        return "/mypage/MYP_inquiryContent";
     }
 }

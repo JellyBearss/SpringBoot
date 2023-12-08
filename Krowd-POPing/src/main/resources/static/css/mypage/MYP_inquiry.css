@@ -214,12 +214,14 @@ body{
     font-size: 15px;
     font-weight: medium;
 }
-.lm-1{
+/* .lm-1{
     text-decoration: underline;
     text-decoration-color: #7D1CD8;
     text-decoration-thickness: 2px;
     text-underline-offset: 5px;
-}
+} */
+
+
 #pjminilist{
     display: flex;
     float: left;
@@ -382,6 +384,8 @@ table{
     border-collapse: collapse;
     empty-cells: show;
     text-align: center;
+    font-size: 14px;
+
 }
 .inquiry-active-page{
     width: 50px;
@@ -401,24 +405,29 @@ table{
     display: inline;
 }
 
-.inquiry-wrapper{
+/* .inquiry-wrapper{
     border-top: 1px solid #6d6d6d;
 
     margin-top: 50px;
-}
+
+} */
 
 *{
     box-sizing: border-box;
 }
 
-.inquiry-category{
 
+.space-description{
+
+    font-size: 14px;
+    margin-bottom: 10px;
 
 }
 
 thead{
     background: #EDE9FE;
     height: 50px;
+
 }
 
 thead th {
@@ -546,7 +555,6 @@ textarea{
 .inq-write{
 
     cursor: pointer;
-    display: inline-block;
     border-radius: 4px;
     text-align: center;
     background: rgba(137, 26, 247, 0.8);
@@ -556,8 +564,34 @@ textarea{
     width: 100px;
     height: 30px;
     opacity: 1;
+    margin-top: 50px;
+
+}
+
+
+.inq-write-to-creator{
+
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    background: rgba(137, 26, 247, 0.8);
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    font-size: 14px;
+    width: 180px;
+    height: 30px;
+    opacity: 1;
+    margin-top: 50px;
+
+}
+.inq-pushInner2{
+
+    padding: 5px;
+    width: 100px;
+    height: 30px;
     margin-bottom: 10px;
     margin-top: 10px;
+
 }
 
 .inq-write:hover{
@@ -565,8 +599,34 @@ textarea{
 }
 
 
+.active {
+
+    visibility: visible;
+}
+.subpage {
+    display: none;
+}
+
+.subpage.active {
+    display: block;
+}
+
+.inquiryToAdmin-active, .inquiryToCreator-active {
+    cursor: pointer;
+    text-decoration: none;
+}
 
 
+
+.inquiry-pagination div{
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.inquiry-type{
+    font-weight: bold;
+    color: #7d1cdb;
+}
 
 
 /* -------------------header 부분--------------------- */
