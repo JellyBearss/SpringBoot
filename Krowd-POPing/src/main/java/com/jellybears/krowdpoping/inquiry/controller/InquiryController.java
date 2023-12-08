@@ -1,16 +1,16 @@
-package com.jellybears.krowdpoping.inquiary.controller;
+package com.jellybears.krowdpoping.inquiry.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("inquiary")
-public class InquiaryController {
+@RequestMapping("inquiry")
+public class InquiryController {
 
-    @GetMapping("inquiary")
+    @GetMapping("inquiry")
     public String goInguiary(){
 
-        return "inquiary/report";
+        return "/mypage/MYP_inquiryadmin.html";
     }
 }

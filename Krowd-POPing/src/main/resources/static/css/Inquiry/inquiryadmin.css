@@ -9,7 +9,7 @@
     color:black;
 }
 
- /*Summernote 툴바를 숨김 */
+/*Summernote 툴바를 숨김 */
 .note-toolbar {
     display: none !important;
 }
@@ -19,12 +19,17 @@
     display: none !important;
 }
 
+/* select:focus {
+    border-color: #007BFF;
+    border-width: 2px;
+    outline: none;
+  } */
 
 .report-wrapper{
-    margin-top: 115px; 
-    margin-bottom: 100px; 
+    margin-top: 115px;
+    margin-bottom: 100px;
     background-color:rgb(255, 255, 255);
-    overflow: auto; 
+    overflow: auto;
 }
 
 
@@ -34,7 +39,7 @@
     height: auto;
     margin: auto;
     padding-bottom: 0;
-    
+
 
 }
 h4{
