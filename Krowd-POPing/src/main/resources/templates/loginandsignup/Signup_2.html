@@ -80,14 +80,14 @@
                         <div class="id-container">
                             <div id="type_id">
                                 <div id="type_id_label">아이디:</div>
-                                <input type="text" id="type_id_input" placeholder="영어,숫자 조합 4~16자리">
+                                <input type="text" id="type_id_input" name="userId" placeholder="영어,숫자 조합 4~16자리">
                             </div>
                         </div>
                     
                         <div class="password-container">
                             <div class="password-info">
                                 <span id="password-description">비밀번호: </span>
-                                <input type="password" class="password-input" id="new-password-input" placeholder="영어,숫자 조합 8~20자리 ">
+                                <input type="password" class="password-input" id="new-password-input" name="userPwd" placeholder="영어,숫자 조합 8~20자리 ">
                                 <span class="toggle-password" onclick="togglePasswordVisibility('new-password-input')">
                                     <img src="/icon/show.png" alt="eye-open-icon">
                                 </span>
@@ -97,7 +97,7 @@
                         <div class="password-container">
                             <div class="password-info">
                                 <span id="password-description">비밀번호 확인:</span>
-                                <input type="password" class="password-input" id="confirm-password-input" placeholder="비밀번호를 다시 입력해주세요.">
+                                <input type="password" class="password-input" id="confirm-password-input" name="userPwd" placeholder="비밀번호를 다시 입력해주세요.">
                                 <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password-input')">
                                     <img src="/icon/show.png" alt="eye-open-icon">
                                 </span>
@@ -121,7 +121,7 @@
                         </div>
                         <div id="type_nickname">
                             <div id="type_nickname_label">닉네임:<span class="mandatory">*</span></div>
-                            <input type="text" id="type_nickname_input" >
+                            <input type="text" id="type_nickname_input" name="nickname">
                         </div>
                         <div id="type_email">
                             <form action="your_server_script.php" method="post">
@@ -134,7 +134,6 @@
                                     <option value="gmail.com">gmail.com</option>
                                     <option value="gmail.com">kakao.com</option>
                                     <option value="gmail.com">yahoo.com</option>
-                                    
                                     <option value="custom">직접 입력</option>
                                 </select>
                             
@@ -146,7 +145,7 @@
                         </div>
                         <div id="type_phone">
                             <div id="type_phone_label">전화번호:<span class="mandatory">*</span></div>
-                            <input type="text" id="type_phone_input" >
+                            <input type="tel" id="type_phone_input" name="phone">
                         </div>
 
                     </div>

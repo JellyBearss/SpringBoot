@@ -3,11 +3,39 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.user.model.dao.UserMapper">
-    <select id="selectUserById" resultType="string">
+<resultMap type="com.jellybears.krowdpoping.user.model.dto.UserDTO" id="userResultMap">
+    <id property="user_code" column="USER_CODE"/>
+    <result property="id" column="ID"/>
+    <result property="password" column="PASSWORD"/>
+    <result property="name" column="NAME"/>
+    <result property="nickname" column="NICKNAME"/>
+    <result property="birthday" column="BIRTHDAY"/>
+    <result property="email" column="EMAIL"/>
+    <result property="phone_number" column="PHONE_NUMBER"/>
+    <result property="user_status" column="USER_STATUS"/>
+</resultMap>
+    <resultMap id="RoleResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleDTO">
+        <id property="role_code" column="ROLE_CODE"/>
+        <result property="role_name" column="ROLE_NAME"/>
+    </resultMap>
+
+    <resultMap id="RoleTypeResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO">
+        <association property="UserDTO" resultMap="userResultMap"/>
+        <association property="RoleDTO" resultMap="RoleResultMap"/>
+
+    </resultMap>
+<!--    <resultMap id="MemberAndAuthorityResultMap" type="com.jellybears..member.model.dto.RoleTypeDTO">-->
+<!--        <association property="memberDTO" resultMap="memberResultMap"/>-->
+<!--        <association property="authorityDTO" resultMap="AuthorityResultMap"/>-->
+
+<!--    </resultMap>-->
+    <select id="selectUserById" resultMap="string">
         SELECT
             A.ID
-        FROM USER_INFO
-        WHERE A.USER_STATUS ='일반'
+        FROM USER_INFO A
+
+
+        WHERE B.ROLE_NAME ='일반'
          AND A.ID=#{ userId }
     </select>
 
@@ -21,7 +49,7 @@
                 ,A.BIRTHDAY
                 ,A.EMAIL
                 ,A.PHONE_NUMBER
-                ,A.USER_STATUS
+
         FROM     USER_INFO A
         WHERE    A.USER_STATUS ='일반'
          AND     A.ID = #{ userId }
@@ -43,7 +71,6 @@
         VALUES (
                #{ userId }
                ,#{ userPwd }
-               ,#{ nickname }
                ,#{ nickname }
                ,#{ birthday }
                ,#{ email }

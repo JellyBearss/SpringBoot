@@ -1,6 +1,7 @@
 package com.jellybears.krowdpoping.user.model.service;
 
 import com.jellybears.krowdpoping.user.model.dao.UserMapper;
+import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,7 +34,7 @@ public class AuthenticationService implements UserDetailsService {
 
         }
         log.info("[AuthenticationService] ===================================================== end");
-        return user;
+        return (UserDetails) user;
 
     }
 }
