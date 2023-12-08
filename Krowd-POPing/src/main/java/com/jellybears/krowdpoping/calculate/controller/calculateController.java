@@ -12,4 +12,6 @@ public class calculateController {
     public String goCalculate() {
         return "calculateInfo/CalculateInfo2";
     }
+
+    
 }
