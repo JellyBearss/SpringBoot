@@ -11,7 +11,7 @@
          AND A.ID=#{ userId }
     </select>
 
-    <select id="findByUserID" resultType="UserDTO">
+    <select id="findByUserID" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
         SELECT
                 A.USER_CODE
                 ,A.ID
@@ -29,7 +29,7 @@
 
     </select>
 
-    <insert id="insertUser" parameterType="UserDTO">
+    <insert id="insertUser" parameterType="com.jellybears.krowdpoping.user.model.dto.UserDTO">
         INSERT
             INTO USER_INFO  (
                                ID
@@ -57,7 +57,7 @@
           WHERE A.USER_STATUS ='일반'
           AND A.USER_ID = #{ userId }
     </select>
-    <select id="selectUser" resultType="UserDTO">
+    <select id="selectUser" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
         SELECT
               A.USER_CODE
              ,A.ID
