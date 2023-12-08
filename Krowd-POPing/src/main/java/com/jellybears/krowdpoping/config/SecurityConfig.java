@@ -37,28 +37,11 @@ public class SecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http// 페이지 권한 설정
                 .authorizeHttpRequests(auth ->{
-                        auth.requestMatchers("/*", "/user/*").permitAll();// 모든 리소스를 권한 없이 사용가능
-                        auth.anyRequest().authenticated();
-                })
-                // 로그인 설정
-                .formLogin(login -> {
-                    login.loginPage("/member/login");
-                    login.usernameParameter("memberId"); // 사용자 id 입력 필드 (input의 name과 일치)
-                    login.passwordParameter("memberPwd"); // 사용자 pass 입력 필드 (input의 name과 일치)
-                    login.defaultSuccessUrl("/");  //로그인 성공시 이동 페이지
-                    login.failureHandler(authFailHandler); // auth
-                })
-                // 로그아웃 설정
-                .logout(logout ->{
-                    logout.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")); // 로그아웃 요청 url
-                    logout.deleteCookies("JSESSIONID"); // 로그아웃 시 사용자의 JSESSIONID 삭제
-                    logout.invalidateHttpSession(true); // 서버 세션 소멸처리
-                    logout.logoutSuccessUrl("/"); // 로그아웃 성공시 이동할 페이지
-                })
-                // 세션설정
-                .sessionManagement(session ->{
-                    session.maximumSessions(1); // 세션 개수 제한
-                    session.invalidSessionUrl("/"); // 세션 만료시 이동할 url
+                        // auth.requestMatchers("/notice/*", "/board/*", "/thumbnail/**").hasAnyAuthority("ROLE_MEMBER", "ROLE_ADMIN");
+                        // auth.requestMatchers("/notice/regist").hasAnyAuthority("ROLE_ADMIN");
+                        // auth.requestMatchers("/*", "/member/*").permitAll();// 모든 리소스를 권한 없이 사용가능
+                        auth.anyRequest().permitAll();
+                        // auth.anyRequest().authenticated();
                 })
 
                 .csrf(csrf -> csrf.disable());

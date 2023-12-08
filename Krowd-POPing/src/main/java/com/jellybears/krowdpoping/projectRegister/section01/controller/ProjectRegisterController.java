@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/projectReg/*")
 public class ProjectRegisterController {
 
+
+
     /**
      * 프로젝트 등록 페이지 이동
      */

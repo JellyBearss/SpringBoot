@@ -14,23 +14,25 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">문의 목록 페이지</h5>
-            <!-- 드롭다운 메뉴와 검색창 -->
-            <div class="dropdown">
-              <select> 
-                <option value="">전체</option> 
-                <option value="apple">창작자 문의</option> 
-                <option value="banana">후원자 문의</option> 
-                <option value="orange">기타 문의</option> 
-              </select>
-            </div>
 
-            <!-- 검색창 -->
-            <div class="search-box">
-            <input type="search" name="search" placeholder="회원 검색...">
-            <button type="submit">
-              <i class="bi bi-search"></i>
-            </button>
-            </div>
+            <!-- 드롭다운 메뉴와 검색창 -->
+            <nav class="navbar navbar-expand-lg bg-light">
+              <div class="container-fluid">
+                <div class="dropdown">
+                  <select>
+                    <option value="">전체</option>
+                    <option value="apple">일반 회원</option>
+                    <option value="banana">탈퇴 회원</option>
+                    <option value="orange">경고 회원</option>
+                    <option value="orange">블랙 회원</option>
+                  </select>
+                </div>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
 
             <!-- Default Table -->
             <table class="table">     
@@ -48,10 +50,10 @@
                 <tr>
                   <th scope="row">1</th>
                   <td>창작자 문의</td>
-                  <td>프로젝트 신청 관련</td>
+                  <td><a href="/admin/inquiryDetail">프로젝트 신청 관련</a></td>
                   <td>qwe123</td>
                   <td>2023/11/11</td>
-                  <td>처리중</td>
+                  <td class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;">처리중</td>>
                 </tr>
               </tbody>
             </table>
