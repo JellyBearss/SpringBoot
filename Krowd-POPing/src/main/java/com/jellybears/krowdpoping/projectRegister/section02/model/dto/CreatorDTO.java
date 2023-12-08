@@ -10,21 +10,22 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreatorDTO {
 
-    private String crType;
-    private String crBusinessNum;
+    private String cr_type;
+    private String business_num;
+    private String address;
+    int user_code;
     private String phone;
     private String email;
-    private String address;
     private String introduce;
 
     @Builder
-    public CreatorDTO(String crType, String crBusinessNum, String phone, String email, String address, String introduce) {
-        this.crType = crType;
-        this.crBusinessNum = crBusinessNum;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.introduce = introduce;
+    public CreatorDTO(String cr_type,String business_num,String address,int user_code,String phone,String email,String introduce) {
+        this.cr_type=cr_type;
+        this.business_num=business_num;
+        this.address=address;
+        this.user_code=user_code;
+        this.phone=phone;
+        this.email=email;
+        this.introduce=introduce;
     }
-
 }

@@ -18,8 +18,8 @@ public class CreatorService {
         return creatorDTO;
     }
 
-    public void setCreator(CreatorDTO creatorDTO) {
-        creatorMapper.insertCreator(creatorDTO);
-    }
+//    public void setCreator(CreatorDTO creatorDTO) {
+//        creatorMapper.insertCreator(creatorDTO);
+//    }
 
 }

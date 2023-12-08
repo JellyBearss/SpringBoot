@@ -7,27 +7,27 @@
     <select id="selectCreator" resultType="string">
         select CR_TYPE
         from creator
-        where cr_business_num = '0101020323'
+        where BUSINESS_NUM= '12345678'
     </select>
 
-    <insert id="insertCreator" parameterType="com.jellybears.krowdpoping.creatorinfomation.model.dto.CreatorDTO">
-        insert into creator (
-            CR_TYPE,
-            CR_BUSINESS_NUM,
-            PHONE,
-            EMAIL,
-            ADDRESS,
-            INTRODUCE
-        )
-        values (
-                #{crType},
-                #{crBusinessNum},
-                #{phone},
-                #{email},
-                #{address},
-                #{introduce}
-               )
-    </insert>
+<!--    <insert id="insertCreator" parameterType="com.jellybears.krowdpoping.creatorinfomation.model.dto.CreatorDTO">-->
+<!--        insert into creator (-->
+<!--            CR_TYPE,-->
+<!--            CR_BUSINESS_NUM,-->
+<!--            PHONE,-->
+<!--            EMAIL,-->
+<!--            ADDRESS,-->
+<!--            INTRODUCE-->
+<!--        )-->
+<!--        values (-->
+<!--                #{crType},-->
+<!--                #{crBusinessNum},-->
+<!--                #{phone},-->
+<!--                #{email},-->
+<!--                #{address},-->
+<!--                #{introduce}-->
+<!--               )-->
+<!--    </insert>-->
 
 </mapper>
 
