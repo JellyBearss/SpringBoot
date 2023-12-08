@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/admin_layout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<th:block layout:fragment="content">
+    <!-- start main ================================================================================================ -->
+    <main id="main" class="main">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">신고 상세 페이지</h5>
+                            <!-- General Form Elements -->
+                            <form>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">신고자 아이디</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="qwe123" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">신고 일자</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="2023/12/01" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">신고 유형</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="프로젝트 신고" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">신고 상태</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="처리중" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputNumber" class="col-sm-2 col-form-label">파일 업로드</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="file" id="formFile" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="첫번째 프로젝트 신고사항" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputIntroduction" class="col-sm-2 col-form-label">내용</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" style="height: 250px" disabled>첫번째 신고사항입니다.</textarea>
+                                    </div>
+                                </div>
+                            </form><!-- End General Form Elements -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">신고 답변</h5>
+                            <!-- Advanced Form Elements -->
+                            <form>
+
+                                <div class="row mb-3">
+
+                                    <div class="row mb-3">
+                                        <label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" value="문의사항 답변입니다.">
+                                        </div>
+                                    </div>
+
+                                    <fieldset class="row mb-3">
+                                        <legend class="col-form-label col-sm-2 pt-0">선택 답변</legend>
+                                        <div class="col-sm-10">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                                <label class="form-check-label" for="gridRadios1">
+                                                    확인 완료하였습니다.
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                                <label class="form-check-label" for="gridRadios2">
+                                                    처리중입니다.
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                                                <label class="form-check-label" for="gridRadios3">
+                                                    처리 완료하였습니다.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="row mb-3">
+                                        <legend class="col-form-label col-sm-2 pt-0">체크사항</legend>
+                                        <div class="col-sm-10">
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                                <label class="form-check-label" for="gridCheck1">
+                                                    신고 처리에 관해 신고자에게 보여줄 답변폼(1)
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="gridCheck2" checked>
+                                                <label class="form-check-label" for="gridCheck2">
+                                                    신고 처리에 관해 신고자에게 보여줄 답변폼(2)
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" style="float: right; margin-left: 8px;">답변하기</button>
+                                            <div class="modal fade" id="basicModal" tabindex="-1">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">신고 답변을 보내시겠습니까?</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                                            <a type="button" class="btn btn-primary" href="/admin/reportList">확인</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- End Basic Modal-->
+
+                                            <!-- <a type="submit" class="btn btn-primary1" href="/admin/noticeList" style="float: right;">뒤로가기</a>-->
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- End main ================================================================================================== -->
+</th:block>
+</html>

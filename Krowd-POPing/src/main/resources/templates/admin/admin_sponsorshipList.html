@@ -15,31 +15,26 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">후원 내역 목록 페이지</h5>
-            
-            <!-- 드롭다운 메뉴와 검색창 -->
-            <div class="dropdown">
-              <select> 
-                <option value="">전체</option> 
-                <option value="apple">결제 완료</option> 
-                <option value="banana">결제 취소</option> 
-                <option value="orange">환불</option> 
-              </select>
-            </div>
 
-            <!-- 검색창 -->
-            <div class="search-box">
-            <input type="search" name="search" placeholder="회원 검색...">
-            <button type="submit">
-              <i class="bi bi-search"></i>
-            </button>
-            </div>
-            
-            <!-- <div class="box">
-              <div class="container-4">
-                <input type="search" id="search" placeholder="펀딩 명칭 검색..."/>
-                <button class="icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <!-- 드롭다운 메뉴와 검색창 -->
+            <nav class="navbar navbar-expand-lg bg-light">
+              <div class="container-fluid">
+                <div class="dropdown">
+                  <select>
+                    <option value="">전체</option>
+                    <option value="apple">일반 회원</option>
+                    <option value="banana">탈퇴 회원</option>
+                    <option value="orange">경고 회원</option>
+                    <option value="orange">블랙 회원</option>
+                  </select>
+                </div>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
               </div>
-            </div> -->
+            </nav>
+
             <!-- Default Table -->
             <table class="table">     
               <thead>
@@ -65,7 +60,7 @@
                   <td>45,900원</td>
                   <td>2023/11/11</td>
                   <td>카카오페이</td>
-                  <td class="badge bg-success" style="color: white; margin: 6px;">결제 완료</td>
+                  <td class="badge bg-success" style="display: flex; justify-content: center; align-items: center; color: white; margin: 6px;">결제 완료</td>
                 </tr>
               </tbody>
             </table>

@@ -1,56 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layouts/admin_layout}"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layouts/admin_layout}"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <th:block layout:fragment="content">
-<!-- Start main -->
-  <main id="main" class="main">
-    <section class="section">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">공지사항 작성 페이지</h5>
+    <!-- start main ================================================================================================ -->
+    <main id="main" class="main">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">공지사항 작성 페이지</h5>
+                            <!-- General Form Elements -->
+                            <form>
 
-          <form>
-            <div class="row mb-3">
-<!--              <label for="inputText" class="col-sm-2 col-form-label" style="text-align: center;">제목</label>-->
-              <div class="col-sm-10">
-                <input type="text" class="form-control">
-              </div>
-            </div>
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">공지사항 제목</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
 
-            <!-- Quill Editor Full -->
-            <p>여기에 공지사항을 작성하세요.</p>
-            <div class="quill-editor-full">
-              <!-- 작성 공간 -->
-            </div>
-            <br>
-            <!-- <a href="dahee_noticeList.html" class="my-button right-align">등록하기</a> -->
-            <!-- End Quill Editor Full -->
-            <button type="button" class="my-button right-align" data-bs-toggle="modal" data-bs-target="#basicModal">작성하기</button>
-            <div class="modal fade" id="basicModal" tabindex="-1">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">공지사항</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    작성하신 공지사항을 올리시겠습니까?
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                    <!-- <button type="button" class="btn btn-primary">확인</button> -->
-                    <a href="/admin/noticeList" class="btn btn-primary">확인</a>
-                  </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">공지유형</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>일반공지</option>
+                                            <option value="1">긴급공지</option>
+                                            <option value="2">이벤트공지</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputNumber" class="col-sm-2 col-form-label">파일 업로드</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="file" id="formFile">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputIntroduction" class="col-sm-2 col-form-label">내용</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" style="height: 500px"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" style="float: right; margin-left: 8px;">등록</button>
+                                        <div class="modal fade" id="basicModal" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">공지사항을 등록하시겠습니까?</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                                        <a type="button" class="btn btn-primary" href="/admin/noticeList">등록</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- End Basic Modal-->
+
+                                        <a href="/admin/noticeList" type="submit" class="btn btn-primary1" style="float: right;">취소</a>
+                                    </div>
+                                </div>
+                            </form><!-- End General Form Elements -->
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div><!-- End Basic Modal-->
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-<!-- End main -->
+            </div>
+        </section>
+    </main>
+    <!-- End main ================================================================================================== -->
 </th:block>
 </html>
