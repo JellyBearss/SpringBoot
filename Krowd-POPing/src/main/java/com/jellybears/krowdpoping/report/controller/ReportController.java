@@ -11,6 +11,18 @@ public class ReportController {
     @GetMapping("report")
     public String goReport(){
 
-        return "report/reportCopy";
+        return "report/reportForm";
+    }
+
+    @GetMapping("MYP_report")
+    public String goMYPReport(){
+
+        return "mypage/MYP_report";
+    }
+
+    @GetMapping("MYP_reportContent")
+    public String goMYPReportContent(){
+
+        return "mypage/MYP_reportContent";
     }
 }

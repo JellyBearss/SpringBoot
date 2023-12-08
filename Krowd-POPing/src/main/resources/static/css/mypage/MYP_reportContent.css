@@ -369,48 +369,6 @@ body{
 
 /*====================문의  ==================*/
 
-.dynamic-col {
-    width: 20%; /* 초기 너비 설정 */
-    white-space: nowrap; /* 긴 문자열이 줄 바꿈되지 않도록 설정 */
-    overflow: hidden; /* 넘치는 부분은 숨김 처리 */
-    text-overflow: ellipsis; /* 넘치면 ...으로 표시 */
-}
-
-table{
-    width: 100%;
-    margin: 0;
-    border: 0;
-    table-layout: fixed;
-    border-collapse: collapse;
-    empty-cells: show;
-    text-align: center;
-    font-size: 14px;
-
-}
-.report-active-page{
-    width: 50px;
-    height: 50px;
-    background: #7D1CD8;
-    color: white;
-    font-weight: bold;
-
-}
-
-.report-pagination{
-    text-align: center;
-    margin-top: 20px;
-}
-
-.report-pagination div{
-    display: inline;
-}
-
-/* .report-wrapper{
-    border-top: 1px solid #6d6d6d;
-
-    margin-top: 50px;
-
-} */
 
 *{
     box-sizing: border-box;
@@ -424,39 +382,26 @@ table{
 
 }
 
-thead{
-    background: #EDE9FE;
-    height: 50px;
-
-}
-
-thead th {
-    font-weight: normal;
-}
-
-tbody{
-    color: #707070;
-    border-bottom: 1px solid #EADBF9;
-    height: 50px;
-}
 
 
-.report-detail-wrapper{
+
+.inquiry-detail-wrapper{
     border-top: 1px solid #6d6d6d;
+    margin-top: 20px;
 }
 
-.report-title{
+.inquiry-title{
     padding-bottom: 10px;
 }
 
-.report-title p{
+.inquiry-title p{
 
     font-size: 20px;
     font-weight: 400;
     color:#555555;
 }
 
-.report-status{
+.inquiry-status{
 
     font-size: 14px;
     display: flex;
@@ -465,22 +410,22 @@ tbody{
 }
 
 
-.report-status-cate{
+.inquiry-status-cate{
     color:#707070;
     font-size: 13px;
 }
-.report-status-result{
+.inquiry-status-result{
 
     color: #5e5e5e;
     font-size: 14px;
 }
 
-.report-update-date{
+.inquiry-update-date{
     display: flex;
     justify-content: space-between;
 }
 
-.report-update-date a{
+.inquiry-update-date a{
 
     margin-right: 10px;
     margin-bottom: 20px;
@@ -501,7 +446,7 @@ tbody{
     display: none !important;
 }
 
-.repo-textarea{
+.inqu-textarea{
 
     display: inline-block;
     width: 100%;
@@ -513,7 +458,7 @@ tbody{
 
 }
 
-.report-content{
+.inquiry-content{
     overflow: hidden;
     width: 100%;
     padding: 20px 0;
@@ -529,7 +474,7 @@ textarea{
 }
 
 
-.rep-list-btn{
+.inq-list-btn{
     cursor: pointer;
     display: inline-block;
     border-radius: 4px;
@@ -543,11 +488,11 @@ textarea{
 
 }
 
-.rep-list-btn:hover{
+.inq-list-btn:hover{
     background: #7d1cdb;
 }
 
-.reportPush{
+.inquiryPush{
     display: flex;
     justify-content: space-between;
 }
@@ -561,14 +506,30 @@ textarea{
     color: rgb(255, 255, 255);
     padding: 5px;
     font-size: 14px;
-    width: 100px;
+    width: 150px;
     height: 30px;
     opacity: 1;
     margin-top: 50px;
 
 }
 
-.rep-pushInner2{
+
+.inq-write-to-creator{
+
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    background: rgba(137, 26, 247, 0.8);
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    font-size: 14px;
+    width: 180px;
+    height: 30px;
+    opacity: 1;
+    margin-top: 50px;
+
+}
+.inq-pushInner2{
 
     padding: 5px;
     width: 100px;
@@ -583,34 +544,7 @@ textarea{
 }
 
 
-.active {
 
-    visibility: visible;
-}
-.subpage {
-    display: none;
-}
-
-.subpage.active {
-    display: block;
-}
-
-.project-report-active, .creator-report-active, .user-report-active {
-    cursor: pointer;
-    text-decoration: none;
-}
-
-
-
-.report-pagination div{
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-.report-type{
-    font-weight: bold;
-    color: #7d1cdb;
-}
 
 
 /* -------------------header 부분--------------------- */

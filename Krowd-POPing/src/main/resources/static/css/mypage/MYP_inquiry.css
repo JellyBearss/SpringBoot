@@ -387,7 +387,7 @@ table{
     font-size: 14px;
 
 }
-.report-active-page{
+.inquiry-active-page{
     width: 50px;
     height: 50px;
     background: #7D1CD8;
@@ -396,16 +396,16 @@ table{
 
 }
 
-.report-pagination{
+.inquiry-pagination{
     text-align: center;
     margin-top: 20px;
 }
 
-.report-pagination div{
+.inquiry-pagination div{
     display: inline;
 }
 
-/* .report-wrapper{
+/* .inquiry-wrapper{
     border-top: 1px solid #6d6d6d;
 
     margin-top: 50px;
@@ -441,22 +441,22 @@ tbody{
 }
 
 
-.report-detail-wrapper{
+.inquiry-detail-wrapper{
     border-top: 1px solid #6d6d6d;
 }
 
-.report-title{
+.inquiry-title{
     padding-bottom: 10px;
 }
 
-.report-title p{
+.inquiry-title p{
 
     font-size: 20px;
     font-weight: 400;
     color:#555555;
 }
 
-.report-status{
+.inquiry-status{
 
     font-size: 14px;
     display: flex;
@@ -465,22 +465,22 @@ tbody{
 }
 
 
-.report-status-cate{
+.inquiry-status-cate{
     color:#707070;
     font-size: 13px;
 }
-.report-status-result{
+.inquiry-status-result{
 
     color: #5e5e5e;
     font-size: 14px;
 }
 
-.report-update-date{
+.inquiry-update-date{
     display: flex;
     justify-content: space-between;
 }
 
-.report-update-date a{
+.inquiry-update-date a{
 
     margin-right: 10px;
     margin-bottom: 20px;
@@ -501,7 +501,7 @@ tbody{
     display: none !important;
 }
 
-.repo-textarea{
+.inqu-textarea{
 
     display: inline-block;
     width: 100%;
@@ -513,7 +513,7 @@ tbody{
 
 }
 
-.report-content{
+.inquiry-content{
     overflow: hidden;
     width: 100%;
     padding: 20px 0;
@@ -529,7 +529,7 @@ textarea{
 }
 
 
-.rep-list-btn{
+.inq-list-btn{
     cursor: pointer;
     display: inline-block;
     border-radius: 4px;
@@ -543,16 +543,16 @@ textarea{
 
 }
 
-.rep-list-btn:hover{
+.inq-list-btn:hover{
     background: #7d1cdb;
 }
 
-.reportPush{
+.inquiryPush{
     display: flex;
     justify-content: space-between;
 }
 
-.rep-write{
+.inq-write{
 
     cursor: pointer;
     border-radius: 4px;
@@ -568,7 +568,23 @@ textarea{
 
 }
 
-.rep-pushInner2{
+
+.inq-write-to-creator{
+
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    background: rgba(137, 26, 247, 0.8);
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    font-size: 14px;
+    width: 180px;
+    height: 30px;
+    opacity: 1;
+    margin-top: 50px;
+
+}
+.inq-pushInner2{
 
     padding: 5px;
     width: 100px;
@@ -578,7 +594,7 @@ textarea{
 
 }
 
-.rep-write:hover{
+.inq-write:hover{
     background: #7d1cdb;
 }
 
@@ -595,19 +611,19 @@ textarea{
     display: block;
 }
 
-.project-report-active, .creator-report-active, .user-report-active {
+.inquiryToAdmin-active, .inquiryToCreator-active {
     cursor: pointer;
     text-decoration: none;
 }
 
 
 
-.report-pagination div{
+.inquiry-pagination div{
     cursor: pointer;
     margin-right: 5px;
 }
 
-.report-type{
+.inquiry-type{
     font-weight: bold;
     color: #7d1cdb;
 }
