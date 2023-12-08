@@ -188,6 +188,7 @@
                 <span class="a_i_address">주소</span>
                 <div class="input_a_i_address_section">
                     <input type="text" name ="input_a_i_address">
+                    <input type="button" id="search_a_i_address" value="검색">
                 </div>
             </form>
         </div>
@@ -224,7 +225,7 @@
     <span class="next_step_text">다음 단계로</span>
 </a>
 </div>
-<script>
+<script type="text/javascript">
     document.getElementById('deliveryOptions').value = 'default';
     showSubpage('subpage1');
     function showSubpage(subpageId) {
@@ -266,6 +267,43 @@
             inputAddressText.style.fontWeight = 'bold';
         }
     }
+    $("#search_a_i_address").click(function () { // 도로명 주소 검색 버튼 클릭할 때
+        var search_text = $("#input_a_i_address").val();
+        addr_json.keyword = search_text;
+
+        $.ajax({
+            type: "GET",
+            url: "/data/searchText",
+            data: addr_json,
+            success: function (data) {
+                var json_address = JSON.parse(data);
+                totalData = json_address.results.common.totalCount; // 전체 데이터 개수
+                dataPerPage = json_address.results.common.countPerPage; // 한페이지에 나타낼 데이터 개수
+                pageCount = 10; // 한 화면에 표기할 페이지수
+
+                if (json_address.results.juso.length == 0) {
+                    selectedPage = 1;
+                }
+
+                var addr_list = json_address.results.juso; // 주소 리스트
+                var resultHtml = "";
+                for (var i = 0; i < addr_list.length; i++) {
+                    resultHtml += "<tr>";
+                    resultHtml += "<td>" + addr_list[i]['zipNo'] + "</td>";
+                    resultHtml += "<td>" + addr_list[i]['jibunAddr'] + "</td>";
+                    resultHtml += "<td>" + addr_list[i]['roadAddr'] + "</td>";
+                    resultHtml += "</tr>";
+                }
+
+                $("#result_data tbody").html(resultHtml);
+                paging(totalData, dataPerPage, pageCount, selectedPage);
+                $("#paging").show();
+            },
+            error: function (xhr, status, error) {
+                alert(error);
+            },
+        });
+    });
 </script>
 
 </body>
