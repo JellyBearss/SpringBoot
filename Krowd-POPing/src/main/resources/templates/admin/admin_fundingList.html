@@ -16,25 +16,26 @@
           <div class="card-body">
             <h5 class="card-title">펀딩 목록 페이지</h5>
 
-<!-- 드롭다운 메뉴와 검색창 -->
-<div class="dropdown">
-    <select> 
-      <option value="">전체</option> 
-      <option value="apple">진행중</option> 
-      <option value="banana">펀딩 성공</option> 
-      <option value="orange">펀딩 실패</option> 
-    </select>
-</div>
+            <!-- 드롭다운 메뉴와 검색창 -->
+            <nav class="navbar navbar-expand-lg bg-light">
+              <div class="container-fluid">
+                <div class="dropdown">
+                  <select>
+                    <option value="">전체</option>
+                    <option value="apple">일반 회원</option>
+                    <option value="banana">탈퇴 회원</option>
+                    <option value="orange">경고 회원</option>
+                    <option value="orange">블랙 회원</option>
+                  </select>
+                </div>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
 
-<!-- 검색창 -->
-<div class="search-box">
-  <input type="search" name="search" placeholder="회원 검색...">
-  <button type="submit">
-    <i class="bi bi-search"></i>
-  </button>
-</div>
-
-
+<!--             Default Table-->
             <table class="table">     
               <thead>
                 <tr>
@@ -51,13 +52,13 @@
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td>크리스마스 단 하루를 위해 1년을 준비한 장인정신 슈톨렌</td>
+                  <td><a href="/admin/fundingDetail">크리스마스 단 하루를 위해 1년을 준비한 장인정신 슈톨렌</a></td>
                   <td>2023/09/09</td>
                   <td>2023/11/25</td>
                   <td>1,000,000원</td>
                   <td>500,000원</td>
                   <td>50%</td>
-                  <td class="badge bg-warning" style="margin: 6px;">진행중</td>
+                  <td class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;">진행중</td>
                 </tr>
               </tbody>
             </table>

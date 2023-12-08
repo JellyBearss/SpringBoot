@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/admin_layout}"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<th:block layout:fragment="content">
+    <!-- start main ================================================================================================ -->
+    <main id="main" class="main">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">문의 상세 페이지</h5>
+                            <!-- General Form Elements -->
+                            <form>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">문의자 아이디</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="qwe123" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">문의 일자</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="2023/12/01" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">문의 유형</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="창작자 문의" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">문의 상태</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="처리중" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="첫번째 창작자 문의사항" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="inputIntroduction" class="col-sm-2 col-form-label">내용</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" style="height: 250px" disabled>첫번째 문의사항입니다.</textarea>
+                                    </div>
+                                </div>
+                            </form><!-- End General Form Elements -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">문의 답변</h5>
+                            <!-- Advanced Form Elements -->
+                            <form>
+
+                                <div class="row mb-3">
+
+                                    <div class="row mb-3">
+                                        <label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" value="문의사항 답변입니다.">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputIntroduction" class="col-sm-2 col-form-label">내용</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" style="height: 250px">첫번째 문의사항 답변입니다.</textarea>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" style="float: right; margin-left: 8px;">답변하기</button>
+                                            <div class="modal fade" id="basicModal" tabindex="-1">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">답변을 보내시겠습니까?</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                                            <a type="button" class="btn btn-primary" href="/admin/inquiryList">확인</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- End Basic Modal-->
+
+<!--                                            <a type="submit" class="btn btn-primary1" href="/admin/noticeList" style="float: right;">뒤로가기</a>-->
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- End main ================================================================================================== -->
+</th:block>
+</html>
