@@ -24,74 +24,77 @@
         <association property="RoleDTO" resultMap="RoleResultMap"/>
 
     </resultMap>
-<!--    <resultMap id="MemberAndAuthorityResultMap" type="com.jellybears..member.model.dto.RoleTypeDTO">-->
-<!--        <association property="memberDTO" resultMap="memberResultMap"/>-->
-<!--        <association property="authorityDTO" resultMap="AuthorityResultMap"/>-->
 
-<!--    </resultMap>-->
-    <select id="selectUserById" resultMap="string">
+    <select id="selectUserById" resultMap="RoleTypeResultMap">
         SELECT
-            A.ID
+            A.ID,
+            A.USER_CODE,
+            C.ROLE_CODE,
+            B.ROLE_NAME
         FROM USER_INFO A
-
-
-        WHERE B.ROLE_NAME ='일반'
-         AND A.ID=#{ userId }
+                 INNER JOIN ROLE_TYPE C ON A.USER_CODE = C.USER_CODE
+                 INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE
+        WHERE B.ROLE_NAME = 'ROLE_ADMIN'
+          AND A.ID = #{ userId };
     </select>
+
+
 
     <select id="findByUserID" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
         SELECT
-                A.USER_CODE
-                ,A.ID
-                ,A.PASSWORD
-                ,A.NAME
-                ,A.NICKNAME
-                ,A.BIRTHDAY
-                ,A.EMAIL
-                ,A.PHONE_NUMBER
-
-        FROM     USER_INFO A
-        WHERE    A.USER_STATUS ='일반'
-         AND     A.ID = #{ userId }
-
-
+            A.USER_CODE,
+            A.ID,
+            A.PASSWORD,
+            A.NAME,
+            A.NICKNAME,
+            A.BIRTHDAY,
+            A.EMAIL,
+            A.PHONE_NUMBER
+        FROM USER_INFO A
+                 INNER JOIN ROLE_TYPE C ON A.USER_CODE = C.USER_CODE
+                 INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE
+        WHERE B.ROLE_NAME = 'ROLE_ADMIN'
+          AND A.ID = #{userId}
     </select>
 
-    <insert id="insertUser" parameterType="com.jellybears.krowdpoping.user.model.dto.UserDTO">
-        INSERT
-            INTO USER_INFO  (
-                               ID
-                              ,PASSWORD
-                              ,NAME
-                              ,NICKNAME
-                              ,BIRTHDAY
-                              ,EMAIL
-                              ,PHONE_NUMBER
-               )
-        VALUES (
-               #{ userId }
-               ,#{ userPwd }
-               ,#{ nickname }
-               ,#{ birthday }
-               ,#{ email }
-               ,#{ phone }
-        )
-    </insert>
-    <select id="selectEncryptedPwd" resultType="string">
-        SELECT
-               A.PASSWORD
-          FROM USER_INFO A
-          WHERE A.USER_STATUS ='일반'
-          AND A.USER_ID = #{ userId }
-    </select>
-    <select id="selectUser" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
-        SELECT
-              A.USER_CODE
-             ,A.ID
-             ,A.PASSWORD
-             ,A.NAME
-             ,A.NICKNAME
-             ,A.BIRTHDAY
+
+
+
+<!--    <insert id="insertUser" parameterType="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
+<!--        INSERT-->
+<!--            INTO USER_INFO  (-->
+<!--                               ID-->
+<!--                              ,PASSWORD-->
+<!--                              ,NAME-->
+<!--                              ,NICKNAME-->
+<!--                              ,BIRTHDAY-->
+<!--                              ,EMAIL-->
+<!--                              ,PHONE_NUMBER-->
+<!--               )-->
+<!--        VALUES (-->
+<!--               #{ userId }-->
+<!--               ,#{ userPwd }-->
+<!--               ,#{ nickname }-->
+<!--               ,#{ birthday }-->
+<!--               ,#{ email }-->
+<!--               ,#{ phone }-->
+<!--        )-->
+<!--    </insert>-->
+<!--    <select id="selectEncryptedPwd" resultType="string">-->
+<!--        SELECT-->
+<!--               A.PASSWORD-->
+<!--          FROM USER_INFO A-->
+<!--          WHERE A.USER_STATUS ='일반'-->
+<!--          AND A.USER_ID = #{ userId }-->
+<!--    </select>-->
+<!--    <select id="selectUser" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
+<!--        SELECT-->
+<!--              A.USER_CODE-->
+<!--             ,A.ID-->
+<!--             ,A.PASSWORD-->
+<!--             ,A.NAME-->
+<!--             ,A.NICKNAME-->
+<!--             ,A.BIRTHDAY-->
              ,A.EMAIL
              ,A.PHONE_NUMBER
              ,A.USER_STATUS

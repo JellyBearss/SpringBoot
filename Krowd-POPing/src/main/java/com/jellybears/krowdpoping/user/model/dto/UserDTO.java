@@ -16,7 +16,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @ToString
 public class UserDTO  {
-    private Long user_code;
+    private int user_code;
     private String id;
     private String password;
     private String name;
@@ -25,7 +25,7 @@ public class UserDTO  {
     private String email;
     private String phone_number;
     private String user_status;
- //이거 아님
+
 
 
 }

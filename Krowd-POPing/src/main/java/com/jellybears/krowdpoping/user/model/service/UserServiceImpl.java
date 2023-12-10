@@ -26,18 +26,18 @@ public class UserServiceImpl implements UserService{
         String result = mapper.selectUserById(userId);
         return result !=null? true : false;
     }
-    @Override
-    @Transactional
-    public void registUser(UserDTO user) throws UserRegistException {
-        log.info("[UserService Insert User : " + user);
-        int result = mapper.insertUser(user);
-
-        log.info("[UserService] Insert result : " + ((result > 0) ? "회원가입 성공 " : "회원가입 실패"));
-
-        if (!(result > 0)) {
-            throw new UserRegistException("회원 가입에 실패하였습니다.");
-        }
-    }
+//    @Override
+//    @Transactional
+//    public void registUser(UserDTO user) throws UserRegistException {
+//        log.info("[UserService Insert User : " + user);
+//        int result = mapper.insertUser(user);
+//
+//        log.info("[UserService] Insert result : " + ((result > 0) ? "회원가입 성공 " : "회원가입 실패"));
+//
+//        if (!(result > 0)) {
+//            throw new UserRegistException("회원 가입에 실패하였습니다.");
+//        }
+//    }
 
 
 
