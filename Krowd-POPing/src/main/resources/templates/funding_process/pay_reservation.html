@@ -20,7 +20,7 @@
 <div id="header">
     <a href="/home" class="logo">
         <img src="/icon/logo2.png" alt="">
-    </a>            
+    </a>
     <a href="/upload" class=upload_project>
         <div class=upload_box>
         <b><span  class="upload_text">프로젝트 올리기</span></b>
@@ -63,7 +63,7 @@
         <div class="pay_method_title">결제 수단</div>
         <div class="kakao_pay">
             <input type="checkbox" id="kakao" name="kakao" value="카카오 페이" checked>
-            <label for="same">카카오 페이로 결제</label>
+            <label>카카오 페이로 결제</label>
         </div>
     </div>
 
@@ -72,7 +72,7 @@
         <span class="chosen_price">52,000</span>
         <span class="price_unit">원</span>
     </div>
-    
+
     <div class="additional_funding">
         <span class="show_additional_funding">추가 후원금</span>
         <span class="chosen_additional_funding">1,000</span>
@@ -92,18 +92,18 @@
     </div>
 
     <div class="comment_section">
+        <form action="/" method="POST" id="form__wrap">
         <div class="confirm_comment">후원 완료 시 결제가 진행됩니다. 프로젝트가 무산되거나 중단된 경우, 영업일 2-3일 내에 결제가 취소됩니다.</div>
         <div class="term1">
-            <input type="checkbox" id="term1" name="term1" value="서비스 동의">
-            <label for="same">구매 조건, 결제 진행 및 결제 대행 서비스 동의</label>
+            <input type="checkbox" id="term1_check" name="term1" value="서비스 동의">
+            <label>구매 조건, 결제 진행 및 결제 대행 서비스 동의</label>
 
-            <input type="checkbox" id="layer_popup">
+            <input type="checkbox" id="layer_popup" name="layer_popup" value="내용 보기">
             <label for="layer_popup">내용 보기</label>
             <div id="layer_bg">
                 <div id="popup">
                     <label class="popup-close" for="layer_popup">닫기</label>
                     <h2>전자금융거래 이용약관</h2>
-                    </h2>
                     <b>제1조 (목적)</b><br>
                     이 약관은 NICE페이먼츠 주식회사(이하 '회사'라 합니다)가 제공하는 전자지급결제대행서비스 및 결제대금예치서비스를 이용자가 이용함에 있어 회사와 이용자 사이의 전자금융거래에 관한 기본적인 사항을 정함을 목적으로 합니다.
                     <br><br>
@@ -377,8 +377,8 @@
             </script>
         </div>
         <div class="term2">
-            <input type="checkbox" id="term2" name="term2" value="제공 동의">
-            <label for="same">개인정보 제3자 제공 동의</label>
+            <input type="checkbox" id="term2_check" name="term2" value="제공 동의">
+            <label>개인정보 제3자 제공 동의</label>
             <input type="checkbox" id="layer_popup3">
             <label for="layer_popup3">
                 내용 보기
@@ -430,15 +430,67 @@
                     });
                 </script>
             </div>
-
         </div>
     <div class="next_step_section">
-        <a href="/funding_process/processFinished" class="finished">
+        <button type="submit" class="finished" disabled>
             <div class="next_step_box"></div>
             <span class="next_step_text">후원하기</span>
-        </a>
+        </button>
     </div>
+        </form>
     </div>
+<script>
+    'use strict';
+
+    const form = document.querySelector('#form__wrap');
+    const checkBoxes = document.querySelectorAll('#term1_check, #term2_check');
+    const submitButton = document.querySelector('.next_step_section button');
+
+    const agreements = {
+        term1_check: false,
+        term2_check: false,
+    };
+
+    form.addEventListener('submit', (e) => e.preventDefault()); // 새로고침(submit) 되는 것 막음
+
+    checkBoxes.forEach((item) => {
+        item.addEventListener('change', toggleCheckbox);
+    });
+
+    function toggleSubmitButton() {
+        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);
+        submitButton.disabled = !allChecked;
+    }
+
+    function toggleCheckbox(e) {
+        const { checked, id } = e.target;
+        agreements[id] = checked;
+        console.log(agreements);
+        toggleSubmitButton();
+    }
+    form.addEventListener('submit', function () {
+        // 여기에 후원 완료로 이동하는 로직 추가
+        window.location.href = "/funding_process/processFinished";
+    });
+    function toggleSubmitButton() {
+        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);
+        submitButton.disabled = !allChecked;
+
+        // 배경색 조절
+        if (submitButton.disabled) {
+            submitButton.classList.add('disabled'); // 비활성화 클래스 추가
+        } else {
+            submitButton.classList.remove('disabled'); // 비활성화 클래스 제거
+        }
+    }
+
+    function toggleCheckbox(e) {
+        const { checked, id } = e.target;
+        agreements[id] = checked;
+        console.log(agreements);
+        toggleSubmitButton();
+    }
+</script>
 </div>
 </body>
 </html>
