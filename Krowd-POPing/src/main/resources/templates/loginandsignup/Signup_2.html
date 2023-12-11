@@ -97,7 +97,7 @@
                     <div class="password-container">
                         <div class="password-info">
                             <span id="password-description">비밀번호 확인:</span>
-                            <input type="password" class="password-input" id="confirm-password-input" name="userPwd" placeholder="비밀번호를 다시 입력해주세요." maxlength="20">
+                            <input type="password" class="password-input" id="confirm-password-input" name="userPwd2" placeholder="비밀번호를 다시 입력해주세요." maxlength="20">
                             <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password-input')">
                                 <img src="/icon/show.png" alt="eye-open-icon">
                             </span>
@@ -111,37 +111,33 @@
                 <div id="type_profile_info">
                     <div id="type_name">
                         <div id="type_name_label">이름:<span class="mandatory">*</span></div>
-                        <input type="text" id="type_name_input" >
+                        <input type="text" id="type_name_input" name="name">
                     </div>
                     <div id="type_birth">
-                        <form action="from_ok.php">
-                            <label for="birthday">생년월일:<span class="mandatory">*</span></label>
-                            <input type="date" id="type_birthday_input" name="birthday">
-                        </form>
+                            <label for="birth">생년월일:<span class="mandatory">*</span></label>
+                            <input type="date" id="birth" name="birthday">
                     </div>
                     <div id="type_nickname">
                         <div id="type_nickname_label">닉네임:<span class="mandatory">*</span></div>
                         <input type="text" id="type_nickname_input" name="nickname">
                     </div>
                     <div id="type_email">
-                        <form action="your_server_script.php" method="post">
-                            <label for="email">이메일:<span class="mandatory">*</span></label>
-                            <input type="text" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+                        <label for="email">이메일:<span class="mandatory">*</span></label>
+                        <input type="text" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
 
-                            <label for="emailProvider">@</label>
-                            <select id="emailProvider" name="emailProvider">
-                                <option value="naver.com">naver.com</option>
-                                <option value="gmail.com">gmail.com</option>
-                                <option value="gmail.com">kakao.com</option>
-                                <option value="gmail.com">yahoo.com</option>
-                                <option value="custom">직접 입력</option>
-                            </select>
+                        <label for="emailProvider">@</label>
+                        <select id="emailProvider" name="emailProvider">
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="gmail.com">kakao.com</option>
+                            <option value="gmail.com">yahoo.com</option>
+                            <option value="custom">직접 입력</option>
+                        </select>
 
-                            <div id="customEmail" style="display: none;">
-                                <!-- 직접 입력 시 아무것도 추가하지 않음 -->
-                            </div>
+                        <div id="customEmail" style="display: none;">
+                            <!-- 직접 입력 시 아무것도 추가하지 않음 -->
+                        </div>
 
-                        </form>
                     </div>
                     <div id="type_phone">
                         <div id="type_phone_label">전화번호:<span class="mandatory">*</span></div>

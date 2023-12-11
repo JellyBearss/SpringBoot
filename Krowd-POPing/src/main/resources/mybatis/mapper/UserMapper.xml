@@ -64,50 +64,30 @@
     </select>
 
 
+    <insert id="insertUser" parameterType="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+        INSERT
+        INTO TBL_MEMBER       (
+                                ID
+                              , PASSWORD
+                              , NAME
+                              , NICKNAME
+                              , BIRTHDAY
+                              , EMAIL
+                              , PHONE_NUMBER
+        )
+        VALUES  (
+                  #{ userId }
+                , #{ userPwd }
+                , #{ name }
+                , #{ nickname }
+                , #{ birthday }
+                , #{ email }
+                , #{ phone }
+
+                )
+    </insert>
 
 
-<!--    <insert id="insertUser" parameterType="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
-<!--        INSERT-->
-<!--            INTO USER_INFO  (-->
-<!--                               ID-->
-<!--                              ,PASSWORD-->
-<!--                              ,NAME-->
-<!--                              ,NICKNAME-->
-<!--                              ,BIRTHDAY-->
-<!--                              ,EMAIL-->
-<!--                              ,PHONE_NUMBER-->
-<!--               )-->
-<!--        VALUES (-->
-<!--               #{ userId }-->
-<!--               ,#{ userPwd }-->
-<!--               ,#{ nickname }-->
-<!--               ,#{ birthday }-->
-<!--               ,#{ email }-->
-<!--               ,#{ phone }-->
-<!--        )-->
-<!--    </insert>-->
-<!--    <select id="selectEncryptedPwd" resultType="string">-->
-<!--        SELECT-->
-<!--               A.PASSWORD-->
-<!--          FROM USER_INFO A-->
-<!--          WHERE A.USER_STATUS ='일반'-->
-<!--          AND A.USER_ID = #{ userId }-->
-<!--    </select>-->
-<!--    <select id="selectUser" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
-<!--        SELECT-->
-<!--              A.USER_CODE-->
-<!--             ,A.ID-->
-<!--             ,A.PASSWORD-->
-<!--             ,A.NAME-->
-<!--             ,A.NICKNAME-->
-<!--             ,A.BIRTHDAY-->
-<!--             ,A.EMAIL-->
-<!--             ,A.PHONE_NUMBER-->
-<!--             ,A.USER_STATUS-->
-<!--         FROM USER_INFO A-->
-<!--        WHERE A.USER_STATUS = '일반'-->
-<!--          AND A.ID= #{ userId }-->
-<!--    </select>-->
 
 
 </mapper>
