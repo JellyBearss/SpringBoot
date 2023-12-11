@@ -106,7 +106,7 @@
                             <form action="#" method="get">
                                 <span class="d_i_address">주소</span>
                                 <div class="input_d_i_address_section">
-                                    <input type="text" name ="input_d_i_address">
+                                    <input type="text" name ="input_d_i_address" id="input_d_i_address">
                                 </div>
                             </form>
                         </div>
@@ -115,7 +115,7 @@
                             <form action="#" method="get">
                                 <span class="d_i_d_address">상세 주소</span>
                                 <div class="input_d_i_d_address_section">
-                                    <input type="text" name ="input_d_i_d_address">
+                                    <input type="text" name ="input_d_i_d_address" id="input_d_i_d_address">
                                 </div>
                             </form>
                         </div>
@@ -132,8 +132,8 @@
                                     oncomplete: function(data){
                                         /* 팝업에서 검색결과 항목을 클릭했을 시 실행할 코드를 작성하는 부분 */
                                         document.getElementById("zipCode").value = data.zonecode;
-                                        document.getElementById("input_a_i_address").value = data.address;
-                                        document.getElementById("input_a_i_d_address").focus();
+                                        document.getElementById("input_d_i_address").value = data.address;
+                                        document.getElementById("input_d_i_d_address").focus();
                                     }
                                 }).open();
                             }
