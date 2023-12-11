@@ -39,7 +39,7 @@ public class RoleTypeDTO implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userDTO.getName();
+        return userDTO.getUserId();
     }
 
 

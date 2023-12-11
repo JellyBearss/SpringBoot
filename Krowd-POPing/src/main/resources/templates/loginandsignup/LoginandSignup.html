@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,23 +13,20 @@
     <img src="/icon/kpop_login_logo.png" alt="" class="login_logo">
     <div id="login_container">
         <div class="login_title">로그인</div>
-        <div id="id-area">
-            <form id="id-form">
+        <form id="loginForm" th:action="@{/loginandsignup/login}" method="post">
+            <div id="id-area">
                 <div id="id-text-area">
                     <input type="text" id="id-input" name="userId" placeholder="아이디"
-                    onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" >
+                           onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" >
                 </div>
-            </form>
-        </div>
-        <div id="password-area">
-            <form id="password-form">
+            </div>
+            <div id="password-area">
                 <div id="password-text-area">
-                    <input type="password" id="password-input" name="userPwd" placeholder="비밀번호"
-                    onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호'" >
+                    <input type="password" id="password-input" name="userPwd" placeholder="비밀번호" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호'" >
                 </div>
-            </form>
-        </div>
-        <button type="button" > 로그인</button>
+            </div>
+                <button type="submit" > 로그인</button>
+        </form>
         
     </div>
     <div id="bottomtext_1">
@@ -40,6 +37,8 @@
         <div>혹시 아이디 / 비밀먼호를 잊으셨나요?&nbsp&nbsp</div>
         <div><a href="gotofind">아이디 / 비밀번호 찾기</a></div>
     </div>
+
+
     
     
 </body>

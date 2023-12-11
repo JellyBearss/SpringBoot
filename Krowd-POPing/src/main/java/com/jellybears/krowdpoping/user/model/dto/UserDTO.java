@@ -17,7 +17,7 @@ import java.sql.Date;
 @ToString
 public class UserDTO  {
     private int user_code;
-    private String id;
+    private String userId;
     private String password;
     private String name;
     private String nickname;

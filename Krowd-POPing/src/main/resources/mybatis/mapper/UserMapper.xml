@@ -3,25 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.user.model.dao.UserMapper">
-<resultMap type="com.jellybears.krowdpoping.user.model.dto.UserDTO" id="userResultMap">
-    <id property="user_code" column="USER_CODE"/>
-    <result property="id" column="ID"/>
-    <result property="password" column="PASSWORD"/>
-    <result property="name" column="NAME"/>
-    <result property="nickname" column="NICKNAME"/>
-    <result property="birthday" column="BIRTHDAY"/>
-    <result property="email" column="EMAIL"/>
-    <result property="phone_number" column="PHONE_NUMBER"/>
-    <result property="user_status" column="USER_STATUS"/>
+<resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+    <id property="user_code" column="user_code"/>
+    <result property="userId" column="id"/>
+    <result property="password" column="password"/>
+    <result property="name" column="name"/>
+    <result property="nickname" column="nickname"/>
+    <result property="birthday" column="birthday"/>
+    <result property="email" column="email"/>
+    <result property="phone_number" column="phone_number"/>
+    <result property="user_status" column="user_status"/>
 </resultMap>
     <resultMap id="RoleResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleDTO">
-        <id property="role_code" column="ROLE_CODE"/>
-        <result property="role_name" column="ROLE_NAME"/>
+        <id property="role_code" column="role_code"/>
+        <result property="role_name" column="role_name"/>
     </resultMap>
 
     <resultMap id="RoleTypeResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO">
-        <association property="UserDTO" resultMap="userResultMap"/>
-        <association property="RoleDTO" resultMap="RoleResultMap"/>
+        <association property="userDTO" resultMap="UserResultMap"/>
+        <association property="roleDTO" resultMap="RoleResultMap"/>
 
     </resultMap>
 
@@ -36,11 +36,12 @@
                  INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE
         WHERE B.ROLE_NAME = 'ROLE_ADMIN'
           AND A.ID = #{ userId };
+
     </select>
 
 
 
-    <select id="findByUserID" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+    <select id="findByUserId" resultMap="RoleTypeResultMap">
         SELECT
             A.USER_CODE,
             A.ID,
@@ -49,12 +50,17 @@
             A.NICKNAME,
             A.BIRTHDAY,
             A.EMAIL,
-            A.PHONE_NUMBER
+            A.PHONE_NUMBER,
+            A.USER_STATUS,
+            B.ROLE_CODE,
+            B.ROLE_NAME
+
+
         FROM USER_INFO A
                  INNER JOIN ROLE_TYPE C ON A.USER_CODE = C.USER_CODE
                  INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE
-        WHERE B.ROLE_NAME = 'ROLE_ADMIN'
-          AND A.ID = #{userId}
+        WHERE A.USER_STATUS ='일반'
+          AND A.ID = #{ userId };
     </select>
 
 
@@ -95,13 +101,13 @@
 <!--             ,A.NAME-->
 <!--             ,A.NICKNAME-->
 <!--             ,A.BIRTHDAY-->
-             ,A.EMAIL
-             ,A.PHONE_NUMBER
-             ,A.USER_STATUS
-         FROM USER_INFO A
-        WHERE A.USER_STATUS = '일반'
-          AND A.ID= #{ userId }
-    </select>
+<!--             ,A.EMAIL-->
+<!--             ,A.PHONE_NUMBER-->
+<!--             ,A.USER_STATUS-->
+<!--         FROM USER_INFO A-->
+<!--        WHERE A.USER_STATUS = '일반'-->
+<!--          AND A.ID= #{ userId }-->
+<!--    </select>-->
 
 
 </mapper>

@@ -10,36 +10,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/loginandsignup/*")
 @Slf4j
 public class UserController {
-    private final PasswordEncoder passwordEncoder;
-    private final UserServiceImpl UserService;
+//    private final PasswordEncoder passwordEncoder;
+//    private final UserServiceImpl UserService;
+//
+//    public UserController(PasswordEncoder passwordEncoder, UserServiceImpl userService) {
+//        this.passwordEncoder = passwordEncoder;
+//        this.UserService = userService;
+//    }
 
-    public UserController(PasswordEncoder passwordEncoder, UserServiceImpl userService) {
-        this.passwordEncoder = passwordEncoder;
-        this.UserService = userService;
+    /**
+     * 로그인 하기
+     */
+    @GetMapping("login")
+    public String login() {
+
+        return "/loginandsignup/LoginandSignup";
     }
 
     /**
-         * 로그인 하기
-         */
-        @GetMapping("login")
-        public String login() {
+     * 회원가입 이용약관 조회 페이지
+     */
+    @GetMapping("termofservice")
+    public String TermOfService() {
 
-            return "/loginandsignup/LoginandSignup.html";
-        }
-
-        /**
-         * 회원가입 이용약관 조회 페이지
-         */
-        @GetMapping("termofservice")
-        public String TermOfService() {
-
-            return "/loginandsignup/Signup_1.html";
-        }
-
-        @GetMapping("entermemberinfo")
-        public String EnterMemberInfo(){
-            return"/loginandsignup/Signup_2.html";
-        }
-
+        return "/loginandsignup/Signup_1";
     }
+
+    @GetMapping("entermemberinfo")
+    public String EnterMemberInfo() {
+        return "/loginandsignup/Signup_2";
+    }
+
+    @GetMapping("signupsuccess")
+    public String SignupSuccess() {
+        return "/loginandsignup/Signup_3";
+    }
+}
 
