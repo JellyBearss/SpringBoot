@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.projectRegister.section01.model.dao.ProjectRegisterMapper">
+
+
+
+    <insert id="registProjectInfo" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
+        INSERT INTO project(
+                            TITLE,
+                            CATEOGORY_CODE,
+                            CONTENT,
+                            START_DATE,
+                            END_DATE,
+                            TARGET_AMOUNT,
+                            TOTAL_AMOUNT,
+                            FUNDING_STATUS,
+                            UPDATE_DATE,
+                            PLAN_CONTENT,
+                            BUDGET_CONTENT,
+                            INFO_CONTENT,
+                            USER_CODE
+
+        )
+        VALUES (
+                #{ title },
+                #{ categoryCode },
+                #{ content },
+                CURRENT_DATE,
+                CURRENT_DATE,
+                0,
+                0,
+                '',
+                current_date,
+                '',
+                '',
+                '',
+                2
+
+        )
+
+    </insert>
+
+
+
+
+</mapper>

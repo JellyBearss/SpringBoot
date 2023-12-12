@@ -27,9 +27,7 @@
         <br>
         <br>
         <h2>선물 구성하기</h2>
-        
-        
-        <br><br>
+
         <form action="" method="post">
         <div class="goodsWrapper">
 
@@ -38,8 +36,13 @@
             <div style="margin-right: 200px;">
                 <div class="subTitle" style="font-size: 17px;">아이템 이름</div>
                 <!-- <p class="subText">선물을 구성할 아이템을 등록해주세요.</p> -->
-                <input type="text" style="border-radius: 13px; height: 25px;">
-                <div class="lengthText">글자수 / 30</div>
+                <div style="display: flex;">
+                    <input type="text" name="itemInput" maxlength="25" oninput="itemLength()"
+                           style="border-radius: 13px; height: 25px;">
+                    <i class="fa-solid fa-arrow-down fa-xl"
+                       style="color: #7D1CD8; margin-left: 10px; margin-top: 4px; line-height: normal; cursor: pointer;"></i>
+                </div>
+                <div class="lengthText"><span id="itemLen">0</span> / 25</div>
             
                 <br><br>
                 <a href="#" class="arrowListBtn">
@@ -47,7 +50,7 @@
                     <span style="color: #7D1CD8;">추가한 아이템 목록</span>
                 </a>
 
-                <ul style="margin-left: -40px;">
+                <ul id="itemList" style="margin-left: -40px;">
                     <li class="liItem"><span>워녕이 인형</span></i><img src="/icon/projectRegister/icon_cancel_.svg"
                         style=" width: 16px; margin-bottom: 12px;"></li>
                     <li class="liItem"><span>인형 무대 상의</span><img src="/icon/projectRegister/icon_cancel_.svg"
@@ -62,15 +65,14 @@
             <div>
                 <div class="subTitle" style="font-size: 17px;">선물 구성 설명</div>
                 <!-- <p class="subText">말풍선으로 선물 구성 팁 뜨게하기 : 간단하게 작성할수록 쉽게 알아볼수 있엉</p> -->
-                <input type="text" style="border-radius: 13px; height: 25px; width: 400px;">
-                <div class="lengthText" style="width: 410px;">글자수 / 50</div>
+                <input type="text" name="goodsInput" maxlength="40" oninput="goodsLength()"
+                       style="border-radius: 13px; height: 25px; width: 400px;">
+                <div class="lengthText" style="width: 410px;"><span id="goodsLen">0</span> / 40</div>
                 
 
-                <p class="subText" style="margin-top: 20px;">등록한 아이템으로 선물을 구성해보세요.
-                    <br>※ 아이템은 최대 100개까지 입력 가능합니다.
-                </p>
+                <p class="subText" style="margin-top: 20px;">등록한 아이템으로 선물을 구성해보세요.</p>
                 <div class="itemBox">
-                    <ul style="margin-left: -40px;">
+                    <ul  style="margin-left: -40px;">
                         
                         <li class="liItem liItem1"><span >워녕이 인형</span>
                             <div class="itemCountWrapper">
@@ -98,10 +100,61 @@
                         </li>   
                     </ul> 
                 </div>
+                <p class="subText" style="margin-top: 20px;">※ 아이템은 최대 999개까지 입력 가능합니다.</p>
+
+
             </div>
 
         </div>
-        </form>
+
+        <script>
+
+            // 글자수 세기 + 제한
+            const $itemInput = document.querySelector("input[name=itemInput]");
+            const $goodsInput = document.querySelector("input[name=goodsInput]");
+
+            const itemLength = () => {
+
+                const count = $itemInput.value.length;
+                document.getElementById('itemLen').innerText = count;
+            }
+
+            const goodsLength = () => {
+
+                const count = $goodsInput.value.length;
+                document.getElementById('goodsLen').innerText = count;
+            }
+
+
+
+            // 아이템 추가
+            // const $itemInput = document.querySelector("input[name=itemInput]");
+
+            const $arrowdown = document.querySelector(".fa-arrow-down");
+            console.log($arrowdown);
+
+            const $itemList = document.getElementById("itemList");
+
+            $arrowdown.addEventListener('click', () => {
+
+                const $li = document.createElement('li');
+                $li.className = 'liItem';
+                $li.textContent = $itemInput.value;
+                console.log($li);
+                $deleteBtn = document.createElement('img');
+                $deleteBtn.src = "/icon/projectRegister/icon_cancel_.svg";
+                $deleteBtn.style.width='16px';
+                $deleteBtn.style.marginBottom = '12px';
+
+                $li.appendChild(document.createElement('span'));
+                $li.appendChild($deleteBtn);
+
+                $itemList.appendChild($li);
+
+            });
+
+        </script>
+
 
 
         <!-- 선물 수량 및 설명 금액 -->
@@ -165,6 +218,9 @@
 
             </div>
         </div>
+
+        </form>
+
 
 
         <br><br><br><br>
