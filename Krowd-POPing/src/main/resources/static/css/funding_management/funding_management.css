@@ -602,7 +602,7 @@ a {
     background: white;
     padding: 30px;
     width: 600px;
-    height: 470px;
+    height: 550px;
     overflow-y: auto;
 }
 .popup-close{
@@ -630,6 +630,30 @@ a {
     height: 15px;
     font-size: 15px;
 }
+.d_i_postcode{
+    color: #767676;
+    font-size:15px;
+    margin-left: 10px;
+}
+.input_d_i_postcode_section{
+    position: relative;
+    top: -19px;
+    left: 90px;
+}
+.input_d_i_postcode_section input{
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+#searchZipCode {
+    margin-left: 10px;
+    width: 44px;
+    height: 23px;
+    font-family: Noto Sans KR;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -1px;
+}
 .d_i_address{
     color: #767676;
     font-size:15px;
@@ -641,6 +665,21 @@ a {
     left: 90px;
 }
 .input_d_i_address_section input{
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+.d_i_d_address{
+    color: #767676;
+    font-size:15px;
+    margin-left: 10px;
+}
+.input_d_i_d_address_section{
+    position: relative;
+    top: -19px;
+    left: 90px;
+}
+.input_d_i_d_address_section input{
     width: 350px;
     height: 15px;
     font-size: 15px;

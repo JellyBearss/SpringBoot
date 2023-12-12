@@ -346,10 +346,10 @@
     position: relative;
 }
 #subpage1 {
-    height: 350px;
+    height: 430px;
 }
 #subpage2 {
-    height: 410px;
+    height: 490px;
 }
 .address_title {
     color: #0D0D0D;
@@ -459,7 +459,7 @@
     display: flex;
     align-items: center;
 }
-.default_address_info{
+.default_postcode_info{
     width: 200px;
     height: 100px;
     position: absolute;
@@ -468,7 +468,7 @@
     display: flex;
     align-items: center;
 }
-.default_phone_info{
+.default_address_info{
     width: 200px;
     height: 100px;
     position: absolute;
@@ -477,11 +477,29 @@
     display: flex;
     align-items: center;
 }
-.d_i_name, .d_i_address, .d_i_phone{
+.default_detailed_address_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 300px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.default_phone_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 340px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.d_i_name, .d_i_postcode, .d_i_address, .d_i_d_address, .d_i_phone{
     color: #767676;
     font-family:Noto Sans KR;
     position: absolute;
-	text-align:left;
+    text-align:left;
     font-size:15px;
 }
 .input_d_i_name_section{
@@ -490,9 +508,19 @@
     top: 50px;
 }
 .input_d_i_name_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+.input_d_i_postcode_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_d_i_postcode_section input {
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .input_d_i_address_section{
     position: absolute;
@@ -500,9 +528,19 @@
     top: 50px;
 }
 .input_d_i_address_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+.input_d_i_d_address_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_d_i_d_address_section input {
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .input_d_i_phone_section{
     position: absolute;
@@ -510,15 +548,15 @@
     top: 50px;
 }
 .input_d_i_phone_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .d_i_delivery_comment{
     width: 500px;
     height: 100px;
     position: absolute;
-    top: 380px;
+    top: 460px;
     left: 70px;
     display: flex;
     flex-direction: column;
@@ -527,15 +565,15 @@
     color: #767676;
     font-family:Noto Sans KR;
     position: absolute;
-	text-align:left;
+    text-align:left;
     font-size:15px;
     margin-bottom: 10px;
 }
 .d_i_delivery_comment select {
     margin-top: 30px;
-    width: 350px; 
-    height: 20px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 20px;
+    font-size: 15px;
 }
 .next_step{
     width: 260px;
@@ -620,7 +658,7 @@ body {
     display: flex;
     align-items: center;
 }
-.add_address_info{
+.add_postcode_info{
     width: 200px;
     height: 100px;
     position: absolute;
@@ -629,7 +667,7 @@ body {
     display: flex;
     align-items: center;
 }
-.add_phone_info{
+.add_address_info{
     width: 200px;
     height: 100px;
     position: absolute;
@@ -638,11 +676,29 @@ body {
     display: flex;
     align-items: center;
 }
-.a_i_name, .a_i_address, .a_i_phone, .a_i_address_name{
+.add_defailed_address_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 290px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.add_phone_info{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top: 330px;
+    left: 70px;
+    display: flex;
+    align-items: center;
+}
+.a_i_name, .a_i_postcode, .a_i_address, .a_i_d_address, .a_i_phone, .a_i_address_name{
     color: #767676;
     font-family:Noto Sans KR;
     position: absolute;
-	text-align:left;
+    text-align:left;
     font-size:15px;
 }
 .input_a_i_name_section{
@@ -651,9 +707,29 @@ body {
     top: 50px;
 }
 .input_a_i_name_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+.input_a_i_postcode_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+    display: flex;
+}
+.input_a_i_postcode_section input {
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+#searchZipCode {
+    margin-left: 10px;
+    width: 44px;
+    height: 23px;
+    font-family: Noto Sans KR;
+    font-size: 12px;
+    text-align: center;
+    margin-top: -1px;
 }
 .input_a_i_address_section{
     position: absolute;
@@ -661,9 +737,19 @@ body {
     top: 50px;
 }
 .input_a_i_address_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
+}
+.input_a_i_d_address_section{
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}
+.input_a_i_d_address_section input {
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .input_a_i_phone_section{
     position: absolute;
@@ -671,15 +757,15 @@ body {
     top: 50px;
 }
 .input_a_i_phone_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .a_i_delivery_comment{
     width: 500px;
     height: 100px;
     position: absolute;
-    top: 370px;
+    top: 450px;
     left: 70px;
     display: flex;
     flex-direction: column;
@@ -688,15 +774,15 @@ body {
     color: #767676;
     font-family:Noto Sans KR;
     position: absolute;
-	text-align:left;
+    text-align:left;
     font-size:15px;
     margin-bottom: 10px;
 }
 .a_i_delivery_comment select {
     margin-top: 35px;
-    width: 350px; 
-    height: 20px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 20px;
+    font-size: 15px;
 }
 .add_address_name_info{
     width: 200px;
@@ -713,19 +799,19 @@ body {
     top: 50px;
 }
 .input_a_i_address_name_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .add_to_default_address{
     color: #767676;
     font-family:Noto Sans KR;
     position: relative;
-	text-align:left;
+    text-align:left;
     font-size:15px;
     position: absolute;
     left: 65px;
-    top: 465px;
+    top: 545px;
 }
 .add_to_default_address label{
     position: relative;
