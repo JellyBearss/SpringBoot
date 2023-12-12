@@ -4,10 +4,12 @@ import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.*;
 
 import java.sql.Date;
+
+
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class InquiryDTO {
 
@@ -17,8 +19,8 @@ public class InquiryDTO {
     private String inquiryContent;
     private Date inquiryDate;
     private String inquiryStatus;
-    private int questioner;
-    private int replier;
+    private UserDTO questioner;
+    private UserDTO replier;
 
 
 }
