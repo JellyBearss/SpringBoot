@@ -34,7 +34,7 @@
         FROM USER_INFO A
                  INNER JOIN ROLE_TYPE C ON A.USER_CODE = C.USER_CODE
                  INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE
-        WHERE B.ROLE_NAME = 'ROLE_ADMIN'
+--         WHERE B.ROLE_NAME = 'ROLE_ADMIN'
           AND A.ID = #{ userId };
 
     </select>

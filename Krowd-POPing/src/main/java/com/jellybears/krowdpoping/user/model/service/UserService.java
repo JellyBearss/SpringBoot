@@ -1,6 +1,8 @@
 package com.jellybears.krowdpoping.user.model.service;
 
 
+import com.jellybears.krowdpoping.user.model.dto.UserDTO;
+
 public interface UserService {
 
 
