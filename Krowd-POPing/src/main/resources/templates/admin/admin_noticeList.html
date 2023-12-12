@@ -48,13 +48,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>일반 공지</td>
-                  <td><a href="/admin/noticeDetail">첫 번째 공지사항입니다.</a></td>
-                  <td>관리자</td>
+                <tr th:each="notice : ${ noticeList }">
+                  <th th:text="${ notice.code }"></th>
+                  <td th:text="${ notice.type }"></td>
+                  <td th:text="${ notice.title }"><a href="/admin/noticeDetail"></a></td>
+                  <td th:text="${ notice.userCode.nickname}"></td>
                   <td>3121</td>
-                  <td>2023/11/11</td>
+                  <td th:text="${ notice.updateDate}"></td>
                 </tr>
               </tbody>
             </table>
