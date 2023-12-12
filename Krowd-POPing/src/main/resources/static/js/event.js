@@ -6,4 +6,11 @@ window.onload = function() {
             location.href = "/loginandsignup/login";
         }
     }
+
+    if(document.getElementById("logout")) {
+        const $logout = document.getElementById("logout");
+        $logout.onclick = function() {
+            location.href = "/member/logout";
+        }
+    }
 }

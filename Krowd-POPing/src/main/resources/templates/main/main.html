@@ -29,10 +29,11 @@
         </div>
         <div class="menu">
             <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-            <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
-            <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
-            <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
-            <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
+            <a href="like.html" id="menu-1" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
+            <a href="alarm.html" id="menu-2" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
+            <a th:onclick="'location.href=\'/mypage/''" id="menu-3" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
+            <a th:onclick="'location.href=\'/loginandsignup/login\''" id="menu-4" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
+            <input type="button" class="btn btn-or" value="로그아웃" id="logout">
         </div>
         <div id="search-area">
             <form id="search-form">
