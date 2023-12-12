@@ -6,10 +6,7 @@ import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -44,13 +41,20 @@ public class UserController {
 /*회원가입 정보 입력 받기*/
     @PostMapping("entermemberinfo")
     public String EnterMemberInfo(@ModelAttribute UserDTO user,
+                                   @RequestParam String emailAddress,
+                                   @RequestParam String at,
+                                   @RequestParam String emailProvider,
                                    RedirectAttributes rttr)throws UserRegistException {
 
         log.info("");
         log.info("");
         log.info("[UserController] registUser start========================================");
 
+        String email = emailAddress+at+emailProvider;
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEmail(user.getEmail().replace("직접입력", ""));
+        user.setPhone_number(user.getPhone_number().replace("-", ""));
+        user.setEmail(email);
 
         log.info("[UserController] registUser request User : " + user);
         UserService.registUser(user);
