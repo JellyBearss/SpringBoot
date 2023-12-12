@@ -51,10 +51,10 @@ public class SecurityConfig {
 
                 //로그아웃 설정
                 .logout(logout ->{
-                    logout.logoutRequestMatcher(new AntPathRequestMatcher("/loginandsignup/logout")); // 로그아웃 요청 url
+                    logout.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")); // 로그아웃 요청 url
                     logout.deleteCookies("JSESSIONID"); // 로그아웃 시 사용자의 JSESSIONID 삭제
                     logout.invalidateHttpSession(true); // 서버 세션 소멸처리
-                    logout.logoutSuccessUrl("/"); // 로그아웃 성공시 이동할 페이지
+                    logout.logoutSuccessUrl("/krowdpoping/mainpage"); // 로그아웃 성공시 이동할 페이지
                 })
 
 
