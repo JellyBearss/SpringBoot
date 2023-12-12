@@ -1,13 +1,12 @@
 package com.jellybears.krowdpoping.user.model.service;
 
-import com.jellybears.krowdpoping.common.exception.member.UserModifyException;
-import com.jellybears.krowdpoping.common.exception.member.UserRegistException;
+import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.user.model.dao.UserMapper;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 //회원 정보 수정 추가 예정
 //회원 삭제 추가 예정
 @Service

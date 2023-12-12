@@ -1,10 +1,6 @@
 package com.jellybears.krowdpoping.user.model.service;
 
 
-import com.jellybears.krowdpoping.common.exception.member.UserRegistException;
-import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
-import com.jellybears.krowdpoping.user.model.dto.UserDTO;
-
 public interface UserService {
 
 

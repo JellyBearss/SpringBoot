@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.user.model.dao.UserMapper">
+    <resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+        <id property="user_code" column="user_code"/>
+        <result property="userId" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="email" column="email"/>
+        <result property="phone_number" column="phone_number"/>
+        <result property="user_status" column="user_status"/>
+    </resultMap>
+    <resultMap id="RoleResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleDTO">
+        <id property="role_code" column="role_code"/>
+        <result property="role_name" column="role_name"/>
+    </resultMap>
+
+    <resultMap id="RoleTypeResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO">
+        <association property="userDTO" resultMap="UserResultMap"/>
+        <association property="roleDTO" resultMap="RoleResultMap"/>
+
+    </resultMap>
+
+    <select id="selectUserById" resultMap="RoleTypeResultMap">
+        SELECT
+            A.ID,
+            A.USER_CODE,
+            C.ROLE_CODE,
+            B.ROLE_NAME
+        FROM USER_INFO A
+                 INNER JOIN ROLE_TYPE C ON A.USER_CODE = C.USER_CODE
+                 INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE
+        WHERE B.ROLE_NAME = 'ROLE_ADMIN'
+          AND A.ID = #{ userId };
+
+    </select>
+
+
+
+    <select id="findByUserId" resultMap="RoleTypeResultMap">
+        SELECT
+            A.USER_CODE,
+            A.ID,
+            A.PASSWORD,
+            A.NAME,
+            A.NICKNAME,
+            A.BIRTHDAY,
+            A.EMAIL,
+            A.PHONE_NUMBER,
+            A.USER_STATUS,
+            B.ROLE_CODE,
+            B.ROLE_NAME
+
+
+        FROM USER_INFO A
+                 INNER JOIN ROLE_TYPE C ON A.USER_CODE = C.USER_CODE
+                 INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE
+        WHERE A.USER_STATUS ='일반'
+          AND A.ID = #{ userId };
+    </select>
+
+
+    <insert id="insertUser" parameterType="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+        INSERT
+        INTO TBL_MEMBER       (
+                                ID
+                              , PASSWORD
+                              , NAME
+                              , NICKNAME
+                              , BIRTHDAY
+                              , EMAIL
+                              , PHONE_NUMBER
+        )
+        VALUES  (
+                    #{ userId }
+                , #{ userPwd }
+                , #{ name }
+                , #{ nickname }
+                , #{ birthday }
+                , #{ email }
+                , #{ phone }
+
+                )
+    </insert>
+
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
