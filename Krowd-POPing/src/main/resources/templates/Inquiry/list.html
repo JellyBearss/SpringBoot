@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+
+
+    <table>
+        <tr>
+            <th>제목</th>
+            <th>내용</th>
+            <th>유형</th>
+            <th>날짜</th>
+            <th>상태</th>
+            <th>질문자</th>
+            <th>관리자</th>
+        </tr>
+        <tr th:each="inquiry : ${inquiryList}">
+            <td th:text="${ inquiry.inquiryTitle }"></td>
+            <td th:text="${ inquiry.inquiryContent }"></td>
+            <td th:text="${ inquiry.inquiryType }"></td>
+            <td th:text="${ inquiry.inquiryDate }"></td>
+            <td th:text="${ inquiry.inquiryStatus }"></td>
+            <td th:text="${ inquiry.questioner }"></td>
+            <td th:text="${ inquiry.replier }"></td>
+
+        </tr>
+    </table>
+
+
+
+</body>
+</html>
