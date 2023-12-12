@@ -240,8 +240,8 @@ position: relative;
     padding-left: 10px;
     background-color: #F8F8F8;
 }
-#type_birthday_input{
-    margin-left: 38px;
+#birth{
+    margin-left: 28px;
     height: 30px;
     /* padding: 5px; */
     width: 200px;
@@ -268,7 +268,7 @@ position: relative;
     padding-left: 5px;
 
 }
-label[for="birthday"]{
+label[for="birth"]{
     /* margin-right: 30px; */
     font-size: 16px;
 }

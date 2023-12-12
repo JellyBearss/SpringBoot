@@ -92,15 +92,57 @@
                             </form>
                         </div>
 
-                        <div class="default_address_info">
+                        <div class="default_postcode_info">
                             <form action="#" method="get">
-                                <span class="d_i_address">주소</span>
-                                <div class="input_d_i_address_section">
-                                    <input type="text" name ="input_d_i_address">
+                                <span class="d_i_postcode">우편번호</span>
+                                <div class="input_d_i_postcode_section">
+                                    <input type="text" name="zipCode" id="zipCode" readonly>
+                                    <input type="button" value="검색" class="btn btn-yg" id="searchZipCode">
                                 </div>
                             </form>
                         </div>
 
+                        <div class="default_address_info">
+                            <form action="#" method="get">
+                                <span class="d_i_address">주소</span>
+                                <div class="input_d_i_address_section">
+                                    <input type="text" name ="input_d_i_address" id="input_d_i_address">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="default_detailed_address_info">
+                            <form action="#" method="get">
+                                <span class="d_i_d_address">상세 주소</span>
+                                <div class="input_d_i_d_address_section">
+                                    <input type="text" name ="input_d_i_d_address" id="input_d_i_d_address">
+                                </div>
+                            </form>
+                        </div>
+                        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                        <script th:inline="javascript">
+
+                            const $searchZipCode = document.getElementById("searchZipCode");
+                            const $goMain = document.getElementById("goMain");
+
+                            $searchZipCode.onclick = function() {
+
+                                /* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 매개변수로 전달한다. */
+                                new daum.Postcode({
+                                    oncomplete: function(data){
+                                        /* 팝업에서 검색결과 항목을 클릭했을 시 실행할 코드를 작성하는 부분 */
+                                        document.getElementById("zipCode").value = data.zonecode;
+                                        document.getElementById("input_d_i_address").value = data.address;
+                                        document.getElementById("input_d_i_d_address").focus();
+                                    }
+                                }).open();
+                            }
+
+                            $goMain.onclick = function() {
+                                location.href = "/";
+                            }
+
+                        </script>
                         <div class="default_phone_info">
                             <form action="#" method="get">
                                 <span class="d_i_phone">연락처</span>

@@ -339,12 +339,12 @@ div{
 }
 
 
-.proCategory{
-    /* margin-top: 115px;  */
-    /* margin-bottom: 100px;  */
-    background-color:rgb(255, 255, 255);
-    overflow: auto; 
-}
+/*.proCategory{*/
+/*     margin-top: 115px;  */
+/*     margin-bottom: 100px;  */
+/*    background-color:rgb(255, 255, 255);*/
+/*    overflow: auto; */
+/*}*/
 
 .proCategoryInner{
     background-color: rgb(255, 255, 255);

@@ -1,6 +1,7 @@
 package com.jellybears.krowdpoping.user.model.service;
 
 import com.jellybears.krowdpoping.user.model.dao.UserMapper;
+import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,13 +20,13 @@ public class AuthenticationService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         log.info("");
         log.info("");
         log.info("[AuthenticationService]=============================start");
-        log.info("[AuthenticationService] userId :" + id);
+        log.info("[AuthenticationService] userId :" + userId);
 
-        UserDTO user = mapper.findByUserId(id);
+        RoleTypeDTO user = mapper.findByUserId(userId);
         log.info("[AuthenticationService] user :" + user);
 
         if (user == null) {

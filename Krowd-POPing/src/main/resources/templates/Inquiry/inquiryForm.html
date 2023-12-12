@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <link rel="stylesheet" href="/css/Inquiry/inquiryForm.css">
@@ -23,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <meta charset="UTF-8">
-    <title>report</title>
+    <title>inquiryForm</title>
 
 </head>
 
@@ -40,46 +41,56 @@
         <textarea id="Y-SummernoteCate" name="editor"></textarea>
         </form> -->
 
-        <form method="post" class="s-cate">
-            <select id="category" name="category">
-                <option value="" disabled selected>카테고리를 선택하세요</option>
-                <option value="option2">욕설 및 성희롱 등 비매너 유저</option>
-                <option value="option3">부적절한 닉네임</option>
-                <option value="option1">기타</option>
-            </select>
-        </form>
-        <form method="post">
+        <!-- 폼태그 시작 -->
+    <form id="inquiryRegist" method="post" action="/inquiry/save"> <!--action에는 입력한 데이터를 보낼 주소 작성. 액션속성은 목적지를 의미-->
+<!--        writer: <input type="text" name="boardWriter" th:value="${user.id}"><br>-->
+<!--        receiver: <input type="text" name="boardeReciver" th:value="${user.id}"><br>-->
+        writer: <input type="text" name="questioner"><br> <!-- 인풋에 입력한 값이 네임에 담겨서 넘어간다. 반드시 네임 정해줘야함 -->
+        receiver: <input type="text" name="replier"><br>
+        type: <input type="text" name="inquiryType"><br>
+        date: <input type="date" name="inquiryDate"><br>
+        status: <input type="text" name="inquiryStatus"><br>
 
-            <textarea id="Y-SummernoteTitle" name="editor"></textarea>
+<!--            <select id="category" name="category">-->
+<!--                <option value="" disabled selected>카테고리를 선택하세요</option>-->
+<!--                <option value="option2">카테고리 옵션1</option>-->
+<!--                <option value="option3">카테고리 옵션2</option>-->
+<!--                <option value="option1">기타</option>-->
+<!--            </select>-->
+
+            <textarea id="Y-SummernoteTitle" name="inquiryTitle"></textarea>
+
+
+                <textarea id="Y-SummernoteContent" name="inquiryContent"></textarea>
+
+
+<!--        <i class="fa-solid fa-camera" for="reportFile"></i>-->
+<!--        <input id="check-file-input" type="file" multiple class="reportFile" name="reportFile" accept="image/"-->
+<!--               onchange="loadFile(this)">-->
+<!--        <button type="submit" class="submit-button">전송테스트</button>-->
+        <input type="submit" value="작성테스트">
+
         </form>
 
-        <form method="post">
-                <textarea id="Y-SummernoteContent" name="editor">
-            </textarea>
+        <!-- 폼태그 완료 -->
+        <!-- 폼태그에 작성한 값을 컨트롤러로 보내줘야함 -->
 
-        </form>
 
-        <form action="" method="post">
-            <i class="fa-solid fa-camera" for="reportFile"></i>
-            <input id="check-file-input" type="file" multiple class="reportFile" name="reportFile" accept="image/"
-                   onchange="loadFile(this)">
-            <button type="submit" class="submit-button">전송</button>
-        </form>
-        <div class="form-complete">
-            <button onclick="submitAllForms()">작성완료</button>
-        </div>
+        <!--        <div class="form-complete">-->
+<!--            <button onclick="submitAllForms()">작성완료</button>-->
+<!--        </div>-->
     </div>
 </div>
 
 
 <script>
 
-    function submitAllForms() {
-        var forms = document.querySelectorAll('form');
-        forms.forEach(function (form) {
-            form.submit();
-        });
-    }
+    // function submitAllForms() {
+    //     var forms = document.querySelectorAll('form');
+    //     forms.forEach(function (form) {
+    //         form.submit();
+    //     });
+    // }
 
     jQuery(document).ready(function () {
 

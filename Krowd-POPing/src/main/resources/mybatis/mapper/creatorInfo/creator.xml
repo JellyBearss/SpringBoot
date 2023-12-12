@@ -2,32 +2,101 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jellybears.krowdpoping.creatorinfomation.model.dao.CreatorMapper">
+<mapper namespace="com.jellybears.krowdpoping.projectRegister.section02.model.dao.CreatorMapper">
 
-    <select id="selectCreator" resultType="string">
-        select CR_TYPE
+    <select id="selectCreator" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
+        select *
         from creator
-        where BUSINESS_NUM= '12345678'
+        where user_code = #{user_code}
     </select>
 
-<!--    <insert id="insertCreator" parameterType="com.jellybears.krowdpoping.creatorinfomation.model.dto.CreatorDTO">-->
-<!--        insert into creator (-->
-<!--            CR_TYPE,-->
-<!--            CR_BUSINESS_NUM,-->
-<!--            PHONE,-->
-<!--            EMAIL,-->
-<!--            ADDRESS,-->
-<!--            INTRODUCE-->
-<!--        )-->
-<!--        values (-->
-<!--                #{crType},-->
-<!--                #{crBusinessNum},-->
-<!--                #{phone},-->
-<!--                #{email},-->
-<!--                #{address},-->
-<!--                #{introduce}-->
-<!--               )-->
-<!--    </insert>-->
+    <insert id="insertCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
+        insert into creator (
+                             cr_type
+                             , user_code
+                             , business_num
+                             , address
+                             , phone
+                             , email
+                             , introduce
+                             , identi_num
+                             , issue_type
+                             , acc_user_nm
+                             , ceo_nm
+         ) values (
+                    #{cr_type}
+                  , #{user_code}
+                  , #{business_num}
+                  , #{address}
+                  , #{phone}
+                  , #{email}
+                  , #{introduce}
+                  , #{identi_num}
+                  , #{issue_type}
+                  , #{acc_user_nm}
+                  , #{ceo_nm}
+          )
+    </insert>
 
+    <update id="updateCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
+        update creator set user_code = #{user_code}
+                            <if test = 'cr_type ge 0'>
+                                , cr_type = #{cr_type}
+                            </if>
+                            <if test = 'business_num != null and !"".equals(business_num)'>
+                                , business_num = #{business_num}
+                            </if>
+                            <if test = 'address != null and !"".equals(address)'>
+                                , address = #{address}
+                            </if>
+                            <if test = 'phone != null and !"".equals(phone)'>
+                                , phone = #{phone}
+                            </if>
+                            <if test = 'email != null and !"".equals(email)'>
+                                , email = #{email}
+                            </if>
+                            <if test = 'introduce != null and !"".equals(introduce)'>
+                                , introduce = #{introduce}
+                            </if>
+                            <if test = 'identi_num != null and !"".equals(identi_num)'>
+                                , identi_num = #{identi_num}
+                            </if>
+                            <if test = 'ceo_nm != null and !"".equals(ceo_nm)'>
+                                , ceo_nm = #{ceo_nm}
+                            </if>
+                            <if test = 'acc_user_nm != null and !"".equals(acc_user_nm)'>
+                                , acc_user_nm = #{acc_user_nm}
+                            </if>
+                            <if test = 'issue_type ge 0'>
+                                , issue_type = #{issue_type}
+                            </if>
+        where user_code = #{user_code}
+    </update>
+
+    <delete id="deleteCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
+        delete from creator where user_code = #{user_code}
+    </delete>
+
+    <delete id="deleteCreatorProfile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">
+        delete from creator_files where user_code = #{user_code}
+    </delete>
+
+    <insert id="insertCreatorProfile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">
+        insert into creator_files (
+                    origin_name
+                    , update_name
+                    , register_date
+                    , delete_opt
+                    , user_code
+                    , file_type
+        ) values (
+                #{origin_name}
+                 , #{update_name}
+                 , NOW()
+                 , 1
+                 , #{user_code}
+                 , #{file_type}
+                 )
+    </insert>
 </mapper>
 
