@@ -1,5 +1,5 @@
 html{
-    height: 1800px;
+    height: 600px;
     margin:0;
     /* position: relative; */
 }
@@ -14,7 +14,7 @@ div{
     box-sizing: border-box;/* div box-sizing 변경 */
 }
 body{
-    height: 1800px;
+    height: 600px;
 }
 
 
@@ -106,272 +106,54 @@ position: relative;
 }
 .jb1-text{margin-left: -25px;}
 
-.jb2-text{  
+.jb3-text{  
     color: #EDE9FE;}
 
 /* ------------------------------------------ */
 
-#term_of_service_container{
-    width: 1000px;
-    height: 1200px;
+#signup_success_container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 800px;
+    height: 500px;
     border: 1px solid #D9D9D9;
     margin: auto;
     margin-top: 80px;
     position: relative;
+    background-image: url(/icon/signupsuccess.svg);
+    background-size: 850px 1000px;
+    background-position: center top;
+    background-position-y:50%;
+    padding-top: 100px;
+    
+
     
 }
-.mandatory{
-    color: red;
-}
-#edittitle-1{
-    margin-top:60px;
-}
 
-#edittitle-2{
-    margin-top: 60px;
-    margin-bottom: -10px;
-}
-
-#edittitle-1,#edittitle-2{
-    font-size: 23px;    
-    font-weight: 600;
-    margin-left:80px;
-}
-/* ------------------------로그인정보--------------------- */
-.type_login_info>*{
-    margin-top: 60px;
-}
-
-.type_login_info{
-    font-size:13px;
-    color:#616060;
-    transform:translateX(28%);
-    
-}
-#type_id {
-    color: #6d6d6d;
-    /* transform:translateX(35%); */
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-    
-}
-#type_id_label{
-    margin-right: 18px;
-    font-size: 16px;
-}
-#type_id_input {
-    margin-right: 20px;
-    margin-left:38px;
-    height: 30px;
-    width: 200px;
-    font-size:13px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    padding-left: 10px;
-    background-color: #F8F8F8;
-    /* width: 100%; */
-}
-
-.password-container {
-    display: flex;
-    align-items: center;
-    width: 200px;
+#gotosupport{
+    margin-top: 30px;
     margin-bottom: 20px;
-}
-.password-input{
-    font-size: 13px;
-    height: 30px;
     width: 200px;
-    color: #616060;
-    background-color: #F8F8F8;
-    border: 1px solid #ccc;
-    padding: 5px;
-    padding-left: 10px;
-    margin-left: -100px;
-    /* width: 100%; */
-}
-.password-info {
-    display: flex;
-    align-items: center;
-}
-#password-description{
+    height: 40px;
     font-size: 16px;
-    width: 200px;
-    margin-right: 8px;
-
-}
-.toggle-password {
-    cursor: pointer;
-    margin-left: 10px;
-}
-.toggle-password img {
-    margin-top: 5px;
-    width: 40px; 
-    height: 40px; 
-}
-
-/* ================회원정보================ */
-
-#type_profile_info>*{
-    padding-top: 50px;
-}
-#type_name_label,
-#type_nickname_label,
-#type_phone_label{
-    font-size: 16px;
-}
-#type_name { 
-    color: #6d6d6d;
-    transform:translateX(28%);
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-}
-#type_name_input {
-    margin-left:61px;
-    height: 30px;
-    width: 200px;
-    font-size:13px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    padding-left: 10px;
-    background-color: #F8F8F8;
-}
-#birth{
-    margin-left: 28px;
-    height: 30px;
-    /* padding: 5px; */
-    width: 200px;
-    font-size:13px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    padding-left: 10px;
-    background-color: #F8F8F8;
-}
-#type_birth{
-    color: #6d6d6d;
-    transform:translateX(28%);
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;   
-
-    /* background-color: #EADBF9; */
-}
-#birthday{
-
-    height: 30px;
-    font-size: 16px;
-    padding-left: 5px;
-
-}
-label[for="birth"]{
-    /* margin-right: 30px; */
-    font-size: 16px;
-}
-
-#type_nickname{
-    color: #6d6d6d;
-    transform:translateX(28%);
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-}
-
-#type_nickname_input {
-    margin-left:48px;
-    height: 30px;
-    width: 200px;
-    font-size:13px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    padding-left: 10px;
-    background-color: #F8F8F8;
-}
-#type_email{
-    color: #6d6d6d;
-    transform:translateX(28%);
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-}
-
-#customEmail {
-    display: none;
-}
-
-label[for="email"]{
-    margin-right: 10px;
-    font-size: 16px;
-}
-label[for="emailProvider"]{
-    margin-right: 10px;
-    margin-left: 10px;
-}
-#email {
-border: 1px solid #ccc;
-padding: 5px;
-font-size: 13px;
-margin-left: 38px;
-padding-left: 10px;
-height: 30px;
-width: 200px;
-}
-#emailProvider{
-border: 1px solid #ccc;
-padding: 8px;
-font-size: 14px;
-height: 40px;
-width: 150px;
-}
-
-
-
-#type_phone{
-    color: #6d6d6d;
-    transform:translateX(28%);
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-}
-
-#type_phone_input {
-    margin-left:38px;
-    height: 30px;
-    width: 200px;
-    font-size:13px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    padding-left: 10px;
-    background-color: #F8F8F8;
-}
-
-#signup_button{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 500px;
-    height: 50px;
-    padding: 10px;
-    font-size: 20px;
-    margin-top: 80px;
-    /* margin-left: 350px;
-     */
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 600;
-    transform:translateX(50%);
-    background-color: #D9D9D9;
-    color: white;
     border: none;
-    cursor: pointer;
+    background-color: #7D1CD8;
+    color: #EADBF9;
+    border-radius: 6px;
+}
+
+#gotocreate{
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background-color: #EADBF9;
+    border-radius: 6px;
 
 }
+
 
 
 
