@@ -3,17 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.user.model.dao.UserMapper">
-<resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
-    <id property="user_code" column="user_code"/>
-    <result property="userId" column="id"/>
-    <result property="password" column="password"/>
-    <result property="name" column="name"/>
-    <result property="nickname" column="nickname"/>
-    <result property="birthday" column="birthday"/>
-    <result property="email" column="email"/>
-    <result property="phone_number" column="phone_number"/>
-    <result property="user_status" column="user_status"/>
-</resultMap>
+    <resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+        <id property="user_code" column="user_code"/>
+        <result property="userId" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="email" column="email"/>
+        <result property="phone_number" column="phone_number"/>
+        <result property="user_status" column="user_status"/>
+    </resultMap>
     <resultMap id="RoleResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleDTO">
         <id property="role_code" column="role_code"/>
         <result property="role_name" column="role_name"/>
@@ -76,7 +76,7 @@
                               , PHONE_NUMBER
         )
         VALUES  (
-                  #{ userId }
+                    #{ userId }
                 , #{ userPwd }
                 , #{ name }
                 , #{ nickname }

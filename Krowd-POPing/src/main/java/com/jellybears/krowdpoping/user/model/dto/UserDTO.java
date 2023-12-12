@@ -25,6 +25,7 @@ public class UserDTO  {
     private String email;
     private String phone_number;
     private String user_status;
+    private int email_code;
 
 
 

@@ -1,4 +1,4 @@
-package com.jellybears.krowdpoping.common.exception.member;
+package com.jellybears.krowdpoping.common.exception.user;
 
 public class LoginFailedException extends Exception{
     public LoginFailedException(String message) {

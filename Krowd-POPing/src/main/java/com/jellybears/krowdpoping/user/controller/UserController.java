@@ -1,6 +1,6 @@
 package com.jellybears.krowdpoping.user.controller;
 
-import com.jellybears.krowdpoping.common.exception.member.UserRegistException;
+import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;

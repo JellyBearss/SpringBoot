@@ -1,4 +1,7 @@
 package com.jellybears.krowdpoping.projectRegister.section01.model.dto;
 
-public class priceDTO {
+public class PriceDTO {
+
+
+
 }

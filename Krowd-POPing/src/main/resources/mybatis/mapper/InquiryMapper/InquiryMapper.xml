@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.inquiry.model.dao.InquiryMapper">
+
+    <resultMap id="inquiryResultMap" type="com.jellybears.krowdpoping.inquiry.model.dto.InquiryDTO">
+        <id property="inquiryCode" column="inquiry_code"/>
+        <result property="inquiryType" column="inquiry_type"/>
+        <result property="inquiryTitle" column="inquiry_title"/>
+        <result property="inquiryContent" column="inquiry_content"/>
+        <result property="inquiryDate" column="inquiry_date"/>
+        <result property="inquiryStatus" column="inquiry_status"/>
+        <result property="questioner" column="questioner"/>
+        <result property="replier" column="replier"/>
+    </resultMap>
+
+<!--    <resultMap id="userResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
+<!--        <id property="user_code" column="user_code"/>-->
+<!--        <result property="id" column="id"/>-->
+<!--        <result property="password" column="password"/>-->
+<!--        <result property="name" column="name"/>-->
+<!--        <result property="nickname" column="nickname"/>-->
+<!--        <result property="birthday" column="birthday"/>-->
+<!--        <result property="email" column="email"/>-->
+<!--        <result property="phone_number" column="phone_number"/>-->
+<!--        <result property="user_status" column="user_status"/>-->
+<!--        <result property="email_code" column="email_code"/>-->
+<!--    </resultMap>-->
+
+<!--    <insert id="insertInquiry">-->
+
+<!--        insert-->
+<!--        into inquiry-->
+<!--        (-->
+<!--         inquiry_type,-->
+<!--         inquiry_title,-->
+<!--         inquiry_content,-->
+<!--         inquiry_date,-->
+<!--         inquiry_status-->
+
+<!--        )-->
+<!--        VALUES (-->
+<!--                #{ inquiryType },-->
+<!--                #{ inquiryTitle },-->
+<!--                #{ inquiryContent },-->
+<!--                #{ inquiryDate },-->
+<!--                #{ inquiryStatus }-->
+
+<!--               )-->
+
+<!--    </insert>-->
+
+    <select id="findInquiryList" resultMap="inquiryResultMap">
+    SELECT
+                 inquiry_code,
+                 inquiry_type,
+                 inquiry_title,
+                 inquiry_content,
+                 inquiry_date,
+                 inquiry_status,
+                 questioner,
+                 replier
+    FROM inquiry
+    ORDER BY inquiry_code
+
+    </select>
+
+</mapper>
