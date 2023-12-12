@@ -1,12 +1,26 @@
 package com.jellybears.krowdpoping.projectRegister.section01.controller;
 
+import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
+import com.jellybears.krowdpoping.projectRegister.section01.model.service.ProjectRegisterService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/projectReg/*")
 public class ProjectRegisterController {
+
+    private final ProjectRegisterService registerService;
+
+    public ProjectRegisterController(ProjectRegisterService registerService) {
+        this.registerService = registerService;
+    }
+
+
+    @GetMapping("test")
+    public String testIndex(){
+
+        return "/projectRegister/textIndex";
+    }
 
 
 
@@ -15,9 +29,23 @@ public class ProjectRegisterController {
      */
     @GetMapping("project")
     public String projectRegister() {
-
+        System.out.println("확인!!!!!!!!");
         return "/projectRegister/projectReg1";
     }
+
+    // 등록
+    @PostMapping("project")
+    public String registProjectInfo(@ModelAttribute ProjectDTO project, @RequestParam String[] tag){
+
+        System.out.println("project = " + project);
+        registerService.registProjectInfo(project);
+
+
+        return "/projectRegister/testIndex";
+    }
+
+
+
 
     @GetMapping("pricing")
     public String priceRegister() {
@@ -42,19 +70,6 @@ public class ProjectRegisterController {
 
         return "/projectRegister/projectReg6";
     }
-
-//    @GetMapping("start")
-//    public String startRegister() {
-//
-//        return "projectStart/projectStart";
-//    }
-//
-//    @GetMapping("check")
-//    public String startCheckRegister() {
-//
-//        return "projectStart/projectStartCheck";
-//    }
-
 
 
 }

@@ -28,10 +28,11 @@
         <h2>프로젝트 기본 정보</h2>
         <br><br>
 
-        <form action="" method="" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data">
+
           <!-- 프로젝트 정보 입력 -->
         <div class="inputTitle" style="font-size: 18px;">프로젝트 제목</div>
-        <input type="text" name="titleInput" style="width: 450px;" maxlength="30" oninput="titleLength()">
+        <input type="text" name="title" style="width: 450px;" maxlength="30" oninput="titleLength()">
         <div class="lengthText" style="width: 460px;"><span id="titleLen">0</span> / 30</div>
 
         <!-- 카테고리 드롭박스 2개 -->
@@ -40,24 +41,24 @@
         <div class="categoryWrapper">
           <div style="">
             <div class="inputTitle">카테고리</div>
-            <select name="category" class="dropList">
-              <option value="accesary" selected>악세사리</option>
-              <option value="digitAccesary">디지털 악세사리</option>
-              <option value="toy">인형</option>
-              <option value="stationary">문구</option>
-              <option value="chandlery">잡화</option>
-              <option value="clothes">의류</option>
-              <option value="etc">기타</option>
+            <select name="categoryCode" class="dropList">
+              <option value="1" selected>악세사리</option>
+              <option value="2">디지털 악세사리</option>
+              <option value="3">인형</option>
+              <option value="4">문구</option>
+              <option value="5">잡화</option>
+              <option value="6">의류</option>
+              <option value="7">기타</option>
             </select>
           </div>
           
           <div>
             <div class="inputTitle">세부 카테고리</div>
-            <select name="detail-category" class="dropList">
-                <option value="all" selected>노트</option>
-                <option value="accesary">스티커</option>
-                <option value="digitAccesary">연필&볼펜</option>
-            </select>
+<!--            <select name="detailCategory" class="dropList">-->
+<!--                <option value="all" selected>노트</option>-->
+<!--                <option value="accesary">스티커</option>-->
+<!--                <option value="digitAccesary">연필&볼펜</option>-->
+<!--            </select>-->
           </div>
       
         </div>
@@ -67,7 +68,7 @@
         <br><br><br>
         <div class="inputTitle">프로젝트 한 줄 소개</div>
         <div class="subText">100자 이내로 간단하게 소개해주세요.</div>
-        <textarea class="textareaCss" placeholder="프로젝트를 간단히 소개해주세요." maxlength="100" oninput="contentLength()"></textarea>
+        <textarea class="textareaCss" name="content" placeholder="프로젝트를 간단히 소개해주세요." maxlength="100" oninput="contentLength()"></textarea>
         <div class="lengthText" style="width: 500px;"><span id="contentLen">0</span> / 100</div>
 
 
@@ -77,7 +78,7 @@
         <div class="inputTitle">대표 이미지</div>
         <div class="subText">어떤 프로젝트인지 한 눈에 알아 볼 수 있도록 이미지를 등록해주세요.</div>
         <div class="subText">(최대 5장까지)</div> <br>
-        <input class="inputFile" type="file" multiple>
+        <input class="inputFile" type="file" name="thumbnail">
 
         <!-- 관심사 태그 입력 -->
         <br><br><br><br><br>
@@ -85,7 +86,7 @@
         <div class="inputTitle">관심사 태그</div>
         <div class="subText">등록한 관심사 태그를 통해 검색한 후원자가 프로젝트를 발견할 수 있습니다.</div>
         <div class="subText">태그는 빈 칸없이 10자 이내로 입력해주세요.</div>
-        <input type="text" name="tagInput" style="margin-top: 10px;"
+        <input type="text" name="tag" style="margin-top: 10px;"
                maxlength="10" oninput="tagLength()">
         <div class="lengthText"><span id="tagLen">0</span> / 10</div>
 
@@ -100,13 +101,15 @@
 
           </div>
 
+            <button type="submit" >저장</button>
+
         </form>
 
             <script>
                 // 글자수 제한
-                const $titleInput = document.querySelector('input[name=titleInput]');
+                const $titleInput = document.querySelector('input[name=title]');
                 const $content = document.querySelector('textarea');
-                const $tagInput = document.querySelector('input[name=tagInput]');
+                const $tagInput = document.querySelector('input[name=tag]');
 
                 // title 글자수 제한
                 const titleLength = () => {
@@ -124,7 +127,7 @@
                 }
 
                 function tagLength() {
-                    const $tagInput = document.querySelector('input[name=tagInput]');
+                    const $tagInput = document.querySelector('input[name=tag]');
 
                     const count = $tagInput.value.length;
                     document.getElementById('tagLen').innerText = count;
@@ -147,6 +150,10 @@
               if(window.event.keyCode === 13){
 
                 const tagValue = $tagInput.value;
+
+                //
+
+
                 content.innerHTML += `<div class="hashTag">
                                       <span>#${tagValue}</span>
                                   </div>`;
@@ -161,8 +168,6 @@
             $tagInput.addEventListener('keyup', createTag);
 
           </script>
-
-<!--            <h3 th:text="${data}"></h3>-->
 
           
         </div>
