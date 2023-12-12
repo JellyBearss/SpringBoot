@@ -5,9 +5,12 @@ spring:
     username: jellybears
     password: jellybears
 
-mybatis:
+  mvc:
+    static-path-pattern: /static/**
+#mybatis.mapper-locations=classpath:/mybatis-mapper/**/*.xml
   # mapper.xml location Setting
-  mapper-locations: mybatis/mapper/**/*.xml
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
@@ -31,7 +34,7 @@ mybatis:
     check-template-location: true
   web:
     resources:
-      static-locations: C:/thymeleaf-springboot/
+      static-locations: file:src/main/resources/static/
   logging:
     level:
       root: info

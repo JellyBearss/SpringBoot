@@ -11,7 +11,7 @@
          AND A.ID=#{ userId }
     </select>
 
-    <select id="findByUserID" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+    <select id="findByUserID" resultType="com.jellybears.krowdpoping.user.model.dto.UserDTO">
         SELECT
                 A.USER_CODE
                 ,A.ID
@@ -57,7 +57,7 @@
           WHERE A.USER_STATUS ='일반'
           AND A.USER_ID = #{ userId }
     </select>
-    <select id="selectUser" resultMap="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+    <select id="selectUser" resultType="com.jellybears.krowdpoping.user.model.dto.UserDTO">
         SELECT
               A.USER_CODE
              ,A.ID

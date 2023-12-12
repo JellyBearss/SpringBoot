@@ -1,0 +1,272 @@
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap);
+@import url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css);
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* reset */
+
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* mobile firefox too! */
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+button,
+select {
+    text-transform: none;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td,
+th {
+    padding: 0;
+}
+ul,li,dl,dt,dd,ol{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    min-width: 320px;
+    background: #f6f5f5;
+    font-family: 'Spoqa Han Sans Neo', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.7em;
+    color: rgba(0, 0, 0, 0.87);
+
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Spoqa Han Sans Neo', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    line-height: 1.2857em;
+    margin: calc(2rem -  0.14285em ) 0em 1rem;
+    font-weight: bold;
+    padding: 0em;
+}
+a {
+    color: #7C1CD8;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #EDEAFF;
+    text-decoration: none;
+}
+::-webkit-selection {
+    background-color: #CCE2FF;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+::-moz-selection {
+    background-color: #CCE2FF;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+::selection {
+    background-color: #CCE2FF;
+    color: rgba(0, 0, 0, 0.87);
+}
+*{
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 50px;
+}
+header{
+    display: block;
+    width: 1200px;
+}
+
+.header-img{
+    display:flex;
+    justify-content: center;
+}
+
+.header-title{
+    display: flex;
+}
+
+.title{
+    margin-left: 40px;
+}
+
+img{
+    margin-top:20px;
+    width:160px;
+    height:100px;
+}
+
+.header-btn{
+    width:90px;
+    height:30px;
+    background-color: #F5F5F5;
+    color:#6D6D6D;
+    border-style: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+  
+  .active {
+    visibility: visible;
+  }
+  
+  .subpage {
+    display: none;
+  }
+  
+  .subpage.active {
+    display: block; 
+  }
+
+
+main {
+    width: 1200px;
+}
+
+.status{
+    display: flex;
+}
+
+.pr-div{
+    border:1px solid;
+    display:flex;
+    width:1000px;
+    padding:20px;
+}
+
+.content-div{
+    width:650px;
+    margin-left:20px;
+}
+
+.project-content{
+    display:flex;  
+}
+
+.aim{
+    color:#7C1CD8;
+    font-weight: 800;
+    font-size:20px;
+}
+
+.fund{
+    color:#6D6D6D;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.date{
+    color:#A9A9A9;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.content1{
+    width: 150px;
+    margin: 10px;
+}
+
+.content2{
+    width: 100px;
+    margin: 10px;
+    margin-left:50px;
+}
+
+#progress{
+    width:400px;
+    appearance: none;
+}
+
+#progress::-webkit-progress-bar {
+    background:#f0f0f0;
+    border-radius:10px;
+    box-shadow: inset 3px 3px 10px #ccc;
+}
+#progress::-webkit-progress-value {
+    border-radius:10px;
+    background: #7C1CD8;
+    background: -webkit-linear-gradient(to right, #c0b5cb, #7C1CD8);
+    background: linear-gradient(to right, #c0b5cb, #7C1CD8);
+
+}
+
+.general-btn{
+    display:block;
+    width:100px;
+    height:30px;
+    margin:20px;
+    border-style: none;
+    background-color: #EDEAFF;
+    color:#7C1CD8;
+    font-weight: 600;
+}
+
+.guide-meant{
+    margin-top:30px;
+    width:700px;
+    height:40px;
+    background-color: #EDEAFF;
+    padding:3px;
+}
+
+p{
+    color:#6D6D6D;
+    font-weight: 700;
+    font-size: 17px;
+    text-align: center;
+    margin:5px;
+}
+
+.end{
+    color:#f7585d;
+    font-weight: 700;
+}
+

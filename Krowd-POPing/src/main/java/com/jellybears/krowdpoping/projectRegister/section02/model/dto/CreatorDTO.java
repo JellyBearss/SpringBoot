@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CreatorDTO {
+public class CreatorDTO extends CreatorProfileDTO {
 
     private String cr_type;
     private String business_num;
@@ -17,6 +17,10 @@ public class CreatorDTO {
     private String phone;
     private String email;
     private String introduce;
+    private String identi_num;
+    private String acc_user_nm;
+    private String ceo_nm;
+    private int issue_type;
 
     @Builder
     public CreatorDTO(String cr_type,String business_num,String address,int user_code,String phone,String email,String introduce) {
