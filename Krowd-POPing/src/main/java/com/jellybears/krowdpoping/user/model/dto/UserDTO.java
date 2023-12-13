@@ -13,7 +13,7 @@ import java.sql.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+
 public class UserDTO  {
     private int user_code;
     private String userId;
@@ -105,4 +105,5 @@ public class UserDTO  {
     public void setEmail_code(int email_code) {
         this.email_code = email_code;
     }
+
 }

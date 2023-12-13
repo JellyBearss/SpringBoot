@@ -38,3 +38,6 @@ mybatis:
   logging:
     level:
       root: info
+  web:
+    resources:
+      static-locations: C:/thymeleaf-springboot/

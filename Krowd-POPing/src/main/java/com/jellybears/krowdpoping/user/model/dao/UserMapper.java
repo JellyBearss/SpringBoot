@@ -8,11 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     String selectUserById(String userId);
     int insertUser(UserDTO user);
+    String selectEncryptedPwd(UserDTO user);
 
-//    int insertUser(UserDTO user);
-//    String selectEncryptedPwd(UserDTO user);
-//
-//    UserDTO selectUser(UserDTO user);
-//
     RoleTypeDTO findByUserId(String userId);
+    UserDTO selectUser(UserDTO user);
 }

@@ -44,8 +44,9 @@
             </th:block>
 
             <th:block sec:authorize="isAuthenticated()">
+                <a th:href="@{/loginandsignup/logout}">
+                    <input type="button" class="btn btn-or" value="로그아웃" id="logout"></a>
                     <h5><span sec:authentication="principal.username"></span>님의 방문을 환영합니다.</h5>
-                    <input type="button" class="btn btn-or" value="로그아웃" id="logout">
 
             </th:block>
         </div>

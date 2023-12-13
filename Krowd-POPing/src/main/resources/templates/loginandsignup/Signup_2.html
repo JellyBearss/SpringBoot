@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/loginandsignup/signup_2.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>header and footer</title>
+    <title>회원가입</title>
 </head>
 <body>
     <div id="wrapper">
@@ -73,22 +73,24 @@
                         </div>
                     </div>
                 </div>
-
+        <form id="joinForm" th:action="@{/loginandsignup/entermemberinfo}" method="post">
             <div id="term_of_service_container">
                 <div id="edittitle-1">로그인 정보</div>
                 <div class="type_login_info">
                     <div class="id-container">
                         <div id="type_id">
                             <div id="type_id_label">아이디:</div>
-                            <input type="text" id="type_id_input" name="userId" placeholder="영어,숫자 조합 4~16자리" maxlength="16">
+                            <input type="text" id="userId" name="userId" placeholder="영어,숫자 조합 4~16자리" maxlength="16" required>
+<!--                        <a th:href="@{/loginandsignup/idDupCheck}">-->
+                            <input type="button" value="중복확인" id="idDupCheck" name="idDupCheck">
                         </div>
                     </div>
 
                     <div class="password-container">
                         <div class="password-info">
-                            <span id="password-description">비밀번호: </span>
-                            <input type="password" class="password-input" id="new-password-input" name="userPwd" placeholder="영어,숫자 조합 8~20자리" maxlength="20">
-                            <span class="toggle-password" onclick="togglePasswordVisibility('new-password-input')">
+                            <span class="password-description">비밀번호: </span>
+                            <input type="password" class="password-input" id="userPwd" name="userPwd" placeholder="영어,숫자 조합 8~20자리" maxlength="20" required>
+                            <span class="toggle-password" onclick="togglePasswordVisibility('userPwd')">
                                 <img src="/icon/show.png" alt="eye-open-icon">
                             </span>
                         </div>
@@ -96,9 +98,9 @@
 
                     <div class="password-container">
                         <div class="password-info">
-                            <span id="password-description">비밀번호 확인:</span>
-                            <input type="password" class="password-input" id="confirm-password-input" name="userPwd2" placeholder="비밀번호를 다시 입력해주세요." maxlength="20">
-                            <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password-input')">
+                            <span class="password-description">비밀번호 확인:</span>
+                            <input type="password" class="password-input" id="userPwd2" name="userPwd2" placeholder="비밀번호를 다시 입력해주세요." maxlength="20">
+                            <span class="toggle-password" onclick="togglePasswordVisibility('userPwd2')">
                                 <img src="/icon/show.png" alt="eye-open-icon">
                             </span>
 
@@ -111,37 +113,37 @@
                 <div id="type_profile_info">
                     <div id="type_name">
                         <div id="type_name_label">이름:<span class="mandatory">*</span></div>
-                        <input type="text" id="type_name_input" name="name">
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div id="type_birth">
-                            <label for="birth">생년월일:<span class="mandatory">*</span></label>
-                            <input type="date" id="birth" name="birthday">
+                            <label for="birthday">생년월일:<span class="mandatory">*</span></label>
+                            <input type="date" id="birthday" name="birthday" required>
                     </div>
                     <div id="type_nickname">
                         <div id="type_nickname_label">닉네임:<span class="mandatory">*</span></div>
-                        <input type="text" id="type_nickname_input" name="nickname">
+                        <input type="text" id="nickname" name="nickname" required>
                     </div>
                     <div id="type_email">
                         <label for="email">이메일:<span class="mandatory">*</span></label>
-                        <input type="text" id="email" name="emailAddress" placeholder="이메일 주소를 입력하세요" required>
-
-                        <label for="emailProvider" name="at">@</label>
-                        <select id="emailProvider" name="emailProvider">
-                            <option value="naver.com">naver.com</option>
-                            <option value="gmail.com">gmail.com</option>
-                            <option value="gmail.com">kakao.com</option>
-                            <option value="gmail.com">yahoo.com</option>
-                            <option value="custom">직접 입력</option>
-                        </select>
-
-                        <div id="customEmail" style="display: none;">
-                            <!-- 직접 입력 시 아무것도 추가하지 않음 -->
-                        </div>
-
+                        <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
                     </div>
+<!--                        <label for="emailProvider" name="at">@</label>-->
+<!--                        <select id="emailProvider" name="emailProvider">-->
+<!--                            <option value="naver.com">naver.com</option>-->
+<!--                            <option value="gmail.com">gmail.com</option>-->
+<!--                            <option value="gmail.com">kakao.com</option>-->
+<!--                            <option value="gmail.com">yahoo.com</option>-->
+<!--                            <option value="custom">직접 입력</option>-->
+<!--                        </select>-->
+
+<!--                        <div id="customEmail" style="display: none;">-->
+<!--                            &lt;!&ndash; 직접 입력 시 아무것도 추가하지 않음 &ndash;&gt;-->
+<!--                        </div>-->
+
+
                     <div id="type_phone">
                         <div id="type_phone_label">전화번호:<span class="mandatory">*</span></div>
-                        <input type="tel" id="type_phone_input" name="phone">
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
 
                 </div>
@@ -153,6 +155,7 @@
 
 
             </div>
+        </form>
 
 
         </div>
@@ -197,7 +200,7 @@
         <p>크라우드 팝핑은 플랫폼 제공자로서 프로젝트의 당사자가 아니며, 
             직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 선물제공의 책임은 해당 프로젝트의 창작자에게 있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자가 부담합니다. </p>
     </div>
-    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
     <script>
         function togglePasswordVisibility(inputId) {
             var passwordInput = document.getElementById(inputId);
@@ -213,19 +216,19 @@
         }
         
 
-        var customEmailDiv = document.getElementById('customEmail');
-        var emailInput = document.getElementById('email');
-        var emailProviderSelect = document.getElementById('emailProvider');
-
-        emailProviderSelect.addEventListener('change', function () {
-        var emailProvider = this.value;
-
-        if (emailProvider === 'custom') {
-            customEmailDiv.style.display = 'block';
-        } else {
-            customEmailDiv.style.display = 'none';
-        }
-        });
+        // var customEmailDiv = document.getElementById('customEmail');
+        // var emailInput = document.getElementById('email');
+        // var emailProviderSelect = document.getElementById('emailProvider');
+        //
+        // emailProviderSelect.addEventListener('change', function () {
+        // var emailProvider = this.value;
+        //
+        // if (emailProvider === 'custom') {
+        //     customEmailDiv.style.display = 'block';
+        // } else {
+        //     customEmailDiv.style.display = 'none';
+        // }
+        // });
 
     </script>
 </body>
