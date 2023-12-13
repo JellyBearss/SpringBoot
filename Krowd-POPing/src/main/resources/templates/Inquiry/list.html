@@ -23,8 +23,8 @@
             <td th:text="${ inquiry.inquiryType }"></td>
             <td th:text="${ inquiry.inquiryDate }"></td>
             <td th:text="${ inquiry.inquiryStatus }"></td>
-            <td th:text="${ inquiry.questioner != null ? inquiry.questioner.user_code : ''}"></td>
-            <td th:text="${ inquiry.replier != null ? inquiry.replier.user_code : '' }"></td>
+            <td><input th:value="${ inquiry.questioner }"></td>
+            <td><input th:value="${ inquiry.replier }"></td>
 
         </tr>
     </table>

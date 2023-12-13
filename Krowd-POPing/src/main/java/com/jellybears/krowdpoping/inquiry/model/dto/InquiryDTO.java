@@ -19,8 +19,10 @@ public class InquiryDTO {
     private String inquiryContent;
     private Date inquiryDate;
     private String inquiryStatus;
-    private UserDTO questioner;
-    private UserDTO replier;
+    private String questioner;
+    private String replier;
+
+
 
 
 }

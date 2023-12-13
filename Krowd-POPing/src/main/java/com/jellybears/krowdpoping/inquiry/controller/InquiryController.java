@@ -60,6 +60,8 @@ public class InquiryController {
 
         model.addAttribute("inquiryList", inquiryList);
 
+        System.out.println("inquiryList = " + inquiryList);
+
         return "/inquiry/list";
     }
 

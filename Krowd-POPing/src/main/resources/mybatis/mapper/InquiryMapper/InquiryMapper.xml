@@ -26,25 +26,13 @@
         <result property="inquiryStatus" column="inquiry_status"/>
 <!--        <result property="questioner" column="questioner"/>-->
 <!--        <result property="replier" column="replier"/>-->
-        <association property="questioner" resultMap="UserResultMap"/>
-        <association property="replier" resultMap="UserResultMap"/>
+        <result property="questioner" column="questioner"/>
+        <result property="replier" column="replier"/>
 
     </resultMap>
 
 
 
-<!--    <resultMap id="userResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
-<!--        <id property="user_code" column="user_code"/>-->
-<!--        <result property="id" column="id"/>-->
-<!--        <result property="password" column="password"/>-->
-<!--        <result property="name" column="name"/>-->
-<!--        <result property="nickname" column="nickname"/>-->
-<!--        <result property="birthday" column="birthday"/>-->
-<!--        <result property="email" column="email"/>-->
-<!--        <result property="phone_number" column="phone_number"/>-->
-<!--        <result property="user_status" column="user_status"/>-->
-<!--        <result property="email_code" column="email_code"/>-->
-<!--    </resultMap>-->
 
 <!--    <insert id="insertInquiry">-->
 
@@ -70,17 +58,19 @@
 <!--    </insert>-->
 
     <select id="findInquiryList" resultMap="inquiryResultMap">
-    SELECT
-                 inquiry_code,
-                 inquiry_type,
-                 inquiry_title,
-                 inquiry_content,
-                 inquiry_date,
-                 inquiry_status,
-                 questioner,
-                 replier
-    FROM inquiry
-    ORDER BY inquiry_code
+        SELECT
+            A.inquiry_code,
+            A.inquiry_type,
+            A.inquiry_title,
+            A.inquiry_content,
+            A.inquiry_date,
+            A.inquiry_status,
+            B.id as questioner,
+            C.id as replier
+        FROM inquiry A
+                 LEFT JOIN user_info B on A.questioner = B.user_code
+                 LEFT JOIN user_info C on A.replier = C.user_code
+        ORDER BY inquiry_code
 
     </select>
 
