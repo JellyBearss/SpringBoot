@@ -1,5 +1,6 @@
 package com.jellybears.krowdpoping.funding_process.model.service;
 
+import com.jellybears.krowdpoping.common.exception.address.AddressSaveException;
 import com.jellybears.krowdpoping.funding_process.model.dao.AddressMapper;
 import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
 
@@ -18,10 +19,16 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    @Transactional
-    public void saveAddress(AddressDTO addressDTO) {
-        log.info("AddressService] Save Address : " + addressDTO);
-        addressMapper.saveAddress(addressDTO);
-        log.info("[AddressService] Save result : 주소 저장 완료");
+    @Transactional(rollbackFor = Exception.class)
+    public void saveAddress(AddressDTO addressDTO) throws AddressSaveException {
+        log.info("[AddressService] Save Address : " + addressDTO);
+
+        int result = addressMapper.saveAddress(addressDTO);
+
+        log.info("[AddressService] Insert result : " + ((result > 0) ? "주소 저장 성공" : "주소 저장 실패"));
+
+        if(!(result > 0 )){
+            throw new AddressSaveException("주소 저장에 실패하였습니다.");
+        }
     }
 }
