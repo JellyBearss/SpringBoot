@@ -20,13 +20,13 @@ public class AuthenticationService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("");
         log.info("");
         log.info("[AuthenticationService]=============================start");
-        log.info("[AuthenticationService] userId :" + userId);
+        log.info("[AuthenticationService] userId :" + username);
 
-        RoleTypeDTO user = mapper.findByUserId(userId);
+        RoleTypeDTO user = mapper.findByUserId(username);
         log.info("[AuthenticationService] user :" + user);
 
         if (user == null) {

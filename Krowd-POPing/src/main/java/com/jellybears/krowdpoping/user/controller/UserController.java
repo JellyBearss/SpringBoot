@@ -31,6 +31,12 @@ public class UserController {
         return "/loginandsignup/LoginandSignup";
     }
 
+    @GetMapping("loginfail")
+    public String goLoginFail() {
+
+        return "errors/loginerror";
+    }
+
     /**
      * 회원가입 이용약관 조회 페이지
      */

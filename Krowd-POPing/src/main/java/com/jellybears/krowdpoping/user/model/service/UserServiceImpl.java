@@ -33,10 +33,10 @@ public class UserServiceImpl implements UserService{
     /*-----------회원 가입------------------*/
     @Override
     @Transactional
-    public void registUser(UserDTO userDTO) throws UserRegistException{
+    public void registUser(UserDTO user) throws UserRegistException{
 
-        log.info("[UserService] Insert User : " + userDTO);
-        int result = mapper.insertUser(userDTO);
+        log.info("[UserService] Insert User : " + user);
+        int result = mapper.insertUser(user);
 
         log.info("[UserService] Insert User : " + ((result > 0) ? "회원가입 성공" : "회원가입 실패"));
 
