@@ -12,5 +12,7 @@ public class AddressDTO {
     private String recipientName;
     private String mergedAddress;
     private String recipientPhoneNumber;
-    private Boolean whetherDefaultAddress;
+    private String deliveryComment;
+    private String whetherDefaultAddress;
+    private String directInputField2;
 }

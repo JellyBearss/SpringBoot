@@ -31,8 +31,10 @@ public class FundingProcessController {
     public String saveAddress(@ModelAttribute AddressDTO addressDTO) throws AddressSaveException {
         log.info("Received AddressDTO: {}", addressDTO);
 
-        addressService.saveAddress(addressDTO);
+        String cleanedPhoneNumber = addressDTO.getRecipientPhoneNumber().replace("-", "");
+        addressDTO.setRecipientPhoneNumber(cleanedPhoneNumber);
 
+        addressService.saveAddress(addressDTO);
         return "/funding_process/pay_reservation";
     }
 

@@ -3,21 +3,21 @@
     /* background-color: rgb(201, 233, 233); */
     margin:auto;
     width: 1170px;
-    position: relative; 
+    position: relative;
 }
 .logo img{
-    max-width: 20%; 
+    max-width: 20%;
     margin-left: 25px;
     /* height: auto ; */
 }
-.upload_project { 
-	width:210px;
-	height:67px;
-	position:absolute;
-	left:190px;
-	top:38px;
+.upload_project {
+    width:210px;
+    height:67px;
+    position:absolute;
+    left:190px;
+    top:38px;
 }
-.upload_box { 
+.upload_box {
     max-width: 55%;
     position: absolute;
     width: 170px;
@@ -28,68 +28,68 @@
     background: #EDE9FE;
     border-radius: 6px;
 }
-.upload_text { 
-    color:#7D1CD8;	
+.upload_text {
+    color:#7D1CD8;
     width:100px;
-	height:17px;
-	position:absolute;
-	left:20px;
-	top:7px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:11px;
-	letter-spacing:0;
+    height:17px;
+    position:absolute;
+    left:20px;
+    top:7px;
+    font-family:Noto Sans KR;
+    text-align:center;
+    font-size:11px;
+    letter-spacing:0;
 }
 .profile{
     display: flex;
     align-items: center;
     width:500px;
-	height:67px;
-	position:absolute;
-	left:1030px;
-	top:38px;
+    height:67px;
+    position:absolute;
+    left:1030px;
+    top:38px;
     text-decoration: none;
 }
 .nickname{
     color: #6D6D6D;
-	width:157px;
-	height:27px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:13px;
-	letter-spacing:0;
+    width:157px;
+    height:27px;
+    font-family:Noto Sans KR;
+    text-align:center;
+    font-size:13px;
+    letter-spacing:0;
     margin-top: -28px;
     margin-left: -5px;
 }
 .nickname_title{
     color: #6D6D6D;
-	width:27px;
-	height:27px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:13px;
-	letter-spacing:0;
+    width:27px;
+    height:27px;
+    font-family:Noto Sans KR;
+    text-align:center;
+    font-size:13px;
+    letter-spacing:0;
     margin-top: -29px;
     margin-left: -58px;
 }
 .default_profile_circle{
     border-radius:500px;
-	background-color:#EDE9FE;
-	width:30px;
-	height:30px;
-	position:absolute;
-	left:10px;
-	top:0px;
+    background-color:#EDE9FE;
+    width:30px;
+    height:30px;
+    position:absolute;
+    left:10px;
+    top:0px;
 }
 .default_profile_face{
     width:25px;
-	height:25px;
-	position:absolute;
-	left:12.9px;
-	top:4px;
-	background-image:url("/icon/basicpic.png");
-	background-repeat:no-repeat;
-	background-size:cover;
+    height:25px;
+    position:absolute;
+    left:12.9px;
+    top:4px;
+    background-image:url("/icon/basicpic.png");
+    background-repeat:no-repeat;
+    background-size:cover;
 }
 .title_section{
     display: flex;
@@ -107,13 +107,13 @@
 .funding_title{
     color: #0D0D0D;
     width:100px;
-	height:26px;
-	position:absolute;
+    height:26px;
+    position:absolute;
     top: 25px;
     left: 50px;
-	font-family:Noto Sans KR;
-	text-align:left;
-	font-size:23px;
+    font-family:Noto Sans KR;
+    text-align:left;
+    font-size:23px;
     font-weight: bold;
 }
 
@@ -131,39 +131,39 @@
 
 .product_description{
     width:110px;
-	height:110px;
+    height:110px;
     position: relative;
 }
 .delivery_address{
     width:110px;
-	height:110px;
+    height:110px;
     position: relative;
     z-index: 1;
 }
 .payment_reservation{
     width:110px;
-	height:110px;
+    height:110px;
     position: relative;
 }
 .product_description,
 .payment_reservation {
-    margin: 0 100px; 
+    margin: 0 100px;
     z-index: 1;
 }
 .purple_des{
     border-radius:500px;
     background-color: #D9D9D9;
     width:110px;
-	height:110px;
+    height:110px;
 }
 
 .description{
     color:#0D0D0D;
     width:85px;
-	height:41px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:18px;
+    height:41px;
+    font-family:Noto Sans KR;
+    text-align:center;
+    font-size:18px;
     position: absolute;
     top: 47%;
     left: 50%;
@@ -173,16 +173,16 @@
     border-radius:500px;
     background-color: #7D1CD8;
     width:110px;
-	height:110px;
+    height:110px;
 }
 
 .address{
     color:rgba(255, 255, 255, 1);
     width:85px;
-	height:41px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:18px;
+    height:41px;
+    font-family:Noto Sans KR;
+    text-align:center;
+    font-size:18px;
     position: absolute;
     top: 55%;
     left: 50%;
@@ -192,15 +192,15 @@
     border-radius:500px;
     background-color: #D9D9D9;
     width:110px;
-	height:110px;
+    height:110px;
 }
 .reservation{
     color:#0D0D0D;
     width:85px;
-	height:41px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:18px;
+    height:41px;
+    font-family:Noto Sans KR;
+    text-align:center;
+    font-size:18px;
     position: absolute;
     top: 55%;
     left: 50%;
@@ -231,18 +231,19 @@
     color:#0D0D0D;
     top: 30px;
     left: 50px;
-	font-family:Noto Sans KR;
+    font-family:Noto Sans KR;
     position: absolute;
-	text-align:left;
-	font-size:20px;
+    text-align:left;
+    font-size:20px;
     font-weight: bold;
 }
 .supporter_nickname, .name, .phone_number, .email{
     color: #767676;
     font-family:Noto Sans KR;
     position: absolute;
-	text-align:left;
+    text-align:left;
     font-size:15px;
+    top: 50px;
 }
 .nickname_section{
     width: 200px;
@@ -259,9 +260,9 @@
     top: 51px;
 }
 .input_nickname_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .name_section{
     width: 200px;
@@ -278,9 +279,9 @@
     top: 51px;
 }
 .input_name_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .phone_number_section{
     width: 200px;
@@ -297,9 +298,9 @@
     top: 52px;
 }
 .input_phone_number_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .email_section{
     width: 200px;
@@ -316,15 +317,15 @@
     top: 52px;
 }
 .input_email_section input {
-    width: 350px; 
-    height: 15px; 
-    font-size: 15px; 
+    width: 350px;
+    height: 15px;
+    font-size: 15px;
 }
 .same_as_profile{
     color: #767676;
     font-family:Noto Sans KR;
     position: relative;
-	text-align:left;
+    text-align:left;
     font-size:15px;
     position: absolute;
     left: 65px;
@@ -346,10 +347,10 @@
     position: relative;
 }
 #subpage1 {
-    height: 430px;
+    height: 530px;
 }
 #subpage2 {
-    height: 490px;
+    height: 590px;
 }
 .address_title {
     color: #0D0D0D;
@@ -389,7 +390,7 @@
     width: 100%;
     height: 2px;
     background-color: #7D1CD8;
-    visibility: hidden; 
+    visibility: hidden;
 }
 .active {
     visibility: visible;
@@ -403,10 +404,10 @@
 }
 .address_list.active .underline,
 .input_address.active .underline {
-    visibility: visible; 
+    visibility: visible;
 }
 .subpage.active {
-    display: block; 
+    display: block;
 }
 .default_address_section{
     position: absolute;
@@ -424,7 +425,7 @@
 }
 .default_address_icon{
     width:110px;
-	height:110px;
+    height:110px;
     position: relative;
     top:1px;
 }
@@ -552,6 +553,44 @@
     height: 15px;
     font-size: 15px;
 }
+#directInput {
+    display: none;
+    width: 350px;
+}
+#charCount{
+    font-size: 12px;
+    color: #767676;
+    font-family:Noto Sans KR;
+    text-align: right;
+}
+#directInputField {
+    width: 350px;
+    height: 72px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #767676;
+    font-family:Noto Sans KR;
+    margin-top: 8px;
+}
+#directInput2 {
+    display: none;
+    width: 350px;
+}
+#charCount2{
+    font-size: 12px;
+    color: #767676;
+    font-family:Noto Sans KR;
+    text-align: right;
+}
+#directInputField2 {
+    width: 350px;
+    height: 72px;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: #767676;
+    font-family:Noto Sans KR;
+    margin-top: 8px;
+}
 .d_i_delivery_comment{
     width: 500px;
     height: 100px;
@@ -579,7 +618,7 @@
     width: 260px;
     height: 83px;
     position: absolute;
-    top: 600px;
+    top: 700px;
     left: 50%;
     transform: translateX(-50%);
     /* background-color: #6D6D6D; */
@@ -589,7 +628,7 @@
     width: 260px;
     height: 83px;
     position: absolute;
-    top: 660px;
+    top: 760px;
     left: 50%;
     transform: translateX(-50%);
     padding: 50px;
@@ -634,7 +673,7 @@ body {
 }
 .add_address_icon{
     width:110px;
-	height:110px;
+    height:110px;
     position: relative;
     top:1px;
 }
@@ -823,7 +862,7 @@ body {
     font-size:15px;
     position: absolute;
     left: 65px;
-    top: 545px;
+    top: 645px;
 }
 .add_to_default_address label{
     position: relative;

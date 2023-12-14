@@ -9,6 +9,7 @@
                                     , recipient_name
                                     , recipient_address
                                     , recipient_phone_number
+                                    , delivery_comment
                                     , whether_default_address
                                     )
     values (
@@ -16,6 +17,7 @@
             , #{ recipientName }
            , #{ mergedAddress }
            , #{ recipientPhoneNumber }
+           , #{ deliveryComment }
            , #{ whetherDefaultAddress }
            )
     </insert>

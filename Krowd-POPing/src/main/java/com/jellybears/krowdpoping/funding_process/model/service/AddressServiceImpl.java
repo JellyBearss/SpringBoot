@@ -23,6 +23,10 @@ public class AddressServiceImpl implements AddressService{
     public void saveAddress(AddressDTO addressDTO) throws AddressSaveException {
         log.info("[AddressService] Save Address : " + addressDTO);
 
+        if ("type".equals(addressDTO.getDeliveryComment())) {
+            addressDTO.setDeliveryComment(addressDTO.getDirectInputField2());
+        }
+
         int result = addressMapper.saveAddress(addressDTO);
 
         log.info("[AddressService] Insert result : " + ((result > 0) ? "주소 저장 성공" : "주소 저장 실패"));

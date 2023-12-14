@@ -164,15 +164,19 @@
 
         <div class="d_i_delivery_comment">
             <div class="d_i_delivery_comment_section">배송 요청 사항(선택)</div>
-            <select>
+            <select id="deliveryOption" onchange="toggleInputField()">
+                <option value="default" disabled selected>배송 시 요청사항을 선택해주세요.</option>
                 <option value="1">문 앞에 놓아주세요.</option>
                 <option value="2">경비(관리)실에 맡겨주세요.</option>
                 <option value="3">택배함에 넣어주세요.</option>
                 <option value="4">직접 받겠습니다.</option>
                 <option value="type">직접 입력</option>
             </select>
+            <div id="directInput" style="display: none;">
+                <textarea maxlength="50" placeholder="배송 요청 사항을 입력하세요." id="directInputField" name="directInputField" oninput="updateCharCount()"></textarea>
+                <div id="charCount">0/50</div>
+            </div>
         </div>
-
         <div>
             <a th:href="@{/funding_process/payReservation}" class="next_step1">
                 <div class="next_step_box1"></div>
@@ -264,21 +268,79 @@
                 </div>
         </div>
 
-        <div class="a_i_delivery_comment">
-            <div class="a_i_delivery_comment_section">배송 요청 사항(선택)</div>
-            <select>
-                <option value="default" disabled selected>배송 시 요청사항을 선택해주세요.</option>
-                <option value="1">문 앞에 놓아주세요.</option>
-                <option value="2">경비(관리)실에 맡겨주세요.</option>
-                <option value="3">택배함에 넣어주세요.</option>
-                <option value="4">직접 받겠습니다.</option>
-                <option value="type">직접 입력</option>
-            </select>
-        </div>
-        <div class="add_to_default_address">
-            <input type="checkbox" id="add" name="whetherDefaultAddress" value="기본 배송지로 등록">
-            <label for="same">기본 배송지로 등록</label>
-        </div>
+
+            <div class="a_i_delivery_comment">
+                <div class="a_i_delivery_comment_section">배송 요청 사항(선택)</div>
+                <select name="deliveryComment" id="deliveryComment" onchange="toggleInputField2()">
+                    <option value="default" disabled selected>배송 시 요청사항을 선택해주세요.</option>
+                    <option value="문 앞에 놓아주세요.">문 앞에 놓아주세요.</option>
+                    <option value="경비(관리)실에 맡겨주세요.">경비(관리)실에 맡겨주세요.</option>
+                    <option value="택배함에 넣어주세요.">택배함에 넣어주세요.</option>
+                    <option value="직접 받겠습니다.">직접 받겠습니다.</option>
+                    <option value="type">직접 입력</option>
+                </select>
+                <div id="directInput2" style="display: none;">
+                    <textarea maxlength="50" placeholder="배송 요청 사항을 입력하세요." id="directInputField2" name="directInputField2" oninput="updateCharCount2()"></textarea>
+                    <div id="charCount2">0/50</div>
+                </div>
+            </div>
+
+            <script>
+                function toggleInputField() {
+                    var option = document.getElementById("deliveryOption").value;
+                    var directInput = document.getElementById("directInput");
+
+                    if (option === "type") {
+                        directInput.style.display = "block";
+                    } else {
+                        directInput.style.display = "none";
+                    }
+                }
+
+                function updateCharCount() {
+                    var textarea = document.getElementById("directInputField");
+                    var charCount = document.getElementById("charCount");
+                    var currentCount = textarea.value.length;
+
+                    charCount.textContent = currentCount + "/50";
+                }
+
+                function toggleInputField2() {
+                    var option = document.getElementById("deliveryComment").value;
+                    var directInput2 = document.getElementById("directInput2");
+                    var textarea = document.getElementById("directInputField2");
+                    var deliveryCommentInput = document.getElementById("deliveryComment");
+
+                    if (option === "type") {
+                        directInput2.style.display = "block";
+
+                    } else {
+                        directInput2.style.display = "none";
+                    }
+                }
+
+                function updateCharCount2() {
+                    var textarea = document.getElementById("directInputField2");
+                    var charCount2 = document.getElementById("charCount2");
+                    var currentCount = textarea.value.length;
+
+                    charCount2.textContent = currentCount + "/50";
+                }
+
+            </script>
+            <div class="add_to_default_address">
+                <input type="hidden" name="whetherDefaultAddress" value="N">
+                <input type="checkbox" id="add" name="addCheckbox" value="Y">
+                <label for="add">기본 배송지로 등록</label>
+            </div>
+
+            <script>
+                var checkbox = document.getElementById('add');
+                checkbox.addEventListener('change', function() {
+                    var hiddenInput = document.querySelector('input[name="whetherDefaultAddress"]');
+                    hiddenInput.value = checkbox.checked ? 'Y' : 'N';
+                });
+            </script>
             <input type="hidden" name="mergedAddress" id="mergedAddress">
                 <a href="javascript:void(0);" onclick="submitForm()" class="next_step2">
                     <div class="next_step_box2"></div>
