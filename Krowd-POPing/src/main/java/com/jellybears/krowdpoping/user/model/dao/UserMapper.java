@@ -9,7 +9,9 @@ public interface UserMapper {
     String selectUserById(String userId);
     int insertUser(UserDTO user);
     String selectEncryptedPwd(UserDTO user);
-
+    int updateUser(UserDTO user);
     RoleTypeDTO findByUserId(String userId);
     UserDTO selectUser(UserDTO user);
+
+
 }

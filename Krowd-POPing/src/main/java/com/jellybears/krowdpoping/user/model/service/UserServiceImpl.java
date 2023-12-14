@@ -1,5 +1,6 @@
 package com.jellybears.krowdpoping.user.model.service;
 
+import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.user.model.dao.UserMapper;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
@@ -44,8 +45,16 @@ public class UserServiceImpl implements UserService{
             throw new UserRegistException("회원 가입에 실패하였습니다.");
         }
     }
-    /*-------------회원 정보 수정------------*/
+/*-------------회원 정보 수정------------*/
 
+    @Override
+    public void modifyMember(UserDTO user) throws UserModifyException {
+        int result = mapper.updateUser(user);
+
+        if(!(result > 0)) {
+            throw new UserModifyException("회원 정보 수정에 실패하셨습니다.");
+        }
+    }
 
 
 }

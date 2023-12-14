@@ -1,30 +1,56 @@
 window.onload = function() {
 
+    if(document.getElementById("regist")) {
+        const $regist = document.getElementById("regist");
+        $regist.onclick = function() {
+            location.href = "/user/regist";
+        }
+    }
+
     if (document.getElementById("login")) {
         const $login = document.getElementById("login");
         $login.onclick = function () {
-            location.href = "/loginandsignup/login";
+            location.href = "/user/login";
         }
     }
 
     if(document.getElementById("logout")) {
         const $logout = document.getElementById("logout");
         $logout.onclick = function() {
-            location.href = "/loginandsignup/logout";
+            location.href = "/user/logout";
         }
     }
+    if(document.getElementById("duplicationCheck")) {
 
-    if(document.getElementById("idDupCheck")) {
-        const $duplication = document.getElementById("idDupCheck");
+        const $duplication = document.getElementById("duplicationCheck");
 
-        $duplication.onclick = function() {
+        /* fetch API 사용 */
+        // $duplication.onclick = function() {
+        //     let memberId = document.getElementById("memberId").value.trim();
+        //
+        //     fetch("/member/idDupCheck", {
+        //         method: "POST",
+        //         headers: {
+        //             'Content-Type': 'application/json;charset=UTF-8'
+        //         },
+        //         body: JSON.stringify({memberId: memberId})
+        //     })
+        //         .then(result => result.text())
+        //         .then(result => alert(result))
+        //         .catch((error) => error.text().then((res) => alert(res)));
+        //
+        // }
+
+        /* Jquery ajax 사용 */
+        $('#duplicationCheck').click(function() {
+
             let userId = $("#userId").val().trim();
 
             $.ajax({
-                url: "/loginandsignup/idDupCheck",
+                url: "/user/idDupCheck",
                 type: "POST",
                 contentType: "application/json; charset=UTF-8",
-                data: JSON.stringify({ userId: userId }),
+                data: JSON.stringify({userId: userId}),
                 success: function(data){
                     alert(data);
                 },
@@ -32,6 +58,7 @@ window.onload = function() {
                     alert(error);
                 }
             });
-        };
+        });
     }
+
 }
