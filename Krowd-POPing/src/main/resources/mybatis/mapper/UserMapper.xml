@@ -84,12 +84,35 @@
 
                 )
     </insert>
-<!--<update id="updateUser">-->
-<!--    UPDATE -->
-<!--        USER_INFO-->
-<!--    SET PASSWORD = #{ password}-->
-<!--       ,NICKNAME = #{ N}-->
-<!--</update>-->
+    <update id="updateUser">
+        UPDATE
+            USER_INFO A
+        SET
+             PASSWORD
+            ,NICKNAME
+        WHERE USER_STATUS ='일반'
+          AND USER_ID = #{ userId }
+
+    </update>
+
+
+
+
+
+
+
+<!--    <update id="updateUser">-->
+<!--        UPDATE-->
+<!--             USER_INFO A-->
+<!--        INNER JOIN USER_FILE_LIST B ON A.USER_CODE = B.USER_CODE-->
+<!--        SET A.PASSWORD = #{ password }-->
+<!--           ,A.NICKNAME = #{ nickname }-->
+<!--           ,A.PHONE_NUMBER = #{ phone_number }-->
+<!--           ,A.EMAIL = #{ email }-->
+<!--           ,B.-->
+<!--        WHERE A.USER_STATUS = '일반'-->
+<!--          AND USER_ID = #{ userId }-->
+<!--    </update>-->
 
 
 

@@ -1,5 +1,6 @@
 package com.jellybears.krowdpoping.user.controller;
 
+import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
@@ -98,6 +99,13 @@ public class UserController {
         log.info("[UserController] checkDuplication =======================");
         return  ResponseEntity.ok(result);
     }
+
+//    @PostMapping("update")
+//    public String modifyUser(@ModelAttribute UserDTO user
+//                             RedirectAttributes rttr) throws UserModifyException {
+
+
+
 
     @GetMapping("signupsuccess")
     public String SignupSuccess() {
