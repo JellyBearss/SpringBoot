@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-        <form id="joinForm" th:action="@{/loginandsignup/entermemberinfo}" method="post">
+        <form id="joinForm" th:action="@{/user/regist}" method="post">
             <div id="term_of_service_container">
                 <div id="edittitle-1">로그인 정보</div>
                 <div class="type_login_info">
@@ -81,15 +81,15 @@
                         <div id="type_id">
                             <div id="type_id_label">아이디:</div>
                             <input type="text" id="userId" name="userId" placeholder="영어,숫자 조합 4~16자리" maxlength="16" required>
-<!--                        <a th:href="@{/loginandsignup/idDupCheck}">-->
-                            <input type="button" value="중복확인" id="idDupCheck" name="idDupCheck">
+<!--                        <a th:action="@{/user/duplicationCheck}">-->
+                            <input type="button" value="중복확인" id="duplicationCheck" name="duplicationCheck"></a>
                         </div>
                     </div>
 
                     <div class="password-container">
                         <div class="password-info">
                             <span class="password-description">비밀번호: </span>
-                            <input type="password" class="password-input" id="userPwd" name="userPwd" placeholder="영어,숫자 조합 8~20자리" maxlength="20" required>
+                            <input type="password" class="password-input" id="password" name="password" placeholder="영어,숫자 조합 8~20자리" maxlength="20" required>
                             <span class="toggle-password" onclick="togglePasswordVisibility('userPwd')">
                                 <img src="/icon/show.png" alt="eye-open-icon">
                             </span>
@@ -143,11 +143,11 @@
 
                     <div id="type_phone">
                         <div id="type_phone_label">전화번호:<span class="mandatory">*</span></div>
-                        <input type="tel" id="phone" name="phone" required>
+                        <input type="tel" id="phone" name="phone_number" required>
                     </div>
 
                 </div>
-                <a href="/loginandsignup/signupsuccess">
+                <a href="/user/signupsuccess">
                     <button type="submit" id="signup_button">저장</button>
                 </a>
 

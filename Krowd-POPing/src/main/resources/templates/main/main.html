@@ -38,15 +38,15 @@
                 <img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
 
             <th:block sec:authorize="isAnonymous()">
-                <a th:href="@{/loginandsignup/login}"
+                <a th:href="@{/user/login}"
                    class="menu-item" id="login">
                     <img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
             </th:block>
 
             <th:block sec:authorize="isAuthenticated()">
-                <a th:href="@{/loginandsignup/logout}">
+                <a th:href="@{/user/logout}">
                     <input type="button" class="btn btn-or" value="로그아웃" id="logout"></a>
-                    <h5><span sec:authentication="principal.username"></span>님의 방문을 환영합니다.</h5>
+                    <h5><span sec:authentication="principal.userDTO.nickname"></span>님의 방문을 환영합니다.</h5>
 
             </th:block>
         </div>

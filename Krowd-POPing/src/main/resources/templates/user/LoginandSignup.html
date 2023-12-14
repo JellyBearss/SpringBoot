@@ -14,7 +14,7 @@
     <img src="/icon/kpop_login_logo.png" alt="" class="login_logo">
     <div id="login_container">
         <div class="login_title">로그인</div>
-        <form id="loginForm" th:action="@{/loginandsignup/login}" method="post">
+        <form id="loginForm" th:action="@{/user/login}" method="post">
             <div id="id-area">
                 <div id="id-text-area">
                     <input type="text" id="id-input" name="userId" placeholder="아이디"
@@ -23,7 +23,7 @@
             </div>
             <div id="password-area">
                 <div id="password-text-area">
-                    <input type="password" id="password-input" name="userPwd" placeholder="비밀번호" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호'" >
+                    <input type="password" id="password-input" name="password" placeholder="비밀번호" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호'" >
                 </div>
             </div>
                 <button type="submit" > 로그인</button>
@@ -32,7 +32,7 @@
     </div>
     <div id="bottomtext_1">
         <div>아직 크라우드 팝핑 계정이 없으신가요?&nbsp&nbsp</div>
-        <div><a href="/loginandsignup/termofservice"> 회원가입 하러가기</a></div>
+        <div><a href="/user/termofservice"> 회원가입 하러가기</a></div>
     </div>
     <div id="bottomtext_2">
         <div>혹시 아이디 / 비밀먼호를 잊으셨나요?&nbsp&nbsp</div>

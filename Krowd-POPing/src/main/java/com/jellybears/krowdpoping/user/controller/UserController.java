@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/loginandsignup/*")
+@RequestMapping("/user/*")
 @Slf4j
 public class UserController {
     private final PasswordEncoder passwordEncoder;
@@ -28,7 +28,7 @@ public class UserController {
     @GetMapping("login")
     public String login() {
 
-        return "/loginandsignup/LoginandSignup";
+        return "/user/LoginandSignup";
     }
 
     /**
@@ -37,7 +37,7 @@ public class UserController {
     @GetMapping("termofservice")
     public String TermOfService() {
 
-        return "/loginandsignup/Signup_1";
+        return "/user/Signup_1";
     }
 
 
@@ -48,35 +48,36 @@ public class UserController {
     *회원가입 정보 입력 받기
     * */
 
-    @GetMapping("entermemberinfo")
-    public String goRegister(){return "/loginandsignup/Signup_2";}
+    @GetMapping("regist")
+    public String goRegister(){return "/user/Signup_2";}
 
 
-    @PostMapping("entermemberinfo")
-    public String registUser(@ModelAttribute
-                                 UserDTO userDTO,
-                                 RedirectAttributes rttr)throws UserRegistException {
-
+    @PostMapping("/regist")
+    public String registUser(@ModelAttribute UserDTO user,
+                               RedirectAttributes rttr) throws UserRegistException {
 
         log.info("");
         log.info("");
-        log.info("[UserController] registUser start========================================");
+        log.info("[UserController] registUser ========================================================== start");
 
+        user.setPhone_number(user.getPhone_number().replace("-", ""));
 
-        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        userDTO.setPhone_number(userDTO.getPhone_number().replace("-", ""));
-//        String email = emailAddress+at+emailProvider;
-//        user.setEmail(user.getEmail().replace("직접입력", ""));
-//        user.setEmail(email);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        log.info("[UserController] registUser request User : " + userDTO);
-        UserService.registUser(userDTO);
+        log.info("[UserController] registUser request User : " + user);
+
+        //UserService.registUser(user);
 
         rttr.addFlashAttribute("message", "회원 가입에 성공하였습니다.");
-        log.info("[MemberController] registMember ========================================================== end");
 
-        return "/loginandsignup/Signup_3";
+        log.info("[UserController] registUser ========================================================== end");
+
+        UserService.registUser(user);
+
+        return "redirect:/user/signupsuccess";
     }
+
+
 
     @PostMapping("idDupCheck")
     public ResponseEntity<String> checkDuplication(@RequestBody UserDTO userDTO){
@@ -94,13 +95,13 @@ public class UserController {
             log.info("[UserController} Already Exist");
             result = "중복된 아이디가 존재합니다";
         }
-        log.info("[UserController] checkDupication =======================");
+        log.info("[UserController] checkDuplication =======================");
         return  ResponseEntity.ok(result);
     }
 
     @GetMapping("signupsuccess")
     public String SignupSuccess() {
-        return "/loginandsignup/Signup_3";
+        return "/user/Signup_3";
     }
 }
 
