@@ -88,10 +88,10 @@
         UPDATE
             USER_INFO A
         SET
-             PASSWORD
-            ,NICKNAME
+             PASSWORD = #{ password }
+            ,NICKNAME = #{ nickname }
         WHERE USER_STATUS ='일반'
-          AND USER_ID = #{ userId }
+          AND ID = #{ userId }
 
     </update>
 

@@ -45,10 +45,12 @@ public class UserServiceImpl implements UserService{
             throw new UserRegistException("회원 가입에 실패하였습니다.");
         }
     }
-/*-------------회원 정보 수정------------*/
+
+
+    /*-------------회원 정보 수정------------*/
 
     @Override
-    public void modifyMember(UserDTO user) throws UserModifyException {
+    public void modifyUser(UserDTO user) throws UserModifyException {
         int result = mapper.updateUser(user);
 
         if(!(result > 0)) {

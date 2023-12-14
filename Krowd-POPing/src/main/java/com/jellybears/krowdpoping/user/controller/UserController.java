@@ -2,8 +2,11 @@ package com.jellybears.krowdpoping.user.controller;
 
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
+import com.jellybears.krowdpoping.common.util.SessionUtil;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -52,16 +55,18 @@ public class UserController {
 
 
     /*
-    *회원가입 정보 입력 받기
-    * */
+     *회원가입 정보 입력 받기
+     * */
 
     @GetMapping("regist")
-    public String goRegister(){return "/user/Signup_2";}
+    public String goRegister() {
+        return "/user/Signup_2";
+    }
 
 
     @PostMapping("/regist")
     public String registUser(@ModelAttribute UserDTO user,
-                               RedirectAttributes rttr) throws UserRegistException {
+                             RedirectAttributes rttr) throws UserRegistException {
 
         log.info("");
         log.info("");
@@ -85,37 +90,64 @@ public class UserController {
     }
 
 
-
     @PostMapping("idDupCheck")
-    public ResponseEntity<String> checkDuplication(@RequestBody UserDTO userDTO){
+    public ResponseEntity<String> checkDuplication(@RequestBody UserDTO userDTO) {
         log.info("");
         log.info("");
         log.info("[UserController} checkDuplication===============================");
 
-        String result ="사용 가능한 아이디 입니다.";
+        String result = "사용 가능한 아이디 입니다.";
         log.info("[UserController} Request Check Id : " + userDTO.getUserId());
 
-        if("".equals(userDTO.getUserId())){
+        if ("".equals(userDTO.getUserId())) {
             log.info("[UserController} No Input User ID");
             result = "아이디를 입력해 주세요 ";
-        } else if(UserService.selectUserById(userDTO.getUserId())){
+        } else if (UserService.selectUserById(userDTO.getUserId())) {
             log.info("[UserController} Already Exist");
             result = "중복된 아이디가 존재합니다";
         }
         log.info("[UserController] checkDuplication =======================");
-        return  ResponseEntity.ok(result);
+        return ResponseEntity.ok(result);
     }
-
-//    @PostMapping("update")
-//    public String modifyUser(@ModelAttribute UserDTO user
-//                             RedirectAttributes rttr) throws UserModifyException {
-
-
-
 
     @GetMapping("signupsuccess")
     public String SignupSuccess() {
         return "/user/Signup_3";
     }
+
+    @GetMapping("update")
+    public String editProfile() {
+        log.info("editProfile method called");
+
+        return "mypage/mypage_editprofile.html";
+    }
+    @PostMapping("update")
+    public String modifyUser(@ModelAttribute UserDTO user,
+                             HttpServletRequest request,
+                             HttpServletResponse response,
+                             RedirectAttributes rttr) throws UserModifyException {
+
+        log.info("");
+        log.info("");
+        log.info("[UserController] modifyUser ========================================================== start");
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        log.info("[UserController] modifyUser request User : " + user);
+
+        UserService.modifyUser(user);
+
+        // 회원정보 수정후 로그아웃 프로세스 진행
+        SessionUtil.invalidateSession(request, response);
+
+        rttr.addFlashAttribute("message", "회원 정보 수정에 성공하셨습니다. 다시 로그인해주세요.");
+
+        log.info("[UserController] modifyUser========================================================== end");
+
+        return "redirect:/user/login";
+    }
+
+
 }
+
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!--user header footer css-->
+    <link rel="stylesheet" href="/css/usercommon/userheader.css">
+    <link rel="stylesheet" href="/css/usercommon/userfooter.css">
+    <!--mypage css-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<header th:replace="fragments/user_header :: headerFragment"></header>
+
+<body layout:fragment="content"></body>
+<footer th:replace="fragments/user_footer :: footerFragment"></footer>
+
+</body>
+</html>

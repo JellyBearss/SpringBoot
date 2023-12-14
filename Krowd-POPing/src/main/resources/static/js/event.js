@@ -61,4 +61,11 @@ window.onload = function() {
         });
     }
 
+    if(document.getElementById("updateUser")) {
+        const $update = document.getElementById("updateUser");
+        $update.onclick = function() {
+            location.href = "/user/update";
+        }
+    }
+
 }

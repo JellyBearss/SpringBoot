@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="headerFragment">
+<header id="header">
+    <div class=cartbar>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="category-box">
+            <div class="category"><a href="home.html">홈</a></div>
+            <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
+            <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
+            <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="/icon/logo2.png" alt="">
+    </div>
+    <div class="menu">
+        <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
+        <a th:onclick="'location.href=\'/mypage/projectlist2_yes\''" class="menu-item1">
+            <img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
+        <a href="alarm.html" class="menu-item2">
+            <img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
+        <a th:onclick="'location.href=\'/startProject/start\''" class="menu-item3">
+            <img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
+
+        <th:block sec:authorize="isAnonymous()">
+            <a th:href="@{/user/login}"
+               class="menu-item5" id="login">
+                <img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
+        </th:block>
+
+        <th:block sec:authorize="isAuthenticated()">
+            <a href="login.html" class="menu-item4"><img src="/icon/basicpic.png" alt="" ><span class="login_nickname" sec:authentication="principal.userDTO.nickname"></span><span>님</span></a>
+            <!--                <a th:href="@{/user/logout}">-->
+            <!--                    <input type="button" class="btn btn-or" value="로그아웃" id="logout"></a>-->
+
+        </th:block>
+    </div>
+    <div id="search-area">
+        <form id="search-form">
+            <div id="search-text-area">
+                <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
+                       onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
+            </div>
+            <div id="search-btn-area">
+                <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
+            </div>
+        </form>
+    </div>
+
+
+</header>
+
+</div>
+</html>
