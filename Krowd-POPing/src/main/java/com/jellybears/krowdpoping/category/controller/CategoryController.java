@@ -12,18 +12,18 @@ import java.util.List;
 @RequestMapping("category/*")
 public class CategoryController {
 
-//    private final CategoryService categoryService;
-//
-//    public CategoryController(CategoryService categoryService) {
-//        this.categoryService = categoryService;
-//    }
-//
-//    @GetMapping("category-all")
-//    public String goCategory(){
-//
-//
-//        return "/category/categorypage1-all";
-//    }
+    private final CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
+    @GetMapping("category-all")
+    public String goCategory(){
+
+
+        return "/category/categorypage1-all";
+    }
 
     @GetMapping("category-acc")
     public String goCategoryAcc(){
