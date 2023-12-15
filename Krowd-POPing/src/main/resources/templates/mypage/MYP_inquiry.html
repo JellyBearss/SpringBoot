@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
 
 <head>
     <meta charset="UTF-8">
@@ -113,12 +115,14 @@
             <div id="pjminilist">
                 <div class="mini-1">&nbsp&nbsp&nbsp</div>
 
+
                 <div class="inquiry-wrapper subpage" id="subpage1">
                     <div class="inquiryPush">
                         <div class="inquiryPushInner"></div>
                         <div class="inq-write" th:onclick="'location.href=\'/inquiry/inquiryForm\''">문의 작성하기</div>
                     </div>
                     <div class="space-description">*<span class="inquiry-type">고객센터</span>에 문의하신 내역입니다.</div>
+
 
                     <table class="inquiry-category">
                         <colgroup>
@@ -138,32 +142,33 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>일반문의</td>
-                            <td class="dynamic-col"><a href="#">문의 제목이 들어갑니다.</a></td>
-                            <td>답변 완료</td>
-                            <td>2023.12.20</td>
+                        <tr th:each="inquiry : ${inquiryList}">
+                            <td th:text="${ inquiry.inquiryCode }"></td>
+                            <td th:text="${ inquiry.inquiryType }"></td>
+                            <td>
+                                <a th:href="|/inquiry/inquiryContent?no=${inquiry.inquiryCode}|" th:utext="${ inquiry.inquiryTitle }" class="dynamic-col"></a>
+                            </td>
+                            <td th:text="${ inquiry.inquiryStatus }"></td>
+                            <td th:text="${ inquiry.inquiryDate }"></td>
                         </tr>
                         </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>일반문의</td>
-                            <td class="dynamic-col"><a href="#">문의 제목이 들어갑니다. 긴 제목 테스트 긴 제목 테스트 긴 제목 테스트 긴 제목
-                                테스트 긴 제목 테스트</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.20</td>
-                        </tr>
-                        </tbody>
+
                     </table>
 
 
+
+
                     <div class="inquiry-pagination">
-                        <div class="inquiry-active-page">1</div>
-                        <!-- <div>2</div>
-                        <div>3</div>
-                        <div>4</div> -->
+                        <!-- <div class="inquiry-active-page">1</div> -->
+                        <button class="pagebtn" onclick="backbtn()">이전</button>
+                        <ul class="no-margin-padding">
+                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>
+                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>
+                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>
+                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>
+                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>
+                        </ul>
+                        <button class="pagebtn" onclick="nextbtn()">다음</button>
                     </div>
                 </div>
 
@@ -194,18 +199,20 @@
                         </thead>
                         <tbody>
                         <tr>
+
                             <td>1</td>
                             <td>상품문의</td>
-                            <td class="dynamic-col"><a href="#">굿즈 구성에 질문이 있어요.</a></td>
+                            <td class="dynamic-col"><a href="/inquiry/inquiryContent?id=1">굿즈 구성에 질문이 있어요.</a></td>
                             <td>문의 전송됨</td>
                             <td>2023.11.30</td>
+
                         </tr>
                         </tbody>
                         <tbody>
                         <tr>
                             <td>2</td>
                             <td>배송문의</td>
-                            <td class="dynamic-col"><a href="#">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
+                            <td class="dynamic-col"><a href="/inquiry/inquiryContent?id=2">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
                             <td>문의 전송됨</td>
                             <td>2023.12.01</td>
                         </tr>
@@ -277,10 +284,16 @@
 
 
                     <div class="inquiry-pagination">
-                        <div class="inquiry-active-page">1</div>
-                        <div>2</div>
-                        <div>3</div>
-                        <div>4</div>
+                        <!-- <div class="inquiry-active-page">1</div> -->
+                        <button class="pagebtn" onclick="backbtn()">이전</button>
+                        <ul class="no-margin-padding">
+                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>
+                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>
+                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>
+                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>
+                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>
+                        </ul>
+                        <button class="pagebtn" onclick="nextbtn()">다음</button>
                     </div>
                 </div>
 
@@ -360,7 +373,40 @@
 
     }
 
+    let pagelink = document.getElementsByClassName("pagelink");
+    let currentValue = 1;
+
+    function activeLink() {
+        for (link of pagelink) {
+            link.classList.remove("active");
+        }
+        event.target.classList.add("active");
+        currentValue = event.target.value;
+    }
+
+    function backbtn() {
+        if (currentValue > 1) {
+            for (link of pagelink) {
+                link.classList.remove("active");
+            }
+            currentValue--;
+            pagelink[currentValue - 1].classList.add("active");
+        }
+    }
+
+    function nextbtn() {
+        if (currentValue < 5) {
+            for (link of pagelink) {
+                link.classList.remove("active");
+            }
+            currentValue++;
+            pagelink[currentValue - 1].classList.add("active");
+        }
+    }
+
 </script>
+
+
 
 <!-- <script>
 jQuery(document).ready(function() {

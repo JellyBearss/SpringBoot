@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" href="/css/Inquiry/inquiryForm.css">
+    <link rel="stylesheet" href="/css/project/projectReportForm.css">
     <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap"
             rel="stylesheet">
@@ -32,43 +32,43 @@
 
 <div class="report-wrapper">
     <div class="reportInner">
-        <h2>1:1 문의</h2>
-        <h4>문의 내용에 개인정보(이름, 연락처, 카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.</h4>
-        <span class="reportAttention">고객님의 문의에 답변하는 직원은 고객 여러분의 가족 중 한 사람일 수 있습니다. 고객의 언어폭력으로부터 직원을 보호하기 위해 관련 법에 따라
-                수사기관에 필요한 조치를 요구할 수 있으며, 형법에 의해 처벌 대상이 될 수 있습니다.</span>
+        <h2>프로젝트 신고</h2>
+        <h4>이 프로젝트가 위반한 신고사항을 작성해주세요.</h4>
+        <span class="reportAttention">카테고리에서 신고 사유를 선택해주시고 해당 프로젝트의 URL 및 관련한 증빙자료를 첨부해주시면 빠른 확인이 가능합니다.
+                </span>
 
         <!-- <form method="post">
         <textarea id="Y-SummernoteCate" name="editor"></textarea>
         </form> -->
 
         <!-- 폼태그 시작 -->
-    <form id="inquiryRegist" method="post" action="/inquiry/save"> <!--action에는 입력한 데이터를 보낼 주소 작성. 액션속성은 목적지를 의미-->
-<!--        writer: <input type="text" name="boardWriter" th:value="${user.id}"><br>-->
-<!--        receiver: <input type="text" name="boardeReciver" th:value="${user.id}"><br>-->
-        writer: <input type="text" name="questioner"><br> <!-- 인풋에 입력한 값이 네임에 담겨서 넘어간다. 반드시 네임 정해줘야함 -->
-        receiver: <input type="text" name="replier"><br>
-        type: <input type="text" name="inquiryType"><br>
-        date: <input type="date" name="inquiryDate"><br>
-        status: <input type="text" name="inquiryStatus"><br>
+        <form id="projectReportRegist" method="post" action="/project/save"> <!--action에는 입력한 데이터를 보낼 주소 작성. 액션속성은 목적지를 의미-->
+            <!--        writer: <input type="text" name="boardWriter" th:value="${user.id}"><br>-->
+            <!--        receiver: <input type="text" name="boardeReciver" th:value="${user.id}"><br>-->
+            writer: <input type="text" name="questioner"><br> <!-- 인풋에 입력한 값이 네임에 담겨서 넘어간다. 반드시 네임 정해줘야함 -->
+            receiver: <input type="text" name="replier"><br>
+            type: <input type="text" name="inquiryType"><br>
+            date: <input type="date" name="inquiryDate"><br>
+            status: <input type="text" name="inquiryStatus"><br>
 
-<!--            <select id="category" name="category">-->
-<!--                <option value="" disabled selected>카테고리를 선택하세요</option>-->
-<!--                <option value="option2">카테고리 옵션1</option>-->
-<!--                <option value="option3">카테고리 옵션2</option>-->
-<!--                <option value="option1">기타</option>-->
-<!--            </select>-->
+            <!--            <select id="category" name="category">-->
+            <!--                <option value="" disabled selected>카테고리를 선택하세요</option>-->
+            <!--                <option value="option2">카테고리 옵션1</option>-->
+            <!--                <option value="option3">카테고리 옵션2</option>-->
+            <!--                <option value="option1">기타</option>-->
+            <!--            </select>-->
 
             <textarea id="Y-SummernoteTitle" name="inquiryTitle"></textarea>
 
 
-                <textarea id="Y-SummernoteContent" name="inquiryContent"></textarea>
+            <textarea id="Y-SummernoteContent" name="inquiryContent"></textarea>
 
 
-<!--        <i class="fa-solid fa-camera" for="reportFile"></i>-->
-<!--        <input id="check-file-input" type="file" multiple class="reportFile" name="reportFile" accept="image/"-->
-<!--               onchange="loadFile(this)">-->
-<!--        <button type="submit" class="submit-button">전송테스트</button>-->
-        <input type="submit" value="작성테스트">
+            <!--        <i class="fa-solid fa-camera" for="reportFile"></i>-->
+            <!--        <input id="check-file-input" type="file" multiple class="reportFile" name="reportFile" accept="image/"-->
+            <!--               onchange="loadFile(this)">-->
+            <!--        <button type="submit" class="submit-button">전송테스트</button>-->
+            <input type="submit" value="작성테스트">
 
         </form>
 
@@ -77,8 +77,8 @@
 
 
         <!--        <div class="form-complete">-->
-<!--            <button onclick="submitAllForms()">작성완료</button>-->
-<!--        </div>-->
+        <!--            <button onclick="submitAllForms()">작성완료</button>-->
+        <!--        </div>-->
     </div>
 </div>
 

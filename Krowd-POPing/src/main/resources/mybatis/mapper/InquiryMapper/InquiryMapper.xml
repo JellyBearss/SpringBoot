@@ -34,28 +34,32 @@
 
 
 
-<!--    <insert id="insertInquiry">-->
+    <insert id="saveNewInquiry">
 
-<!--        insert-->
-<!--        into inquiry-->
-<!--        (-->
-<!--         inquiry_type,-->
-<!--         inquiry_title,-->
-<!--         inquiry_content,-->
-<!--         inquiry_date,-->
-<!--         inquiry_status-->
+        insert
+        into inquiry
+        (
+         inquiry_type,
+         inquiry_title,
+         inquiry_content,
+         inquiry_date,
+         inquiry_status,
+         questioner,
+         replier
 
-<!--        )-->
-<!--        VALUES (-->
-<!--                #{ inquiryType },-->
-<!--                #{ inquiryTitle },-->
-<!--                #{ inquiryContent },-->
-<!--                #{ inquiryDate },-->
-<!--                #{ inquiryStatus }-->
+        )
+        VALUES (
+                #{ inquiryType },
+                #{ inquiryTitle },
+                #{ inquiryContent },
+                #{ inquiryDate },
+                #{ inquiryStatus },
+                #{ questioner },
+                #{ replier }
 
-<!--               )-->
+               )
 
-<!--    </insert>-->
+    </insert>
 
     <select id="findInquiryList" resultMap="inquiryResultMap">
         SELECT
@@ -70,8 +74,28 @@
         FROM inquiry A
                  LEFT JOIN user_info B on A.questioner = B.user_code
                  LEFT JOIN user_info C on A.replier = C.user_code
-        ORDER BY inquiry_code
+        where A.inquiry_type = '관리자에게 문의'
+        ORDER BY inquiry_code desc
 
     </select>
+
+    <select id="selectInquiryContent" resultMap="inquiryResultMap">
+        select
+            A.inquiry_code,
+            A.inquiry_type,
+            A.inquiry_title,
+            A.inquiry_content,
+            A.inquiry_date,
+            A.inquiry_status,
+            B.id as questioner,
+            C.id as replier
+        FROM inquiry A
+                 LEFT JOIN user_info B on A.questioner = B.user_code
+                 LEFT JOIN user_info C on A.replier = C.user_code
+        where inquiry_code = #{ no }
+
+    </select>
+
+
 
 </mapper>

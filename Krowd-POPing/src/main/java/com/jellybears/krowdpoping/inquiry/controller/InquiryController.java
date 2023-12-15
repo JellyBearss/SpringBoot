@@ -1,12 +1,16 @@
 package com.jellybears.krowdpoping.inquiry.controller;
 
+import com.jellybears.krowdpoping.common.exception.inquiry.InquirySaveException;
 import com.jellybears.krowdpoping.inquiry.model.dto.InquiryDTO;
 import com.jellybears.krowdpoping.inquiry.model.service.InquiryService;
+import com.jellybears.krowdpoping.inquiry.model.service.InquiryServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.print.attribute.standard.Media;
 import java.util.List;
 
 @Controller
@@ -20,35 +24,50 @@ public class InquiryController {
         this.inquiryService = inquiryService;
     }
 
-    @GetMapping("inquiry")
-    public String goInguiary(){
 
-        return "/mypage/MYP_inquiry";
-    }
+    /**
+     * inquiryContent?id=1  ?이하는 파라미터이다. 파라미터 id, 파라미터 id의 값은 1
+     * 파라미터이므로 RequestParam으로 id를 넘겨받고 정수값 1을 넘겨받아야한다. 그래서 int로
+     */
+//    @GetMapping("inquiryContent")
+//    public String goInguiaryContent(@RequestParam("id") int id){
+//
+//        System.out.println("id = " + id);
+//
+//        return "/mypage/MYP_inquiryContent";
+//    }
 
     @GetMapping("inquiryContent")
-    public String goInguiaryContent(){
+    public String goInguiryContent(@RequestParam Long no, Model model){
+
+        System.out.println("no = " + no);
+
+        InquiryDTO inquiry = inquiryService.selectInquiryContent(no);
+        model.addAttribute("inquiryContent", inquiry);
+
+        System.out.println("inquiry = " + inquiry);
 
         return "/mypage/MYP_inquiryContent";
     }
 
+
     @GetMapping("inquiryForm")
-    public String goInguiaryForm(){
+    public void goInguiryForm(){
 
-        return "/inquiry/inquiryForm";
+//        return "/inquiry/inquiryForm";
     }
 
-
-    @GetMapping("save")
-    public String saveForm() {
-        return "inquiry/save";
-    }
 
     @PostMapping("save")
-    @ResponseBody
-    public String save(@ModelAttribute InquiryDTO inquiry){ //()여기에 DTO에 담은 것을 넘겨준다.
+    public String save(@ModelAttribute InquiryDTO inquiry, RedirectAttributes rttr) throws InquirySaveException { //()여기에 DTO에 담은 것을 넘겨준다.
         System.out.println("inquiry = " + inquiry);
-    return "";
+
+        inquiryService.saveNewInquiry(inquiry);
+
+        rttr.addFlashAttribute("message", "문의가 전송되었습니다.");
+
+
+    return "redirect:/inquiry/list";
 
     }
 
@@ -62,7 +81,9 @@ public class InquiryController {
 
         System.out.println("inquiryList = " + inquiryList);
 
-        return "/inquiry/list";
+        return "/mypage/MYP_inquiry";
     }
+
+
 
 }
