@@ -4,16 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.funding_process.model.dao.AddressMapper">
 
-<!--    <insert id="saveAddress" parameterType="AddressDTO">-->
-<!--    insert into delivery_address_info (delivery_code-->
-<!--                                    , address_title-->
-<!--                                    , recipient_name-->
-<!--                                    , recipient_address-->
-<!--                                    , recipient_phone_number-->
-<!--                                    , whether_default_address-->
-<!--                                    )-->
-<!--    values (-->
-<!--            #{ deliveryCode}-->
-<!--           )-->
-<!--    </insert>-->
+    <insert id="saveAddress" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO">
+    insert into delivery_address_info (address_title
+                                    , recipient_name
+                                    , recipient_address
+                                    , recipient_phone_number
+                                    , delivery_comment
+                                    , whether_default_address
+                                    )
+    values (
+            #{ addressTitle }
+            , #{ recipientName }
+           , #{ mergedAddress }
+           , #{ recipientPhoneNumber }
+           , #{ deliveryComment }
+           , #{ whetherDefaultAddress }
+           )
+    </insert>
 </mapper>
