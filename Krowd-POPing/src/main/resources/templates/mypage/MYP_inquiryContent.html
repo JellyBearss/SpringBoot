@@ -122,25 +122,24 @@
                 <div class="space-description">*<span class="inquiry-type">고객센터</span>에 문의하신 내역입니다.</div>
             </div>
 
-            <div class="inquiry-detail-wrapper">
+            <div  class="inquiry-detail-wrapper">
                 <div class="inquiry-detail">
                     <div class="inquiry-title">
-
-                        <p>내가 문의했던 제목이 들어갑니다.</p>
+                        <span th:utext="${ inquiryContent.inquiryTitle }"></span>
                     </div>
                     <div class="inquiry-status">
                         <p>
                             <span class="inquiry-status-cate">유형 |&nbsp;</span>
-                            <span class="inquiry-status-result">일반문의</span>
+                            <span th:text="${ inquiryContent.inquiryType }" class="inquiry-status-result">일반문의</span>
                         </p>
                         <p>
                             <span class="inquiry-status-cate">답변 상태 |&nbsp;</span>
-                            <span class="inquiry-status-result isr">답변 완료</span>
+                            <span th:text="${ inquiryContent.inquiryStatus }" class="inquiry-status-result isr">답변 완료</span>
                         </p>
                     </div>
                     <div class="inquiry-update-date">
 
-                        <div class="inquiry-status-result">2023.12.20</div>
+                        <div class="inquiry-status-result" th:text="${ inquiryContent.inquiryDate }">2023.12.20</div>
                         <div class="inquiry-btn-wrapper">
                             <a href="#" class="inq-list-btn">목록</a>
                             <a href="#" class="inq-list-btn">삭제</a>
@@ -149,7 +148,7 @@
                 </div>
 
                 <div class="inquiry-content">
-                        <textarea readonly class="inqu-textarea">
+                        <textarea readonly class="inqu-textarea" th:utext="${ inquiryContent.inquiryContent }">
 안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
 안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
 안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.

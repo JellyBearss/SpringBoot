@@ -4,6 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.inquiry.model.dao.InquiryMapper">
 
+
+    <resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+        <id property="user_code" column="user_code"/>
+        <result property="userId" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="email" column="email"/>
+        <result property="phone_number" column="phone_number"/>
+        <result property="user_status" column="user_status"/>
+    </resultMap>
+
     <resultMap id="inquiryResultMap" type="com.jellybears.krowdpoping.inquiry.model.dto.InquiryDTO">
         <id property="inquiryCode" column="inquiry_code"/>
         <result property="inquiryType" column="inquiry_type"/>
@@ -11,59 +24,78 @@
         <result property="inquiryContent" column="inquiry_content"/>
         <result property="inquiryDate" column="inquiry_date"/>
         <result property="inquiryStatus" column="inquiry_status"/>
+<!--        <result property="questioner" column="questioner"/>-->
+<!--        <result property="replier" column="replier"/>-->
         <result property="questioner" column="questioner"/>
         <result property="replier" column="replier"/>
+
     </resultMap>
 
-<!--    <resultMap id="userResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
-<!--        <id property="user_code" column="user_code"/>-->
-<!--        <result property="id" column="id"/>-->
-<!--        <result property="password" column="password"/>-->
-<!--        <result property="name" column="name"/>-->
-<!--        <result property="nickname" column="nickname"/>-->
-<!--        <result property="birthday" column="birthday"/>-->
-<!--        <result property="email" column="email"/>-->
-<!--        <result property="phone_number" column="phone_number"/>-->
-<!--        <result property="user_status" column="user_status"/>-->
-<!--        <result property="email_code" column="email_code"/>-->
-<!--    </resultMap>-->
 
-<!--    <insert id="insertInquiry">-->
 
-<!--        insert-->
-<!--        into inquiry-->
-<!--        (-->
-<!--         inquiry_type,-->
-<!--         inquiry_title,-->
-<!--         inquiry_content,-->
-<!--         inquiry_date,-->
-<!--         inquiry_status-->
 
-<!--        )-->
-<!--        VALUES (-->
-<!--                #{ inquiryType },-->
-<!--                #{ inquiryTitle },-->
-<!--                #{ inquiryContent },-->
-<!--                #{ inquiryDate },-->
-<!--                #{ inquiryStatus }-->
+    <insert id="saveNewInquiry">
 
-<!--               )-->
+        insert
+        into inquiry
+        (
+         inquiry_type,
+         inquiry_title,
+         inquiry_content,
+         inquiry_date,
+         inquiry_status,
+         questioner,
+         replier
 
-<!--    </insert>-->
+        )
+        VALUES (
+                #{ inquiryType },
+                #{ inquiryTitle },
+                #{ inquiryContent },
+                #{ inquiryDate },
+                #{ inquiryStatus },
+                #{ questioner },
+                #{ replier }
+
+               )
+
+    </insert>
 
     <select id="findInquiryList" resultMap="inquiryResultMap">
-    SELECT
-                 inquiry_code,
-                 inquiry_type,
-                 inquiry_title,
-                 inquiry_content,
-                 inquiry_date,
-                 inquiry_status,
-                 questioner,
-                 replier
-    FROM inquiry
-    ORDER BY inquiry_code
+        SELECT
+            A.inquiry_code,
+            A.inquiry_type,
+            A.inquiry_title,
+            A.inquiry_content,
+            A.inquiry_date,
+            A.inquiry_status,
+            B.id as questioner,
+            C.id as replier
+        FROM inquiry A
+                 LEFT JOIN user_info B on A.questioner = B.user_code
+                 LEFT JOIN user_info C on A.replier = C.user_code
+        where A.inquiry_type = '관리자에게 문의'
+        ORDER BY inquiry_code desc
 
     </select>
+
+    <select id="selectInquiryContent" resultMap="inquiryResultMap">
+        select
+            A.inquiry_code,
+            A.inquiry_type,
+            A.inquiry_title,
+            A.inquiry_content,
+            A.inquiry_date,
+            A.inquiry_status,
+            B.id as questioner,
+            C.id as replier
+        FROM inquiry A
+                 LEFT JOIN user_info B on A.questioner = B.user_code
+                 LEFT JOIN user_info C on A.replier = C.user_code
+        where inquiry_code = #{ no }
+
+    </select>
+
+
 
 </mapper>

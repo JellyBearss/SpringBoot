@@ -440,6 +440,12 @@ tbody{
     height: 50px;
 }
 
+tr{
+
+    border-bottom: 1px solid #EADBF9;
+
+}
+
 
 .inquiry-detail-wrapper{
     border-top: 1px solid #6d6d6d;
@@ -628,6 +634,60 @@ textarea{
     color: #7d1cdb;
 }
 
+/*=========== 페이지네이션 ============*/
+
+.no-margin-padding {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+
+.inquiry-pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: #383838;
+    padding: 10px 40px;
+    border-radius: 6px;
+
+}
+
+.inquiry-pagination ul{
+    margin: 10px 30px;
+}
+
+.pagelink{
+    display: inline-block;
+    margin: 0 10px;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.pagelink.active{
+    background: #7D1CD8;
+    color: #fff;
+
+}
+
+.pagebtn{
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #383838;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
 
 /* -------------------header 부분--------------------- */
 
