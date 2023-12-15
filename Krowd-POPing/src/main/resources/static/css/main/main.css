@@ -116,6 +116,7 @@ div{
     float: left;
     margin-top:20px;
     margin-left: 60px;
+    cursor:pointer;
 }
 
 .logo img{
@@ -124,6 +125,7 @@ div{
 }
 
 .menu{float: right;
+    cursor:pointer;
 }
 
 .menu-item1 img,.menu-item2 img,.menu-item3 img,.menu-item5 img,.menu-item4 img {

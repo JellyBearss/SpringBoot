@@ -113,7 +113,7 @@ position: relative;
 
 #term_of_service_container{
     width: 1000px;
-    height: 1200px;
+    height: 1350px;
     border: 1px solid #D9D9D9;
     margin: auto;
     margin-top: 80px;
@@ -234,7 +234,8 @@ position: relative;
 }
 #type_name_label,
 #type_nickname_label,
-#type_phone_label{
+#type_phone_label,
+#type_authnum_label{
     font-size: 16px;
 }
 #type_name { 
@@ -256,7 +257,7 @@ position: relative;
     background-color: #F8F8F8;
 }
 #birthday{
-    margin-left: 32px;
+    margin-left: 31px;
     height: 30px;
     /* padding: 5px; */
     width: 200px;
@@ -298,7 +299,7 @@ label[for="birthday"]{
 }
 
 #nickname {
-    margin-left:48px;
+    margin-left:46px;
     height: 30px;
     width: 200px;
     font-size:13px;
@@ -332,7 +333,7 @@ label[for="emailProvider"]{
 border: 1px solid #ccc;
 padding: 5px;
 font-size: 13px;
-margin-left: 38px;
+margin-left: 36px;
 padding-left: 10px;
 height: 30px;
 width: 200px;
@@ -344,7 +345,28 @@ font-size: 14px;
 height: 40px;
 width: 150px;
 }
-
+.send_auth{
+    margin-left: 10px;
+    padding: 5px;
+}
+.type_auth_num{
+    color: #6d6d6d;
+    transform:translateX(28%);
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+#auth_num{
+    margin-left:31px;
+    height: 30px;
+    width: 200px;
+    font-size:13px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    padding-left: 10px;
+    background-color: #F8F8F8;
+}
 
 
 #type_phone{
@@ -357,7 +379,7 @@ width: 150px;
 }
 
 #phone {
-    margin-left:38px;
+    margin-left:31px;
     height: 30px;
     width: 200px;
     font-size:13px;

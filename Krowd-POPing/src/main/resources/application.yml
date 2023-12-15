@@ -4,6 +4,22 @@ spring:
     url: jdbc:log4jdbc:mysql://mysql.coffit.today:3306/krowdpoping2
     username: jellybears2
     password: jellybears2
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: krowdpoping@gmail.com
+    password: xbhe pdbv nkua czev
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+    auth-code-expiration-millis: 1800000  # 30 * 60 * 1000 == 30분
 
 #  mvc:
 #    static-path-pattern: /static/**

@@ -110,9 +110,18 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/mailCheck")
+    @ResponseBody
+    public String mailCheck(String email) {
+        System.out.println("이메일 인증 요청이 들어옴!");
+        System.out.println("이메일 인증 이메일 : " + email);
+
+        return "";
+    }
+
     @GetMapping("signupsuccess")
     public String SignupSuccess() {
-        return "/user/Signup_3";
+        return "user/Signup_3";
     }
 
     @GetMapping("update")

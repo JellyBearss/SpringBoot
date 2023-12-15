@@ -13,6 +13,8 @@
         <result property="email" column="email"/>
         <result property="phone_number" column="phone_number"/>
         <result property="user_status" column="user_status"/>
+        <result property="email_code" column="email_code"/>
+
     </resultMap>
     <resultMap id="RoleResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleDTO">
         <id property="role_code" column="role_code"/>
@@ -22,7 +24,15 @@
     <resultMap id="RoleTypeResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO">
         <association property="userDTO" resultMap="UserResultMap"/>
         <association property="roleDTO" resultMap="RoleResultMap"/>
+    </resultMap>
 
+    <resultMap id="EmailReusltMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+        <id property="email_code" column="email_code"/>
+        <result property="email_certificate" column="email_certificate"/>
+    </resultMap>
+    <resultMap id="EmailandUserDTO" type="com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO">
+        <association property="emailDTO" resultMap="EmailResultMap"/>
+        <association property="userDTO" resultMap="UserResultMap"/>
     </resultMap>
 
     <select id="selectUserById" resultMap="RoleTypeResultMap">
@@ -84,6 +94,23 @@
 
                 )
     </insert>
+
+    <select id="selectLastInsertUserCode">
+        SELECT last_insert_id()
+
+        FROM USER_INFO LIMIT 1
+    </select>
+
+    <insert id="insertRoletype" >
+        INSERT INTO ROLE_TYPE
+        VALUES (
+                   #{ user_code },
+                   2
+               )
+
+    </insert>
+
+
     <update id="updateUser">
         UPDATE
             USER_INFO A

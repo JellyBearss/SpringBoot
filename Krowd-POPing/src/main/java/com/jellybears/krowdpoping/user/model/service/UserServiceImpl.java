@@ -37,7 +37,17 @@ public class UserServiceImpl implements UserService{
     public void registUser(UserDTO user) throws UserRegistException{
 
         log.info("[UserService] Insert User : " + user);
+
         int result = mapper.insertUser(user);
+
+        int userCode = mapper.selectLastInsertUserCode();
+
+        System.out.println(userCode+"===================user_code===============");
+        log.info(String.valueOf(result));
+        log.info(String.valueOf(userCode));
+
+        int result1 = mapper.insertRoletype(userCode);
+
 
         log.info("[UserService] Insert User : " + ((result > 0) ? "회원가입 성공" : "회원가입 실패"));
 
