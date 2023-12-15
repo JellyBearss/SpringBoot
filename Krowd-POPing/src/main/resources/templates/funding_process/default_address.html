@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="header">
-    <a href="/home" class="logo">
+    <a href="/main/main" class="logo">
         <img src="/icon/logo2.png" alt="">
     </a>            
     <a href="/upload" class=upload_project>
@@ -96,6 +96,56 @@
             <label for="same">가입 정보와 동일</label>
         </div>
     </div>
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            // 초기 상태에서는 "가입 정보와 동일" 체크박스가 체크되어 있지 않습니다.
+            // 따라서 입력 필드를 비활성화합니다.
+            toggleSameAsProfile();
+
+            // "가입 정보와 동일" 체크박스의 상태가 변경될 때마다 호출되는 함수
+            $('#same').change(function() {
+                toggleSameAsProfile();
+            });
+
+            // "가입 정보와 동일" 체크박스의 상태에 따라 입력 필드를 활성화 또는 비활성화하는 함수
+            function toggleSameAsProfile() {
+                var isChecked = $('#same').is(':checked');
+
+                // "가입 정보와 동일"이 체크되었을 때
+                if (isChecked) {
+                    // Thymeleaf에서 사용자 정보를 가져와서 입력 필드에 할당
+                    var nickname = /*[[${user.nickname}]]*/ '';
+                    var name = /*[[${user.name}]]*/ '';
+                    var phone_number = /*[[${user.phone_number}]]*/ '';
+                    var email_code = /*[[${user.email_code}]]*/ '';
+
+                    // 입력 필드에 값 할당
+                    $('input[name="input_nickname"]').val(nickname);
+                    $('input[name="input_name"]').val(name);
+                    $('input[name="input_phone_number"]').val(phone_number);
+                    $('input[name="input_email"]').val(email_code);
+
+                    // 입력 필드 비활성화
+                    $('input[name="input_nickname"]').prop('readonly', true);
+                    $('input[name="input_name"]').prop('readonly', true);
+                    $('input[name="input_phone_number"]').prop('readonly', true);
+                    $('input[name="input_email"]').prop('readonly', true);
+                } else {
+                    // "가입 정보와 동일"이 체크되지 않았을 때, 입력 필드 초기화 및 활성화
+                    $('input[name="input_nickname"]').val('');
+                    $('input[name="input_name"]').val('');
+                    $('input[name="input_phone_number"]').val('');
+                    $('input[name="input_email"]').val('');
+
+                    // 입력 필드 활성화
+                    $('input[name="input_nickname"]').prop('readonly', false);
+                    $('input[name="input_name"]').prop('readonly', false);
+                    $('input[name="input_phone_number"]').prop('readonly', false);
+                    $('input[name="input_email"]').prop('readonly', false);
+                }
+            }
+        });
+    </script>
 </div>
 
 <div class="default_address">

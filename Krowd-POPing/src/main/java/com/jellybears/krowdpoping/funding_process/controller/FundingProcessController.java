@@ -4,8 +4,13 @@ import com.jellybears.krowdpoping.common.exception.address.AddressSaveException;
 import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
 import com.jellybears.krowdpoping.funding_process.model.service.AddressService;
 import com.jellybears.krowdpoping.funding_process.model.service.AddressServiceImpl;
+import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
+import com.jellybears.krowdpoping.user.model.dto.UserDTO;
+import com.jellybears.krowdpoping.user.model.service.AuthenticationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,19 +18,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.nio.channels.Pipe;
+
 @Controller
 @RequestMapping("/funding_process")
 @Slf4j
 public class FundingProcessController {
 
     private final AddressServiceImpl addressService;
+    private final AuthenticationService authenticationService;
 
     @Autowired
-    public FundingProcessController(AddressServiceImpl addressService){
+    public FundingProcessController(AddressServiceImpl addressService, AuthenticationService authenticationService){
         this.addressService = addressService;
+        this.authenticationService = authenticationService;
     }
     @GetMapping("address")
-    public String defaultAddress() { return "/funding_process/default_address"; }
+    public String defaultAddress(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        RoleTypeDTO roleTypeDTO = (RoleTypeDTO) authentication.getPrincipal();
+        UserDTO userDTO = roleTypeDTO.getUserDTO();
+
+        model.addAttribute("user", userDTO);
+        return "/funding_process/default_address";
+    }
 
     @PostMapping("saveAddress")
     public String saveAddress(@ModelAttribute AddressDTO addressDTO) throws AddressSaveException {
