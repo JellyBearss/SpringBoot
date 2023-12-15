@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zen+Tokyo Zoo&display=swap" rel="stylesheet">
 
-            <link rel="stylesheet" href="/css/funding_process/default_address.css">
+    <link rel="stylesheet" href="/css/funding_process/default_address.css">
     <style>
         body {
             margin: 0;
@@ -21,13 +21,13 @@
 <div id="header">
     <a href="/home" class="logo">
         <img src="/icon/logo2.png" alt="">
-    </a>            
+    </a>
     <a href="/upload" class=upload_project>
         <div class=upload_box>
-        <b><span  class="upload_text">프로젝트 올리기</span></b>
-        <svg viewBox="-12 -10 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.21429 16.0588H14.7857V8.64706H20.5L10.5 0L0.5 8.64706H6.21429V16.0588ZM0.5 18.5294H20.5V21H0.5V18.5294Z" fill="#7D1CD8"/>
-        </svg>
+            <b><span  class="upload_text">프로젝트 올리기</span></b>
+            <svg viewBox="-12 -10 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.21429 16.0588H14.7857V8.64706H20.5L10.5 0L0.5 8.64706H6.21429V16.0588ZM0.5 18.5294H20.5V21H0.5V18.5294Z" fill="#7D1CD8"/>
+            </svg>
         </div>
     </a>
     <a href="/profile" class="profile">
@@ -64,39 +64,31 @@
         <div class="supporter_info_title">후원자 정보</div>
 
         <div class="nickname_section">
-            <form action="#" method="get">
-                <span class="supporter_nickname">후원자명</span>
-                <div class="input_nickname_section">
-                    <input type="text" name ="input_nickname" placeholder="후원자명을 입력하세요.">
-                </div>
-            </form>
+            <span class="supporter_nickname">후원자명</span>
+            <div class="input_nickname_section">
+                <input type="text" name ="input_nickname" placeholder="후원자명을 입력하세요.">
+            </div>
         </div>
 
         <div class="name_section">
-            <form action="#" method="get">
-                <span class="name">이름</span>
-                <div class="input_name_section">
-                    <input type="text" name ="input_name" placeholder="이름을 입력하세요.">
-                </div>
-            </form>
+            <span class="name">이름</span>
+            <div class="input_name_section">
+                <input type="text" name ="input_name" placeholder="이름을 입력하세요.">
+            </div>
         </div>
 
         <div class="phone_number_section">
-            <form action="#" method="get">
-                <span class="phone_number">연락처</span>
-                <div class="input_phone_number_section">
-                    <input type="text" name ="input_phone_number" placeholder="연락처를 입력하세요.">
-                </div>
-            </form>
+            <span class="phone_number">연락처</span>
+            <div class="input_phone_number_section">
+                <input type="text" name ="input_phone_number" placeholder="연락처를 입력하세요.">
+            </div>
         </div>
 
         <div class="email_section">
-            <form action="#" method="get">
-                <span class="email">이메일</span>
-                <div class="input_email_section">
-                    <input type="text" name ="input_email" placeholder="이메일을 입력하세요.">
-                </div>
-            </form>
+            <span class="email">이메일</span>
+            <div class="input_email_section">
+                <input type="text" name ="input_email" placeholder="이메일을 입력하세요.">
+            </div>
         </div>
 
         <div class="same_as_profile">
@@ -172,97 +164,7 @@
 
         <div class="d_i_delivery_comment">
             <div class="d_i_delivery_comment_section">배송 요청 사항(선택)</div>
-            <select>
-                <option value="1">문 앞에 놓아주세요.</option>
-                <option value="2">경비(관리)실에 맡겨주세요.</option>
-                <option value="3">택배함에 넣어주세요.</option>
-                <option value="4">직접 받겠습니다.</option>
-                <option value="type">직접 입력</option>
-            </select>
-        </div>
-
-    </div>
-    <div id="subpage2" class="subpage">
-        <div class="add_address_name_info">
-            <form action="#" method="get">
-                <span class="a_i_address_name">배송지명</span>
-                <div class="input_a_i_address_name_section">
-                    <input type="text" name ="input_a_i_address_name">
-                </div>
-            </form>
-        </div>
-        <div class="add_name_info">
-            <form action="#" method="get">
-                <span class="a_i_name">받는 사람</span>
-                <div class="input_a_i_name_section">
-                    <input type="text" name ="input_a_i_name">
-                </div>
-            </form>
-        </div>
-
-        <div class="add_postcode_info">
-            <form action="#" method="get">
-                <span class="a_i_postcode">우편번호</span>
-                <div class="input_a_i_postcode_section">
-                    <input type="text" name="zipCode" id="zipCode" readonly></td>
-                    <input type="button" value="검색" class="btn btn-yg" id="searchZipCode"></td>
-                </div>
-            </form>
-        </div>
-
-        <div class="add_address_info">
-            <form action="#" method="get">
-                <span class="a_i_address">주소</span>
-                <div class="input_a_i_address_section">
-                    <input type="text" name ="input_a_i_address" id="input_a_i_address" readonly>
-                </div>
-            </form>
-        </div>
-
-        <div class="add_defailed_address_info">
-            <form action="#" method="get">
-                <span class="a_i_d_address">상세 주소</span>
-                <div class="input_a_i_d_address_section">
-                    <input type="text" name ="input_a_i_d_address" id="input_a_i_d_address">
-                </div>
-            </form>
-        </div>
-        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script th:inline="javascript">
-
-            const $searchZipCode = document.getElementById("searchZipCode");
-            const $goMain = document.getElementById("goMain");
-
-            $searchZipCode.onclick = function() {
-
-                /* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 매개변수로 전달한다. */
-                new daum.Postcode({
-                    oncomplete: function(data){
-                        /* 팝업에서 검색결과 항목을 클릭했을 시 실행할 코드를 작성하는 부분 */
-                        document.getElementById("zipCode").value = data.zonecode;
-                        document.getElementById("input_a_i_address").value = data.address;
-                        document.getElementById("input_a_i_d_address").focus();
-                    }
-                }).open();
-            }
-
-            $goMain.onclick = function() {
-                location.href = "/";
-            }
-
-        </script>
-        <div class="add_phone_info">
-            <form action="#" method="get">
-                <span class="a_i_phone">연락처</span>
-                <div class="input_a_i_phone_section">
-                    <input type="text" name ="input_a_i_phone">
-                </div>
-            </form>
-        </div>
-
-        <div class="a_i_delivery_comment">
-            <div class="a_i_delivery_comment_section">배송 요청 사항(선택)</div>
-            <select>
+            <select id="deliveryOption" onchange="toggleInputField()">
                 <option value="default" disabled selected>배송 시 요청사항을 선택해주세요.</option>
                 <option value="1">문 앞에 놓아주세요.</option>
                 <option value="2">경비(관리)실에 맡겨주세요.</option>
@@ -270,19 +172,185 @@
                 <option value="4">직접 받겠습니다.</option>
                 <option value="type">직접 입력</option>
             </select>
+            <div id="directInput" style="display: none;">
+                <textarea maxlength="50" placeholder="배송 요청 사항을 입력하세요." id="directInputField" name="directInputField" oninput="updateCharCount()"></textarea>
+                <div id="charCount">0/50</div>
+            </div>
         </div>
-        <div class="add_to_default_address">
-            <input type="checkbox" id="add" name="whether_add" value="기본 배송지로 등록">
-            <label for="same">기본 배송지로 등록</label>
+        <div>
+            <a th:href="@{/funding_process/payReservation}" class="next_step1">
+                <div class="next_step_box1"></div>
+                <span class="next_step_text1">다음 단계로</span>
+            </a>
         </div>
     </div>
+    <div id="subpage2" class="subpage">
+        <form id="saveAddressForm" action="/funding_process/saveAddress" method="post" onsubmit="submitForm()">
+            <div class="add_address_name_info">
+                <span class="a_i_address_name">배송지명</span>
+                <div class="input_a_i_address_name_section">
+                    <input type="text" name ="addressTitle">
+                </div>
+            </div>
+            <div class="add_name_info">
+                <span class="a_i_name">받는 사람</span>
+                <div class="input_a_i_name_section">
+                    <input type="text" name ="recipientName">
+                </div>
+            </div>
+
+            <div class="add_postcode_info">
+                <span class="a_i_postcode">우편번호</span>
+                <div class="input_a_i_postcode_section">
+                    <input type="text" name="zipCode" id="zipCode" readonly></td>
+                    <input type="button" value="검색" class="btn btn-yg" id="searchZipCode"></td>
+                </div>
+            </div>
+
+            <div class="add_address_info">
+                <span class="a_i_address">주소</span>
+                <div class="input_a_i_address_section">
+                    <input type="text" name ="recipientAddress" id="recipientAddress" readonly>
+                </div>
+            </div>
+
+            <div class="add_defailed_address_info">
+                <span class="a_i_d_address">상세 주소</span>
+                <div class="input_a_i_d_address_section">
+                    <input type="text" name ="input_a_i_d_address" id="input_a_i_d_address">
+                </div>
+            </div>
+            <script th:inline="javascript">
+                function submitForm() {
+                    var zipCode = document.getElementById("zipCode").value;
+                    var recipientAddress = document.getElementById("recipientAddress").value;
+                    var input_a_i_d_address = document.getElementById("input_a_i_d_address").value;
+
+                    // 필요한 로직에 따라 주소를 합칩니다.
+                    var address = zipCode + "$" + recipientAddress + "$" + input_a_i_d_address;
+
+                    // 새로 만든 address를 hidden 필드에 설정합니다.
+                    document.getElementById("mergedAddress").value = address;
+
+                    // 폼을 서버로 제출합니다.
+                    document.getElementById("saveAddressForm").submit();
+                }
+            </script>
+
+            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+            <script th:inline="javascript">
+
+                const $searchZipCode = document.getElementById("searchZipCode");
+                const $goMain = document.getElementById("goMain");
+
+                $searchZipCode.onclick = function() {
+
+                    /* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 매개변수로 전달한다. */
+                    new daum.Postcode({
+                        oncomplete: function(data){
+                            /* 팝업에서 검색결과 항목을 클릭했을 시 실행할 코드를 작성하는 부분 */
+                            document.getElementById("zipCode").value = data.zonecode;
+                            document.getElementById("recipientAddress").value = data.address;
+                            document.getElementById("input_a_i_d_address").focus();
+                        }
+                    }).open();
+                }
+
+                $goMain.onclick = function() {
+                    location.href = "/";
+                }
+
+            </script>
+            <div class="add_phone_info">
+                <span class="a_i_phone">연락처</span>
+                <div class="input_a_i_phone_section">
+                    <input type="text" name ="recipientPhoneNumber">
+                </div>
+            </div>
+
+
+            <div class="a_i_delivery_comment">
+                <div class="a_i_delivery_comment_section">배송 요청 사항(선택)</div>
+                <select name="deliveryComment" id="deliveryComment" onchange="toggleInputField2()">
+                    <option value="default" disabled selected>배송 시 요청사항을 선택해주세요.</option>
+                    <option value="문 앞에 놓아주세요.">문 앞에 놓아주세요.</option>
+                    <option value="경비(관리)실에 맡겨주세요.">경비(관리)실에 맡겨주세요.</option>
+                    <option value="택배함에 넣어주세요.">택배함에 넣어주세요.</option>
+                    <option value="직접 받겠습니다.">직접 받겠습니다.</option>
+                    <option value="type">직접 입력</option>
+                </select>
+                <div id="directInput2" style="display: none;">
+                    <textarea maxlength="50" placeholder="배송 요청 사항을 입력하세요." id="directInputField2" name="directInputField2" oninput="updateCharCount2()"></textarea>
+                    <div id="charCount2">0/50</div>
+                </div>
+            </div>
+
+            <script>
+                function toggleInputField() {
+                    var option = document.getElementById("deliveryOption").value;
+                    var directInput = document.getElementById("directInput");
+
+                    if (option === "type") {
+                        directInput.style.display = "block";
+                    } else {
+                        directInput.style.display = "none";
+                    }
+                }
+
+                function updateCharCount() {
+                    var textarea = document.getElementById("directInputField");
+                    var charCount = document.getElementById("charCount");
+                    var currentCount = textarea.value.length;
+
+                    charCount.textContent = currentCount + "/50";
+                }
+
+                function toggleInputField2() {
+                    var option = document.getElementById("deliveryComment").value;
+                    var directInput2 = document.getElementById("directInput2");
+                    var textarea = document.getElementById("directInputField2");
+                    var deliveryCommentInput = document.getElementById("deliveryComment");
+
+                    if (option === "type") {
+                        directInput2.style.display = "block";
+
+                    } else {
+                        directInput2.style.display = "none";
+                    }
+                }
+
+                function updateCharCount2() {
+                    var textarea = document.getElementById("directInputField2");
+                    var charCount2 = document.getElementById("charCount2");
+                    var currentCount = textarea.value.length;
+
+                    charCount2.textContent = currentCount + "/50";
+                }
+
+            </script>
+            <div class="add_to_default_address">
+                <input type="hidden" name="whetherDefaultAddress" value="N">
+                <input type="checkbox" id="add" name="addCheckbox" value="Y">
+                <label for="add">기본 배송지로 등록</label>
+            </div>
+
+            <script>
+                var checkbox = document.getElementById('add');
+                checkbox.addEventListener('change', function() {
+                    var hiddenInput = document.querySelector('input[name="whetherDefaultAddress"]');
+                    hiddenInput.value = checkbox.checked ? 'Y' : 'N';
+                });
+            </script>
+            <input type="hidden" name="mergedAddress" id="mergedAddress">
+            <a href="javascript:void(0);" onclick="submitForm()" class="next_step2">
+                <div class="next_step_box2"></div>
+                <span class="next_step_text2">다음 단계로</span>
+            </a>
+        </form>
+    </div>
+
 </div>
-<div>
-    <a th:href="@{/funding_process/payReservation}" class="next_step">
-    <div class="next_step_box"></div>
-    <span class="next_step_text">다음 단계로</span>
-</a>
-</div>
+
 <script type="text/javascript">
     document.getElementById('deliveryOptions').value = 'default';
     showSubpage('subpage1');
@@ -297,7 +365,7 @@
         var activeSubpage = document.getElementById(subpageId);
         activeSubpage.classList.add('active');
 
-            // 추가: 선택한 서브페이지에 따라 언더라인 활성화
+        // 추가: 선택한 서브페이지에 따라 언더라인 활성화
         var addressList = document.querySelector('.address_list');
         var inputAddress = document.querySelector('.input_address');
 
@@ -309,7 +377,7 @@
             inputAddress.classList.add('active');
         }
 
-            // 선택한 subpage의 텍스트 스타일 변경
+        // 선택한 subpage의 텍스트 스타일 변경
         var addressListText = document.querySelector('.address_list span');
         var inputAddressText = document.querySelector('.input_address span');
 
@@ -326,7 +394,7 @@
         }
     }
     $("#search_a_i_address").click(function () { // 도로명 주소 검색 버튼 클릭할 때
-        var search_text = $("#input_a_i_address").val();
+        var search_text = $("#recipientAddress").val();
         addr_json.keyword = search_text;
 
         $.ajax({

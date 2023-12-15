@@ -1,22 +1,16 @@
 package com.jellybears.krowdpoping.inquiry.model.service;
 
-import com.jellybears.krowdpoping.inquiry.model.dao.InquiryMapper;
+import com.jellybears.krowdpoping.common.exception.inquiry.InquirySaveException;
 import com.jellybears.krowdpoping.inquiry.model.dto.InquiryDTO;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class InquiryService {
+public interface InquiryService {
 
-    private final InquiryMapper inquiryMapper;
 
-    public InquiryService(InquiryMapper inquiryMapper) {
-        this.inquiryMapper = inquiryMapper;
-    }
+    List<InquiryDTO> findInquiryList();
+    void saveNewInquiry(InquiryDTO inquiry) throws InquirySaveException;
 
-    public List<InquiryDTO> findInquiryList() {
 
-        return inquiryMapper.findInquiryList();
-    }
+    InquiryDTO selectInquiryContent(Long no);
 }
