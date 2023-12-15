@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,42 +61,43 @@
         <div class="process_line"></div>
     </div>
 
+    <th:block sec:authorize="isAuthenticated()">
     <div class="supporter_info">
         <div class="supporter_info_title">후원자 정보</div>
-
         <div class="nickname_section">
             <span class="supporter_nickname">후원자명</span>
             <div class="input_nickname_section">
-                <input type="text" name ="input_nickname" placeholder="후원자명을 입력하세요.">
+                <input type="text" name ="input_nickname" th:value="${ #authentication.getPrincipal().userDTO.getNickname() }" placeholder="후원자명을 입력하세요.">
             </div>
         </div>
 
         <div class="name_section">
             <span class="name">이름</span>
             <div class="input_name_section">
-                <input type="text" name ="input_name" placeholder="이름을 입력하세요.">
+                <input type="text" name ="input_name" th:value="${ #authentication.getPrincipal().userDTO.getName() }" placeholder="이름을 입력하세요.">
             </div>
         </div>
 
         <div class="phone_number_section">
             <span class="phone_number">연락처</span>
             <div class="input_phone_number_section">
-                <input type="text" name ="input_phone_number" placeholder="연락처를 입력하세요.">
+                <input type="text" name ="input_phone_number" th:value="${ #authentication.getPrincipal().userDTO.getPhone_number() }" placeholder="연락처를 입력하세요.">
             </div>
         </div>
 
         <div class="email_section">
             <span class="email">이메일</span>
             <div class="input_email_section">
-                <input type="text" name ="input_email" placeholder="이메일을 입력하세요.">
+                <input type="text" name ="input_email" th:value="${ #authentication.getPrincipal().userDTO.getEmail() }" placeholder="이메일을 입력하세요.">
             </div>
         </div>
 
         <div class="same_as_profile">
-            <input type="checkbox" id="same" name="whether_same" value="가입 정보와 동일">
+            <input type="checkbox" id="same" name="whether_same" value="가입 정보와 동일" onchange="toggleUserInfoVisibility()">
             <label for="same">가입 정보와 동일</label>
         </div>
     </div>
+    </th:block>
 </div>
 
 <div class="default_address">

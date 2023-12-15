@@ -69,12 +69,12 @@ public class CategoryController {
     }
 
 
-//    @GetMapping("list")
-//    public String goCategoryList(){
-//
-//        List<CategoryDTO> categoryList = categoryService.AllCategoryList();
-//
-//        return "/category/list";
-//    }
+    @GetMapping("list")
+    public String goCategoryList(){
+
+        List<CategoryDTO> categoryList = categoryService.AllCategoryList();
+
+        return "/category/list";
+    }
 
 }
