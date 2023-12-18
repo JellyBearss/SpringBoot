@@ -13,12 +13,12 @@
                         <div class="card-body">
                             <h5 class="card-title">공지사항 수정 페이지</h5>
                             <!-- General Form Elements -->
-                            <form>
-
+                            <form id="noticeUpdateForm" th:action="@{/admin/noticeModify}" method="post">
+                            <input type="hidden" id="noticeCode" name="noticeCode" th:value="${ notice.noticeCode }">
                                 <div class="row mb-3">
-                                    <label for="inputTitle" class="col-sm-2 col-form-label">공지사항 제목</label>
+                                    <label class="col-sm-2 col-form-label">공지사항 제목</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <td><input type="text" id="title" name="title" class="form-control" th:value="${ notice.title }"></td>
                                     </div>
                                 </div>
 
@@ -34,16 +34,16 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputNumber" class="col-sm-2 col-form-label">파일 업로드</label>
+                                    <label class="col-sm-2 col-form-label">파일 업로드</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="file" id="formFile">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputIntroduction" class="col-sm-2 col-form-label">내용</label>
+                                    <label class="col-sm-2 col-form-label">내용</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" style="height: 500px"></textarea>
+                                        <textarea type="text" id="content" name="content" class="form-control" th:value="${ notice.content }" th:text="${ notice.content }" style="height: 370px"></textarea>
                                     </div>
                                 </div>
 
@@ -59,16 +59,16 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                                                        주의사항을 확인하세요.
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                        <a type="button" class="btn btn-primary" href="/admin/noticeList">확인</a>
+                                                        <button type="submit" class="btn btn-primary" th:onclick="'location.href=\'/admin/noticeDetail?noticeCode=' + @{${ notice.noticeCode }} + '\''">확인</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div><!-- End Basic Modal-->
-                                        <a type="submit" class="btn btn-primary1" href="/admin/noticeList" style="float: right;">뒤로가기</a>
+                                        <button type="button" class="btn btn-primary1" th:onclick="'location.href=\'/admin/noticeDetail?noticeCode='+ @{${ notice.noticeCode }} + '\''" style="float: right;">뒤로가기</button>
                                     </div>
                                 </div>
                             </form><!-- End General Form Elements -->

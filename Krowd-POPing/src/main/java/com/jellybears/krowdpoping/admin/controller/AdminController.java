@@ -1,19 +1,24 @@
 package com.jellybears.krowdpoping.admin.controller;
 
-import com.jellybears.krowdpoping.admin.model.dao.NoticeMapper;
 import com.jellybears.krowdpoping.admin.model.dto.NoticeDTO;
 import com.jellybears.krowdpoping.admin.model.service.NoticeService;
-import lombok.RequiredArgsConstructor;
+import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeModifyException;
+import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeRegistException;
+import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeRemoveException;
+import com.jellybears.krowdpoping.user.model.dto.UserDTO;
+import com.jellybears.krowdpoping.user.model.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("/admin/*")
+@Slf4j
 public class AdminController {
 
     private final NoticeService noticeService;  // 필드 선언
@@ -25,9 +30,14 @@ public class AdminController {
 
 
     /* List ---------------------------------------------------------- */
-    @GetMapping("memberList")
-    public String goMemberList() {
-        return "/admin/admin_memberList";
+    /* 유저 전체 목록 페이지 */
+    @GetMapping("userList")
+    public String goUserList() {
+
+        // List<UserDTO> userList = UserService.selectAllUserList();
+
+        // model.addAttribute("userList", userList);
+        return "/admin/admin_userList";
     }
     @GetMapping("fundingList")
     public String goFundingList() {
@@ -46,7 +56,6 @@ public class AdminController {
         return "/admin/admin_categoryList";
     }
 
-
 /* 공지사항 전체 목록 페이지 */
     @GetMapping("noticeList")
     public String goNoticeList(Model model) {   //  Model 객체를 매개변수로 받고 컨트롤러에서 뷰로 데이터를 전달하는 데 사용
@@ -56,8 +65,6 @@ public class AdminController {
         model.addAttribute("noticeList", noticeList);   // 조회한 공지사항 목록을 model에 noticeList라는 이름으로 추가
         return "/admin/admin_noticeList";   // 결과 전달
     }
-
-
 
     @GetMapping("faqList")
     public String goFaqList() {
@@ -72,32 +79,77 @@ public class AdminController {
         return "/admin/admin_inquiryList";
     }
     /* Detail ---------------------------------------------------------- */
-    @GetMapping("memberDetail")
-    public String gomemberDetail() {
-        return "/admin/admin_memberDetail";
+    @GetMapping("userDetail")
+    public String goUserDetail() {
+        return "/admin/admin_userDetail";
     }
     @GetMapping("fundingDetail")
     public String goFundingDetail() { return "/admin/admin_fundingDetail";}
     @GetMapping("applicationDetail")
     public String goApplicationDetail() { return "/admin/admin_applicationDetail";}
+
+    /* 공지사항 상세 페이지 */
     @GetMapping("noticeDetail")
-    public String goNoticeDetail() { return "/admin/admin_noticeDetail";}
+    public String goNoticeDetail(@RequestParam int noticeCode, Model model) {
+
+        NoticeDTO noticeDetail = noticeService.selectNoticeDetail(noticeCode);
+        model.addAttribute("notice", noticeDetail);
+        return "/admin/admin_noticeDetail";
+    }
+
     @GetMapping("reportDetail")
     public String goReportDetail() { return "/admin/admin_reportDetail";}
     @GetMapping("inquiryDetail")
     public String goInquiryDetail() { return "/admin/admin_inquiryDetail";}
-    /* Write ---------------------------------------------------------- */
-    @GetMapping("noticeWrite")
-    public String goNoticeWrite() {
-        return "/admin/admin_noticeWrite";
+    /* Regist ---------------------------------------------------------- */
+
+    /* 공지사항 내용 추가 페이지 */
+    @GetMapping("noticeRegist")
+    public String goNoticeRegist() { return "/admin/admin_noticeRegist"; }
+    @PostMapping("noticeRegist")
+    public String noticeRegist(@ModelAttribute NoticeDTO notice, RedirectAttributes rttr) throws NoticeRegistException {
+/* 유저 - 나중에 로그인 객체에서 꺼내와야함*/
+        notice.setNoticeAdminUserCode(2);
+
+        noticeService.noticeRegist(notice);
+        rttr.addFlashAttribute("message", "공지사항 등록을 성공하였습니다.");
+
+        return "redirect:/admin/noticeList";
     }
-    @GetMapping("faqWrite")
-    public String goFaqWrite() { return "/admin/admin_faqWrite"; }
+
+    @GetMapping("faqRegist")
+    public String goFaqWrite() { return "/admin/admin_faqRegist"; }
     /* Modify ---------------------------------------------------------- */
+
+    /* 공지사항 수정 페이지 */
     @GetMapping("noticeModify")
-    public String goNoticeModify() { return "/admin/admin_noticeModify"; }
+    public String goNoticeModify(@RequestParam int noticeCode, Model model) {
+
+        NoticeDTO notice = noticeService.selectNoticeDetail(noticeCode);
+        model.addAttribute("notice", notice);
+        return "/admin/admin_noticeModify";
+    }
+    @PostMapping("noticeModify")
+    public String noticeModify(@ModelAttribute NoticeDTO notice, RedirectAttributes rttr) throws NoticeModifyException {
+
+        noticeService.noticeModify(notice);
+
+        rttr.addFlashAttribute("message", "공지사항 수정을 성공하였습니다.");
+        return "redirect:/admin/noticeList";
+    }
+
     @GetMapping("faqModify")
     public String goFaqModify() { return "/admin/admin_faqModify"; }
     @GetMapping("fundingModify")
     public String goFundingModify() { return "/admin/admin_fundingModify"; }
+
+    /* Remove ---------------------------------------------------------- */
+    @GetMapping("noticeRemove")
+    public String noticeRemove(@RequestParam int noticeCode, RedirectAttributes rttr) throws NoticeRemoveException {
+
+        noticeService.noticeRemove(noticeCode);
+
+        rttr.addFlashAttribute("message", "공지사항 삭제를 성공하였습니다.");
+        return "redirect:/admin/noticeList";
+    }
 }
