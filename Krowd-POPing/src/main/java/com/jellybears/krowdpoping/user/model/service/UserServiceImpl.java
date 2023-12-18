@@ -2,9 +2,14 @@ package com.jellybears.krowdpoping.user.model.service;
 
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
+
 import com.jellybears.krowdpoping.user.model.dao.UserMapper;
+import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
+import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,11 +22,14 @@ public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder;
     private final UserMapper mapper;
 
+
     public UserServiceImpl(PasswordEncoder passwordEncoder, UserMapper mapper) {
         this.passwordEncoder = passwordEncoder;
         this.mapper = mapper;
 
     }
+
+
 
     /*-------------회원 조회-----------*/
     @Override
@@ -47,6 +55,14 @@ public class UserServiceImpl implements UserService{
         log.info(String.valueOf(userCode));
 
         int result1 = mapper.insertRoletype(userCode);
+
+//        EmailDTO emailDTO = new EmailDTO();
+//        emailDTO.setEmail_certificate(new TempKey().getKey(false, 6));
+
+
+
+
+        System.out.println("result1.getUserId()========== : ");
 
 
         log.info("[UserService] Insert User : " + ((result > 0) ? "회원가입 성공" : "회원가입 실패"));

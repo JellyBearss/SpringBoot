@@ -26,7 +26,7 @@
         <association property="roleDTO" resultMap="RoleResultMap"/>
     </resultMap>
 
-    <resultMap id="EmailReusltMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO">
+    <resultMap id="EmailReusltMap" type="com.jellybears.krowdpoping.user.model.dto.EmailDTO">
         <id property="email_code" column="email_code"/>
         <result property="email_certificate" column="email_certificate"/>
     </resultMap>
@@ -102,13 +102,29 @@
     </select>
 
     <insert id="insertRoletype" >
-        INSERT INTO ROLE_TYPE
+        INSERT
+          INTO ROLE_TYPE
         VALUES (
                    #{ user_code },
                    2
                )
 
     </insert>
+
+<!--    <insert id="insertEmailCode" parameterType="com.jellybears.krowdpoping.user.model.dto.EmailDTO">-->
+<!--        INSERT-->
+<!--          INTO EMAIL (-->
+<!--                      email_certificate-->
+<!--                      )-->
+<!--        VALUES (-->
+<!--                #{ email_certificate }-->
+<!--                )-->
+<!--    </insert>-->
+<!--    <update id="updateEmailCertificate" parameterType="com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO">-->
+<!--        UPDATE EMAIL-->
+<!--        SET email_certificate = #{email_certificate}-->
+<!--        WHERE user_code = #{userDTO.user_code}-->
+<!--    </update>-->
 
 
     <update id="updateUser">

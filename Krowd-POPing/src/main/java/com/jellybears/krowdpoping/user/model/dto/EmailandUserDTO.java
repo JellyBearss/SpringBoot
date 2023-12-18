@@ -10,4 +10,6 @@ import lombok.*;
 public class EmailandUserDTO {
     private UserDTO userDTO;
     private EmailDTO emailDTO;
+
+
 }

@@ -4,15 +4,23 @@ import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.common.util.SessionUtil;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
+//import com.jellybears.krowdpoping.user.model.service.EmailServiceImpl;
 import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Random;
 
 @Controller
 @RequestMapping("/user/*")
@@ -21,10 +29,14 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final UserServiceImpl UserService;
 
-    public UserController(PasswordEncoder passwordEncoder, UserServiceImpl userService) {
+//    private final EmailServiceImpl EmailService;
+
+    public UserController(PasswordEncoder passwordEncoder, UserServiceImpl userService/*, EmailServiceImpl emailService*/) {
         this.passwordEncoder = passwordEncoder;
         this.UserService = userService;
+//        this.EmailService = emailService;
     }
+
 
     /**
      * 로그인 하기
@@ -89,6 +101,49 @@ public class UserController {
         return "redirect:/user/signupsuccess";
     }
 
+//    @PostMapping("/EmailAuth")
+//    @ResponseBody
+//    public int emailAuth(UserDTO user){
+//        log.info("전달받을 이메일 주소 : " + user.getEmail());
+//        Random random = new Random();
+//        int checkNum = random.nextInt(888888)+111111;
+//        String setFrom ="krowdpoping@gmail.com";
+//        String toMail = user.getEmail();
+//        String title = "Krowd-POPing 회원가입 인증 이메일 ";
+//        String content = " 인증 코드는 "+ checkNum+"입니다."+
+//                "<br>"+
+//                "해당 인증 코드를 인증코드 확인란에 기입하여 주세요.";
+//        try{
+//            MimeMessage mimemessage = javaMailSender.createMimeMessage();
+//        }
+//    }
+
+
+
+
+//    @PostMapping("/EmailAuth")
+//    @ResponseBody
+//    public void emailAuth(UserDTO user)throws Exception{
+//        log.info("post emailConfirm");
+//        System.out.println("전달 받은 이메일 : "+ user.getEmail());
+//        EmailService.sendSimpleMessage(user.getEmail());
+//    }
+//    @PostMapping("/verifyCode")
+//    @ResponseBody
+//    public int verifyCode(String code) {
+//        log.info("Post verifyCode");
+//
+//        int result = 0;
+//        System.out.println("code : "+code);
+//        System.out.println("code match : "+ EmailServiceImpl.ePw.equals(code));
+//        if(EmailServiceImpl.ePw.equals(code)) {
+//            result =1;
+//        }
+//
+//        return result;
+//    }
+
+
 
     @PostMapping("idDupCheck")
     public ResponseEntity<String> checkDuplication(@RequestBody UserDTO userDTO) {
@@ -110,14 +165,6 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/mailCheck")
-    @ResponseBody
-    public String mailCheck(String email) {
-        System.out.println("이메일 인증 요청이 들어옴!");
-        System.out.println("이메일 인증 이메일 : " + email);
-
-        return "";
-    }
 
     @GetMapping("signupsuccess")
     public String SignupSuccess() {
