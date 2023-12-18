@@ -20,56 +20,56 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">회원코드</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="1" disabled>
+                  <input type="text" class="form-control" id="user_code" th:text="${ user.user_code }">
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">아이디</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="qwe123" disabled>
+                  <input type="text" class="form-control" id="id" th:text="${ user.id }">
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">이름</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="박다희" disabled>
+                  <input type="text" class="form-control" id="name" th:text="${ user.name }">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">닉네임</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="nickname" th:text="${ user.nickname }">
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">생년월일</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="1995/03/17" disabled>
+                  <input type="text" class="form-control" id="birthday" th:text="${ user.birthday }">
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">이메일</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="qwe123@gmail.com" disabled>
+                  <input type="text" class="form-control" id="email" th:text="${ user.email}">
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">전화번호</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="010-2345-6789" disabled>
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">주소</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" value="서울시 종로구 인사동길 12 7층" disabled>
+                  <input type="text" class="form-control" id="phone_number" th:text="${ user.phone_number}">
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">회원 상태</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="탈퇴 회원" disabled>
+                  <input type="text" class="form-control" id="user_status" th:text="${ user.suer_status }">
                 </div>
               </div>
 
@@ -97,8 +97,7 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
-                  <a type="submit" class="btn btn-primary" href="/admin/memberList" style="float: right; margin-left: 8px;">확인</a>
-<!--                  <button type="submit" class="btn btn-primary1" style="float: right;">취소</button>-->
+                  <a type="submit" class="btn btn-primary" href="/admin/userList" style="float: right; margin-left: 8px;">확인</a>
                 </div>
               </div>
             </form><!-- End General Form Elements -->

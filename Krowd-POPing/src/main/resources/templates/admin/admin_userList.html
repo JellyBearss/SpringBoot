@@ -36,26 +36,24 @@
               </nav>
 
               <!-- Default Table-->
-              <table class="table">
+              <table class="table table-hover" id="listArea">
                 <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <th scope="col">닉네임</th>
                   <th scope="col">이메일</th>
-                  <th scope="col">탈퇴일</th>
-                  <th scope="col">경고일</th>
-                  <th scope="col">블랙일</th>
-                  <th scope="col">상태여부</th>
+                  <th scope="col">핸드폰번호</th>
+                  <th scope="col">유저상태</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="/admin/memberDetail">qwe123@gmail.com</a></td>
-                  <td>2023/09/09</td>
-                  <td>2023/05/20</td>
-                  <td>2023/08/30</td>
-                  <td class="badge bg-success" style="display: flex; justify-content: center; align-items: center; color: white; margin: 6px;">일반회원</td>
-                </tr>
+                  <tr th:each="user : ${ userList }">
+                    <th th:text="${ user.user_code }"></th>
+                    <td th:text="${ user.nickname }"></td>
+                    <td th:text="${ user.email}"></td>
+                    <td th:text="${ user.phone_number }"></td>
+                    <td th:text="${ user_status }" class="badge bg-success" style="display: flex; justify-content: center; align-items: center; color: white; margin: 6px;"></td>
+                  </tr>
                 </tbody>
               </table>
               <!-- End Default Table Example -->
@@ -70,6 +68,37 @@
                 <a href="#">&raquo;</a>
               </div>
               <!-- End 페이징 처리 -->
+
+              <!-- 리스트를 누르면 디테일로 가는 이벤트처리 -->
+              <script th:inline="javascript">
+                /*<![CDATA[*/
+                let message = '[[${message}]]';
+                if(message != null && message !== 'null') {
+                  alert(message);
+                }
+                /*]]>*/
+
+                /* 게시글 리스트에서 해당 게시글에 마우스를 올릴 떄에 대한 스타일 처리 */
+                if (document.querySelectorAll("#listArea td")) {
+                  const $tds = document.querySelectorAll("#listArea td");
+                  for (let i = 0; i < $tds.length; i++) {
+
+                    $tds[i].onmouseenter = function() {
+                      this.parentNode.style.backgroundColor = "orangered";
+                      this.parentNode.style.cursor = "pointer";
+                    }
+
+                    $tds[i].onmouseout = function() {
+                      this.parentNode.style.backgroundColor = "black";
+                    }
+
+                    $tds[i].onclick = function() {
+                      const no = this.parentNode.children[0].innerText;
+                      location.href = "/admin/userDetail?user_code=" + no;
+                    }
+                  }
+                }
+              </script>
             </div>
           </div>
         </div>

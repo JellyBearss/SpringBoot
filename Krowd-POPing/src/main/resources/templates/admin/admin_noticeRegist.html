@@ -11,37 +11,50 @@
                         <div class="card-body">
                             <h5 class="card-title">공지사항 작성 페이지</h5>
                             <!-- General Form Elements -->
-                            <form>
-
+                            <form th:action="@{/admin/noticeRegist}" method="post">
                                 <div class="row mb-3">
-                                    <label for="inputTitle" class="col-sm-2 col-form-label">공지사항 제목</label>
+                                    <label class="col-sm-2 col-form-label">공지사항 제목</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="title">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">공지유형</label>
                                     <div class="col-sm-10">
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select" aria-label="Default select example" name="type">
                                             <option selected>일반공지</option>
-                                            <option value="1">긴급공지</option>
-                                            <option value="2">이벤트공지</option>
+                                            <option value="긴급공지">긴급공지</option>
+                                            <option value="이벤트공지">이벤트공지</option>
                                         </select>
                                     </div>
                                 </div>
 
+<!--                                <div class="row mb-3">-->
+<!--                                    <label class="col-sm-2 col-form-label">작성자</label>-->
+<!--                                    <div class="col-sm-10">-->
+<!--                                        <input type="text" class="form-control" name="nickname" th:text="${ #authentication.getPrincipal().getNickname() }">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
                                 <div class="row mb-3">
-                                    <label for="inputNumber" class="col-sm-2 col-form-label">파일 업로드</label>
+                                    <label class="col-sm-2 col-form-label">작성일자</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" name="updateDate">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">파일 업로드</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="file" id="formFile">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputIntroduction" class="col-sm-2 col-form-label">내용</label>
+                                    <label class="col-sm-2 col-form-label">내용</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" style="height: 500px"></textarea>
+                                        <textarea class="form-control" style="height: 370px" name="content"></textarea>
                                     </div>
                                 </div>
 
@@ -57,17 +70,16 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                        <a type="button" class="btn btn-primary" href="/admin/noticeList">등록</a>
+                                                        <button type="submit" class="btn btn-primary">등록</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div><!-- End Basic Modal-->
 
-                                        <a href="/admin/noticeList" type="submit" class="btn btn-primary1" style="float: right;">취소</a>
+                                        <button type="button" class="btn btn-primary1" style="float: right;" th:onclick="'location.href=\'admin/noticeList\''">취소</button>
                                     </div>
                                 </div>
                             </form><!-- End General Form Elements -->

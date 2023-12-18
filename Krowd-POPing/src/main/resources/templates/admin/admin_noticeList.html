@@ -34,32 +34,32 @@
                 </form>
               </div>
             </nav>
-
+            <div class="table-area">
             <!-- Default Table -->
-            <table class="table">     
+            <table class="table table-hover" id="listArea">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">공지 유형</th>
                   <th scope="col">제목</th>
-                  <th scope="col">작성자</th>
-                  <th scope="col">조회수</th>
                   <th scope="col">작성 일자</th>
+                  <th scope="col">작성자</th>
+                  <!--                  <th scope="col">조회수</th>-->
                 </tr>
               </thead>
               <tbody>
                 <tr th:each="notice : ${ noticeList }">
-                  <th th:text="${ notice.code }"></th>
+
+                  <th th:text="${ notice.noticeCode }"></th>
                   <td th:text="${ notice.type }"></td>
-                  <td th:text="${ notice.title }"><a href="/admin/noticeDetail"></a></td>
-                  <td th:text="${ notice.userCode.nickname}"></td>
-                  <td>3121</td>
-                  <td th:text="${ notice.updateDate}"></td>
+                  <td th:text="${ notice.title }"></td>
+                  <td th:text="${ notice.updateDate }"></td>
+                  <td th:text="${ notice.userDTO.nickname }"></td>
                 </tr>
-              </tbody>
             </table>
-            
+            </div>
             <!-- End Default Table Example -->
+
             <div class="pagination">
               <a href="#">1</a>
               <a href="#">2</a>
@@ -71,8 +71,43 @@
               <a href="#">&raquo;</a>
             </div>
             <!-- End 페이징 처리 -->
-            <!-- <button type="button" class="my-button right-align" href="admin_noticeWrite.html">작성하기</button> -->
-            <a href="/admin/noticeWrite" class="my-button right-align">작성하기</a>
+            <button class="my-button right-align" id="writeNotice" onclick="registPage()">작성하기</button>
+
+            <!-- 작성페이지로 넘어가는 이벤트 처리 -->
+            <script th:inline="javascript">
+              /*<![CDATA[*/
+              function registPage() {
+                var registPageUrl = "/admin/noticeRegist";
+                location.href = registPageUrl;
+              }
+              /*]]>*/
+            </script>
+
+            <!-- 리스트를 누르면 디테일로 가는 이벤트처리 -->
+            <script th:inline="javascript">
+              /*<![CDATA[*/
+              let message = '[[${message}]]';
+              if(message != null && message !== 'null') {
+                alert(message);
+              }
+              /*]]>*/
+
+              /* 게시글 리스트에서 해당 게시글에 마우스를 올릴 떄에 대한 스타일 처리 */
+              if (document.querySelectorAll("#listArea td")) {
+                const $tds = document.querySelectorAll("#listArea td");
+                for (let i = 0; i < $tds.length; i++) {
+
+                  $tds[i].onmouseenter = function() {
+                    this.parentNode.style.cursor = "pointer";
+                  }
+
+                  $tds[i].onclick = function() {
+                    const no = this.parentNode.children[0].innerText;
+                    location.href = "/admin/noticeDetail?noticeCode=" + no;
+                  }
+                }
+              }
+            </script>
           </div>
         </div>
       </div>

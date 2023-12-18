@@ -21,12 +21,9 @@ spring:
           writetimeout: 5000
     auth-code-expiration-millis: 1800000  # 30 * 60 * 1000 == 30분
 
-#  mvc:
-#    static-path-pattern: /static/**
-#mybatis.mapper-locations=classpath:/mybatis-mapper/**/*.xml
-  # mapper.xml location Setting
 mybatis:
-  mapper-locations: classpath:/mybatis/mapper/**/*.xml
+  # mapper.xml location Setting
+  mapper-locations: mybatis/mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
@@ -50,10 +47,7 @@ mybatis:
     check-template-location: true
   web:
     resources:
-      static-locations: file:src/main/resources/static/
+      static-locations: C:/thymeleaf-springboot/
   logging:
     level:
       root: info
-#  web:
-#    resources:
-#      static-locations: C:/thymeleaf-springboot/
