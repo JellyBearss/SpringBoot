@@ -30,4 +30,6 @@ public interface ProjectRegisterMapper {
     InfoDTO selectInfoRegByProjectCode(Integer projectCode);
 
     List<CategoryDTO> getSubCategoryList();
+
+    int updatePriceplanRegister(int priceplanCode, Integer projectCode);
 }

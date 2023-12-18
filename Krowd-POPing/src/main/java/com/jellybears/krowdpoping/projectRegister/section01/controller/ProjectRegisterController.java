@@ -3,15 +3,13 @@ package com.jellybears.krowdpoping.projectRegister.section01.controller;
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.InfoDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO;
+import com.jellybears.krowdpoping.projectRegister.section01.model.dto.PriceplanDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.service.ProjectRegisterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.*;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -42,27 +40,17 @@ public class ProjectRegisterController {
 
         int userCode = 2;
 
-
         ProjectDTO projectDTO = registerService.selectProjectRegByProjectCode(userCode);
 
         if(projectDTO == null) {
 
             CategoryDTO categoryDTO = new CategoryDTO(1, "키링", 0, 1);
-
             projectDTO = new ProjectDTO(0, null, categoryDTO, null);
 
             System.out.println("projectDTO = " + projectDTO);
         }
 
             model.addAttribute("projectDTO", projectDTO);
-
-
-
-
-
-        // 사용자 id와 작성중 조건에 있는 프로젝트 코드를 select (페이지에 들어갔을 때 수정된 내용이 그대로 떠있어야함.)
-
-
 
         return "/projectRegister/projectReg1";
     }
@@ -76,12 +64,6 @@ public class ProjectRegisterController {
      */
     @PostMapping("project")
     public String insertProjectRegister(@ModelAttribute ProjectDTO project){
-
-//        if(subCategoryCode != 0){
-//            project.getCategoryDTO().setCategoryCode(subCategoryCode);
-//        }
-//        @RequestParam(required = false, defaultValue = "0") int subCategoryCode,
-
 
         System.out.println("insert의 project = " + project);
 
@@ -113,8 +95,18 @@ public class ProjectRegisterController {
     }
 
 
-    @PostMapping
+    @PostMapping("priceplan")
+    public String updatePriceplanRegister(@RequestParam int priceplanCode){
 
+        System.out.println("priceplanCode = " + priceplanCode);
+
+        int userCode = 2;
+        registerService.updatePriceplanRegister(priceplanCode, userCode);
+
+
+        return "redirect:/projectReg/priceplan";
+
+    }
 
 
 

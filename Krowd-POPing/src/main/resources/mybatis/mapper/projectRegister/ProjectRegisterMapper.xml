@@ -88,6 +88,12 @@
         WHERE project_code = #{ projectCode }
     </update>
 
+    <update id="updatePriceplanRegister">
+        UPDATE project
+        SET priceplan_code = #{ priceplanCode }
+        WHERE project_code = #{ projectCode }
+    </update>
+
 
     <update id="updatePlanRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO">
         UPDATE project

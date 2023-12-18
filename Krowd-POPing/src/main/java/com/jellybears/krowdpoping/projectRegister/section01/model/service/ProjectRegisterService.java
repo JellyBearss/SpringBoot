@@ -115,4 +115,19 @@ public class ProjectRegisterService {
 
         return registerMapper.getSubCategoryList();
     }
+
+
+    public void updatePriceplanRegister(int priceplanCode, int userCode) {
+
+        Integer projectCode = registerMapper.getEditProjectCode(userCode);
+
+        System.out.println("projectCode = " + projectCode);
+        System.out.println("priceplanCode = " + priceplanCode);
+
+        int result = registerMapper.updatePriceplanRegister(priceplanCode, projectCode);
+
+        // result로 결과에 따른 트랜잭션
+
+
+    }
 }
