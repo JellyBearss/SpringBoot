@@ -67,7 +67,7 @@
         <div class="nickname_section">
             <span class="supporter_nickname">후원자명</span>
             <div class="input_nickname_section">
-                <input type="text" name ="input_nickname" id="input_nickname" th:value="${ #authentication.getPrincipal().userDTO.getNickname() }" placeholder="후원자명을 입력하세요.">
+                <input type="text" name ="input_nickname" th:value="${ #authentication.getPrincipal().userDTO.getNickname() }" placeholder="후원자명을 입력하세요.">
             </div>
         </div>
 
@@ -93,20 +93,39 @@
         </div>
 
         <div class="same_as_profile">
-            <input type="checkbox" id="same" name="whether_same" value="가입 정보와 동일" onchange="toggleUserInfoVisibility()">
+            <input type="checkbox" id="same" name="whether_same" value="가입 정보와 동일" onchange="toggleUserInfoVisibility()" checked>
             <label for="same">가입 정보와 동일</label>
         </div>
     </div>
+
         <script th:inline="javascript">
             function toggleUserInfoVisibility() {
                 var checkbox = document.getElementById('same');
                 var nicknameInput = document.querySelector('[name=input_nickname]');
+                var nameInput = document.querySelector('[name=input_name]');
+                var phoneNumberInput = document.querySelector('[name=input_phone_number]');
+                var emailInput = document.querySelector('[name=input_email]');
+
+                // 첫 번째 체크 시 원래 값 설정
+                if (!nicknameInput.dataset.originalValue) {
+                    nicknameInput.dataset.originalValue = nicknameInput.value;
+                    nameInput.dataset.originalValue = nameInput.value;
+                    phoneNumberInput.dataset.originalValue = phoneNumberInput.value;
+                    emailInput.dataset.originalValue = emailInput.value;
+                }
 
                 // 체크박스가 체크되었을 때
                 if (checkbox.checked) {
-                    nicknameInput.value = document.getElementById('input_nickname').value;
+                    nicknameInput.value = nicknameInput.dataset.originalValue;
+                    nameInput.value = nameInput.dataset.originalValue;
+                    phoneNumberInput.value = phoneNumberInput.dataset.originalValue;
+                    emailInput.value = emailInput.dataset.originalValue;
                 } else {
+                    // 체크가 해제되면 값 초기화
                     nicknameInput.value = '';
+                    nameInput.value = '';
+                    phoneNumberInput.value = '';
+                    emailInput.value = '';
                 }
             }
         </script>
