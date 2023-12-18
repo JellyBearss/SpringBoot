@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/startProject/*")
-public class projectStartRegister {
+public class projectStartController {
 
     @GetMapping("start")
     public String startRegister() {

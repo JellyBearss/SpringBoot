@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="ko"
     xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -28,38 +28,76 @@
         <h2>프로젝트 기본 정보</h2>
         <br><br>
 
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="/projectReg/project" method="post" th:object="${projectDTO}" enctype="multipart/form-data">
 
           <!-- 프로젝트 정보 입력 -->
         <div class="inputTitle" style="font-size: 18px;">프로젝트 제목</div>
-        <input type="text" name="title" style="width: 450px;" maxlength="30" oninput="titleLength()">
+        <input type="text" name="title" style="width: 450px;" th:value="${projectDTO.title}"  maxlength="30" oninput="titleLength()">
         <div class="lengthText" style="width: 460px;"><span id="titleLen">0</span> / 30</div>
 
         <!-- 카테고리 드롭박스 2개 -->
         <br><br>
         <div class="subTitle">카테고리</div>    
         <div class="categoryWrapper">
-          <div style="">
+          <div>
             <div class="inputTitle">카테고리</div>
-            <select name="categoryCode" class="dropList">
-              <option value="1" selected>악세사리</option>
-              <option value="2">디지털 악세사리</option>
-              <option value="3">인형</option>
-              <option value="4">문구</option>
-              <option value="5">잡화</option>
-              <option value="6">의류</option>
-              <option value="7">기타</option>
+            <select id="categoryCode" name="categoryDTO.categoryCode" class="dropList" onchange="getCategoryCode()">
+              <option value="1" th:selected="${projectDTO.getCategoryDTO().upperCategoryCode == 1}">악세사리</option>
+              <option value="2" th:selected="${projectDTO.getCategoryDTO().upperCategoryCode == 2}">디지털 악세사리</option>
+              <option value="3" th:selected="${projectDTO.getCategoryDTO().upperCategoryCode == 3}">인형</option>
+              <option value="4" th:selected="${projectDTO.getCategoryDTO().upperCategoryCode == 4}">문구</option>
+              <option value="5" th:selected="${projectDTO.getCategoryDTO().upperCategoryCode == 5}">잡화</option>
+              <option value="6" th:selected="${projectDTO.getCategoryDTO().upperCategoryCode == 6}">의류</option>
+              <option value="7" th:selected="${projectDTO.getCategoryDTO().upperCategoryCode == 7}">기타</option>
             </select>
           </div>
           
           <div>
             <div class="inputTitle">세부 카테고리</div>
-<!--            <select name="detailCategory" class="dropList">-->
-<!--                <option value="all" selected>노트</option>-->
-<!--                <option value="accesary">스티커</option>-->
-<!--                <option value="digitAccesary">연필&볼펜</option>-->
-<!--            </select>-->
+            <select id="subCategoryCode" name="categoryDTO.subCategoryCode" class="dropList">
+              <option th:value="${projectDTO.getCategoryDTO().subCategoryCode}" th:text="${projectDTO.getCategoryDTO().categoryTitle}"></option>
+            </select>
           </div>
+
+            <script>
+
+              function getCategoryCode(){
+                const $categoryCode = document.getElementById("categoryCode");
+                const $subCategoryCode = document.getElementById("subCategoryCode");
+
+                let value = $categoryCode.value;
+
+                // fetch API
+                fetch("/projectReg/category")
+                        .then(res => res.json())
+                        .then(data => {
+
+                          while($subCategoryCode.firstChild){
+                            $subCategoryCode.firstChild.remove();
+                          }
+
+                          for(let index in data) {
+
+                            // console.log("data[index].upperCategoryCode :", data[index].upperCategoryCode )
+                            // console.log("type value = ", parseInt(value) );
+
+                            if(data[index].upperCategoryCode == parseInt(value)){
+
+                              const $option = document.createElement('option');
+                              $option.value = data[index].categoryCode;
+                              $option.textContent = data[index].categoryTitle;
+
+
+
+                              $subCategoryCode.appendChild($option);
+                            }
+
+                          }
+                        });
+
+              }
+
+            </script>
       
         </div>
 
@@ -68,7 +106,8 @@
         <br><br><br>
         <div class="inputTitle">프로젝트 한 줄 소개</div>
         <div class="subText">100자 이내로 간단하게 소개해주세요.</div>
-        <textarea class="textareaCss" name="content" placeholder="프로젝트를 간단히 소개해주세요." maxlength="100" oninput="contentLength()"></textarea>
+        <textarea class="textareaCss" name="content" placeholder="프로젝트를 간단히 소개해주세요." th:text="${projectDTO.content}"
+                  maxlength="100" oninput="contentLength()"></textarea>
         <div class="lengthText" style="width: 500px;"><span id="contentLen">0</span> / 100</div>
 
 
@@ -101,7 +140,7 @@
 
           </div>
 
-            <button type="submit" >저장</button>
+            <button type="submit">저장</button>
 
         </form>
 
@@ -143,11 +182,9 @@
             const content = document.querySelector('#hashtagWrapper');
             // const tagSelector = document.querySelector('input[name=tagInput]');
 
-            const createTag = () => {
+            const createTag = (e) => {
 
-              // window.event.preventDefault();
-
-              if(window.event.keyCode === 13){
+              if(e.keyCode === 13){
 
                 const tagValue = $tagInput.value;
 
@@ -163,6 +200,7 @@
                 document.getElementById('tagLen').innerText = $tagInput.value.length.toString();
 
               }
+              e.preventDefault();
 
             }
             $tagInput.addEventListener('keyup', createTag);

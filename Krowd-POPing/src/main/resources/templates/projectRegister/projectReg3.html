@@ -24,20 +24,26 @@
         <h2>요금제 선택</h2>
         <br><br>
 
+        <form action="/projectReg/priceplan" method="post" th:object="${ planDTO }">
+        <button type="submit" > 저장 </button>
+
         <div class="projectReg3">
 
             <div style="text-align: center;">
                 <div class="priceType">Basic</div>
 
-                <div class="priceCard normalCard">
-                    <div style="font-size: 20px; font-weight: 600;">팝핑 수수료 5%</div>
-                    <ul>
-                        <li>프로젝트 펀딩</li>
-                        <li>프로젝트 커뮤니티 활성화</li>
-                        <!-- <li>소속사 수수료 </li> -->
-                        
-                    </ul>
-                </div>
+                <label>
+                    <input type="radio" name="priceplanCode" value="1" id="basic" onclick="cardEvent()">
+                    <div class="priceCard basicCard" id="basicCard">
+                        <div style="font-size: 20px; font-weight: 600;">팝핑 수수료 5%</div>
+                        <ul>
+                            <li>프로젝트 펀딩</li>
+                            <li>프로젝트 커뮤니티 활성화</li>
+                             <li>가성비 요금제 </li>
+                        </ul>
+                    </div>
+                </label>
+
 
             </div>
 
@@ -45,31 +51,68 @@
             <div style="text-align: center;">
                 <div class="priceType" style="color:#7D1CD8;">Premium</div>
 
-                <div class="priceCard premiumCard">
-                    <div style="font-size: 20px; font-weight: 600; color: #7D1CD8;">팝핑 수수료 9%</div>
-                    
-                    <ul>
-                        <li>프로젝트 펀딩</li>
-                        <li>공개 예정 프로젝트 리스트</li>
-                        <li>프로젝트 알림 신청 기능</li>
-                        <li style="list-style-type: none; color: #6D6D6D; 
-                        margin-top: -8px; font-size: 15px;">
-                            프로젝트가 오픈되기 전에 미리 <br>
-                            <b>알림 신청</b>으로 프로젝트를 알릴<br>수 있어요.</li>
-                        <li>메인 배너에 프로젝트 홍보</li>
-                        <li>팝핑 SNS 홍보</li>
-                        <li>다음 프로젝트 등록 시 긍정적인 <br>심사 반영</li>
-                    </ul>
-                </div>
+                <label>
+                    <input type="radio" name="priceplanCode" value="2" id="premium" onclick="cardEvent()">
+                    <div class="priceCard premiumCard" id="premiumCard">
+                        <div style="font-size: 20px; font-weight: 600; color: #7D1CD8;">팝핑 수수료 9%</div>
+
+                        <ul>
+                            <li>프로젝트 펀딩</li>
+                            <li>공개 예정 프로젝트 리스트</li>
+                            <li>프로젝트 알림 신청 기능</li>
+                            <li style="list-style-type: none; color: #6D6D6D;
+                            margin-top: -8px; font-size: 15px;">
+                                프로젝트가 오픈되기 전에 미리 <br>
+                                <b>알림 신청</b>으로 프로젝트를 알릴<br>수 있어요.</li>
+                            <li>메인 배너에 프로젝트 홍보</li>
+                            <li>팝핑 SNS 홍보</li>
+                            <li>다음 프로젝트 등록 시 긍정적인 <br>심사 반영</li>
+                        </ul>
+                    </div>
+                </label>
 
             </div>
 
         </div>
 
-        <br><br><br><br>
+        </form>
+
         <br><br><br><br>
         <br><br><br><br>
     </div>
+
+
+    <script>
+
+        // 라디오 버튼이 checked 되면 해당 카드의 테두리에 색깔을 넣는다.
+        const $basic = document.getElementById("basic");
+        const $premium = document.getElementById("premium");
+
+        const $basicCard = document.getElementById("basicCard");
+        const $premiumCard = document.getElementById("premiumCard");
+
+        function cardEvent(){
+            if($basic.checked){
+                console.log("Basic card");
+
+                $basicCard.style.boxShadow = "0px 2px 10px 4px rgba(125, 28, 216, 0.40)";
+                $premiumCard.style.boxShadow = "0px 0px 0px 0px";
+            }
+            else if($premium.checked){
+                console.log("premium card");
+
+                $premiumCard.style.boxShadow = "0px 2px 10px 3px #A38DFF";
+                $basicCard.style.boxShadow = "0px 0px 0px 0px";
+            }
+        }
+
+
+
+
+
+
+
+    </script>
 
 
 </article>

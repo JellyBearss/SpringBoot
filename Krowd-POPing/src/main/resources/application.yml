@@ -5,8 +5,7 @@ spring:
     username: jellybears2
     password: jellybears2
 
-  mvc:
-    static-path-pattern: /static/**
+
 #mybatis.mapper-locations=classpath:/mybatis-mapper/**/*.xml
   # mapper.xml location Setting
 mybatis:

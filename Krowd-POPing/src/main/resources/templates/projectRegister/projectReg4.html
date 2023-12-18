@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/html">
+<html lang="ko" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,17 +20,16 @@
         <!-- 여기에 내용을 추가하거나 필요한 구조를 만드세요 
             여기가 하늘색 바디 부분-->
         <br><br><br><br><br>
-        <h2>펀딩 계획</h2>
-        <br><br>
 
-
-        <form action="" method="post">
+        <form action="/projectReg/planning" method="post" th:object="${ planDTO }">
+            <h2>펀딩 계획</h2> <button type="submit" > 저장 </button>
+            <br><br>
         <div class="subTitle">펀딩 기간</div>
         
         <div class="dateWrapper">
             <div>
                 <div class="inputTitle">펀딩 시작</div>
-                <input type="datetime-local" id="currentDate">
+                <input type="datetime-local" id="currentDate" name="startDate">
             </div>
 
             <div style="margin: 25px 100px;">
@@ -39,28 +39,7 @@
 
             <div>
                 <div class="inputTitle">펀딩 종료</div>
-                <input type="datetime-local" >
-            </div>
-        </div>
-        
-        <br><br>
-
-        <div class="subTitle">결제 기간</div>
-
-        <div class="dateWrapper">
-            <div>
-                <div class="inputTitle">결제 시작</div>
-                <input type="date" id="currentDate2" readonly>
-            </div>
-
-            <div style="margin: 25px 100px;">
-            <img src="/icon/projectStart/doublearrow_right.svg">
-            <div style="color: rgba(125, 28, 216, 0.64); font-weight: 600;">10일</div>
-            </div>
-
-            <div >
-                <div class="inputTitle">결제 종료</div>
-                <input type="date" readonly >
+                <input type="datetime-local" name="endDate" th:value="${planDTO.endDate}">
             </div>
         </div>
 
@@ -75,9 +54,6 @@
             document.getElementById('currentDate').value = koreaDate.toISOString().substring(0, 16);
             document.getElementById('currentDate2').value = koreaDate.toISOString().substring(0, 16);
 
-
-            // 결제 시작, 종료일 표시하기
-
             
         </script>
 
@@ -88,7 +64,7 @@
             <div>
                 <div class="subTitle">목표 금액</div>
                 <p class="subText">계획한 펀딩 프로젝트에 금액이 얼마나 필요할지<br>신중히 생각해보세요.</p>
-                <input type="text" style="text-align: right" ><span>  원</span>
+                <input type="number" style="text-align: right" name="targetAmount" th:value="${planDTO.targetAmount}"><span>  원</span>
             </div>
 
             <div id="targetAmountDescription">
@@ -103,13 +79,12 @@
             </div>
 
         </div>
-        
-        <!-- <br><br><br><br> -->
+
 
         <div>
             <div class="subTitle" style="margin-top: -100px">최종 금액</div>
             <p class="subText">목표 금액 달성 시 수령되는 수수료가 적용된 금액입니다.</p>
-            <input type="text" style="text-align: right"><span>  원</span>
+            <input type="number" style="text-align: right" name="totalAmount" th:value="${planDTO.totalAmount}"><span>  원</span>
             <!-- <div class="subText" style="font-size: 12px;" >수수료 적용된 금액</div> -->
         </div>
 

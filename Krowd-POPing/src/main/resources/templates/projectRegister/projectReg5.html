@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,29 +29,48 @@
             여기가 하늘색 바디 부분-->
         <br><br><br><br><br>
         <br><br>
+
+        <form action="/projectReg/info" method="post" th:object="${infoDTO}">
         <div style="font-size: 25px; font-weight: bold;">상세 일정 및 내용</div>
-        <br><br>
+            <br>
+        <button type="submit" >저장</button>
+        <br>
 
         <script>
             $(document).ready(function() {
-                $('.summernote').summernote({
+                $('.summernote1').summernote({
                     width: 800,
                     height: 500,
                     placeholder: '일정을 날짜별로 자세히 작성해주세요'
+
                     
-                })
+                });
+
+                $('.summernote2').summernote({
+                    width: 800,
+                    height: 500,
+                    placeholder: '예산을 일정, 사용처 등을 고려하여 자세히 작성해주세요.'
+
+
+                });
+
+                $('.summernote3').summernote({
+                    width: 800,
+                    height: 500,
+                    placeholder: '후원자들이 볼 수 있는 프로젝트 내용입니다. 어떤 프로젝트인지 알려주세요.'
+
+
+                });
             });
         </script>
 
 
-
-        <form action="" method="post">
         <div class="subTitle">프로젝트 일정 계획</div>
         <div class="subText">캘린더에 일정을 계획해보세요.</div>
         <div class="subText">프로젝트 일정을 자세히 작성할수록 후원자가 신뢰할 수 있어요.</div>
         <br>
 
-            <textarea class="summernote" name="editorPlan"></textarea>
+            <textarea class="summernote1" name="planContent" th:text="${infoDTO.planContent}"></textarea>
 
 
         <br><br><br><br>
@@ -58,9 +78,9 @@
         <div class="subText">프로젝트에 예산을 어떻게 사용할 것인지 자세히 적어주세요.</div>
         <div class="subText">프로젝트 일정을 자세히 작성할수록 후원자가 신뢰할 수 있어요.</div>
         <br>
-        <form method="post">
-            <textarea class="summernote" name="editorBudget"></textarea>
-        </form>
+
+            <textarea class="summernote2" name="budgetContent" th:text="${infoDTO.budgetContent}"></textarea>
+
 
         <br><br><br><br>
         <div class="subTitle">프로젝트 내용 소개</div>
@@ -68,7 +88,7 @@
         <div class="subText">후원자들이 프로젝트 내용을 보고 펀딩에 참여할 수 있게 작성해보세요.</div>
         <br>
 
-            <textarea class="summernote" name="editorProject"></textarea>
+            <textarea class="summernote3" name="infoContent" th:text="${infoDTO.infoContent}"></textarea>
 
         </form>
 

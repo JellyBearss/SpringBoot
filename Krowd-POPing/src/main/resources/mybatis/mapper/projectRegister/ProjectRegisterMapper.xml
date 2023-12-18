@@ -4,12 +4,45 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.projectRegister.section01.model.dao.ProjectRegisterMapper">
 
+    <resultMap id="projectResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
+        <id property="projectCode" column="PROJECT_CODE"/>
+        <result property="title" column="TITLE"/>
+        <result property="content" column="CONTENT"/>
+        <association property="categoryDTO" resultMap="categoryResultMap" />
+    </resultMap>
 
 
-    <insert id="registProjectInfo" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
+
+    <resultMap id="categoryResultMap" type="com.jellybears.krowdpoping.category.model.dto.CategoryDTO">
+        <id property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="categoryTitle" column="CATEGORY_TITLE"/>
+        <result property="subCategoryCode" column="CATEGORY_CODE"/>
+        <result property="upperCategoryCode" column="UPPER_CATEGORY_CODE"/>
+    </resultMap>
+
+
+    <resultMap id="planResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO">
+        <id property="projectCode" column="PROJECT_CODE"/>
+        <result property="startDate" column="START_DATE" />
+        <result property="endDate" column="END_DATE" />
+        <result property="targetAmount" column="TARGET_AMOUNT" />
+        <result property="totalAmount" column="TOTAL_AMOUNT" />
+    </resultMap>
+
+
+    <resultMap id="infoResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.InfoDTO">
+        <id property="projectCode" column="PROJECT_CODE" />
+        <result property="planContent" column="PLAN_CONTENT" />
+        <result property="budgetContent" column="BUDGET_CONTENT" />
+        <result property="infoContent" column="INFO_CONTENT" />
+    </resultMap>
+
+
+
+    <insert id="insertProjectRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
         INSERT INTO project(
                             TITLE,
-                            CATEOGORY_CODE,
+                            CATEGORY_CODE,
                             CONTENT,
                             START_DATE,
                             END_DATE,
@@ -20,15 +53,17 @@
                             PLAN_CONTENT,
                             BUDGET_CONTENT,
                             INFO_CONTENT,
-                            USER_CODE
+                            USER_CODE,
+                            EDIT_STATUS,
+                            PRICEPLAN_CODE
 
         )
         VALUES (
                 #{ title },
-                #{ categoryCode },
+                #{ categoryDTO.subCategoryCode },
                 #{ content },
-                CURRENT_DATE,
-                CURRENT_DATE,
+                NOW(),
+                NOW(),
                 0,
                 0,
                 '',
@@ -36,11 +71,159 @@
                 '',
                 '',
                 '',
-                2
-
+                2,
+                '작성중',
+                1
         )
-
+<!--    <selectKey resultType="_int" keyProperty="projectCode" keyColumn="PROJECT_CODE" order="AFTER">-->
+<!--        SELECT LAST_INSERT_ID()-->
+<!--    </selectKey>-->
     </insert>
+
+    <update id="UpdateprojectRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
+        UPDATE project
+        SET TITLE = #{ title },
+            CATEGORY_CODE = #{ categoryDTO.subCategoryCode },
+            CONTENT = #{ content }
+        WHERE project_code = #{ projectCode }
+    </update>
+
+
+    <update id="updatePlanRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO">
+        UPDATE project
+        SET start_date = #{ startDate },
+            end_date = #{ endDate },
+            target_amount = #{ targetAmount },
+            total_amount = #{ totalAmount }
+        WHERE project_code = #{ projectCode }
+
+    </update>
+
+    <update id="updateInfoRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.InfoDTO">
+        UPDATE project
+        SET   plan_content = #{ planContent }
+            , budget_content = #{ budgetContent }
+            , info_content = #{ infoContent }
+        WHERE project_code = #{ projectCode }
+
+    </update>
+
+
+
+    <select id="getEditProjectCode" resultType="_int">
+        SELECT project_code
+        FROM project WHERE user_code = #{ userCode } AND edit_status = '작성중'
+    </select>
+
+
+    <select id="getSubCategoryList" resultMap="categoryResultMap">
+        SELECT   category_code
+                ,category_title
+                ,upper_category_code
+            FROM category
+--             WHERE upper_category_code IS NOT NULL
+
+    </select>
+
+
+<!--    <select id="selectProjectRegByProjectCode" resultMap="projectResultMap">-->
+<!--        SELECT-->
+<!--               project_code-->
+<!--             , title-->
+<!--             , category_code-->
+<!--             , content-->
+<!--        FROM project-->
+<!--        WHERE project_code = #{ projectCode }-->
+<!--    </select>-->
+
+    <select id="selectProjectRegByProjectCode" resultMap="projectResultMap">
+        SELECT
+            project.project_code
+             , project.title
+             , project.content
+             , category.category_code
+             , category.category_title
+             , category.upper_category_code
+        FROM project
+                 JOIN category ON(project.category_code = category.category_code)
+        WHERE project_code = #{ projectCode }
+    </select>
+
+
+
+
+    <select id="selectPlanRegByProjectCode" resultMap="planResultMap">
+        SELECT
+            project_code
+            , start_date
+            , end_date
+            , target_amount
+            , total_amount
+        FROM project
+        WHERE project_code = #{ projectCode }
+    </select>
+
+
+<!--    파라미터로 projectCode 하나 전달해서 parametertype 생략-->
+    <select id="selectInfoRegByProjectCode" resultMap="infoResultMap">
+        SELECT
+              project_code
+            , plan_content
+            , budget_content
+            , info_content
+        FROM project
+        WHERE project_code = #{ projectCode }
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+<!--    <insert id="registProjectInfo" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">-->
+<!--        INSERT INTO project(-->
+<!--            TITLE,-->
+<!--            CATEGORY_CODE,-->
+<!--            CONTENT-->
+<!--        )-->
+<!--        VALUES (-->
+<!--                   #{ title },-->
+<!--                   #{ categoryCode },-->
+<!--                   #{ content }-->
+
+<!--               )-->
+
+<!--    </insert>-->
+
+
+<!--    펀딩 날짜와 목표금액 입력 페이지-->
+
+<!--    <insert id="registProjectInfo" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">-->
+<!--        INSERT INTO project(-->
+<!--            TITLE,-->
+<!--            CATEGORY_CODE,-->
+<!--            CONTENT-->
+<!--        )-->
+<!--        VALUES (-->
+<!--                   #{ startDate },-->
+<!--                   #{ endDate },-->
+<!--                   #{ targetAmount },-->
+<!--                   #{ totalAmount }-->
+
+<!--               )-->
+<!--        -->
+<!--    </insert>-->
+
+
+
+
+
+
 
 
 

@@ -51,7 +51,7 @@ input[type=datetime-local], input[type=date]{
 
 }
 
-input[type=text]{
+input[type=text], input[type=number]{
     border-top-left-radius:10px;
 	border-top-right-radius:10px;
 	border-bottom-left-radius:10px;
@@ -420,15 +420,11 @@ textarea{
 }
 
 
-.normalCard{
+.basicCard{
 
     background: rgba(125, 28, 216, 0.04);
     
 
-}
-
-.normalCard:visited{
-    box-shadow: 0px 2px 10px 4px rgba(125, 28, 216, 0.40);
 }
 
 
@@ -436,10 +432,4 @@ textarea{
 
     background: #EDE9FE;
 
-}
-
-
-.premiumCard:active{
-
-    box-shadow: 0px 2px 10px 3px #A38DFF;
 }

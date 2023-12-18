@@ -1,5 +1,6 @@
 package com.jellybears.krowdpoping.projectRegister.section01.model.dto;
 
+import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,17 +17,13 @@ public class ProjectDTO {
 
     private String title;
 
-    private int categoryCode;
+    private CategoryDTO categoryDTO;
 
     private String content;
 
-    private String thumbNail;
+    //private List<ImageDTO> thumbNails;
 
 //    private List<TagDTO> tag;
-
-
-
-
 
 
 

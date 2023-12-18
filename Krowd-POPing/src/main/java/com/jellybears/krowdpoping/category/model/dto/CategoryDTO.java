@@ -12,5 +12,6 @@ public class CategoryDTO {
     private int categoryCode;
     private String categoryTitle;
     private int upperCategoryCode;
+    private int subCategoryCode; // 하위카테고리 저장
 
 }
