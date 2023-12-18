@@ -20,7 +20,7 @@
 </head>
 <body>
 <div id="header">
-    <a href="/home" class="logo">
+    <a href="/krowdpoping/mainpage" class="logo">
         <img src="/icon/logo2.png" alt="">
     </a>
     <a href="/upload" class=upload_project>
@@ -67,7 +67,7 @@
         <div class="nickname_section">
             <span class="supporter_nickname">후원자명</span>
             <div class="input_nickname_section">
-                <input type="text" name ="input_nickname" th:value="${ #authentication.getPrincipal().userDTO.getNickname() }" placeholder="후원자명을 입력하세요.">
+                <input type="text" name ="input_nickname" id="input_nickname" th:value="${ #authentication.getPrincipal().userDTO.getNickname() }" placeholder="후원자명을 입력하세요.">
             </div>
         </div>
 
@@ -97,6 +97,20 @@
             <label for="same">가입 정보와 동일</label>
         </div>
     </div>
+        <script th:inline="javascript">
+            function toggleUserInfoVisibility() {
+                var checkbox = document.getElementById('same');
+                var nicknameInput = document.querySelector('[name=input_nickname]');
+
+                // 체크박스가 체크되었을 때
+                if (checkbox.checked) {
+                    nicknameInput.value = document.getElementById('input_nickname').value;
+                } else {
+                    nicknameInput.value = '';
+                }
+            }
+        </script>
+
     </th:block>
 </div>
 
@@ -354,6 +368,10 @@
 </div>
 
 <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 'subpage1'을 인자로 하여 showSubpage 함수 호출하여 초기에 표시
+        showSubpage('subpage1');
+    });
     document.getElementById('deliveryOptions').value = 'default';
     showSubpage('subpage1');
     function showSubpage(subpageId) {
@@ -362,6 +380,7 @@
         subpages.forEach(function(subpage) {
             subpage.classList.remove('active');
         });
+
 
         // 클릭한 subpage를 활성화
         var activeSubpage = document.getElementById(subpageId);
