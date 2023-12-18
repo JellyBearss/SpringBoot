@@ -129,19 +129,20 @@
             <div class="proIntro">
                 <div class="i-procategory">
                     <a>
-                        <span class="cateBtn" th:onclick="'location.href=\'/category/category-acc\''">액세서리</span>
+<!--                        <span class="cateBtn" th:onclick="'location.href=\'/category/category-acc\''">액세서리</span>-->
+                        <span class="cateBtn" th:text="${detail.category.categoryTitle}"></span>
+
                     </a>
-                    <i class="fa-solid fa-angle-right"></i>
-                    <a>
-                        <span class="cateBtn">겨울핫팩</span>
-                    </a>
+<!--                    <i class="fa-solid fa-angle-right"></i>-->
+<!--                    <a>-->
+<!--                        <span class="cateBtn">겨울핫팩</span>-->
+<!--                    </a>-->
                 </div>
                 <div class="protitle">
-                    <h3>[IVE] [장원영] 비주얼 천재만재 핑크공주 워뇨 인형 비주얼 천재만재 핑크공주 워뇨 인형</h3>
+                    <h3 th:text="${detail.title}"></h3>
                 </div>
                 <div class="proShortDesc">
-                    <p>짧은 소개글이 들어갑니다. 기안84와 친구들이 함께 떠나는 즉흥 여행. 정해진 계획은 없다. 발길 닿는 대로 무작정 여행지를 돌아다니며 그곳의 진정한 아름다움을
-                        발견한다. 출연 기안84, 빠니보틀, 덱스</p>
+                    <p th:text="${detail.content}"></p>
                 </div>
             </div>
             <div class="proMainBtn-wrapper">
@@ -181,16 +182,18 @@
             <div class="proInfo2">
                 <ul>
                     <li>목표금액</li>
-                    <li>500,000원</li>
+                    <li th:text="${detail.targetAmount} + '원'"></li>
                 </ul>
 
                 <ul>
                     <li>펀딩기간</li>
-                    <li>2023.11.07 ~ 2023.12.31<span id="proMainDayLeft">10일 남음</span></li>
+<!--                    <li th:text="${detail.startDate}">2023.11.07 ~ 2023.12.31<span id="proMainDayLeft">10일 남음</span></li>-->
+                    <li th:text="${detail.startDate} + ' ~ ' + ${detail.endDate}"></li>
+
                 </ul>
                 <ul>
-                    <li>결제일자</li>
-                    <li>목표금액 달성시 2024.01.01에 결제 진행</li>
+                    <li>남은기간</li>
+                    <span th:text="${daysLeftDisplay}"></span>
                 </ul>
             </div>
         </div>
@@ -340,7 +343,11 @@
                 </div>
 
                 <div id="project-report">
-                    <span class="project-report" th:onclick="'location.href=\'/projectdetail/projectReportForm\''">이 프로젝트 신고하기</span>
+<!--                    <span class="project-report" th:onclick="'location.href=\'/report/ProjectReport?projectId=' + ${detail.projectCode} + '\''">이 프로젝트 신고하기</span>-->
+                    <a th:href="|/report/ProjectReport?no=${detail.projectCode}|">
+                        <span class="project-report">이 프로젝트 신고하기</span>
+                    </a>
+
                     <br><br><br><br><br><br>
                 </div>
 

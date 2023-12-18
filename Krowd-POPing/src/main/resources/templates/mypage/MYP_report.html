@@ -122,15 +122,13 @@
 
                     <table class="report-category">
                         <colgroup>
-                            <col style="width: 80px;">
-                            <col style="width: 120px;">
+                            <col style="width: 200px;">
                             <col>
                             <col style="width: 160px;">
                             <col style="width: 100px;">
                         </colgroup>
                         <thead>
                         <tr>
-                            <th scope="col">번호</th>
                             <th scope="col">유형</th>
                             <th scope="col">제목</th>
                             <th scope="col">답변 상태</th>
@@ -138,32 +136,28 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>저작권 위반</td>
-                            <td class="dynamic-col"><a href="#">신고 제목이 들어갑니다.</a></td>
-                            <td>처리 완료</td>
-                            <td>2023.12.20</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>부적절한 표현</td>
-                            <td class="dynamic-col"><a href="#">신고 제목이 들어갑니다. 긴 제목 테스트 긴 제목 테스트 긴 제목 테스트 긴 제목
-                                테스트 긴 제목 테스트</a></td>
-                            <td>신고 접수</td>
-                            <td>2023.12.20</td>
+                        <tr th:each="projectreport : ${projectReportList}">
+                            <td th:text="${ projectreport.category.title }"></td>
+                            <td th:text="${ projectreport.reportTitle }" class="dynamic-col">
+                                제목
+                            </td>
+                            <td th:text="${ projectreport.whetherCompleted }"></td>
+                            <td th:text="${ projectreport.reportDate }"></td>
                         </tr>
                         </tbody>
                     </table>
 
-
-                    <div class="report-pagination">
-                        <div class="report-active-page">1</div>
-                        <!-- <div>2</div>
-                        <div>3</div>
-                        <div>4</div> -->
+                    <div class="inquiry-pagination">
+                        <!-- <div class="inquiry-active-page">1</div> -->
+                        <button class="pagebtn" onclick="backbtn()">이전</button>
+                        <ul class="no-margin-padding">
+                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>
+                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>
+                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>
+                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>
+                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>
+                        </ul>
+                        <button class="pagebtn" onclick="nextbtn()">다음</button>
                     </div>
                 </div>
 
@@ -212,11 +206,17 @@
                     </table>
 
 
-                    <div class="report-pagination">
-                        <div class="report-active-page">1</div>
-                        <!-- <div>2</div>
-                        <div>3</div>
-                        <div>4</div> -->
+                    <div class="inquiry-pagination">
+                        <!-- <div class="inquiry-active-page">1</div> -->
+                        <button class="pagebtn" onclick="backbtn()">이전</button>
+                        <ul class="no-margin-padding">
+                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>
+                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>
+                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>
+                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>
+                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>
+                        </ul>
+                        <button class="pagebtn" onclick="nextbtn()">다음</button>
                     </div>
                 </div>
 
@@ -258,11 +258,17 @@
                     </table>
 
 
-                    <div class="report-pagination">
-                        <div class="report-active-page">1</div>
-                        <div>2</div>
-                        <div>3</div>
-                        <div>4</div>
+                    <div class="inquiry-pagination">
+                        <!-- <div class="inquiry-active-page">1</div> -->
+                        <button class="pagebtn" onclick="backbtn()">이전</button>
+                        <ul class="no-margin-padding">
+                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>
+                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>
+                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>
+                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>
+                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>
+                        </ul>
+                        <button class="pagebtn" onclick="nextbtn()">다음</button>
                     </div>
                 </div>
 
@@ -340,6 +346,38 @@
         activeSubpage.classList.add('active');
 
 
+    }
+
+
+    let pagelink = document.getElementsByClassName("pagelink");
+    let currentValue = 1;
+
+    function activeLink() {
+        for (link of pagelink) {
+            link.classList.remove("active");
+        }
+        event.target.classList.add("active");
+        currentValue = event.target.value;
+    }
+
+    function backbtn() {
+        if (currentValue > 1) {
+            for (link of pagelink) {
+                link.classList.remove("active");
+            }
+            currentValue--;
+            pagelink[currentValue - 1].classList.add("active");
+        }
+    }
+
+    function nextbtn() {
+        if (currentValue < 5) {
+            for (link of pagelink) {
+                link.classList.remove("active");
+            }
+            currentValue++;
+            pagelink[currentValue - 1].classList.add("active");
+        }
     }
 
 </script>

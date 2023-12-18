@@ -4,11 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.category.model.dao.CategoryMapper">
 
+    <resultMap id="CaUserResultMap" type="com.jellybears.krowdpoping.category.model.dto.CaUserDTO">
+        <id property="userCode" column="user_code"/>
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="nickName" column="nickname"/>
+
+    </resultMap>
+
     <resultMap id="categoryResultMap" type="com.jellybears.krowdpoping.category.model.dto.CategoryDTO">
         <id property="categoryCode" column="category_code"/>
         <result property="categoryTitle" column="category_title"/>
         <result property="upperCategoryCode" column="upper_category_code"/>
     </resultMap>
+
+    <resultMap id="caProjectResultMap" type="com.jellybears.krowdpoping.category.model.dto.CaProjectDTO">
+        <id property="projectCode" column="project_code"/>
+        <result property="projectTitle" column="title"/>
+        <result property="projectDetail" column="content"/>
+        <association property="creatorName" resultMap="CaUserResultMap"/>
+    </resultMap>
+
+
+
+
 
     <select id="AllCategoryList" resultMap="categoryResultMap">
 
@@ -18,6 +37,21 @@
             upper_category_code
         FROM category
         ORDER BY category_code
+    </select>
+
+
+    <select id="AllProjectList" resultMap="caProjectResultMap">
+
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        order by project_code
+
+
     </select>
 
 </mapper>

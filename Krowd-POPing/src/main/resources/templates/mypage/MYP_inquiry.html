@@ -126,15 +126,13 @@
 
                     <table class="inquiry-category">
                         <colgroup>
-                            <col style="width: 80px;">
-                            <col style="width: 120px;">
+                            <col style="width: 200px;">
                             <col>
                             <col style="width: 160px;">
                             <col style="width: 100px;">
                         </colgroup>
                         <thead>
                         <tr>
-                            <th scope="col">번호</th>
                             <th scope="col">유형</th>
                             <th scope="col">제목</th>
                             <th scope="col">답변 상태</th>
@@ -143,7 +141,6 @@
                         </thead>
                         <tbody>
                         <tr th:each="inquiry : ${inquiryList}">
-                            <td th:text="${ inquiry.inquiryCode }"></td>
                             <td th:text="${ inquiry.inquiryType }"></td>
                             <td>
                                 <a th:href="|/inquiry/inquiryContent?no=${inquiry.inquiryCode}|" th:utext="${ inquiry.inquiryTitle }" class="dynamic-col"></a>
@@ -182,15 +179,13 @@
                     <div class="space-description">*<span class="inquiry-type">창작자</span>에게 문의하신 내역입니다.</div>
                     <table class="inquiry-category">
                         <colgroup>
-                            <col style="width: 80px;">
-                            <col style="width: 120px;">
+                            <col style="width: 200px;">
                             <col>
                             <col style="width: 160px;">
                             <col style="width: 100px;">
                         </colgroup>
                         <thead>
                         <tr>
-                            <th scope="col">번호</th>
                             <th scope="col">유형</th>
                             <th scope="col">제목</th>
                             <th scope="col">답변 상태</th>
@@ -200,86 +195,16 @@
                         <tbody>
                         <tr>
 
-                            <td>1</td>
-                            <td>상품문의</td>
-                            <td class="dynamic-col"><a href="/inquiry/inquiryContent?id=1">굿즈 구성에 질문이 있어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.11.30</td>
+                        <tr th:each="inquiry : ${inquiryList2}">
+                            <td th:text="${ inquiry.inquiryType }"></td>
+                            <td class="dynamic-col">
+                                <a th:href="|/inquiry/inquiryContent?no=${inquiry.inquiryCode}|" th:text="${#strings.replace(inquiry.inquiryTitle, '<.*?>', '')}"></a>
+                            </td>
+                            <td th:text="${ inquiry.inquiryStatus }"></td>
+                            <td th:text="${ inquiry.inquiryDate }"></td>
+                        </tr>
+                        </tbody>
 
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>배송문의</td>
-                            <td class="dynamic-col"><a href="/inquiry/inquiryContent?id=2">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.01</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>배송문의</td>
-                            <td class="dynamic-col"><a href="#">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.01</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>배송문의</td>
-                            <td class="dynamic-col"><a href="#">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.01</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>배송문의</td>
-                            <td class="dynamic-col"><a href="#">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.01</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>배송문의</td>
-                            <td class="dynamic-col"><a href="#">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.01</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>배송문의</td>
-                            <td class="dynamic-col"><a href="#">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.01</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>배송문의</td>
-                            <td class="dynamic-col"><a href="#">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.01</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>배송문의</td>
-                            <td class="dynamic-col"><a href="#">발송을 이미 하셨는데 제 배송지가 변경되었어요.</a></td>
-                            <td>문의 전송됨</td>
-                            <td>2023.12.01</td>
-                        </tr>
-                        </tbody>
                     </table>
 
 

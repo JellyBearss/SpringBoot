@@ -1,11 +1,15 @@
 package com.jellybears.krowdpoping.category.controller;
 
+import com.jellybears.krowdpoping.category.model.dto.CaProjectDTO;
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
 import com.jellybears.krowdpoping.category.model.service.CategoryService;
+import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.lang.model.SourceVersion;
 import java.util.List;
 
 @Controller
@@ -19,8 +23,12 @@ public class CategoryController {
     }
 
     @GetMapping("category-all")
-    public String goCategory(){
+    public String goCategory(Model model){
 
+        List<CaProjectDTO> allProjectList = categoryService.getAllProjectList();
+        model.addAttribute("allProjectList", allProjectList);
+
+        System.out.println("allProjectList = " + allProjectList);
 
         return "/category/categorypage1-all";
     }

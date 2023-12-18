@@ -24,6 +24,11 @@ public class InquiryServiceImpl implements InquiryService{
 
         return inquiryMapper.findInquiryList();
     }
+
+    @Override
+    public List<InquiryDTO> findInquiryList2() {
+        return inquiryMapper.findInquiryList2();
+    }
     @Override
     @Transactional //성공하면 커밋 실패하면 롤백
     public void saveNewInquiry(InquiryDTO inquiry) throws InquirySaveException {
@@ -42,6 +47,8 @@ public class InquiryServiceImpl implements InquiryService{
 
         return inquiryMapper.selectInquiryContent(no);
     }
+
+
 
 
 }

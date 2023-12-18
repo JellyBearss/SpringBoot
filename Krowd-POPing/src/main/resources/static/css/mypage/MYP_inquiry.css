@@ -371,7 +371,7 @@ body{
 
 .dynamic-col {
     width: 20%; /* 초기 너비 설정 */
-    white-space: nowrap; /* 긴 문자열이 줄 바꿈되지 않도록 설정 */
+    /*white-space: nowrap;*/
     overflow: hidden; /* 넘치는 부분은 숨김 처리 */
     text-overflow: ellipsis; /* 넘치면 ...으로 표시 */
 }

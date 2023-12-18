@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.report.model.dao.ProjectReportMapper">
+
+
+    <resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+        <id property="user_code" column="user_code"/>
+        <result property="userId" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="email" column="email"/>
+        <result property="phone_number" column="phone_number"/>
+        <result property="user_status" column="user_status"/>
+    </resultMap>
+
+    <resultMap id="ProjectReportResultMap" type="com.jellybears.krowdpoping.report.model.dto.ProjectReportDTO" >
+        <id property="projectReportCode" column="project_report_code"/>
+        <result property="reportTitle" column="report_title"/>
+        <result property="reportContent" column="report_content"/>
+        <result property="reporter" column="user_code"/>
+        <result property="reportProjectCode" column="project_code"/>
+        <result property="reportDate" column="report_date"/>
+        <result property="whetherDeleted" column="whether_deleted"/>
+        <result property="whetherCompleted" column="whether_completed"/>
+        <result property="completedDate" column="completed_date"/>
+        <association property="category" resultMap="ProjectReportCategoryResultMap"/>
+
+    </resultMap>
+
+    <resultMap id="ProjectReportCategoryResultMap" type="com.jellybears.krowdpoping.report.model.dto.ProjectReportCategoryDTO">
+        <id property="code" column="project_report_category_code"/>
+        <result property="title" column="project_report_category_title"/>
+
+    </resultMap>
+
+
+    <select id="findReportList" resultMap="ProjectReportResultMap">
+
+        select
+            A.project_report_code,
+            D.project_report_category_title,
+            A.report_title,
+            A.whether_completed,
+            A.report_date
+        from project_report A
+                 join project_report_category D on A.report_category = D.project_report_category_code
+        order by A.project_report_code desc
+
+    </select>
+
+    <insert id="saveReport">
+        insert into project_report
+        (
+         user_code,
+         project_code,
+         report_category,
+         report_title,
+         report_content,
+         report_date,
+         whether_deleted,
+         whether_completed,
+         completed_date
+        )
+        values
+            (
+             2,
+             2,
+             2,
+             #{ reportTitle },
+             #{ reportContent },
+             now(),
+             'N',
+             #{ whetherCompleted },
+             null
+            )
+
+    </insert>
+
+
+
+
+
+</mapper>
