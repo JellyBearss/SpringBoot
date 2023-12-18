@@ -18,15 +18,17 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @ToString
+
 public class RoleTypeDTO implements UserDetails {
     private RoleDTO roleDTO;
     private UserDTO userDTO;
+
 
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> roles = new HashSet<>();
-        for(String role : roleDTO.getRole_name().split(",")) {
+        for(String role : roleDTO.getRole_name()) {
             roles.add(new SimpleGrantedAuthority(role));
         }
 
@@ -43,6 +45,9 @@ public class RoleTypeDTO implements UserDetails {
     }
 
 
+
+
+
     @Override
     public boolean isAccountNonExpired() {
         return true; // 만료되지 않음
@@ -54,7 +59,7 @@ public class RoleTypeDTO implements UserDetails {
         return true; // 잠기지 않음
     }
 
-    // 비밀번호 만료 여부
+    // 탈퇴 계정 여부 표현 ,비밀번호 만료 여부
     @Override
     public boolean isCredentialsNonExpired() {
         return true; // 만료되지 않음

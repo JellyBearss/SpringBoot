@@ -4,7 +4,7 @@ public class UserRemoveException extends Exception{
     public UserRemoveException() {
     }
 
-    public UserRemoveException(String message) {
-        super(message);
+    public UserRemoveException(String msg) {
+        super(msg);
     }
 }

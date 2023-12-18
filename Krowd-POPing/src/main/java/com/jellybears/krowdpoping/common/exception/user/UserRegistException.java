@@ -4,7 +4,7 @@ public class UserRegistException extends Exception{
     public UserRegistException() {
     }
 
-    public UserRegistException(String message) {
-        super(message);
+    public UserRegistException(String msg) {
+        super(msg);
     }
 }

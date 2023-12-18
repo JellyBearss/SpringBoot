@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{/layouts/user_layout}">
+<head>   <link rel="stylesheet" href="/css/loginandsignup/signup_3.css"></head>
+<th:block layout:fragment="content">
+
+
+<div id="wrapper">
+
+    <div id="content">
+        <!-- 여기가 중간 부분 여기에 코드 작성-->
+        <div class="content-2">
+            <div id="edittitle">
+                <span class="highlight-text">회원가입</span>
+            </div>
+            <div id="under_line"></div>
+            <div id="jb-wrap">
+                <div class="jb1-wrap">
+                    <div class="jb1-image"><img src="/icon/step1-done.png" alt=""></div>
+                    <div class="jb1-text">
+                        <p>① 이용약관</p>
+                    </div>
+                </div>
+                <div class="jb2-wrap">
+                    <div class="jb2-image"><img src="/icon/singup-next.png" alt=""></div>
+                    <div class="jb2-text">
+                        <p>② 회원정보입력</p>
+                    </div>
+                </div>
+                <div class="jb3-wrap">
+                    <div class="jb3-image"><img src="/icon/step23-ing.png" alt=""></div>
+                    <div class="jb3-text">
+                        <p>③ 회원가입 완료</p>
+                    </div>
+                </div>
+            </div>
+            <div id="signup_success_container">
+                <br>
+                <br>
+                <h1>회원가입 완료!</h1>
+                <button id="gotosupport" th:onclick="'location.href=\'/user/login\''">로그인하러 가기</button>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</th:block>
+</html>

@@ -13,33 +13,33 @@
                         <div class="card-body">
                             <h5 class="card-title">공지사항 상세 페이지</h5>
                             <!-- General Form Elements -->
-                            <form>
+                            <form id="contentList">
 
                                 <div class="row mb-3">
-                                    <label for="inputTitle" class="col-sm-2 col-form-label">공지사항 제목</label>
+                                    <label class="col-sm-2 col-form-label">공지사항 제목</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" value="첫번째 공지사항" disabled>
+                                        <p type="text" class="form-control" id="title" th:text="${ notice.title }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputTitle" class="col-sm-2 col-form-label">작성일</label>
+                                    <label class="col-sm-2 col-form-label">작성일</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" value="2023/12/01" disabled>
+                                        <p type="text" class="form-control" id="updateDate" th:text="${ notice.updateDate }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputTitle" class="col-sm-2 col-form-label">공지유형</label>
+                                    <label class="col-sm-2 col-form-label">공지유형</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" value="일반공지" disabled>
+                                        <p type="text" class="form-control" id="type" th:text="${ notice.type }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputIntroduction" class="col-sm-2 col-form-label">내용</label>
+                                    <label class="col-sm-2 col-form-label">내용</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" style="height: 500px" disabled>첫번째 공지사항입니다.</textarea>
+                                        <p type="text" class="form-control" id="content" th:value="${ notice.content }" th:text="${ notice.content }" style="height: 370px"></p> <!--textarea-->
                                     </div>
                                 </div>
 
@@ -54,21 +54,35 @@
                                                         <h5 class="modal-title">수정 페이지로 이동하시겠습니까?</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                                                    <div class="modal-body"> 주의사항을 확인해주세요.
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                        <a type="button" class="btn btn-primary" href="/admin/noticeModify">확인</a>
+                                                        <button type="button" th:onclick="'location.href=\'/admin/noticeModify?noticeCode=' + @{${ notice.noticeCode }} + '\''" class="btn btn-primary">확인</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div><!-- End Basic Modal-->
-
-                                        <a type="submit" class="btn btn-primary1" href="/admin/noticeList" style="float: right;">뒤로가기</a>
+                                        <button type="button" class="btn btn-primary1" data-bs-toggle="modal" data-bs-target="#basicModal2" style="float: right;">삭제하기</button>
+                                        <div class="modal fade" id="basicModal2" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">프로젝트를 삭제하시겠습니까?</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        주의사항을 확인해주세요.
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                                        <a type="button" class="btn btn-primary" th:onclick="'location.href=\'/admin/noticeRemove?noticeCode='+ @{${ notice.noticeCode }} + '\''">확인</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- End Basic Modal-->
                                     </div>
                                 </div>
-
                             </form><!-- End General Form Elements -->
                         </div>
                     </div>

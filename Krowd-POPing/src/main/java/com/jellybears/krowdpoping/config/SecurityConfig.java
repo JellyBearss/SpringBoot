@@ -42,12 +42,22 @@ public class SecurityConfig {
 //                })
                 // 로그인 설정
                 .formLogin(login -> {
-                    login.loginPage("/loginandsignup/login");   //커스텀 로그인 페이지 사용
+                    login.loginPage("/user/login");   //커스텀 로그인 페이지 사용
                     login.usernameParameter("userId"); // 사용자 id 입력 필드 (input의 name과 일치)
-                    login.passwordParameter("userPwd"); // 사용자 pass 입력 필드 (input의 name과 일치)
+                    login.passwordParameter("password"); // 사용자 pass 입력 필드 (input의 name과 일치)
                     login.defaultSuccessUrl("/krowdpoping/mainpage");  //로그인 성공시 이동 페이지
                     login.failureHandler(authFailHandler); // auth
                 })
+
+                //로그아웃 설정
+                .logout(logout ->{
+                    logout.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")); // 로그아웃 요청 url
+                    logout.deleteCookies("JSESSIONID"); // 로그아웃 시 사용자의 JSESSIONID 삭제
+                    logout.invalidateHttpSession(true); // 서버 세션 소멸처리
+                    logout.logoutSuccessUrl("/krowdpoping/mainpage"); // 로그아웃 성공시 이동할 페이지
+                })
+
+
                 .sessionManagement(session ->{
                     session.maximumSessions(1); // 세션 개수 제한
                     session.invalidSessionUrl("/"); // 세션 만료시 이동할 url

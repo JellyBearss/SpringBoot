@@ -8,4 +8,9 @@ import java.util.List;
 @Mapper
 public interface InquiryMapper {
     List<InquiryDTO> findInquiryList();
+
+    int saveNewInquiry(InquiryDTO inquiry);
+
+
+    InquiryDTO selectInquiryContent(Long no);
 }

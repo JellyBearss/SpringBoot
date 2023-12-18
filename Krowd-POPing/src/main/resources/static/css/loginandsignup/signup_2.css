@@ -113,7 +113,7 @@ position: relative;
 
 #term_of_service_container{
     width: 1000px;
-    height: 1200px;
+    height: 1350px;
     border: 1px solid #D9D9D9;
     margin: auto;
     margin-top: 80px;
@@ -161,7 +161,7 @@ position: relative;
     margin-right: 18px;
     font-size: 16px;
 }
-#type_id_input {
+#userId {
     margin-right: 20px;
     margin-left:38px;
     height: 30px;
@@ -172,6 +172,21 @@ position: relative;
     padding-left: 10px;
     background-color: #F8F8F8;
     /* width: 100%; */
+}
+#duplicationCheck{
+    border-radius: 8px;
+    font-size: 12.5px;
+    border: 1px solid #616060;
+    /* border: none; */
+    padding:5px;
+    /* background-color: #EDE9FE; */
+    color:#616060;
+    cursor: pointer;
+
+}
+#duplicationCheck:active {
+    transform: translateY(0.2px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .password-container {
@@ -196,7 +211,7 @@ position: relative;
     display: flex;
     align-items: center;
 }
-#password-description{
+.password-description{
     font-size: 16px;
     width: 200px;
     margin-right: 8px;
@@ -219,7 +234,8 @@ position: relative;
 }
 #type_name_label,
 #type_nickname_label,
-#type_phone_label{
+#type_phone_label,
+#type_authnum_label{
     font-size: 16px;
 }
 #type_name { 
@@ -230,7 +246,7 @@ position: relative;
     align-items: center;
     font-size: 13px;
 }
-#type_name_input {
+#name {
     margin-left:61px;
     height: 30px;
     width: 200px;
@@ -240,8 +256,8 @@ position: relative;
     padding-left: 10px;
     background-color: #F8F8F8;
 }
-#birth{
-    margin-left: 28px;
+#birthday{
+    margin-left: 31px;
     height: 30px;
     /* padding: 5px; */
     width: 200px;
@@ -261,14 +277,14 @@ position: relative;
 
     /* background-color: #EADBF9; */
 }
-#birthday{
+/*#birthday{*/
 
-    height: 30px;
-    font-size: 16px;
-    padding-left: 5px;
+/*    height: 30px;*/
+/*    font-size: 16px;*/
+/*    padding-left: 5px;*/
 
-}
-label[for="birth"]{
+/*}*/
+label[for="birthday"]{
     /* margin-right: 30px; */
     font-size: 16px;
 }
@@ -282,8 +298,8 @@ label[for="birth"]{
     font-size: 13px;
 }
 
-#type_nickname_input {
-    margin-left:48px;
+#nickname {
+    margin-left:46px;
     height: 30px;
     width: 200px;
     font-size:13px;
@@ -317,7 +333,7 @@ label[for="emailProvider"]{
 border: 1px solid #ccc;
 padding: 5px;
 font-size: 13px;
-margin-left: 38px;
+margin-left: 36px;
 padding-left: 10px;
 height: 30px;
 width: 200px;
@@ -329,7 +345,28 @@ font-size: 14px;
 height: 40px;
 width: 150px;
 }
-
+.send_auth{
+    margin-left: 10px;
+    padding: 5px;
+}
+.type_auth_num{
+    color: #6d6d6d;
+    transform:translateX(28%);
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+#auth_num{
+    margin-left:31px;
+    height: 30px;
+    width: 200px;
+    font-size:13px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    padding-left: 10px;
+    background-color: #F8F8F8;
+}
 
 
 #type_phone{
@@ -341,8 +378,8 @@ width: 150px;
     font-size: 13px;
 }
 
-#type_phone_input {
-    margin-left:38px;
+#phone {
+    margin-left:31px;
     height: 30px;
     width: 200px;
     font-size:13px;

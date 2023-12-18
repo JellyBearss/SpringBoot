@@ -1,51 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/mypage/MYP_projectlist_4.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>header and footer</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/user_layout}">
+<head>    <link rel="stylesheet" href="/css/mypage/MYP_projectlist_4.css"></head>
+<th:block layout:fragment="content">
     <div id="wrapper">
-        <div id="header">
-            <div class=cartbar>
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-                <div class="category-box">
-                    <div class="category"><a href="home.html">홈</a></div>
-                    <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
-                    <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
-                    <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
-                </div>
-            </div>
-            <div class="logo">
-                <img src="/icon/logo2.png" alt="">
-            </div>
-            <div class="menu">
-                <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-                <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
-                <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
-                <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
-                <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
-            </div>               
-            <div id="search-area">
-                <form id="search-form">
-                    <div id="search-text-area">
-                        <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요." 
-                        onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
-                    </div>
-                    <div id="search-btn-area">
-                        <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
-                    </div>
-                </form>
-            </div>
 
-
-        </div>
         <div id="content">
             <!-- 여기가 중간 부분 여기에 코드 작성-->
             <div id="content-1">
@@ -119,57 +79,6 @@
         </div>
 
     </div>
-    <div id="footer">
-        <div id="footer-1">
-            <img src="/icon/logo2.png" alt="" class="img-responsive">
-            <div class="text-container">
-                <p><a href="https://github.com/JellyBearss" target="_blank" class="my-link">https://github.com/JellyBearss</a></p>
-                <p> Team :  JellyBears</p></div>
-                
-        </div>
-        <div id="footer-2">
-            <ul><li><a href="notice.html">공지사항</a></li></ul>
-        </div>
-        <div id="footer-3">
-            <ul>
-                <li><a href="guide.html">이용안내</a></li>
-                <li><a href="first_support_guide.html">첫 후원 가이드</a></li>
-                <li><a href="creator_guide.html">창작자 가이드</a></li>
-                <li><a href="copyright_guide.html">저작권 안내</a></li>
-            </ul>
-        </div>       
-        <div id="footer-4">
-            <ul>
-                <li><a href="policy.html">정책</a></li>
-                <li><a href="terms_of_service.html">이용약관</a></li>
-                <li><a href="privacy_policy.html">개인정보 처리방침</a></li>
-                <li><a href="project_criteria.html">프로젝트 심사 기준</a></li>
-            </ul>
-        </div>  
-        <div id="footer-5">
-            <p>고객지원</p>
-            <p>평일 9:00 ~ 17:00 (12:00 ~14:00 제외)</p>
-            <a href="contact.html"><button>고객센터에 문의</button></a>
-        </div>
-        
-    </div>
-    <div id="notify">
-        <p>크라우드 팝핑은 플랫폼 제공자로서 프로젝트의 당사자가 아니며, 
-            직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 선물제공의 책임은 해당 프로젝트의 창작자에게 있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자가 부담합니다. </p>
-    </div>
-    <script>
-        function togglePasswordVisibility(inputId) {
-            var passwordInput = document.getElementById(inputId);
-            var toggleButton = passwordInput.nextElementSibling;
 
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleButton.innerHTML = '<img src="/icon/hide.png" alt="eye-close-icon">';
-            } else {
-                passwordInput.type = 'password';
-                toggleButton.innerHTML = '<img src="/icon/show.png" alt="eye-open-icon">';
-            }
-        }
-    </script>
-</body>
+</th:block>
 </html>

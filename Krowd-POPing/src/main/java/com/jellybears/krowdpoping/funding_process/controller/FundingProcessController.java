@@ -1,31 +1,41 @@
 package com.jellybears.krowdpoping.funding_process.controller;
 
+import com.jellybears.krowdpoping.common.exception.address.AddressSaveException;
 import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
 import com.jellybears.krowdpoping.funding_process.model.service.AddressService;
+import com.jellybears.krowdpoping.funding_process.model.service.AddressServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("funding_process/*")
+@RequestMapping("/funding_process")
+@Slf4j
 public class FundingProcessController {
 
-    private final AddressService addressService;
+    private final AddressServiceImpl addressService;
+
     @Autowired
-    public FundingProcessController(AddressService addressService){
+    public FundingProcessController(AddressServiceImpl addressService){
         this.addressService = addressService;
     }
     @GetMapping("address")
-    public String defaultAddress(Model model) {
-        model.addAttribute("AddressDTO", new AddressDTO());
-        return "/funding_process/default_address";
-    }
+    public String defaultAddress() { return "/funding_process/default_address"; }
 
-    public String saveAddress(AddressDTO addressDTO) {
+    @PostMapping("saveAddress")
+    public String saveAddress(@ModelAttribute AddressDTO addressDTO) throws AddressSaveException {
+        log.info("Received AddressDTO: {}", addressDTO);
+
+        String cleanedPhoneNumber = addressDTO.getRecipientPhoneNumber().replace("-", "");
+        addressDTO.setRecipientPhoneNumber(cleanedPhoneNumber);
+
         addressService.saveAddress(addressDTO);
-        return "redirect:/";
+        return "/funding_process/pay_reservation";
     }
 
     @GetMapping("product")

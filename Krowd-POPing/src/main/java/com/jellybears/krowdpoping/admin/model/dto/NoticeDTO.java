@@ -1,32 +1,34 @@
 package com.jellybears.krowdpoping.admin.model.dto;
 
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-
 public class NoticeDTO {
 
     private int noticeCode;
     private String title;
     private String content;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateDate;
     private String type;
-    private int adminUserCode;
-    private UserDTO userCode;
+    private int count;
+    private int noticeAdminUserCode;
+    private UserDTO userDTO;
 
     public NoticeDTO() {
     }
 
-    public NoticeDTO(int noticeCode, String title, String content, Date updateDate, String type, int adminUserCode, UserDTO userCode) {
+    public NoticeDTO(int noticeCode, String title, String content, Date updateDate, String type, int count, int noticeAdminUserCode, UserDTO userDTO) {
         this.noticeCode = noticeCode;
         this.title = title;
         this.content = content;
         this.updateDate = updateDate;
         this.type = type;
-        this.adminUserCode = adminUserCode;
-        this.userCode = userCode;
+        this.count = count;
+        this.noticeAdminUserCode = noticeAdminUserCode;
+        this.userDTO = userDTO;
     }
-
 
     public int getNoticeCode() {
         return noticeCode;
@@ -68,20 +70,28 @@ public class NoticeDTO {
         this.type = type;
     }
 
-    public int getAdminUserCode() {
-        return adminUserCode;
+    public int getCount() {
+        return count;
     }
 
-    public void setAdminUserCode(int adminUserCode) {
-        this.adminUserCode = adminUserCode;
+    public void setCount(int count) {
+        this.count = count;
     }
 
-    public UserDTO getUserCode() {
-        return userCode;
+    public int getNoticeAdminUserCode() {
+        return noticeAdminUserCode;
     }
 
-    public void setUserCode(UserDTO userCode) {
-        this.userCode = userCode;
+    public void setNoticeAdminUserCode(int noticeAdminUserCode) {
+        this.noticeAdminUserCode = noticeAdminUserCode;
+    }
+
+    public UserDTO getUserDTO() {
+        return userDTO;
+    }
+
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
     }
 
     @Override
@@ -92,8 +102,9 @@ public class NoticeDTO {
                 ", content='" + content + '\'' +
                 ", updateDate=" + updateDate +
                 ", type='" + type + '\'' +
-                ", adminUserCode=" + adminUserCode +
-                ", userCode=" + userCode +
+                ", count=" + count +
+                ", noticeAdminUserCode=" + noticeAdminUserCode +
+                ", userDTO=" + userDTO +
                 '}';
     }
 }
