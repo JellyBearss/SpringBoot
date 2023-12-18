@@ -88,11 +88,11 @@
         WHERE project_code = #{ projectCode }
     </update>
 
-    <update id="updatePriceplanRegister">
-        UPDATE project
-        SET priceplan_code = #{ priceplanCode }
-        WHERE project_code = #{ projectCode }
-    </update>
+<!--    <update id="updatePriceplanRegister">-->
+<!--        UPDATE project-->
+<!--        SET priceplan_code = #{ priceplanCode }-->
+<!--        WHERE project_code = #{ projectCode }-->
+<!--    </update>-->
 
 
     <update id="updatePlanRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO">
@@ -154,6 +154,12 @@
                  JOIN category ON(project.category_code = category.category_code)
         WHERE project_code = #{ projectCode }
     </select>
+
+<!--    <select id="selectPricePlanRegByProjectCode">-->
+<!--        SELECT priceplan_code-->
+<!--        FROM project-->
+<!--        WHERE project_code = #{ projectCode }-->
+<!--    </select>-->
 
 
 

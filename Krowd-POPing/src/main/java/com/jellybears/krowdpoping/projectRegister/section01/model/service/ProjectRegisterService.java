@@ -121,13 +121,21 @@ public class ProjectRegisterService {
 
         Integer projectCode = registerMapper.getEditProjectCode(userCode);
 
-        System.out.println("projectCode = " + projectCode);
-        System.out.println("priceplanCode = " + priceplanCode);
+        System.out.println("service priceplanCode = " + priceplanCode);
 
         int result = registerMapper.updatePriceplanRegister(priceplanCode, projectCode);
+        System.out.println("service priceplan result = " + result);
 
         // result로 결과에 따른 트랜잭션
 
+
+    }
+
+    public int selectPricePlanRegByProjectCode(int userCode) {
+
+        Integer projectCode = registerMapper.getEditProjectCode(userCode);
+
+        return registerMapper.selectPricePlanRegByProjectCode(projectCode);
 
     }
 }

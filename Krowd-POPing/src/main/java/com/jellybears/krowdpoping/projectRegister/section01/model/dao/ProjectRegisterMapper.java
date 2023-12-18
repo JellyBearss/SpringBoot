@@ -6,6 +6,8 @@ import com.jellybears.krowdpoping.projectRegister.section01.model.dto.InfoDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -31,5 +33,11 @@ public interface ProjectRegisterMapper {
 
     List<CategoryDTO> getSubCategoryList();
 
+    @Update("UPDATE project SET priceplan_code = #{ priceplanCode } WHERE project_code = #{ projectCode }")
     int updatePriceplanRegister(int priceplanCode, Integer projectCode);
+
+    @Select("SELECT priceplan_code\n" +
+            "        FROM project\n" +
+            "        WHERE project_code = #{ projectCode }")
+    int selectPricePlanRegByProjectCode(Integer projectCode);
 }

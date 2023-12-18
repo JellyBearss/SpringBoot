@@ -89,7 +89,14 @@ public class ProjectRegisterController {
 
 
     @GetMapping("priceplan")
-    public String priceRegister() {
+    public String priceplanRegister(Model model) {
+
+        int userCode = 2;
+
+        int priceplanCode = registerService.selectPricePlanRegByProjectCode(userCode);
+        System.out.println("priceplanCode = " + priceplanCode);
+
+        model.addAttribute("priceplanCode", priceplanCode);
 
         return "/projectRegister/projectReg3";
     }
@@ -102,6 +109,7 @@ public class ProjectRegisterController {
 
         int userCode = 2;
         registerService.updatePriceplanRegister(priceplanCode, userCode);
+
 
 
         return "redirect:/projectReg/priceplan";
