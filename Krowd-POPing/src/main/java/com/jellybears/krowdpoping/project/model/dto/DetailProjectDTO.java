@@ -3,6 +3,8 @@ package com.jellybears.krowdpoping.project.model.dto;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,5 +22,5 @@ public class DetailProjectDTO {
     private String budgetContent; //예산
     private String infoContent; //소개
     private DetailCategoryDTO category; //카테고리
-
+    private List<DetailGoodsDTO> goods; //굿즈디테일DTO와 아이템DTO 에 대한 것까지 모두 담아준다.
 }

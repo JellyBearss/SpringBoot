@@ -4,6 +4,8 @@ import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -21,6 +23,7 @@ public class ProjectReportDTO {
     private String whetherCompleted; //처리상태
     private Date completedDate; //처리완료일자
     private ProjectReportCategoryDTO category;
+    private List<ReportFilesDTO> reportFilesList;
 
 
 }

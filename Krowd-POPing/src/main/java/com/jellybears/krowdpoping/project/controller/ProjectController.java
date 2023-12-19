@@ -1,5 +1,8 @@
 package com.jellybears.krowdpoping.project.controller;
 
+import com.jellybears.krowdpoping.project.model.dto.DetailGoodsDTO;
+import com.jellybears.krowdpoping.project.model.dto.DetailGoodsDetailDTO;
+import com.jellybears.krowdpoping.project.model.dto.DetailItemDTO;
 import com.jellybears.krowdpoping.project.model.dto.DetailProjectDTO;
 import com.jellybears.krowdpoping.project.model.service.ProjectService;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 @Controller
 @RequestMapping("projectdetail")
@@ -33,6 +37,7 @@ public class ProjectController {
         DetailProjectDTO detail = projectService.goProjectDetail(no);
         model.addAttribute("detail", detail);
         System.out.println("detail = " + detail);
+
 
         //남은 기간 계산
         LocalDate startDate = detail.getStartDate().toLocalDate();

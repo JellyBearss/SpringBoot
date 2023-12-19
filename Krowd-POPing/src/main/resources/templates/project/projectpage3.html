@@ -359,98 +359,97 @@
                 <span class="proMenuSelect">선물 선택</span>
                 <br><br>
                 <div class="rewards">
-                    <div class="rewardCard-wrapper">
+                    <div class="rewardCard-wrapper" th:each="goodsDetail : ${detail.goods}">
                         <div class="rewardCardInner">
                             <div class="cardAmount-wrapper">
-                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>
-                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>
+                                <div><span class="rewardCardAmount" th:text="${goodsDetail.goodsName}"></span></div>
+<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
                             </div>
-                            <div class="rewardCardTitle">[얼리버드]</div>
-                            <div class="rewardContent">
+<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
+                            <div class="rewardContent" th:each="itemDetail : ${goodsDetail.item}">
                                 <ul>
-                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>
-                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>
-                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>
-                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>
-                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>
+                                    <li th:text="${itemDetail.itemName + '&nbsp;'}"><span th:text="${itemDetail.itemQuantity}">( x 1 )</span></li>
+<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
+                                </ul>
+                            </div>
+                            <span class="card-hubtn" th:text="${goodsDetail.amount + '원 후원하기'}"></span>
+                        </div>
+                    </div>
+<!--                    <div class="rewardCard-wrapper">-->
+<!--                        <div class="rewardCardInner">-->
+<!--                            <div class="cardAmount-wrapper">-->
+<!--                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>-->
+<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
+<!--                            </div>-->
+<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
+<!--                            <div class="rewardContent">-->
+<!--                                <ul>-->
+<!--                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rewardCard-wrapper">
-                        <div class="rewardCardInner">
-                            <div class="cardAmount-wrapper">
-                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>
-                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>
-                            </div>
-                            <div class="rewardCardTitle">[얼리버드]</div>
-                            <div class="rewardContent">
-                                <ul>
-                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>
-                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>
-                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>
-                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>
-                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rewardCard-wrapper">
-                        <div class="rewardCardInner">
-                            <div class="cardAmount-wrapper">
-                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>
-                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>
-                            </div>
-                            <div class="rewardCardTitle">[얼리버드]</div>
-                            <div class="rewardContent">
-                                <ul>
-                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>
-                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>
-                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>
-                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>
-                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rewardCard-wrapper">
-                        <div class="rewardCardInner">
-                            <div class="cardAmount-wrapper">
-                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>
-                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>
-                            </div>
-                            <div class="rewardCardTitle">[얼리버드]</div>
-                            <div class="rewardContent">
-                                <ul>
-                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>
-                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>
-                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>
-                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>
-                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rewardCard-wrapper">
-                        <div class="rewardCardInner">
-                            <div class="cardAmount-wrapper">
-                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>
-                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>
-                            </div>
-                            <div class="rewardCardTitle">[얼리버드]</div>
-                            <div class="rewardContent">
-                                <ul>
-                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>
-                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>
-                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>
-                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>
-                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="rewardCard-wrapper">-->
+<!--                        <div class="rewardCardInner">-->
+<!--                            <div class="cardAmount-wrapper">-->
+<!--                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>-->
+<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
+<!--                            </div>-->
+<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
+<!--                            <div class="rewardContent">-->
+<!--                                <ul>-->
+<!--                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="rewardCard-wrapper">-->
+<!--                        <div class="rewardCardInner">-->
+<!--                            <div class="cardAmount-wrapper">-->
+<!--                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>-->
+<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
+<!--                            </div>-->
+<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
+<!--                            <div class="rewardContent">-->
+<!--                                <ul>-->
+<!--                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="rewardCard-wrapper">-->
+<!--                        <div class="rewardCardInner">-->
+<!--                            <div class="cardAmount-wrapper">-->
+<!--                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>-->
+<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
+<!--                            </div>-->
+<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
+<!--                            <div class="rewardContent">-->
+<!--                                <ul>-->
+<!--                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
+<!--                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
 

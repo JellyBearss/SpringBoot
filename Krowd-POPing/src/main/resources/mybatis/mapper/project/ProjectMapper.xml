@@ -15,6 +15,10 @@
         <result property="budgetContent" column="budget_content"/>
         <result property="infoContent" column="info_content"/>
         <association property="category" resultMap="detailCategoryResultMap"/>
+        <association property="goods" resultMap="detailGoodsResultMap"/>
+
+        <!--        <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>-->
+<!--        <association property="item" resultMap="detailItemResultMap"/>-->
 
     </resultMap>
 
@@ -23,6 +27,46 @@
         <result property="categoryTitle" column="category_title"/>
         <result property="upperCategoryCode" column="upper_category_code"/>
     </resultMap>
+
+    <resultMap id="detailGoodsResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailGoodsDTO">
+        <id property="goodsCode" column="goods_code"/>
+        <result property="goodsName" column="name"/>
+        <result property="quantity" column="quantity"/>
+        <result property="projectCode" column="project_code"/>
+        <result property="amount" column="amount"/>
+        <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>
+        <association property="item" resultMap="detailItemResultMap"/>
+
+    </resultMap>
+
+    <resultMap id="detailGoodsDetailResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailGoodsDetailDTO">
+        <id property="DetailItemCode" column="item_code"/>
+        <result property="goodsCode" column="goods_code"/>
+        <result property="itemQuantity" column="item_quantity"/>
+    </resultMap>
+
+    <resultMap id="detailItemResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailItemDTO">
+        <id property="itemCode" column="item_code"/>
+        <result property="itemName" column="itemName"/>
+    </resultMap>
+
+<!--    <select id="goProjectDetail" resultMap="detailProjectResultMap">-->
+<!--        select-->
+<!--            A.project_code,-->
+<!--            A.title,-->
+<!--            A.content,-->
+<!--            A.start_date,-->
+<!--            A.end_date,-->
+<!--            A.target_amount,-->
+<!--            A.plan_content,-->
+<!--            A.budget_content,-->
+<!--            A.info_content,-->
+<!--            B.category_title-->
+<!--        from project A-->
+<!--                 join category B on A.category_code = B.category_code-->
+<!--        where A.project_code = #{ no }-->
+
+<!--    </select>-->
 
     <select id="goProjectDetail" resultMap="detailProjectResultMap">
         select
@@ -35,10 +79,23 @@
             A.plan_content,
             A.budget_content,
             A.info_content,
-            B.category_title
+            B.category_title,
+            C.goods_code,
+            C.name,
+            C.quantity,
+            C.amount,
+            E.name as itemName,
+            D.item_quantity
         from project A
-                 join category B on A.category_code = B.category_code
+                 left join category B on A.category_code = B.category_code
+                 left join goods C on A.project_code = C.project_code
+                 left join goods_details D on C.goods_code = D.goods_code
+                 left join item E on D.item_code = E.item_code
         where A.project_code = #{ no }
 
     </select>
+
+
+
+
 </mapper>
