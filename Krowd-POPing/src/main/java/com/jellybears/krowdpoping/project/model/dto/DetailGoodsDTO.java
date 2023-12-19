@@ -16,6 +16,6 @@ public class DetailGoodsDTO {
     private int quantity;
     private int projectCode;
     private int amount;
-    private DetailGoodsDetailDTO goodsDetail;
+//    private DetailGoodsDetailDTO goodsDetail;
     private List<DetailItemDTO> item;
 }

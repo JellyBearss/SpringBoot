@@ -166,16 +166,16 @@
 
                 </ul>
                 <ul>
-                    <li>남은시간</li>
-                    <li>47일
-                    <li>
+                    <li>남은기간</li>
+                    <span th:text="${daysLeftDisplay}"></span>
+
                 </ul>
                 <ul>
                     <li>
                         <div is="proInfoDonor">후원자</div>
                     </li>
                     <li>4,310명
-                    <li>
+                    </li>
                 </ul>
             </div>
 
@@ -192,8 +192,8 @@
 
                 </ul>
                 <ul>
-                    <li>남은기간</li>
-                    <span th:text="${daysLeftDisplay}"></span>
+                    <li></li>
+
                 </ul>
             </div>
         </div>
@@ -359,22 +359,25 @@
                 <span class="proMenuSelect">선물 선택</span>
                 <br><br>
                 <div class="rewards">
-                    <div class="rewardCard-wrapper" th:each="goodsDetail : ${detail.goods}">
+                    <div class="rewardCard-wrapper" th:each="goods : ${detail.goods}">
                         <div class="rewardCardInner">
                             <div class="cardAmount-wrapper">
-                                <div><span class="rewardCardAmount" th:text="${goodsDetail.goodsName}"></span></div>
+                                <div><span class="rewardCardAmount" th:text="${goods.goodsName}"></span></div>
 <!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
                             </div>
 <!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
-                            <div class="rewardContent" th:each="itemDetail : ${goodsDetail.item}">
+                            <div class="rewardContent" th:each="item : ${goods.item}">
                                 <ul>
-                                    <li th:text="${itemDetail.itemName + '&nbsp;'}"><span th:text="${itemDetail.itemQuantity}">( x 1 )</span></li>
-<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
+                                    <li th:text="|${item.itemName + '&nbsp;'}  ( x ${item.goodsDetail.itemQuantity} )|"></li>
+<!--                                    <li th:text="|${item.itemName + '&nbsp;'} ${item.goodsDetail[0].itemQuantity}|"></li> 리스트로 받았을 때 표현식-->
+
+                                    <!--                                   <li><span th:text="${item.goodsDetail[0].itemQuantity}">( x 1 )</span></li>-->
+                                    <!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
 <!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
 <!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
                                 </ul>
                             </div>
-                            <span class="card-hubtn" th:text="${goodsDetail.amount + '원 후원하기'}"></span>
+                            <span class="card-hubtn" th:text="${goods.amount + '원 후원하기'}"></span>
                         </div>
                     </div>
 <!--                    <div class="rewardCard-wrapper">-->

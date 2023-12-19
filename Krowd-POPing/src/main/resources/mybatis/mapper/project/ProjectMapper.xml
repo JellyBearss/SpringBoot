@@ -34,7 +34,6 @@
         <result property="quantity" column="quantity"/>
         <result property="projectCode" column="project_code"/>
         <result property="amount" column="amount"/>
-        <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>
         <association property="item" resultMap="detailItemResultMap"/>
 
     </resultMap>
@@ -48,6 +47,8 @@
     <resultMap id="detailItemResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailItemDTO">
         <id property="itemCode" column="item_code"/>
         <result property="itemName" column="itemName"/>
+        <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>
+
     </resultMap>
 
 <!--    <select id="goProjectDetail" resultMap="detailProjectResultMap">-->
