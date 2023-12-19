@@ -2,6 +2,7 @@ package com.jellybears.krowdpoping.user.model.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
 import lombok.*;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,6 +23,8 @@ import java.util.Set;
 public class RoleTypeDTO implements UserDetails {
     private RoleDTO roleDTO;
     private UserDTO userDTO;
+    private AddressDTO addressDTO;
+    private AddressDTO defaultAddress;
 
 
     @Override
@@ -46,7 +49,14 @@ public class RoleTypeDTO implements UserDetails {
 
 
 
+    public AddressDTO getDefaultAddress() {
+        return defaultAddress;
+    }
 
+    // 새로 추가한 메서드
+    public void setDefaultAddress(AddressDTO defaultAddress) {
+        this.defaultAddress = defaultAddress;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

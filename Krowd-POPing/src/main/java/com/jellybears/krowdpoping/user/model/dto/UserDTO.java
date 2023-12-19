@@ -25,6 +25,7 @@ public class UserDTO  {
     private String phone_number;
     private String user_status;
     private int email_code;
+    private Object addressDTO;
 
     public int getUser_code() {
         return user_code;
@@ -106,4 +107,11 @@ public class UserDTO  {
         this.email_code = email_code;
     }
 
+    public Object getAddressDTO() {
+        return addressDTO;
+    }
+
+    public void setAddressDTO(Object addressDTO) {
+        this.addressDTO = addressDTO;
+    }
 }

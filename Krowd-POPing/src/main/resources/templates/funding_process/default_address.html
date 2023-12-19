@@ -178,56 +178,48 @@
             <div class="underline"></div>
         </div>
     </div>
+
     <div id="subpage1" class="subpage">
+        <th:block sec:authorize="isAuthenticated()">
         <div class="default_address_section">
-            <span class="default_address_name">하이미디어</span>
+            <span class="default_address_name" th:text="${defaultAddress.getAddressTitle()}" name="addressTitle"></span>
             <div class="default_address_icon">
                 <span class="default_address_icon_text">기본 배송지</span>
                 <div class="default_address_icon_box"></div>
             </div>
         </div>
         <div class="default_name_info">
-            <form action="#" method="get">
                 <span class="d_i_name">받는 사람</span>
                 <div class="input_d_i_name_section">
-                    <input type="text" name ="input_d_i_name">
+                    <input type="text" th:value="${defaultAddress.getRecipientName()}" name="recipientName">
                 </div>
-            </form>
         </div>
 
         <div class="default_postcode_info">
-            <form action="#" method="get">
                 <span class="d_i_postcode">우편번호</span>
                 <div class="input_d_i_postcode_section">
                     <input type="text" name ="input_d_i_postcode">
                 </div>
-            </form>
         </div>
 
         <div class="default_address_info">
-            <form action="#" method="get">
                 <span class="d_i_address">주소</span>
                 <div class="input_d_i_address_section">
                     <input type="text" name ="input_d_i_address">
                 </div>
-            </form>
         </div>
 
         <div class="default_detailed_address_info">
-            <form action="#" method="get">
                 <span class="d_i_d_address">상세 주소</span>
                 <div class="input_d_i_d_address_section">
                     <input type="text" name ="input_d_i_d_address">
                 </div>
-            </form>
         </div>
         <div class="default_phone_info">
-            <form action="#" method="get">
                 <span class="d_i_phone">연락처</span>
                 <div class="input_d_i_phone_section">
-                    <input type="text" name ="input_d_i_phone">
+                    <input type="text" th:value="${defaultAddress.getRecipientPhoneNumber()}" name="recipientPhoneNumber">
                 </div>
-            </form>
         </div>
 
         <div class="d_i_delivery_comment">
@@ -251,7 +243,9 @@
                 <span class="next_step_text1">다음 단계로</span>
             </a>
         </div>
+        </th:block>
     </div>
+
     <div id="subpage2" class="subpage">
         <form id="saveAddressForm" action="/funding_process/saveAddress" method="post" onsubmit="submitForm()">
             <div class="add_address_name_info">

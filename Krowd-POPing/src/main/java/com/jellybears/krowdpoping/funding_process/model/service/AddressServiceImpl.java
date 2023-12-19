@@ -35,4 +35,8 @@ public class AddressServiceImpl implements AddressService{
             throw new AddressSaveException("주소 저장에 실패하였습니다.");
         }
     }
+    @Override
+    public AddressDTO getDefaultAddress(String user_code) {
+        return addressMapper.getDefaultAddress(user_code);
+    }
 }
