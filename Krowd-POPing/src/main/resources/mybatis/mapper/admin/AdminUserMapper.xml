@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.admin.model.dao.AdminUserMapper">
+
+<!-- 복사해온것 -->
+    <resultMap id="AdminUserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+        <id property="user_code" column="user_code"/>
+        <result property="userId" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="email" column="email"/>
+        <result property="phone_number" column="phone_number"/>
+        <result property="user_status" column="user_status"/>
+        <result property="email_code" column="email_code"/>
+        <result property="join_date" column="join_date" />
+        <result property="exit_status" column="exit_status" />
+        <result property="exit_date" column="exit_date" />
+    </resultMap>
+<!-- 관리자 ======================================================================================================== -->
+    <!-- 회원 목록 조회 -->
+    <select id="selectAllUserList" resultMap="AdminUserResultMap">
+        SELECT USER_CODE
+             , NICKNAME
+             , EMAIL
+             , PHONE_NUMBER
+             , USER_STATUS
+        FROM USER_INFO
+        ORDER BY USER_CODE DESC
+    </select>
+
+    <!-- 회원 상세 조회 -->
+    <select id="selectUserDetail" parameterType="int" resultMap="AdminUserResultMap">
+        SELECT USER_CODE
+            , ID
+            , NAME
+            , NICKNAME
+            , BIRTHDAY
+            , EMAIL
+            , PHONE_NUMBER
+            , USER_STATUS
+            , JOIN_DATE
+            , EXIT_STATUS
+            , EXIT_DATE
+            FROM USER_INFO
+            WHERE USER_CODE = #{ user_code }
+    </select>
+<!-- =============================================================================================================== -->
+</mapper>

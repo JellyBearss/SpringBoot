@@ -15,19 +15,31 @@
                             <ul class="menu">
 
                                 <div class="list-group">
-                                    <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
-                                        전체
-                                    </button>
-                                    <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#basicModal">악세서리<i class="bi bi-plus-circle" style="float: right;"></i></button>
-                                    <button type="button" class="list-group-item list-group-item-action">디지털 악세서리<i class="bi bi-plus-circle" style="float: right;"></i></button>
-                                    <button type="button" class="list-group-item list-group-item-action">인형<i class="bi bi-plus-circle" style="float: right;"></i></button>
-                                    <button type="button" class="list-group-item list-group-item-action">문구<i class="bi bi-plus-circle" style="float: right;"></i></button>
-                                    <button type="button" class="list-group-item list-group-item-action">잡화<i class="bi bi-plus-circle" style="float: right;"></i></button>
-                                    <button type="button" class="list-group-item list-group-item-action">의류<i class="bi bi-plus-circle" style="float: right;"></i></button>
-                                    <button type="button" class="list-group-item list-group-item-action">기타<i class="bi bi-plus-circle" style="float: right;"></i></button>
+                                    <button type="button" class="list-group-item list-group-item-action active" aria-current="true">전체</button>
+                                    <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modal1">악세서리<i class="bi bi-plus-circle" style="float: right;"></i></button>
+                                    <button type="button" onclick="basicModal('modal2')" class="list-group-item list-group-item-action">디지털 악세서리<i class="bi bi-plus-circle" style="float: right;"></i></button>
+                                    <button type="button" onclick="basicModal('modal3')" class="list-group-item list-group-item-action">인형<i class="bi bi-plus-circle" style="float: right;"></i></button>
+                                    <button type="button" onclick="basicModal('modal4')" class="list-group-item list-group-item-action">문구<i class="bi bi-plus-circle" style="float: right;"></i></button>
+                                    <button type="button" onclick="basicModal('modal5')" class="list-group-item list-group-item-action">잡화<i class="bi bi-plus-circle" style="float: right;"></i></button>
+                                    <button type="button" onclick="basicModal('modal6')" class="list-group-item list-group-item-action">의류<i class="bi bi-plus-circle" style="float: right;"></i></button>
+                                    <button type="button" onclick="basicModal('modal7')" class="list-group-item list-group-item-action">기타<i class="bi bi-plus-circle" style="float: right;"></i></button>
+                                    <!-- 악세서리 모달 -->
+                                    <div class="modal fade" id="modal1" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" style="text-align: center; margin: 0; ">악세서리 하위 카테고리 분류 생성</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="creation-bar" style="padding: 40px">
+                                                    <input type="text" class="input-field" placeholder="소분류를 입력하세요">
+                                                    <button type="button" class="btn btn-primary" onclick="createItem()">추가</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- End List group with Links and buttons -->
-
                                 <!-- ---------------------------------------------------------------------------------------------------------- -->
                             </ul>
 
@@ -43,6 +55,9 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">대분류</th>
                                                 <th scope="col">소분류</th>
+
+                                                <ul id="item-list"></ul>
+
                                                 <th scope="col">수정사항</th>
                                             </tr>
                                             </thead>
@@ -52,59 +67,10 @@
                                                 <td>악세서리</td>
                                                 <td>악세서리(1)</td>
                                                 <td class="badge bg-dark" style="display: flex; justify-content: center; align-items: center; margin: 6px; color: white;">정보수정</td>
-
                                             </tr>
                                             </tbody>
                                         </table>
                                         <!-- End Table with hoverable rows -->
-
-                                        <!-- 리스트를 누르면 디테일로 가는 이벤트처리 -->
-                                        <script th:inline="javascript">
-                                            /*<![CDATA[*/
-                                            let message = '[[${message}]]';
-                                            if(message != null && message !== 'null') {
-                                                alert(message);
-                                            }
-                                            /*]]>*/
-
-                                            /* 게시글 리스트에서 해당 게시글에 마우스를 올릴 떄에 대한 스타일 처리 */
-                                            if (document.querySelectorAll("#listArea td")) {
-                                                const $tds = document.querySelectorAll("#listArea td");
-                                                for (let i = 0; i < $tds.length; i++) {
-
-                                                    $tds[i].onmouseenter = function() {
-                                                        this.parentNode.style.cursor = "pointer";
-                                                    }
-
-                                                    $tds[i].onclick = function() {
-                                                        const no = this.parentNode.children[0].innerText;
-                                                        // location.href = "/admin/noticeDetail?noticeCode=" + no;
-
-                                                        // <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" style="float: right; margin-left: 8px;">수정하기</button>
-                                                        // <div className="modal fade" id="basicModal" tabIndex="-1">
-                                                        //     <div className="modal-dialog">
-                                                        //         <div className="modal-content">
-                                                        //             <div className="modal-header">
-                                                        //                 <h5 className="modal-title">수정 페이지로 이동하시겠습니까?</h5>
-                                                        //                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        //             </div>
-                                                        //             <div className="modal-body"> 주의사항을 확인해주세요.
-                                                        //             </div>
-                                                        //             <div className="modal-footer">
-                                                        //                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                        //                 <button type="button" th:onclick="'location.href=\'/admin/noticeModify?noticeCode=' + @{${ notice.noticeCode }} + '\''" className="btn btn-primary">확인</button>
-                                                        //             </div>
-                                                        //         </div>
-                                                        //     </div>
-                                                        // </div>
-
-
-
-                                                    }
-                                                }
-                                            }
-                                        </script>
-
                                     </div>
                                 </div>
                             </div>
