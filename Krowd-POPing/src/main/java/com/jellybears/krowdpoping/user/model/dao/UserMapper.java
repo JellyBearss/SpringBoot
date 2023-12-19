@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserMapper {
-    String selectUserById(String userId);
+    UserDTO selectUserById(String userId);
     int insertUser(UserDTO user);
     int selectLastInsertUserCode();
     int insertRoletype(int userCode);

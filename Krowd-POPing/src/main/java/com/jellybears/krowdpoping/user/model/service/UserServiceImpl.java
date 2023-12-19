@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService{
     private final UserMapper mapper;
 
 
+
     public UserServiceImpl(PasswordEncoder passwordEncoder, UserMapper mapper) {
         this.passwordEncoder = passwordEncoder;
         this.mapper = mapper;
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService{
     /*-------------회원 조회-----------*/
     @Override
     public boolean selectUserById(String userId) {
-        String result = mapper.selectUserById(userId);
+        UserDTO result = mapper.selectUserById(userId);
         return result !=null? true : false;
     }
 
@@ -55,9 +56,6 @@ public class UserServiceImpl implements UserService{
         log.info(String.valueOf(userCode));
 
         int result1 = mapper.insertRoletype(userCode);
-
-//        EmailDTO emailDTO = new EmailDTO();
-//        emailDTO.setEmail_certificate(new TempKey().getKey(false, 6));
 
 
 

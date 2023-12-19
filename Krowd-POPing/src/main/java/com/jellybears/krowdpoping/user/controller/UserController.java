@@ -3,23 +3,22 @@ package com.jellybears.krowdpoping.user.controller;
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.common.util.SessionUtil;
+import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
+import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
-//import com.jellybears.krowdpoping.user.model.service.EmailServiceImpl;
+import com.jellybears.krowdpoping.user.model.service.EmailService;
 import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
-import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 @Controller
@@ -28,13 +27,14 @@ import java.util.Random;
 public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final UserServiceImpl UserService;
+    private final EmailService emailService;
 
-//    private final EmailServiceImpl EmailService;
 
-    public UserController(PasswordEncoder passwordEncoder, UserServiceImpl userService/*, EmailServiceImpl emailService*/) {
+    public UserController(PasswordEncoder passwordEncoder, UserServiceImpl userService,EmailService emailService) {
         this.passwordEncoder = passwordEncoder;
         this.UserService = userService;
-//        this.EmailService = emailService;
+        this.emailService = emailService;
+
     }
 
 
@@ -60,6 +60,13 @@ public class UserController {
     public String TermOfService() {
 
         return "/user/Signup_1";
+    }
+
+    @ResponseBody
+    @PostMapping("/emailCheck")
+    public String EmailCheck(@RequestBody UserDTO userDTO) throws MessagingException, UnsupportedEncodingException {
+        String authNum = emailService.sendEmail(userDTO.getEmail());
+        return (authNum);
     }
 
 
@@ -100,52 +107,7 @@ public class UserController {
 
         return "redirect:/user/signupsuccess";
     }
-
-//    @PostMapping("/EmailAuth")
-//    @ResponseBody
-//    public int emailAuth(UserDTO user){
-//        log.info("전달받을 이메일 주소 : " + user.getEmail());
-//        Random random = new Random();
-//        int checkNum = random.nextInt(888888)+111111;
-//        String setFrom ="krowdpoping@gmail.com";
-//        String toMail = user.getEmail();
-//        String title = "Krowd-POPing 회원가입 인증 이메일 ";
-//        String content = " 인증 코드는 "+ checkNum+"입니다."+
-//                "<br>"+
-//                "해당 인증 코드를 인증코드 확인란에 기입하여 주세요.";
-//        try{
-//            MimeMessage mimemessage = javaMailSender.createMimeMessage();
-//        }
-//    }
-
-
-
-
-//    @PostMapping("/EmailAuth")
-//    @ResponseBody
-//    public void emailAuth(UserDTO user)throws Exception{
-//        log.info("post emailConfirm");
-//        System.out.println("전달 받은 이메일 : "+ user.getEmail());
-//        EmailService.sendSimpleMessage(user.getEmail());
-//    }
-//    @PostMapping("/verifyCode")
-//    @ResponseBody
-//    public int verifyCode(String code) {
-//        log.info("Post verifyCode");
-//
-//        int result = 0;
-//        System.out.println("code : "+code);
-//        System.out.println("code match : "+ EmailServiceImpl.ePw.equals(code));
-//        if(EmailServiceImpl.ePw.equals(code)) {
-//            result =1;
-//        }
-//
-//        return result;
-//    }
-
-
-
-    @PostMapping("idDupCheck")
+    @PostMapping("/idDupCheck")
     public ResponseEntity<String> checkDuplication(@RequestBody UserDTO userDTO) {
         log.info("");
         log.info("");
