@@ -52,7 +52,7 @@
                 #{ inquiryType },
                 #{ inquiryTitle },
                 #{ inquiryContent },
-                #{ inquiryDate },
+                now(),
                 #{ inquiryStatus },
                 #{ questioner },
                 #{ replier }
@@ -75,6 +75,25 @@
                  LEFT JOIN user_info B on A.questioner = B.user_code
                  LEFT JOIN user_info C on A.replier = C.user_code
         where A.inquiry_type = '관리자에게 문의'
+        ORDER BY inquiry_code desc
+
+    </select>
+
+
+    <select id="findInquiryList2" resultMap="inquiryResultMap">
+        SELECT
+            A.inquiry_code,
+            A.inquiry_type,
+            A.inquiry_title,
+            A.inquiry_content,
+            A.inquiry_date,
+            A.inquiry_status,
+            B.id as questioner,
+            C.id as replier
+        FROM inquiry A
+                 LEFT JOIN user_info B on A.questioner = B.user_code
+                 LEFT JOIN user_info C on A.replier = C.user_code
+        where A.inquiry_type = '창작자에게 문의'
         ORDER BY inquiry_code desc
 
     </select>

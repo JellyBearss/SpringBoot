@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <meta charset="UTF-8">
-    <title>inquiryForm</title>
+    <title>prjectReportForm</title>
 
 </head>
 
@@ -42,14 +42,13 @@
         </form> -->
 
         <!-- 폼태그 시작 -->
-        <form id="projectReportRegist" method="post" action="/project/save"> <!--action에는 입력한 데이터를 보낼 주소 작성. 액션속성은 목적지를 의미-->
+        <form id="projectReportRegist" method="post" action="/report/save" enctype="multipart/form-data"> <!--action에는 입력한 데이터를 보낼 주소 작성. 액션속성은 목적지를 의미-->
             <!--        writer: <input type="text" name="boardWriter" th:value="${user.id}"><br>-->
             <!--        receiver: <input type="text" name="boardeReciver" th:value="${user.id}"><br>-->
-            writer: <input type="text" name="questioner"><br> <!-- 인풋에 입력한 값이 네임에 담겨서 넘어간다. 반드시 네임 정해줘야함 -->
-            receiver: <input type="text" name="replier"><br>
-            type: <input type="text" name="inquiryType"><br>
-            date: <input type="date" name="inquiryDate"><br>
-            status: <input type="text" name="inquiryStatus"><br>
+<!--            신고한 유저: <input type="text" name="reporter"><br> &lt;!&ndash; 인풋에 입력한 값이 네임에 담겨서 넘어간다. 반드시 네임 정해줘야함 &ndash;&gt;-->
+            신고대상 프로젝트 : <input type="text" name="projectCode" th:value="${reportProjectCode}"><br>
+<!--            신고카테고리: <input type="text" name="category"><br>-->
+            처리상태: <input type="text" name="whetherCompleted" value="신고접수"><br>
 
             <!--            <select id="category" name="category">-->
             <!--                <option value="" disabled selected>카테고리를 선택하세요</option>-->
@@ -58,16 +57,17 @@
             <!--                <option value="option1">기타</option>-->
             <!--            </select>-->
 
-            <textarea id="Y-SummernoteTitle" name="inquiryTitle"></textarea>
+<!--            <textarea id="Y-SummernoteTitle" name="inquiryTitle"></textarea>-->
+            <textarea id="" name="reportTitle"></textarea>
 
 
-            <textarea id="Y-SummernoteContent" name="inquiryContent"></textarea>
+            <textarea id="Y-SummernoteContent" name="reportContent"></textarea>
 
 
-            <!--        <i class="fa-solid fa-camera" for="reportFile"></i>-->
-            <!--        <input id="check-file-input" type="file" multiple class="reportFile" name="reportFile" accept="image/"-->
-            <!--               onchange="loadFile(this)">-->
-            <!--        <button type="submit" class="submit-button">전송테스트</button>-->
+<!--                    <i class="fa-solid fa-camera" for="reportFile"></i>-->
+                    <input id="check-file-input" type="file" multiple class="reportFile" name="reportFile" accept="image/"
+                           onchange="loadFile(this)">
+                    <button type="submit" class="submit-button">파일업로드</button>
             <input type="submit" value="작성테스트">
 
         </form>
@@ -93,29 +93,29 @@
     //     });
     // }
 
-    jQuery(document).ready(function () {
-
-        $('#Y-SummernoteCate').summernote({
-            lang: 'ko-KR',
-            maxheight: 30,
-            disableResizeEditor: true,
-        });
-
-    });
-
-    jQuery(document).ready(function () {
-
-        $('#Y-SummernoteTitle').summernote({
-            lang: 'ko-KR',
-            maxheight: 30,
-            disableResizeEditor: true,
-            focus: true, //새로고침 될때 여기로 커서 자동으로 잡히게 설정
-            placeholder: '제목',
-
-
-        });
-
-    });
+    // jQuery(document).ready(function () {
+    //
+    //     $('#Y-SummernoteCate').summernote({
+    //         lang: 'ko-KR',
+    //         maxheight: 30,
+    //         disableResizeEditor: true,
+    //     });
+    //
+    // });
+    //
+    // jQuery(document).ready(function () {
+    //
+    //     $('#Y-SummernoteTitle').summernote({
+    //         lang: 'ko-KR',
+    //         maxheight: 30,
+    //         disableResizeEditor: true,
+    //         focus: true, //새로고침 될때 여기로 커서 자동으로 잡히게 설정
+    //         placeholder: '제목',
+    //
+    //
+    //     });
+    //
+    // });
     jQuery(document).ready(function () {
 
         $('#Y-SummernoteContent').summernote({

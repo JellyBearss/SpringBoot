@@ -50,7 +50,6 @@ public class InquiryController {
         return "/mypage/MYP_inquiryContent";
     }
 
-
     @GetMapping("inquiryForm")
     public void goInguiryForm(){
 
@@ -75,15 +74,17 @@ public class InquiryController {
     public String findInquiryList(Model model){
 
         List<InquiryDTO> inquiryList = inquiryService.findInquiryList();
+        List<InquiryDTO> inquiryList2 = inquiryService.findInquiryList2();
+
         log.info("list {}", inquiryList);
 
         model.addAttribute("inquiryList", inquiryList);
+        model.addAttribute("inquiryList2", inquiryList2);
 
         System.out.println("inquiryList = " + inquiryList);
 
         return "/mypage/MYP_inquiry";
     }
-
 
 
 }

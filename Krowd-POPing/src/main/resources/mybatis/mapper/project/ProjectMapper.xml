@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.project.model.dao.ProjectMapper">
+
+    <resultMap id="detailProjectResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailProjectDTO">
+        <id property="projectCode" column="project_code"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="startDate" column="start_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="targetAmount" column="target_amount"/>
+        <result property="planContent" column="plan_content"/>
+        <result property="budgetContent" column="budget_content"/>
+        <result property="infoContent" column="info_content"/>
+        <association property="category" resultMap="detailCategoryResultMap"/>
+        <association property="goods" resultMap="detailGoodsResultMap"/>
+
+        <!--        <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>-->
+<!--        <association property="item" resultMap="detailItemResultMap"/>-->
+
+    </resultMap>
+
+    <resultMap id="detailCategoryResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailCategoryDTO">
+        <id property="categoryCode" column="category_code"/>
+        <result property="categoryTitle" column="category_title"/>
+        <result property="upperCategoryCode" column="upper_category_code"/>
+    </resultMap>
+
+    <resultMap id="detailGoodsResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailGoodsDTO">
+        <id property="goodsCode" column="goods_code"/>
+        <result property="goodsName" column="name"/>
+        <result property="quantity" column="quantity"/>
+        <result property="projectCode" column="project_code"/>
+        <result property="amount" column="amount"/>
+        <association property="item" resultMap="detailItemResultMap"/>
+
+    </resultMap>
+
+    <resultMap id="detailGoodsDetailResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailGoodsDetailDTO">
+        <id property="DetailItemCode" column="item_code"/>
+        <result property="goodsCode" column="goods_code"/>
+        <result property="itemQuantity" column="item_quantity"/>
+    </resultMap>
+
+    <resultMap id="detailItemResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailItemDTO">
+        <id property="itemCode" column="item_code"/>
+        <result property="itemName" column="itemName"/>
+        <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>
+
+    </resultMap>
+
+<!--    <select id="goProjectDetail" resultMap="detailProjectResultMap">-->
+<!--        select-->
+<!--            A.project_code,-->
+<!--            A.title,-->
+<!--            A.content,-->
+<!--            A.start_date,-->
+<!--            A.end_date,-->
+<!--            A.target_amount,-->
+<!--            A.plan_content,-->
+<!--            A.budget_content,-->
+<!--            A.info_content,-->
+<!--            B.category_title-->
+<!--        from project A-->
+<!--                 join category B on A.category_code = B.category_code-->
+<!--        where A.project_code = #{ no }-->
+
+<!--    </select>-->
+
+    <select id="goProjectDetail" resultMap="detailProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            A.start_date,
+            A.end_date,
+            A.target_amount,
+            A.plan_content,
+            A.budget_content,
+            A.info_content,
+            B.category_title,
+            C.goods_code,
+            C.name,
+            C.quantity,
+            C.amount,
+            E.name as itemName,
+            D.item_quantity
+        from project A
+                 left join category B on A.category_code = B.category_code
+                 left join goods C on A.project_code = C.project_code
+                 left join goods_details D on C.goods_code = D.goods_code
+                 left join item E on D.item_code = E.item_code
+        where A.project_code = #{ no }
+
+    </select>
+
+
+
+
+</mapper>
