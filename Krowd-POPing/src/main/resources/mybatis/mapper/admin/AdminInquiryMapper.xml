@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.admin.model.dao.AdminInquiryMapper">
+
+    <resultMap id="AdminInquiryResultMap" type="com.jellybears.krowdpoping.inquiry.model.dto.InquiryDTO">
+        <id property="inquiryCode" column="inquiry_code"/>
+        <result property="inquiryType" column="inquiry_type"/>
+        <result property="inquiryTitle" column="inquiry_title"/>
+        <result property="inquiryContent" column="inquiry_content"/>
+        <result property="inquiryDate" column="inquiry_date"/>
+        <result property="inquiryStatus" column="inquiry_status"/>
+        <result property="questioner" column="questioner"/>
+        <result property="replier" column="replier"/>
+    </resultMap>
+
+    <resultMap id="AdminUserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+        <id property="user_code" column="user_code"/>
+        <result property="userId" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="email" column="email"/>
+        <result property="phone_number" column="phone_number"/>
+        <result property="user_status" column="user_status"/>
+    </resultMap>
+    <!-- 문의 목록 조회 -->
+    <select id="selectAllInquiryList" resultMap="AdminInquiryResultMap">
+        SELECT INQUIRY_CODE
+            , INQUIRY_TYPE
+            , INQUIRY_TITLE
+            , QUESTIONER
+            , INQUIRY_DATE
+            , INQUIRY_STATUS
+        FROM INQUIRY
+        ORDER BY INQUIRY_CODE DESC
+    </select>
+</mapper>

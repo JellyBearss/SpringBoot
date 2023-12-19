@@ -1663,9 +1663,29 @@ a:hover {
   color: #7C1CD8 /* 호버 시 링크 색상 변경 */
 }
 
-/*카테고리 버튼 색상*/
+/* 카테고리 버튼 색상 */
 .list-group-item.active {
   background-color: #ebeef4;
   border-color: #ebeef4;
   color: #212529;
+}
+/* 생성바 */
+.creation-bar {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  flex: 1;
+  padding: 13px;
+  font-size: 16px;
+}
+
+.create-button {
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
 }

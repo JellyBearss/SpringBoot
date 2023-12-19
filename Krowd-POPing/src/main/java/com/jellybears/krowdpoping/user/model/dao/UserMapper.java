@@ -4,6 +4,8 @@ import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     String selectUserById(String userId);

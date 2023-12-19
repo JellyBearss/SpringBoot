@@ -22,10 +22,10 @@
                   <div class="dropdown">
                     <select>
                       <option value="">전체</option>
-                      <option value="apple">일반 회원</option>
-                      <option value="banana">탈퇴 회원</option>
-                      <option value="orange">경고 회원</option>
-                      <option value="orange">블랙 회원</option>
+                      <option value="일반 회원">일반 회원</option>
+                      <option value="탈퇴 회원">탈퇴 회원</option>
+                      <option value="경고 회원">경고 회원</option>
+                      <option value="블랙 회원">블랙 회원</option>
                     </select>
                   </div>
                   <form class="d-flex" role="search">
@@ -52,7 +52,7 @@
                     <td th:text="${ user.nickname }"></td>
                     <td th:text="${ user.email}"></td>
                     <td th:text="${ user.phone_number }"></td>
-                    <td th:text="${ user_status }" class="badge bg-success" style="display: flex; justify-content: center; align-items: center; color: white; margin: 6px;"></td>
+                    <td th:text="${ user.user_status }"></td>  <!--class="badge bg-success" style="display: flex; justify-content: center; align-items: center; color: white; margin: 6px;"-->
                   </tr>
                 </tbody>
               </table>
@@ -84,12 +84,7 @@
                   for (let i = 0; i < $tds.length; i++) {
 
                     $tds[i].onmouseenter = function() {
-                      this.parentNode.style.backgroundColor = "orangered";
                       this.parentNode.style.cursor = "pointer";
-                    }
-
-                    $tds[i].onmouseout = function() {
-                      this.parentNode.style.backgroundColor = "black";
                     }
 
                     $tds[i].onclick = function() {
