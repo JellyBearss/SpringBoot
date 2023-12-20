@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.projectManage.model.dao.ProjectManageMapper">
+    <select id="selectProject" resultType="com.jellybears.krowdpoping.projectManage.model.dto.ProjectManageDTO" parameterType="Long">
+        select p.title as title,
+               p.start_date as startDate,
+               p.end_date as endDate,
+               p.sum_pay_amount as sumPayAmount,
+               (p.sum_pay_amount/p.target_amount)*100 as achieveRate,
+               COUNT(pay.pay_code) as spCount,
+               TIMESTAMPDIFF(DAY,p.start_date,p.end_date) as leftDate
+
+        from payment pay inner join user_info u
+        on pay.user_code = u.user_code
+        right outer join project p
+        on p.user_code=u.user_code
+
+        where p.project_code=#{no}
+
+    </select>
+</mapper>

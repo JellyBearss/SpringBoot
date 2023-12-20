@@ -241,6 +241,11 @@ main {
     border-bottom: 0.5px solid #6D6D6D;
 }
 
+.out-div-phone{
+    display: flex;
+    padding-bottom: 50px;
+}
+
 .title-div{
     width:600px;
     margin:0 10px;
@@ -367,10 +372,10 @@ label {
   }
   
   #subpage1 {
-    height: 650px;
+    height: 720px;
   }
   #subpage2 {
-    height: 700px;
+    height: 720px;
   }
   
   .active {
@@ -501,10 +506,36 @@ label {
   .tupload{
     display: flex;
     justify-content: flex-end;
+    margin-top: 50px;
   }
 
   .tbutton{
     width:100px;
     margin:50px 10px;
+    border-style: none;
+    background-color: #fff;
+    border-color:#7C1CD8;
   }
+
+  .hidden{
+      display:none;
+  }
+
+  .first_button_div{
+      display: flex;
+      justify-content: center;
+      border-bottom: 0.5px solid #6D6D6D;
+  }
+
+  .first_button{
+      width:200px;
+      height:30px;
+      background-color: #fff;
+      border-color:#7C1CD8;
+      margin-bottom:20px;
+  }
+
+
+
+
 

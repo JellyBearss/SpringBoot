@@ -5,8 +5,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/static/css/policy/policy.css">
+    <link rel="stylesheet" href="/css/policy/policy.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/b3a019e595.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <title>정책</title>
 </head>
@@ -54,6 +55,7 @@
 </header>
 <div id="wrap">
     <div class="content">
+        <!-- <form action=""> -->
         <div class="box box1">
             <dl class="left">
                 <dt class="left_tt">프로젝트 정책</dt>
@@ -73,13 +75,7 @@
                         </div>
                         <div class="box_modify">
                             <div class="modify">
-                                <div class="comment">(예시) 아래와 같은 사항을 고려해서 작성해주세요. 진행하는 프로젝트에 해당되지 않는 항목은 삭제해주세요.
-
-                                    · 펀딩 마감 이후에는 후원금액이 창작자에게 전달되기에 텀블벅을 통해 환불이 불가합니다. 환불은 창작자가 환불계좌를 받아 반환하는 방식으로만 가능하며, 어떤 경우에 환불이 가능한지를 기재해주세요.
-                                    · 펀딩 성사 후 지연 또는 선물 전달에 문제가 발생했을 때에 어떤 식으로 대응하시겠어요? 이 프로젝트 특성상 발생할 수 있는 문제에 대한 추가적인 정책이나 약속이 있다면 기재해주세요. (후원금 환불, 대체 보상 등)
-                                    · 배송이 필요한 선물에 문제가 발생한 경우 교환, A/S는 어떻게 진행되나요?
-                                    · 디지털 콘텐츠 리워드는 타인에게 양도가 가능한가요?
-                                    · 오프라인으로 전달되는 선물(공연, 전시 등)은 타인에게 양도가 가능한가요?</div>
+                                <textarea id="policy_textarea" class="comment">안녕</textarea>
                             </div>
                         </div>
                         <div class="box_hidden description">
@@ -100,14 +96,15 @@
                                 </div>
                             </div>
                             <div class="buttonWrap buttonWrap2">
-                                <button class="box3_btn1" onclick="hide('box1 .box_hidden');">취소</button>
-                                <button class="box3_btn2 box3_btn2_off"  color="mainEditorP80"><span>저장</span></button>
+                                <button type="button" class="box3_btn1" onclick="hide('box1 .box_hidden');">취소</button>
+                                <button type="button" class="box3_btn2 box3_btn2_off" onclick="addText1();"><span>저장</span></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </form>
         <div class="box box2">
             <dl class="left">
                 <dt class="left_tt">예상되는 어려움</dt>
@@ -126,12 +123,7 @@
                         </div>
                         <div class="box_modify">
                             <div class="modify">
-                                <div class="comment">아래와 같은 사항을 고려해서 작성해보세요.
-
-                                    · 제작 과정에서 발생할 수 있는 변동사항이 있다면 무엇인가요? (예산, 선물 내용 등)
-                                    · 선물 전달 일정이 지연될 가능성이 있나요 ?
-                                    · 펀딩 자금이 고갈돼 선물을 전달하지 못한다면 어떤 조치를 취할 수 있을까요?
-                                    · 이외에 발생가능한 문제는 무엇이 있으며 어떻게 대응할 예정인가요?</div>
+                                <textarea id="difficulty_area" class="comment"></textarea>
                             </div>
                         </div>
                         <div class="description box_hidden">
@@ -152,7 +144,7 @@
                             </div>
                             <div class="buttonWrap buttonWrap2">
                                 <button class="box3_btn1" onclick="hide('box2 .box_hidden');">취소</button>
-                                <button class="box3_btn2 box3_btn2_off"  color="mainEditorP80"><span>저장</span></button>
+                                <button class="box3_btn2 box3_btn2_off"  color="mainEditorP80" onclick="addText2();"><span>저장</span></button>
                             </div>
                         </div>
                     </div>
@@ -166,13 +158,14 @@
             </dl>
             <div class="right">
                 <div class="right_box">
-                    <button class="box3_btn" onclick="show('box3_sel')">
+                    <button id="write_btn" class="box3_btn" onclick="show('box3_sel')">
                         <div name="plus" ></div><i class="fa-solid fa-plus"></i>작성하기
                     </button>
                     <div class="box3_sel box_hidden">
                         <p class="box_p">상품 분류</p>
                         <div class="box3_select">
-                                <span class="" onclick="show('box3_select_hidden')" readonly=""><input readonly="" type="text" inputmode="text" autocomplete="off" autocapitalize="off" class="input_form" value="액세서리" placeholder="">
+                                <span class="" onclick="show('box3_select_hidden')" readonly="">
+                                    <input readonly="" name="projuct_type" type="text" inputmode="text" autocomplete="off" autocapitalize="off" class="input_form" value="액세서리" placeholder="">
                                     <div name="arrow2-down" ></div>
                                 </span>
                             <div class="box_hidden box3_select_hidden">
@@ -194,7 +187,8 @@
                                 <p class="sel_tt">품명</p>
                                 <div class="sel_con ">
                                     <div class="sel_input">
-                                        <span class="input_wrap"><input type="text" inputmode="text" placeholder="포장 단위별 용량(중량), 수량, 크기을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span>
+                                            <span class="input_wrap">
+                                            <input type="text" name="product_name" inputmode="text" placeholder="포장 단위별 용량(중량), 수량, 크기을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span>
                                     </div>
                                     <div class="input_txt">
                                         <span class="txt_leng">0/1000</span>
@@ -205,7 +199,8 @@
                                 <p class="sel_tt">용량 또는 중량</p>
                                 <div class="sel_con">
                                     <div class="sel_input">
-                                        <span class="input_wrap"><input type="text" inputmode="text" placeholder="생산자을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span>
+                                            <span class="input_wrap">
+                                            <input type="text" name="size" inputmode="text" placeholder="생산자을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span>
                                     </div>
                                     <div class="input_txt">
                                         <span class="txt_leng">0/1000</span>
@@ -215,7 +210,8 @@
                             <li>
                                 <p class="sel_tt">소재</p>
                                 <div class="sel_con">
-                                    <div class="sel_input"><span class="input_wrap"><input type="text" inputmode="text" placeholder="원산지을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span></div>
+                                    <div class="sel_input"><span class="input_wrap">
+                                        <input type="text" name="material" inputmode="text" placeholder="원산지을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span></div>
                                     <div class="input_txt">
                                         <span class="txt_leng">0/1000</span>
                                     </div>
@@ -224,7 +220,8 @@
                             <li>
                                 <p class="sel_tt">제품 주요 사양</p>
                                 <div class="sel_con">
-                                    <div class="sel_input"><span class="input_wrap"><input type="text" inputmode="text" placeholder="제조연월일(포장일 또는 생산연도), 유통기한 또는 품질유지기한을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span></div>
+                                    <div class="sel_input"><span class="input_wrap">
+                                        <input type="text" name="specification" inputmode="text" placeholder="제조연월일(포장일 또는 생산연도), 유통기한 또는 품질유지기한을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span></div>
                                     <div class="input_txt">
                                         <span class="txt_leng">0/1000</span>
                                     </div>
@@ -233,7 +230,8 @@
                             <li>
                                 <p class="sel_tt">사용 시 주의사항</p>
                                 <div class="sel_con">
-                                    <div class="sel_input"><span class="input_wrap"><input type="text" inputmode="text" placeholder="농산물 관련 법상 표시 사항을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span></div>
+                                    <div class="sel_input"><span class="input_wrap">
+                                            <input type="text" name="caution" inputmode="text" placeholder="농산물 관련 법상 표시 사항을(를) 입력해주세요" autocomplete="off" autocapitalize="off" class="input_form" value=""></span></div>
                                     <div class="input_txt">
                                         <span class="txt_leng">0/1000</span>
                                     </div>
@@ -243,7 +241,7 @@
                         </ul>
                         <div class="buttonWrap">
                             <button class="box3_btn1" onclick="hide('box3_sel');">취소</button>
-                            <button class="box3_btn2"  color="mainEditorP80"><span>저장</span></button>
+                            <!-- <button id="save" class="box3_btn2_add"  color="mainEditorP80" onclick="saveContent();"><span>저장</span></button> -->
                         </div>
                     </div>
                     <div class="box_modify">
@@ -251,15 +249,13 @@
                             <div class="icon-list">
                                 <div class="title">
                                     <div class="iconTitle">
-                                        <div name="category-solid" class="icon1 icon-content"><svg viewBox="0 0 48 48">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.13668 8.96876C9.07978 8.9679 9.03363 9.01461 9.03519 9.07149L9.48423 25.4449C9.48493 25.4705 9.4954 25.4948 9.51348 25.5129L27.0923 43.0917C27.1313 43.1308 27.1947 43.1308 27.2337 43.0917L43.3557 26.9697C43.3948 26.9306 43.3948 26.8673 43.3557 26.8283L25.7774 9.24995C25.7591 9.23157 25.7342 9.22107 25.7083 9.22068L9.13668 8.96876ZM17.8608 14.2393C17.8608 14.184 17.816 14.1393 17.7608 14.1393H14.1608C14.1056 14.1393 14.0608 14.184 14.0608 14.2393V17.8393C14.0608 17.8945 14.1056 17.9393 14.1608 17.9393H17.7608C17.816 17.9393 17.8608 17.8945 17.8608 17.8393L17.8608 14.2393Z"></path>
-                                        </svg></div><span>액세서리</span>
+                                        <div name="category-solid" class="icon1 icon-content">
+                                        </div><span>액세서리</span>
                                     </div>
-                                    <div class="buttonWrap"><button class="buttonwrap1 wrap1 bw1" color="grayEditor200">수정하기</button><button class="buttonwrap1 update iconButton fnt-p2" color="gray10">
-                                        <div name="delete" class="icon1 icon-content"><svg viewBox="0 0 48 48">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M38.814 42.172C38.814 42.946 38.064 43.574 37.144 43.574H10.856C9.936 43.574 9.186 42.946 9.186 42.172V12.218H38.814V42.172ZM17.564 4.426L30.542 4.524V9.794H17.462L17.564 4.426ZM44.786 9.794H32.968V4.524C32.968 3.13 31.832 2 30.436 2H17.564C16.168 2 15.03 3.13 15.03 4.524V9.794H3.212C2.542 9.794 2 10.336 2 11.006C2 11.676 2.542 12.218 3.212 12.218H6.76V42.172C6.76 44.284 8.598 46 10.856 46H37.144C39.402 46 41.24 44.284 41.24 42.172V12.218H44.786C45.456 12.218 46 11.676 46 11.006C46 10.336 45.456 9.794 44.786 9.794ZM18.857 36.9338C19.527 36.9338 20.069 36.3918 20.069 35.7218V20.0738C20.069 19.4038 19.527 18.8618 18.857 18.8618C18.187 18.8618 17.645 19.4038 17.645 20.0738V35.7218C17.645 36.3918 18.187 36.9338 18.857 36.9338ZM30.3542 35.7218C30.3542 36.3918 29.8122 36.9338 29.1422 36.9338C28.4722 36.9338 27.9302 36.3918 27.9302 35.7218V20.0738C27.9302 19.4038 28.4722 18.8618 29.1422 18.8618C29.8122 18.8618 30.3542 19.4038 30.3542 20.0738V35.7218Z"></path>
-                                        </svg></div>
-                                    </button></div>
+                                    <div class="buttonWrap">
+                                        <button class="buttonwrap1 wrap1 bw1" color="grayEditor200">수정하기</button>
+                                        <button class="buttonwrap1 update iconButton fnt-p2 wrap1" color="grayEditor200">삭제하기</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -272,11 +268,7 @@
                 <dt class="left_tt">인증 서류 제출</dt>
                 <div class="file-upload">
                     <div class="noticeTitle">
-                        <div name="info-line-oval" ><svg viewBox="0 0 48 48">
-                            <path d="M21.5 23.1C21.5 23.0448 21.5448 23 21.6 23H26.4C26.4552 23 26.5 23.0448 26.5 23.1V33.9C26.5 33.9552 26.4552 34 26.4 34H21.6C21.5448 34 21.5 33.9552 21.5 33.9V23.1Z"></path>
-                            <path d="M21 17C21 15.3431 22.3431 14 24 14C25.6569 14 27 15.3431 27 17C27 18.6569 25.6569 20 24 20C22.3431 20 21 18.6569 21 17Z"></path>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M24 40C32.8366 40 40 32.8366 40 24C40 15.1634 32.8366 8 24 8C15.1634 8 8 15.1634 8 24C8 32.8366 15.1634 40 24 40ZM24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z"></path>
-                        </svg></div>필수 서류를 꼭 확인하세요!
+                        <div name="info-line-oval" ></div>필수 서류를 꼭 확인하세요!
                     </div>
                     <div>
                         <p>제공할 선물의 종류를 모두 선택하세요. 필요한 서류 정보를 확인하실 수 있어요.</p>
@@ -291,41 +283,29 @@
                             <div class="authInfo">
                                 <div class="authType">
                                     <div name="item-solid" ></div>
-                                    <strong>상품 분류</strong>
+                                    <strong>인증 서류 목록</strong>
                                 </div>
-                            </div><button class="btn">작성하기</button>
+                            </div><button class="btn">확인하기</button>
                         </div>
-                        <p class="description">선물에 해당하는 상품 분류를 선택해주세요</p>
+                        <p class="description">서류 제출 전 서류 목록을 확인해주세요.</p>
                         <div class="box_hidden">
-                            <ul class="ul-div">
-                                <li>
-                                    <label for="chk1" ><input id="chk1" type="checkbox" name="P1_3" value="" checked>액세서리</label>
-                                </li>
-                                <li>
-                                    <label for="chk2" ><input id="chk2" type="checkbox" name="P1_4" value="">디지털 액세서리</label>
-                                </li>
-                                <li>
-                                    <label for="chk3" ><input id="chk3" type="checkbox" name="P1_5" value="">인형</label>
-                                </li>
-                                <li>
-                                    <label for="chk4" ><input id="chk4" type="checkbox" name="P1_6" value="">문구</label>
-                                </li>
-                                <li>
-                                    <label for="chk5" ><input id="chk5" type="checkbox" name="P1_7" value="">잡화</label>
-                                </li>
-                                <li>
-                                    <label for="chk6" ><input id="chk6" type="checkbox" name="P1_8" value="">의류</label>
-                                </li>
-                                <li>
-                                    <label for="chk7" ><input id="chk7" type="checkbox" name="P1_9" value="">기타</label>
-                                </li>
-                            </ul>
+                            <div>
+                                <h5 style="color:#7c1cd8";>필수 서류</h5>
+                                <p>기획/개발 증빙 서류</p>
+                                <p>-메이커님의 리워드가 어떤 방식으로 기획, 개발됐는지 보여주는 서류에요.(패턴지, 작업 지시서, 도면, 또는 해당 항목들에 준하는 내용을 포함한 파일 또는 문서)</p>
+                                <h5 style="color:#7c1cd8">선택 서류</h5>
+                                <p>1)프로젝트 내용에 리워드의 기능, 표능, 특허 등 증빙이 필요한 내용을 작성한 경우 [특허증, 디자인 등록증 등 객관적인 자료]를 제출해주세요.</p>
+                                <p>2)제작물에 사용된 소스의 저작권을 확인해주세요.
+                                    -상업적 목적의 이용이 가능한 이미지, 폰트, 영상, gif를 사용해주세요. 출처 표기가 필요한 경우 이미지나 프로젝트 하단에 표기해주세요.
+
+                            </div>
                             <div class="buttonWrap">
                                 <button class="box3_btn1" onclick="hide('box4 .box_hidden');">취소</button>
-                                <button class="box3_btn2"><span>완료</span></button>
+                                <!-- <button class="box3_btn2"><span>완료</span></button> -->
                             </div>
                         </div>
                     </div>
+
                     <div class=" VibOD box4_filebox">
                         <div class=" bAWEdB item">
                             <div class="file">
@@ -337,11 +317,11 @@
                                 <b id="fileName"></b>
                             </div>
                             <div class="cpXAaG">
-                                <button class="wrap1 textButton bw1" color="grayEditor200">저장</button><button class="buttonwrap1 wrap1 deleteButton bw1" color="grayEditor200">
-                                <div name="delete" class=" icon-content"><svg viewBox="0 0 48 48">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M38.814 42.172C38.814 42.946 38.064 43.574 37.144 43.574H10.856C9.936 43.574 9.186 42.946 9.186 42.172V12.218H38.814V42.172ZM17.564 4.426L30.542 4.524V9.794H17.462L17.564 4.426ZM44.786 9.794H32.968V4.524C32.968 3.13 31.832 2 30.436 2H17.564C16.168 2 15.03 3.13 15.03 4.524V9.794H3.212C2.542 9.794 2 10.336 2 11.006C2 11.676 2.542 12.218 3.212 12.218H6.76V42.172C6.76 44.284 8.598 46 10.856 46H37.144C39.402 46 41.24 44.284 41.24 42.172V12.218H44.786C45.456 12.218 46 11.676 46 11.006C46 10.336 45.456 9.794 44.786 9.794ZM18.857 36.9338C19.527 36.9338 20.069 36.3918 20.069 35.7218V20.0738C20.069 19.4038 19.527 18.8618 18.857 18.8618C18.187 18.8618 17.645 19.4038 17.645 20.0738V35.7218C17.645 36.3918 18.187 36.9338 18.857 36.9338ZM30.3542 35.7218C30.3542 36.3918 29.8122 36.9338 29.1422 36.9338C28.4722 36.9338 27.9302 36.3918 27.9302 35.7218V20.0738C27.9302 19.4038 28.4722 18.8618 29.1422 18.8618C29.8122 18.8618 30.3542 19.4038 30.3542 20.0738V35.7218Z"></path>
-                                </svg></div>
-                            </button>
+                                <button class="buttonwrap1 wrap1 deleteButton bw1" color="grayEditor200" onclick="deleteFile();">
+                                    <div name="delete" class=" icon-content"><svg viewBox="0 0 48 48">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M38.814 42.172C38.814 42.946 38.064 43.574 37.144 43.574H10.856C9.936 43.574 9.186 42.946 9.186 42.172V12.218H38.814V42.172ZM17.564 4.426L30.542 4.524V9.794H17.462L17.564 4.426ZM44.786 9.794H32.968V4.524C32.968 3.13 31.832 2 30.436 2H17.564C16.168 2 15.03 3.13 15.03 4.524V9.794H3.212C2.542 9.794 2 10.336 2 11.006C2 11.676 2.542 12.218 3.212 12.218H6.76V42.172C6.76 44.284 8.598 46 10.856 46H37.144C39.402 46 41.24 44.284 41.24 42.172V12.218H44.786C45.456 12.218 46 11.676 46 11.006C46 10.336 45.456 9.794 44.786 9.794ZM18.857 36.9338C19.527 36.9338 20.069 36.3918 20.069 35.7218V20.0738C20.069 19.4038 19.527 18.8618 18.857 18.8618C18.187 18.8618 17.645 19.4038 17.645 20.0738V35.7218C17.645 36.3918 18.187 36.9338 18.857 36.9338ZM30.3542 35.7218C30.3542 36.3918 29.8122 36.9338 29.1422 36.9338C28.4722 36.9338 27.9302 36.3918 27.9302 35.7218V20.0738C27.9302 19.4038 28.4722 18.8618 29.1422 18.8618C29.8122 18.8618 30.3542 19.4038 30.3542 20.0738V35.7218Z"></path>
+                                    </svg></div>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -349,11 +329,7 @@
                         <input type="file" hidden id="box4_fileinput" accept=".jpg, .jpeg, .png, .pdf, .zip, .hwp, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple="">
                         <label for="box4_fileinput">
                             <div class="fileUploadText">
-                                <div>
-                                    <svg viewBox="0 0 48 48">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M25.9087 8.12155L36.4566 18.3158C37.2603 18.7156 38.2648 18.6156 38.968 18.3158C39.6712 17.5163 39.6712 16.4169 38.968 15.7173L25.3059 2.5247C24.6027 1.8251 23.4977 1.8251 22.7945 2.5247L9.03196 15.8172C8.32877 16.5168 8.32877 17.6162 9.03196 18.3158C9.73516 19.0154 10.9406 19.0154 11.6438 18.3158L22.2922 8.12155V28.4111C22.2922 29.4106 23.0959 30.2091 24.1005 30.2091C25.105 30.2091 25.9087 29.4106 25.9087 28.4111V8.12155ZM5.61644 29.4104C5.61644 28.4109 4.81279 27.6104 3.80822 27.6104C2.80365 27.6104 2 28.5099 2 29.5093V44.202C2 45.2015 2.80365 46 3.80822 46H44.1918C45.1963 46 46 45.2015 46 44.202V29.5093C46 28.5099 45.1963 27.7113 44.1918 27.7113C43.1872 27.7113 42.3836 28.5099 42.3836 29.5093V42.3021H5.61644V29.4104Z"></path>
-                                    </svg>
-                                </div>파일 업로드
+                                파일 업로드
                             </div>
                             <p>(10MB 이하의 jpg, jpeg, png, pdf, zip, hwp 확장자 및 Word, Excel에서 작성된 문서만 가능)</p>
                         </label>
@@ -362,15 +338,20 @@
             </div>
         </div>
     </div>
+    <div class="final_div">
+        <button type="submit" id="final_button">저장</button>
+    </div>
 </div>
 <script>
+
+
     $(function(){
         var textCountLimit = 1100;
 
         $(".info button").click(function(){
             if($(this).hasClass("modifybtn") == true){
-                $(this).closest(".box").find(".box_hidden").hide();
-                $(this).closest(".box").find(".box_modify").show();
+                $(this).closest(".box").find(".box_hidden").show();
+                $(this).closest(".box").find(".box_modify").hide();
             }else {
                 $(this).hide();
                 $(this).closest(".box").find(".box_hidden").show();
@@ -431,6 +412,10 @@
             }*/
         });
 
+        $(".modifybtn").click(function() {
+            $(this).closest(".box").find(".box_hidden").show();
+        })
+
     });
     $(document).ready(function(){
         $(window).scroll(function(){
@@ -452,7 +437,52 @@
     function hide(index){
         $("."+index).hide();
         $("."+index).closest(".box").find(".info").find("button").show();
-    };
+    };f
+
+    function saveTextPolicy() {
+        var textareaValue = document.getElementById('policy_textarea').value;
+
+        // 가져온 값을 displayArea에 표시
+        document.getElementById('displayArea').innerText = textareaValue;
+    }
+
+
+    function addText1() {
+        var inputText=document.querySelector('.textarea1').value
+        var outputDiv=document.getElementById('policy_textarea')
+        var input=document.querySelector('.textarea1')
+        outputDiv.innerHTML=inputText
+        outputDiv.readOnly=true
+
+    }
+
+    function addText2() {
+        var inputText=document.querySelector('.textarea2').value
+        var outputDiv=document.getElementById('difficulty_area')
+        outputDiv.innerHTML=inputText
+        outputDiv.readOnly=true
+    }
+
+    function saveContent() {
+        var btn = document.getElementById('write_btn');
+
+        // 저장 버튼 숨기기
+        btn.style.display = 'none';
+    }
+
+    function deleteFile() {
+        var div=document.querySelector('.box4_filebox')
+        div.style.display='none'
+        alert('첨부 파일을 삭제하시겠습니까?')
+    }
+
+
+
+
+</script>
+
+</body>
+
 </script>
 </body>
 </html>

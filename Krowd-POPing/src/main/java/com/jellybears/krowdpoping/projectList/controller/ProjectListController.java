@@ -1,22 +1,41 @@
 package com.jellybears.krowdpoping.projectList.controller;
 
+import com.jellybears.krowdpoping.projectList.model.dto.ProjectDTO;
+import com.jellybears.krowdpoping.projectList.model.service.ProjectListService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-@RequestMapping("/projectList/*")
+import java.util.List;
+
+@RequestMapping("/projectList")
 @Controller
-@SessionAttributes("list")
 public class ProjectListController {
 
-    @GetMapping("projectList")
-    public String goList() {
+    private final ProjectListService projectListService;
+    @Autowired
+    public ProjectListController(ProjectListService projectListService) {
+        this.projectListService=projectListService;
+    }
+
+    @GetMapping("/projectList")
+    public String goList(Model model,@ModelAttribute ProjectDTO projectDTO) {
+
+        List<ProjectDTO> projectList=projectListService.selectProjectList(projectDTO);
+        System.out.println("------------------------------------------");
+        System.out.println(projectList);
+        model.addAttribute("projectList",projectList);
         return "projectList/projectList";
     }
 
 
 
 
+
+
 }
+
+

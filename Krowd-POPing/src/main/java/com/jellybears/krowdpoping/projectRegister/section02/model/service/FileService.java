@@ -46,9 +46,9 @@ public class FileService {
         // 저장될 경로와 파일명
 
         String saveFilePath = filePath;
-        fileDTO.setOrigin_name(fileCutName+"."+fileExt);
-        fileDTO.setUpdate_name(filePath+random_alpabet()+"."+fileExt);
-        fileDTO.setUser_code(pk);
+        fileDTO.setOriginName(fileCutName+"."+fileExt);
+        fileDTO.setUpdateName(filePath+random_alpabet()+"."+fileExt);
+        fileDTO.setUserCode(pk);
         // filePath에 해당되는 파일의 File 객체를 생성한다.
         File fileFolder = new File(filePath);
 
@@ -62,9 +62,9 @@ public class FileService {
             }
         }
 
-        File saveFile = new File(filePath+fileDTO.getUpdate_name()+"."+fileExt);
+        File saveFile = new File(filePath+fileDTO.getUpdateName()+"."+fileExt);
         try {
-            mFile.transferTo(new File(fileDTO.getUpdate_name()));
+            mFile.transferTo(new File(fileDTO.getUpdateName()));
         } catch (IllegalStateException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -1,134 +1,57 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내가 만든 프로젝트</title>
-    <link rel="stylesheet" href="/static/css/projectList/projectList.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/projectList/projectList.css">
 </head>
 <body>
-    <header>
-        <div class="header-img">
-            <img src="images/logo2.png">
+<header>
+    <div class="header-img">
+        <img src="/icon/logo2.png">
+    </div>
+    <div class="header-title">
+        <div>
+            <h1><i class="fa-solid fa-angle-left"></i> 내가 만든 프로젝트</h1>
         </div>
-        <div class="header-title">
-            <div>
-                <h1><i class="fa-solid fa-angle-left"></i> 내가 만든 프로젝트</h1>
-            </div>
-        </div>
-        <div class="tab">
-          <span>
-            <button type="button" id="all" class="header-btn all-button active" onclick="changeColor('all');showPage('subpage-total')">전체</button>
-          </span>
-          <span>
-            <button type="button" id="inprogress" class="header-btn current-button" onclick="changeColor('inprogress');showPage('subpage-current')">진행중</button>
-          </span>
-          <span>
-            <button type="button" id="judge" class="header-btn judge-button" onclick="changeColor('judge');showPage('subpage-judge')">심사중</button>
-          </span>
-          <span>
-            <button type="button" id="rejected" class="header-btn reject-button" onclick="changeColor('rejected');showPage('subpage-reject')">반려됨</button>
-          </span>
-          <span>
-            <button type="button" id="completed" class="header-btn end-button" onclick="changeColor('completed');showPage('subpage-end')">종료</button>
-          </span>
-        </div>
-    </header>
-    <main>
-        <div id="subpage-total" class="subpage">
-                <div class="status">
-                    <h5>진행중</h5>
-                    <h5>1</h5>
-                </div>
-                <div class="pr-div">
-                    <div class="img-div">
-                        <img src="">
-                    </div>
-                    <div class="content-div">
-                        <h3>[디즈니 정품] "난 너의 친구야" 토이스토리 굿즈 정품 시리즈</h3>
-                        <div class="project-content">
-                            <div class="content1 aim">64% 달성</div>
-                            <div class="content1 fund">745,000원</div>
-                            <div class="content2 date">31일 남음</div>
-                        </div>
-                        <div>
-                            <progress id="progress" value="64" max="100"></progress>
-                        </div>
-                    </div>
-                    <div class="button-div">
-                        <button class="general-btn">프로젝트 관리</button>
-                        <button class="general-btn">후원자 관리</button>
-                    </div>
-                </div>
-                <div class="status">
-                    <h5>심사중</h5>
-                    <h5>1</h5>
-                </div>
-                <div class="pr-div">
-                    <div class="img-div">
-                        <img src="">
-                    </div>
-                    <div class="content-div">
-                        <h3>경쾌한 딸깍! 소리가 매력적인 <마르지 않는 펜></h3>
-                        <div class="guide-meant">
-                            <p>현재 프로젝트가 심사중입니다. 심사에는 최대 3~4일이 소요됩니다.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="status">
-                    <h5>반려됨</h5>
-                    <h5>1</h5>
-                </div>
-                <div class="pr-div">
-                    <div class="img-div">
-                        <img src="">
-                    </div>
-                    <div class="content-div">
-                        <h3>문구를 좋아하는 사람들을 위한 진짜 데스크 용품!</h3>
-                        <div class="guide-meant">
-                            <p><i class="fa-solid fa-ban"></i> 프로젝트가 심사에서 반려되었습니다.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="status">
-                    <h5>종료</h5>
-                    <h5>1</h5>
-                </div>
-                <div class="pr-div">
-                    <div class="img-div">
-                        <img src="">
-                    </div>
-                <div class="content-div">
-                    <h3 class="end">프로젝트가 성공적으로 종료되었습니다.</h3>
-                    <h3>[디즈니 정품] "난 너의 친구야" 토이스토리 굿즈 정품 시리즈</h3>
-                    <div class="project-content">
-                        <div class="content1 aim">601% 달성</div>
-                        <div class="content1 fund">18,232,300원</div>
-                    </div>
-                    <div>
-                        <progress id="progress" value="100" max="100"></progress>
-                    </div>
-                </div>
-                <div class="button-div">
-                    <button class="general-btn">후원자 관리</button>
-                    <button class="general-btn">정산 관리</button>
-                </div>
-            </div>   
-        </div>
-        <div id="subpage-current" class="subpage">
+    </div>
+    <div class="tab">
+      <span>
+        <button type="button" id="all" class="header-btn all-button active" onclick="statusChange('all')">전체</button>
+      </span>
+        <span>
+        <button type="button" id="inprogress" class="header-btn current-button" onclick="statusChange('inprogress')">진행중</button>
+      </span>
+        <span>
+        <button type="button" id="judge" class="header-btn judge-button" onclick="statusChange('judge');">심사중</button>
+      </span>
+        <span>
+        <button type="button" id="rejected" class="header-btn reject-button" onclick="statusChange('rejected');">반려됨</button>
+      </span>
+        <span>
+        <button type="button" id="completed" class="header-btn end-button" onclick="statusChange('completed');">종료</button>
+      </span>
+    </div>
+</header>
+
+<div id="content">
+    <!-- 여기에 동적으로 변경될 내용이 들어가기. -->
+    <!-- 초기에는 전체 내용을 보여주는 것으로 설정 -->
+   <div th:each="project,iter : ${projectList}">
+       <div th:if="${project.judgeStatus == '진행중'}">
             <div class="status">
-                <h5>진행중</h5>
-                <h5>1</h5>
+                <h5 th:text="${project.judgeStatus}"></h5>
+                <h5 th:text="${iter.index+1}"></h5>
             </div>
             <div class="pr-div">
                 <div class="img-div">
                     <img src="">
                 </div>
                 <div class="content-div">
-                    <h3>[디즈니 정품] "난 너의 친구야" 토이스토리 굿즈 정품 시리즈</h3>
+                    <h3 th:text="${project.title}">[디즈니 정품] "난 너의 친구야" 토이스토리 굿즈 정품 시리즈</h3>
                     <div class="project-content">
-                        <div class="content1 aim">64% 달성</div>
+                        <div class="content1 aim" th:text="${project.sumPayAmount/project.targetAmount}">64% 달성</div>
                         <div class="content1 fund">745,000원</div>
                         <div class="content2 date">31일 남음</div>
                     </div>
@@ -137,87 +60,115 @@
                     </div>
                 </div>
                 <div class="button-div">
-                    <button class="general-btn">프로젝트 관리</button>
+                    <button class="general-btn"><a th:href="@{/projectList/projectManage(no=${project.projectCode})}">프로젝트 관리</a></button>
                     <button class="general-btn">후원자 관리</button>
                 </div>
             </div>
-        </div>
-        <div id="subpage-judge" class="subpage">
-            <div class="status">
-                <h5>심사중</h5>
-                <h5>1</h5>
-            </div>
-            <div class="pr-div">
-                <div class="img-div">
-                    <img src="">
-                </div>
-                <div class="content-div">
-                    <h3>경쾌한 딸깍! 소리가 매력적인 <마르지 않는 펜></h3>
-                    <div class="guide-meant">
-                        <p>현재 프로젝트가 심사중입니다. 심사에는 최대 3~4일이 소요됩니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="subpage-reject" class="subpage">
-            <div class="status">
-                <h5>반려됨</h5>
-                <h5>1</h5>
-            </div>
-            <div class="pr-div">
-                <div class="img-div">
-                    <img src="">
-                </div>
-                <div class="content-div">
-                    <h3>문구를 좋아하는 사람들을 위한 진짜 데스크 용품!</h3>
-                    <div class="guide-meant">
-                        <p><i class="fa-solid fa-ban"></i> 프로젝트가 심사에서 반려되었습니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="subpage-end" class="subpage">
-            <div class="status">
-                <h5>종료</h5>
-                <h5>1</h5>
-            </div>
-            <div class="pr-div">
-                <div class="img-div">
-                    <img src="">
-                </div>
-            <div class="content-div">
-                <h3 class="end">프로젝트가 성공적으로 종료되었습니다.</h3>
-                <h3>[디즈니 정품] "난 너의 친구야" 토이스토리 굿즈 정품 시리즈</h3>
-                <div class="project-content">
-                    <div class="content1 aim">601% 달성</div>
-                    <div class="content1 fund">18,232,300원</div>
-                </div>
-                <div>
-                    <progress id="progress" value="100" max="100"></progress>
-                </div>
-            </div>
-            <div class="button-div">
-                <button class="general-btn">후원자 관리</button>
-                <button class="general-btn">정산 관리</button>
-            </div>
-        </div>   
-    </main>
-    <script>
-        const allButton=document.querySelector('.all-button')
-        const currentButton=document.querySelector('.current-button')
-        const judgeButton=document.querySelector('.judge-button')
-        const rejectButton=document.querySelector('.reject-button')
-        const endButton=document.querySelector('.end-button')
+       </div>
 
-        
-        window.onload = function() {
-        
-        changeColor('all');
-        
-        showPage('subpage-total');
+       <div th:if="${project.judgeStatus == '종료'}">
+           <div class="status">
+               <h5 th:text="${project.judgeStatus}"></h5>
+               <h5 th:text="${iter.index+1}"></h5>
+           </div>
+           <div class="pr-div">
+               <div class="img-div">
+                   <img src="">
+               </div>
+               <div class="content-div">
+                   <h3 class="end">프로젝트가 성공적으로 종료되었습니다.</h3>
+                   <h3 th:text="${project.title}">[디즈니 정품] "난 너의 친구야" 토이스토리 굿즈 정품 시리즈</h3>
+                   <div class="project-content">
+                       <div class="content1 aim">601% 달성</div>
+                       <div class="content1 fund">18,232,300원</div>
+                   </div>
+                   <div>
+                       <progress id="progress" value="100" max="100"></progress>
+                   </div>
+               </div>
+               <div class="button-div">
+                   <button class="general-btn">후원자 관리</button>
+                   <button class="general-btn"><a th:href="@{/projectList/calculate(no=${project.projectCode})}">정산 관리</a></button>
+               </div>
+
+           </div>
+       </div>
+
+
+       <div th:if="${project.judgeStatus == '심사중' || project.judgeStatus == '반려됨'}">
+           <div class="status">
+               <h5 th:text="${project.judgeStatus}"></h5>
+               <h5 th:text="${iter.index+1}"></h5>
+           </div>
+           <div class="pr-div">
+               <div class="img-div">
+                   <img src="">
+               </div>
+               <div class="content-div">
+                   <h3  th:text="${project.title}">경쾌한 딸깍! 소리가 매력적인 <마르지 않는 펜></h3>
+                   <div class="guide-meant">
+                       <p th:if="${project.judgeStatus == '심사중'}">현재 프로젝트가 심사중입니다. 심사에는 최대 3~4일이 소요됩니다.</p>
+                       <p th:if="${project.judgeStatus == '반려됨'}"><i class="fa-solid fa-ban"></i> 프로젝트가 심사에서 반려되었습니다.</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+</div>  <!--content-->
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 초기 상태: 전체 버튼이 선택되어 있음
+
+        // document.getElementById("all").addEventListener("click", showAllContent);
+        // document.getElementById("inprogress").addEventListener("click", showOngoingContent);
+        // document.getElementById("judge").addEventListener("click", showReviewContent);
+        // document.getElementById("rejected").addEventListener("click",showRejectedContent);
+        // document.getElementById("completed").addEventListener("click",showEndContent);
+    });
+
+
+    const allButton=document.querySelector('.all-button')
+    const currentButton=document.querySelector('.current-button')
+    const judgeButton=document.querySelector('.judge-button')
+    const rejectButton=document.querySelector('.reject-button')
+    const endButton=document.querySelector('.end-button')
+
+
+    window.onload = function() {
+
+        // changeColor('all');
+        //
+        // showPage('subpage-total');
+        const urlParams = new URLSearchParams(window.location.search);
+        const judgeStatus = urlParams.get('judgeStatus');
+        let status = "all"
+        if(judgeStatus == '진행중')
+            status = 'inprogress'
+        else if(judgeStatus=='심사중')
+            status='judge'
+        else if(judgeStatus=='반려됨')
+            status='rejected'
+        else if(judgeStatus=='종료')
+            status='completed'
+        changeColor(status);
     };
 
-        function changeColor(status) {
+    function statusChange(status) {
+        let judgeStatus = "";
+        if(status == 'inprogress')
+            judgeStatus = '진행중'
+        else if(status=='judge')
+            judgeStatus='심사중'
+        else if(status=='rejected')
+            judgeStatus='반려됨'
+        else if(status=='completed')
+            judgeStatus='종료'
+        location.href="projectList?judgeStatus=" + judgeStatus;
+    }
+
+    function changeColor(status) {
         // 모든 버튼 초기화
         resetButtons();
 
@@ -226,60 +177,14 @@
         button.style.backgroundColor = "#EDEAFF";  // 바뀔 색상 지정
     }
 
-        // 모든 버튼을 초기 상태로 설정하는 함수
-        function resetButtons() {
-            var buttons = document.getElementsByClassName("header-btn");
-            for (var i = 0; i < buttons.length; i++) {
+    // 모든 버튼을 초기 상태로 설정하는 함수
+    function resetButtons() {
+        var buttons = document.getElementsByClassName("header-btn");
+        for (var i = 0; i < buttons.length; i++) {
             buttons[i].style.backgroundColor = "";  // 초기 상태로 복원
-            }
-    }
-
-    function showPage(subpageId) {
-
-        var subpage = document.querySelectorAll('.subpage');
-        subpage.forEach(function(sub) {
-          sub.classList.remove('active');
-        
-          console.log(sub.classList)
-        });
-
-        var activeSubpage = document.getElementById(subpageId);
-        activeSubpage.classList.add('active');
-
-        if (subpageId === 'subpage-total') {
-          allButton.classList.add('active');
-          currentButton.classList.remove('active');
-          judgeButton.classList.remove('active');
-          rejectButton.classList.remove('active');
-          endButton.classList.remove('active');
-        } else if (subpageId === 'subpage-current') {
-          allButton.classList.remove('active');
-          currentButton.classList.add('active');
-          judgeButton.classList.remove('active');
-          rejectButton.classList.remove('active');
-          endButton.classList.remove('active');
-        } else if(subpageId==='subpage-judge') {
-            allButton.classList.remove('active');
-          currentButton.classList.remove('active');
-          judgeButton.classList.add('active');
-          rejectButton.classList.remove('active');
-          endButton.classList.remove('active');
-        } else if(subpageId==='subpage-reject') {
-            allButton.classList.remove('active');
-          currentButton.classList.remove('active');
-          judgeButton.classList.remove('active');
-          rejectButton.classList.add('active');
-          endButton.classList.remove('active');
-        } else if(subpageId==='subpage-end') {
-            allButton.classList.remove('active');
-          currentButton.classList.remove('active');
-          judgeButton.classList.remove('active');
-          rejectButton.classList.remove('active');
-          endButton.classList.add('active');
         }
-
     }
-  
-    </script>
-</body>
+
+
+</script>
 </html>

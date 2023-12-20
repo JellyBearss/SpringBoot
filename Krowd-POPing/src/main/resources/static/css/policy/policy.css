@@ -180,18 +180,18 @@ p {
 
 header{
     min-width: 1200px;
-    
+
     background-color:rgb(255, 255, 255);
     border-bottom: 1px solid lightgray;
     z-index: 999;
     position: fixed;
     top: 0;
     left: 0;
-    
-    
-    }
-    
-    .container{
+
+
+}
+
+.container{
     position: relative;
     background-color: rgb(255, 255, 255, 1);
     width: 70%;
@@ -199,82 +199,82 @@ header{
     margin: auto;
     display: flex;
     justify-content: space-between;
-    }
-    
-    .backArrow{
-        display: flex;
-        margin-top: 20px;
-    }
-    
-    .logo{
-    
+}
+
+.backArrow{
+    display: flex;
+    margin-top: 20px;
+}
+
+.logo{
+
     margin-top:5px;
     margin-left: 40px;
     text-align: center;
-    }
-    
-    .logo img{
-    max-width: 40%; 
+}
+
+.logo img{
+    max-width: 40%;
     height: auto ;
-    
-    }
-    
-    .menu{float: right;}
-    
-    .menu-item{
-        float: left;
-        margin: 20px 13px 10px 5px; 
-    
-    }
-    
-    .menu-item > img {width: 110px;}
-    
-    
-    /*************** processTab ********************/
-    
-    
-    .processTabWrapper{
-        width: 1300px;
-        margin-left: 230px;
-    }
-    
-    .processTab{
-        display: flex;
-        list-style-type: none;
-        font-weight: bold;
-        color: #4D4D4D;
-        margin-bottom: 0;
-        
-    }
-    
-    .tabItem{
-        margin:0 35px;
-        padding-bottom: 15px;
-    }
-    
-    .tabItem > a{
-        text-decoration: none;
-        color: #4D4D4D;
-    
-    }
-    
-    /* 선택하면 표시되는 보라색 바 */
-    .tabBar {
-    
-        border-bottom: 3px solid #7D1CD8;
-        padding: 0px 3px;
-    }
-    
-    .container2{
-    
-        padding-top: 50px;
-        width: 65%;
-        margin: auto;
-    
-    }
+
+}
+
+.menu{float: right;}
+
+.menu-item{
+    float: left;
+    margin: 20px 13px 10px 5px;
+
+}
+
+.menu-item > img {width: 110px;}
+
+
+/*************** processTab ********************/
+
+
+.processTabWrapper{
+    width: 1300px;
+    margin-left: 230px;
+}
+
+.processTab{
+    display: flex;
+    list-style-type: none;
+    font-weight: bold;
+    color: #4D4D4D;
+    margin-bottom: 0;
+
+}
+
+.tabItem{
+    margin:0 35px;
+    padding-bottom: 15px;
+}
+
+.tabItem > a{
+    text-decoration: none;
+    color: #4D4D4D;
+
+}
+
+/* 선택하면 표시되는 보라색 바 */
+.tabBar {
+
+    border-bottom: 3px solid #7D1CD8;
+    padding: 0px 3px;
+}
+
+.container2{
+
+    padding-top: 50px;
+    width: 65%;
+    margin: auto;
+
+}
 
 /* index */
-/* body {
+body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -289,7 +289,7 @@ header {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 8px, rgba(0, 0, 0, 0.02) 0px 1px 0px;
     z-index: 1;
-} */
+}
 h1 {
     padding: 24px 16px;
     font-weight: 700;
@@ -297,30 +297,30 @@ h1 {
     line-height: 36px !important;
 }
 
- .topnav {
-     position: fixed;
-     top: 0px;
-     z-index: 100;
-     width: 100%;
-     background: rgb(255, 255, 255);
-     font-size: 14px;
-     line-height: 24px;
-     letter-spacing: -0.015em;
-     padding: 0px 16px;
-     box-shadow: none;
-     transform: translateY(0px);
-     height: 64px;
- }
- .topnav_wrap {
-     width: 100%;
-     max-width: 1080px;
-     height: 100%;
-     margin: 0px auto;
-     display: flex;
-     -webkit-box-pack: justify;
-     justify-content: space-between;
-     position: relative;
- }
+.topnav {
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    padding: 0px 16px;
+    box-shadow: none;
+    transform: translateY(0px);
+    height: 64px;
+}
+.topnav_wrap {
+    width: 100%;
+    max-width: 1080px;
+    height: 100%;
+    margin: 0px auto;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative;
+}
 .top_back {
     position: relative;
     z-index: 1;
@@ -332,9 +332,9 @@ h1 {
 }
 .top_back > div{
     margin-right: 9px;
-     display: inline-flex;
-     align-self: center;
- }
+    display: inline-flex;
+    align-self: center;
+}
 .top_back svg {
     width: 1em;
     height: 1em;
@@ -342,9 +342,9 @@ h1 {
 
 .list {
     margin: 64px auto 0px;
-     display: block;
-     background: rgb(255, 255, 255);
- }
+    display: block;
+    background: rgb(255, 255, 255);
+}
 nav {
     display: flex;
     -webkit-box-align: center;
@@ -365,10 +365,10 @@ nav ul {
 }
 
 nav ul li {
- position: relative;
- display: flex;
- height: 100%;
- margin: 0px 8px;
+    position: relative;
+    display: flex;
+    height: 100%;
+    margin: 0px 8px;
 }
 
 nav ul li:first-child {
@@ -379,13 +379,13 @@ nav ul li a:hover {
     color: rgb(13, 13, 13);
 }
 nav ul li a {
-     color: rgb(13, 13, 13);
-     display: flex;
-     -webkit-box-align: center;
-     align-items: center;
-     font-size: 14px !important;
-     line-height: 22px !important;
- }
+    color: rgb(13, 13, 13);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 14px !important;
+    line-height: 22px !important;
+}
 nav ul li a span{
     display: inline-flex;
     -webkit-box-align: center;
@@ -441,9 +441,9 @@ header.on .list {
 .box_hidden {
     display: none;
 }
- .content {
-     padding: 48px 16px 0px;
- }
+.content {
+    padding: 48px 16px 0px;
+}
 .box {
     border-bottom: 1px solid rgb(240, 240, 240);
     padding-bottom: 40px;
@@ -484,13 +484,13 @@ dd {
     width: 100%;
 }
 .right_pd {
- width: 100%;
- border: 1px solid rgb(240, 240, 240);
- border-radius: 4px;
- background: rgb(255, 255, 255);
- padding: 16px;
- -webkit-box-align: center;
- align-items: center;
+    width: 100%;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    padding: 16px;
+    -webkit-box-align: center;
+    align-items: center;
 }
 .info {
     display: flex;
@@ -517,9 +517,9 @@ dd {
     font-size: 20px;
     position: relative;
     top: 6px;
-     width: 1em;
-     height: 1em;
- }
+    width: 1em;
+    height: 1em;
+}
 .authType div{
     display: inline-flex;
     align-self: center;
@@ -544,9 +544,9 @@ dd {
     background: rgb(255, 255, 255);
 }
 .info button:hover {
-     border-color: rgb(228, 228, 228);
-     color: rgb(61, 61, 61);
- }
+    border-color: rgb(228, 228, 228);
+    color: rgb(61, 61, 61);
+}
 .authInfo p {
     color: rgb(109, 109, 109);
 }
@@ -584,17 +584,17 @@ dd {
 }
 .hidden-box textarea {
     height: 190px;
-     font-weight: 400;
-     color: rgb(61, 61, 61);
-     font-size: 14px !important;
-     line-height: 24px !important;
-     background: transparent;
-     width: 100%;
-     border: 0px;
-     padding: 0px;
+    font-weight: 400;
+    color: rgb(61, 61, 61);
+    font-size: 14px !important;
+    line-height: 24px !important;
+    background: transparent;
     width: 100%;
-     resize: none;
- }
+    border: 0px;
+    padding: 0px;
+    width: 100%;
+    resize: none;
+}
 .comment {
     width: 100%;
     min-height: auto;
@@ -609,31 +609,31 @@ dd {
 .box3_btn{
     font-size: 12px;
     line-height: 20px;
-     width: 100%;
-     height: 44px;
-     color: rgb(0, 0, 0);
-     letter-spacing: -0.01em;
-     cursor: pointer;
-     display: inline-flex;
-     -webkit-box-align: center;
-     align-items: center;
-     -webkit-box-pack: center;
-     justify-content: center;
-     white-space: nowrap;
-     border-radius: 1px;
-     margin: 0px;
-     outline: 0px;
-     box-sizing: border-box;
-     font-weight: normal;
-     padding: 0px 16px;
-     border: 1px solid rgb(240, 240, 240);
-     background: rgb(255, 255, 255);
- }
+    width: 100%;
+    height: 44px;
+    color: rgb(0, 0, 0);
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 16px;
+    border: 1px solid rgb(240, 240, 240);
+    background: rgb(255, 255, 255);
+}
 .box3_btn div {
-     display: inline-flex;
-     align-self: center;
+    display: inline-flex;
+    align-self: center;
     margin-right: 8px;
- }
+}
 .box3_btn div svg {
     fill: #7C1CD8;
 }
@@ -647,13 +647,13 @@ dd {
 .box_p {
     margin-bottom: 4px;
     margin-top: 0em;
-     font-weight: bold;
-     font-size: 11px;
-     line-height: 18px;
-     letter-spacing: -0.005em;
-     color: rgb(61, 61, 61);
-     display: flex;
- }
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: -0.005em;
+    color: rgb(61, 61, 61);
+    display: flex;
+}
 .box3_select {
     position: relative;
 }
@@ -662,16 +662,16 @@ dd {
     background: rgb(255, 255, 255);
     border: 1px solid rgb(240, 240, 240);
     color: rgb(201, 201, 201);
-     max-height: 44px;
-     min-width: 100px;
-     display: flex;
-     font-size: 14px;
-     line-height: 24px;
-     letter-spacing: -0.015em;
-     -webkit-box-align: center;
-     align-items: center;
-     border-radius: 1px;
- }
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
 .box3_select span input {
     width: 100%;
     background: transparent;
@@ -684,10 +684,10 @@ dd {
     appearance: none !important;
 }
 .box3_select span div {
-     display: inline-flex;
-     align-self: center;
+    display: inline-flex;
+    align-self: center;
     font-size: 10px;
- }
+}
 .box3_select span div svg {
     fill: rgb(61, 61, 61);
     transform: rotate(0deg);
@@ -767,17 +767,17 @@ p:first-child {
     text-align: left;
     padding: 0;
     background: transparent;
-     color: rgb(13, 13, 13);
-     max-height: 44px;
-     min-width: 100px;
-     display: flex;
-     font-size: 14px;
-     line-height: 24px;
-     letter-spacing: -0.015em;
-     -webkit-box-align: center;
-     align-items: center;
-     border-radius: 1px;
- }
+    color: rgb(13, 13, 13);
+    max-height: 44px;
+    min-width: 100px;
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 1px;
+}
 .sel_input input {
     text-align: inherit;
     font-weight: 400;
@@ -817,37 +817,57 @@ p:first-child {
     font-weight: 400;
     font-size: 12px !important;
 }
- .buttonWrap {
+.buttonWrap {
     padding-top: 20px;
     text-align: right;
 }
- .buttonWrap button {
+.buttonWrap button {
     width: 88px;
     font-weight: 500;
     margin-left: 12px;
     font-size: 12px;
     line-height: 20px;
 }
- .box3_btn1 {
-     cursor: pointer;
-     display: inline-flex;
-     -webkit-box-align: center;
-     align-items: center;
-     -webkit-box-pack: center;
-     justify-content: center;
-     height: 40px;
-     white-space: nowrap;
-     border-radius: 1px;
-     margin: 0px;
-     outline: 0px;
-     box-sizing: border-box;
-     font-weight: normal;
-     padding: 0px 16px;
-     border: 1px solid rgb(240, 240, 240);
-     color: rgb(61, 61, 61);
-     background: rgb(255, 255, 255);
- }
+.box3_btn1 {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    box-sizing: border-box;
+    font-weight: normal;
+    padding: 0px 16px;
+    border: 1px solid rgb(240, 240, 240);
+    color: rgb(61, 61, 61);
+    background: rgb(255, 255, 255);
+}
 .box3_btn2 {
+    cursor: pointer;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 40px;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: #EDEAFF;
+    color: rgb(255, 255, 255);
+}
+
+.box3_btn2_add{
     cursor: pointer;
     display: inline-flex;
     -webkit-box-align: center;
@@ -919,9 +939,9 @@ p:first-child {
     position: absolute;
     top: 3px;
     left: -23px;
-     display: inline-flex;
-     align-self: center;
- }
+    display: inline-flex;
+    align-self: center;
+}
 .gJNjvn .noticeTitle svg {
     position: relative;
     top: 1px;
@@ -987,27 +1007,27 @@ p:first-child {
     display: block;
     font-size: 12px;
     line-height: 20px;
-     display: flex;
-     flex-wrap: wrap;
-     -webkit-box-align: center;
-     align-items: center;
-     width: 100%;
-     height: auto;
-     padding: 11px;
-     box-sizing: border-box;
-     color: rgb(0, 0, 0);
-     letter-spacing: -0.01em;
-     cursor: pointer;
-     -webkit-box-pack: center;
-     justify-content: center;
-     white-space: nowrap;
-     border-radius: 1px;
-     margin: 0px;
-     outline: 0px;
-     font-weight: normal;
-     border: 1px solid rgb(240, 240, 240);
-     background: rgb(255, 255, 255);
- }
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 11px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    -webkit-box-pack: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 1px;
+    margin: 0px;
+    outline: 0px;
+    font-weight: normal;
+    border: 1px solid rgb(240, 240, 240);
+    background: rgb(255, 255, 255);
+}
 
 .upload .fileUploadText {
     width: 100%;
@@ -1121,13 +1141,13 @@ p:first-child {
     white-space: pre-line;
 }
 
- .hcIDBM {
-     background: rgb(255, 255, 255);
-     border: 1px solid rgb(238, 238, 238);
-     border-radius: 4px;
-     padding: 29px 16px;
-     margin-top: 29px;
- }
+.hcIDBM {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 4px;
+    padding: 29px 16px;
+    margin-top: 29px;
+}
 .fVkKwg .title {
     font-weight: bold;
     margin-bottom: 16px;
@@ -1151,10 +1171,10 @@ p:first-child {
     display: inline-flex;
     padding-top: 0px;
 }
- .hcIDBM .buttonWrap {
-     padding-top: 20px;
-     text-align: right;
- }
+.hcIDBM .buttonWrap {
+    padding-top: 20px;
+    text-align: right;
+}
 .fVkKwg .title button {
     width: auto;
     padding: 0px 15px;
@@ -1190,6 +1210,28 @@ p:first-child {
 .fVkKwg .title button.iconButton svg {
     font-size: 14px;
     fill:rgb(61, 61, 61);
+}
+
+.final_div{
+    display:flex;
+    justify-content: center;
+}
+
+#final_button{
+    width:180px;
+    height:50px;
+    font-size: 18px;
+    border-radius: 1px;
+    margin: 0px;
+    border: 0px;
+    outline: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    padding: 0px 16px;
+    background-color: #EDEAFF;
+    color: #6d6d6d;
+    font-weight: 700;
+
 }
 
 @media (min-width: 1080px) {
@@ -1300,6 +1342,7 @@ p:first-child {
         padding: 25px;
     }
 }
+
 
 
 

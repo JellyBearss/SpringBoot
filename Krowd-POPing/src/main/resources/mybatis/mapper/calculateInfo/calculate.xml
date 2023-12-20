@@ -3,6 +3,39 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.calculate.model.dao.CalculateMapper">
-    
-    
+
+   <select id="selectCalculate" resultType="com.jellybears.krowdpoping.calculate.model.dto.CalculateDTO" parameterType="Long">
+
+        select p.title as title,
+                c.creator_nm as creatorNm,
+                u.name as name,
+                c.business_num as businessNum,
+                DATE_ADD(p.end_date,INTERVAL 7 DAY) AS calDate,
+                COUNT(pay.pay_code) AS sumPayAmountCount,
+                p.sum_pay_amount as sumPayAmount,
+                COUNT(pc.cancellation_code) AS cancelCount,
+                SUM(pc.cancellation_amount) AS cancellationAmount,
+                COUNT(pay.pay_code)-COUNT(pc.cancellation_code) AS payCount,
+                (p.sum_pay_amount-pc.cancellation_amount) AS pay,
+                pp.type as type,
+                pp.percent as percent,
+                (p.sum_pay_amount-pc.cancellation_amount)*pp.percent/100 AS krowdFee,
+                (p.sum_pay_amount-pc.cancellation_amount)*0.02 AS entertainmentFee,
+                ((p.sum_pay_amount-pc.cancellation_amount)*pp.percent/100)+((p.sum_pay_amount-pc.cancellation_amount)*0.02) AS sumFee,
+                (p.sum_pay_amount-pc.cancellation_amount)-((p.sum_pay_amount-pc.cancellation_amount)*pp.percent/100)+((p.sum_pay_amount-pc.cancellation_amount)*0.02) AS totalMoney
+
+        from creator c left outer join user_info u
+        on c.user_code=u.user_code
+         left outer join project p
+        on c.user_code = p.user_code
+         left outer join payment pay
+        on u.user_code = pay.user_code
+         left outer join pay_cancellation pc
+        on pc.cancellation_code=pay.pay_code
+        left outer join priceplan pp
+        on p.priceplan_code=pp.priceplan_code
+        where p.project_code=#{no}
+
+   </select>
+
 </mapper>    
