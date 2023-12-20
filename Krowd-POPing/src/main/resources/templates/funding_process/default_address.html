@@ -198,21 +198,21 @@
         <div class="default_postcode_info">
                 <span class="d_i_postcode">우편번호</span>
                 <div class="input_d_i_postcode_section">
-                    <input type="text" name ="input_d_i_postcode">
+                    <input type="text" th:value="${defaultAddress.getZipCode()}" name ="input_d_i_postcode">
                 </div>
         </div>
 
         <div class="default_address_info">
                 <span class="d_i_address">주소</span>
                 <div class="input_d_i_address_section">
-                    <input type="text" name ="input_d_i_address">
+                    <input type="text" th:value="${defaultAddress.getRecipientAddress()}" name ="input_d_i_address">
                 </div>
         </div>
 
         <div class="default_detailed_address_info">
                 <span class="d_i_d_address">상세 주소</span>
                 <div class="input_d_i_d_address_section">
-                    <input type="text" name ="input_d_i_d_address">
+                    <input type="text" th:value="${defaultAddress.getDetailedAddress()}" name ="input_d_i_d_address">
                 </div>
         </div>
         <div class="default_phone_info">

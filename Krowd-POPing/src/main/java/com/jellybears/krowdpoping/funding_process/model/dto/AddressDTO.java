@@ -13,6 +13,9 @@ public class AddressDTO {
     private String addressTitle;
     private String recipientName;
     private String mergedAddress;
+    private String zipCode;
+    private String recipientAddress;
+    private String detailedAddress;
     private String recipientPhoneNumber;
     private String deliveryComment;
     private String whetherDefaultAddress;

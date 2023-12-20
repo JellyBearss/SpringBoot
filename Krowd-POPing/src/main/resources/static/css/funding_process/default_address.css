@@ -475,7 +475,7 @@ a {
 }
 .default_address_section{
     position: absolute;
-    left: 50px;
+    left: 70px;
     top: 130px;
     display: flex;
     align-items: center;
@@ -564,6 +564,7 @@ a {
     color: #767676;
     font-family:Noto Sans KR;
     position: absolute;
+    top: 50px;
     text-align:left;
     font-size:15px;
 }

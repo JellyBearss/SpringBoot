@@ -17,6 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 @RequestMapping("/funding_process")
 @Slf4j
@@ -45,10 +48,14 @@ public class FundingProcessController {
             // 로그인한 사용자의 기본 주소를 가져와서 모델에 추가
             AddressDTO defaultAddress = addressService.getDefaultAddress(String.valueOf(loggedInUser.getUser_code()));
 
+            String[] addressParts = defaultAddress.getMergedAddress().split("\\$");
+            defaultAddress.setZipCode(addressParts[0]);
+            defaultAddress.setRecipientAddress(addressParts[1]);
+            defaultAddress.setDetailedAddress(addressParts[2]);
+
             // 모델에 주소 객체도 추가
             model.addAttribute("defaultAddress", defaultAddress);
         }
-
         return "funding_process/default_address";
     }
     @PostMapping("saveAddress")
