@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AddressMapper {
 
     int saveAddress(AddressDTO addressDTO);
+
+    AddressDTO getDefaultAddress(String user_code);
 }

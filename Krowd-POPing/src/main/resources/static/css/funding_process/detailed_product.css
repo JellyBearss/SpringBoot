@@ -1,109 +1,170 @@
+a {
+    color: inherit; /* 링크 색상을 부모 요소의 색상으로 상속받습니다. */
+    text-decoration: none; /* 밑줄 제거 */
+}
 #header{
-    
-    min-height:80px;
+    min-height:120px;
     /* background-color: rgb(201, 233, 233); */
     margin:auto;
     width: 1170px;
-    position: relative; 
+    position: relative;
 }
+.cartbar {
+    position: absolute;
+    top: 50%;
+    margin-left: 15px;
+    width: 30px;
+    height: 25px;
+}
+.bar1,.bar2,.bar3 {
+    background-color:rgb(109,109,109);
+    width:22px;
+    height:2.9px;
+    border-radius:2px;
+    position:absolute;
+    left:4.5px;
+    top:5.5px;
+    margin-bottom: 6px;}
+
+.bar1 {top: 2px;}
+.bar2 {top: 8px;}
+.bar3 {top: 14px;}
+
+.cartbar:hover .bar1,.cartbar:hover .bar2,.cartbar:hover .bar3 { background-color: rgb(125,28,216); }
+
+.category-box {
+    position: absolute;
+    top: 18px;
+    width: 200px;
+    left: 3px;
+    background-color: #fff;
+    /* padding: 10px; */
+    /* display: none; */
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+
+
+}
+
+.cartbar:hover .category-box,
+.cartbar:hover .category-box:hover {
+    max-height: 300px;
+}
+
+.category {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* margin-left: 3px; */
+    cursor: pointer;
+    padding-top: 10px; /* 높이를 조절하는 부분 */
+    padding-bottom: 10px;
+    padding-left:30px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.category:hover {
+    background-color: #EDE9FE; /* 선택된 카테고리에 배경색 추가 */
+}
+
+
+.logo{
+    float: left;
+    margin-top:20px;
+    margin-left: 60px;
+}
+
 .logo img{
-    max-width: 20%; 
-    margin-left: 25px;
+    max-width: 40%;
     /* height: auto ; */
 }
-.upload_project { 
-	width:210px;
-	height:67px;
-	position:absolute;
-	left:190px;
-	top:38px;
+
+.menu{float: right;
 }
-.upload_box { 
-    max-width: 55%;
+
+.menu-item1 img,.menu-item2 img,.menu-item3 img,.menu-item5 img,.menu-item4 img {
+    float: left;
+    margin: 20px 13px 10px 5px; }
+
+.menu-item1 img {width: 30px;}
+.menu-item2 img {width: 32px;}
+.menu-item3 img {width: 130px;}
+.menu-item4 img {width: 48px; margin-top: 11px;}
+.menu-item4 span{
+
+    font-size: 16px;
+    /* background-color: #b66a6a; */
+    display: inline-block;
+    margin-top: 25px;
+}
+.login_nickname{
+    text-decoration: underline rgb(125,28,216) 1px;
+    text-underline-offset: 4px;
+
+}
+
+
+
+
+#search-area{
+    top: 75px;
+    right: -6px;
+    width: 350px;
+    height: 35px;
     position: absolute;
-    width: 170px;
-    height: 32px;
-    right: 182px;
-    left: 700px;
-    top:0px;
-    background: #EDE9FE;
-    border-radius: 6px;
+    /* background-color: #767676; */
 }
-.upload_text { 
-    color:#7D1CD8;	
-    width:100px;
-	height:17px;
-	position:absolute;
-	left:20px;
-	top:7px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:11px;
-	letter-spacing:0;
-}
-.profile{
-    display: flex;
-    align-items: center;
-    width:500px;
-	height:67px;
-	position:absolute;
-	left:1030px;
-	top:38px;
-    text-decoration: none;
-}
-.nickname{
-    color: #6D6D6D;
-	width:157px;
-	height:27px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:13px;
-	letter-spacing:0;
-    margin-top: -28px;
-    margin-left: -5px;
-}
-.nickname_title{
-    color: #6D6D6D;
-	width:27px;
-	height:27px;
-	font-family:Noto Sans KR;
-	text-align:center;
-	font-size:13px;
-	letter-spacing:0;
-    margin-top: -29px;
-    margin-left: -58px;
-}
-.default_profile_circle{
-    border-radius:500px;
-	background-color:#EDE9FE;
-	width:30px;
-	height:30px;
-	position:absolute;
-	left:10px;
-	top:0px;
-}
-.default_profile_face{
-    width:25px;
-	height:25px;
-	position:absolute;
-	left:12.9px;
-	top:4px;
-	background-image:url("/images/noun_face_1891329_2.png");
-	background-repeat:no-repeat;
-	background-size:cover;
-}
-.title_section{
-    display: flex;
-    justify-content: center;
-    position: relative;
+
+#search-input:focus {
+    outline: none; /* 포커스 시 기본 테두리 없애기 */
+    border: none /* 포커스 시 테두리 색상 설정 */}
+
+#search-form{
+    /* width:80%; */
+    /* height:20%; */
     margin:auto;
+    position:absolute;
+    bottom: 0;
+    top: 0;
+    left:0;
+    right:0;}
+
+#search-text-area{
+    height:100%;
+    width:80%;
+    float:left;}
+
+#search-btn-area{
+    height:100%;
+    width:20%;
+    float:left;}
+
+#search-input, #search-btn{
+    width: 100%;
+    height:100%;
+    background-color: rgba(243, 243, 243, 1);
+    border: none;
+    box-sizing: border-box;}
+
+#search-input { border-radius: 4px 0 0 4px; /* 왼쪽만 둥글게 */
+    padding-left: 10px;}
+#search-btn { border-radius: 0 4px 4px 0;
+    /* 오른쪽만 둥글게 */}
+#search-btn img{
+    float:right;
+    margin-right: 10px;
 }
 .section{
     background-color: #EDE9FE;
+    box-sizing:border-box;
     width: 1170px;
     height: 83px;
-    position: relative;
     margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 .funding_title{
     color: #0D0D0D;
@@ -239,7 +300,7 @@
     background-size:cover;
     background-position: center;
 }
-.category{
+.product_category_section{
     color: #767676;
     width:90px;
 	height:24px;
@@ -332,47 +393,6 @@
     font-family:Noto Sans KR;
 	text-align:left;
 	font-size:13px;
-}
-.product_amount{
-    border: 2px solid rgba(104, 104, 104, 0.08);
-    box-sizing:border-box;
-    width: 1170px;
-    height: 80px;
-    margin:auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-.show_amount{
-    color: #767676;
-    position:absolute;
-    left:50px;
-    top: 50%; 
-    transform: translateY(-50%);
-    font-family:Noto Sans KR;
-	text-align:left;
-    font-size:18px;
-}
-.chosen_amount{
-    color: #767676;
-    position:absolute;
-    right: 92px;
-    top: 50%; 
-    transform: translateY(-50%);
-    font-family:Noto Sans KR;
-	text-align:left;
-    font-size:18px;
-}
-.unit{
-    color: #767676;
-    position:absolute;
-    right: 65px;
-    top: 50%; 
-    transform: translateY(-50%);
-    font-family:Noto Sans KR;
-	text-align:left;
-    font-size:18px;
 }
 .product_composition{
     border: 2px solid rgba(104, 104, 104, 0.08);

@@ -28,6 +28,7 @@ public class UserDTO  {
     private Date exit_date;
     private Character exit_status;
     private int email_code;
+    private Object addressDTO;
 
     public int getUser_code() {
         return user_code;
@@ -133,4 +134,11 @@ public class UserDTO  {
         this.exit_status = exit_status;
     }
 
+    public Object getAddressDTO() {
+        return addressDTO;
+    }
+
+    public void setAddressDTO(Object addressDTO) {
+        this.addressDTO = addressDTO;
+    }
 }
