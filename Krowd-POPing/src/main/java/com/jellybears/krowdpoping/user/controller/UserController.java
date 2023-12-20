@@ -1,7 +1,9 @@
 package com.jellybears.krowdpoping.user.controller;
 
+
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
+import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
 import com.jellybears.krowdpoping.common.util.SessionUtil;
 import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
 import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
@@ -64,7 +66,8 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/emailCheck")
-    public String EmailCheck(@RequestBody UserDTO userDTO) throws MessagingException, UnsupportedEncodingException {
+    public String EmailCheck(@RequestBody UserDTO userDTO)
+            throws MessagingException, UnsupportedEncodingException {
         String authNum = emailService.sendEmail(userDTO.getEmail());
         return (authNum);
     }
@@ -163,6 +166,32 @@ public class UserController {
         log.info("[UserController] modifyUser========================================================== end");
 
         return "redirect:/user/login";
+    }
+
+    @GetMapping("/delete")
+    public String deleteMember(@ModelAttribute UserDTO user,
+                               RedirectAttributes rttr,
+                               HttpServletRequest request,
+                               HttpServletResponse response) throws UserRemoveException {
+
+        log.info("");
+        log.info("");
+        log.info("[MemberController] deleteMember ========================================================== start");
+
+        String userId = request.getParameter("id");
+        user.setUserId(userId);
+
+        log.info("[UserController] user : " + user);
+        UserService.removeUser(user);
+
+        // 회원 탈퇴후 로그아웃 프로세스 진행
+        SessionUtil.invalidateSession(request, response);
+
+        rttr.addFlashAttribute("message", "회원 탈퇴에 성공하셨습니다. 로그아웃됩니다.");
+
+        log.info("[MemberController] deleteMember ========================================================== end");
+
+        return "redirect:/";
     }
 
 

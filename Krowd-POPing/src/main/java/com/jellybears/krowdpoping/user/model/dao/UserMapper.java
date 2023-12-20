@@ -12,12 +12,12 @@ public interface UserMapper {
     int insertUser(UserDTO user);
     int selectLastInsertUserCode();
     int insertRoletype(int userCode);
-//    int insertEmailCode(EmailDTO emailDTO);
-//    int updateEmailCertificate(EmailandUserDTO emailandUserDTO);
+
     String selectEncryptedPwd(UserDTO user);
     int updateUser(UserDTO user);
     RoleTypeDTO findByUserId(String userId);
     UserDTO selectUser(UserDTO user);
+    int deleteUser(UserDTO user);
 
 
 

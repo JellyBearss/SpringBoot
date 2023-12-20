@@ -1,15 +1,13 @@
 package com.jellybears.krowdpoping.user.model.service;
 
+
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 
+import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
 import com.jellybears.krowdpoping.user.model.dao.UserMapper;
-import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
-import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,8 +56,6 @@ public class UserServiceImpl implements UserService{
         int result1 = mapper.insertRoletype(userCode);
 
 
-
-
         System.out.println("result1.getUserId()========== : ");
 
 
@@ -79,6 +75,17 @@ public class UserServiceImpl implements UserService{
 
         if(!(result > 0)) {
             throw new UserModifyException("회원 정보 수정에 실패하셨습니다.");
+        }
+    }
+
+
+    /*-------------회원 탈퇴------------*/
+    @Override
+    public void removeUser(UserDTO user) throws UserRemoveException {
+        int result = mapper.deleteUser(user);
+
+        if(!(result > 0)) {
+            throw new UserRemoveException("회원 탈퇴에 실패하셨습니다.");
         }
     }
 

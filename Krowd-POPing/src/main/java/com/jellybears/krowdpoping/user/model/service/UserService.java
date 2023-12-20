@@ -3,6 +3,7 @@ package com.jellybears.krowdpoping.user.model.service;
 
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
+import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
 import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
 import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
@@ -20,6 +21,9 @@ public interface UserService {
 
     //회원 정보 수정
     public void modifyUser(UserDTO user) throws UserModifyException;
+
+    /*-------------회원 탈퇴------------*/
+    void removeUser(UserDTO user) throws UserRemoveException;
 
 //    public int insertEmailCode(EmailDTO emailDTO) throws Exception;
 //
