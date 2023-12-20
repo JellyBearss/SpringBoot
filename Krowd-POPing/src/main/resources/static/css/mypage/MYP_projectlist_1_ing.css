@@ -156,6 +156,11 @@ body{
 
 }
 
+.delete_user{
+    margin-top: 30px;
+    font-size: 12px;
+}
+
         /* ==================== 오른쪽 (내용) 부분(content-2)================== */
 
     #wrapper{

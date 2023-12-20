@@ -191,7 +191,7 @@ public class UserController {
 
         log.info("[MemberController] deleteMember ========================================================== end");
 
-        return "redirect:/";
+        return "redirect:/krowdpoping/mainpage";
     }
 
 

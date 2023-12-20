@@ -34,12 +34,14 @@
                         <li><a href="/mypage/followinglist_yes">팔로잉 목록</a></li>
                         <li><a href="/mypage/followerlist_yes">내 팔로워</a></li>
                         <li>알림</li>
+
                     </ul>
                 </ul>
                 <ul class="mplist2">
                     <li>신고</li>
                     <li>고객센터</li>
                     <li>로그아웃</li>
+                    <li class="delete_user" th:onclick="'location.href=\'/user/delete?id='+ @{${ #authentication.getPrincipal().userDTO.getUserId() }} + '\''">회원탈퇴</li>
                 </ul>
 
             </div>
