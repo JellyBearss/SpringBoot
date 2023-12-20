@@ -75,10 +75,24 @@
                 '작성중',
                 1
         )
-<!--    <selectKey resultType="_int" keyProperty="projectCode" keyColumn="PROJECT_CODE" order="AFTER">-->
-<!--        SELECT LAST_INSERT_ID()-->
-<!--    </selectKey>-->
+
     </insert>
+
+
+    <select id="getEditProjectCode" resultType="_int">
+        SELECT project_code
+        FROM project WHERE user_code = #{ userCode } AND edit_status = '작성중'
+    </select>
+
+
+    <select id="getSubCategoryList" resultMap="categoryResultMap">
+        SELECT   category_code
+             ,category_title
+             ,upper_category_code
+        FROM category
+--             WHERE upper_category_code IS NOT NULL
+
+    </select>
 
     <update id="UpdateprojectRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
         UPDATE project
@@ -88,11 +102,11 @@
         WHERE project_code = #{ projectCode }
     </update>
 
-    <update id="updatePriceplanRegister">
-        UPDATE project
-        SET priceplan_code = #{ priceplanCode }
-        WHERE project_code = #{ projectCode }
-    </update>
+<!--    <update id="updatePriceplanRegister">-->
+<!--        UPDATE project-->
+<!--        SET priceplan_code = #{ priceplanCode }-->
+<!--        WHERE project_code = #{ projectCode }-->
+<!--    </update>-->
 
 
     <update id="updatePlanRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO">
@@ -115,21 +129,37 @@
     </update>
 
 
+    <insert id="insertGoods" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.GoodsDTO">
+        INSERT INTO goods(
+            name,
+            quantity,
+            project_code,
+            amount
+        ) VALUES (
+                  #{ goodsName },
+                  #{ quantity },
+                  #{ projectCode },
+                  #{ amount }
+        )
+        <selectKey keyProperty="goodsCode" resultType="_int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
 
-    <select id="getEditProjectCode" resultType="_int">
-        SELECT project_code
-        FROM project WHERE user_code = #{ userCode } AND edit_status = '작성중'
-    </select>
+
+<!--    <insert id="insertItem">-->
+<!--        INSERT INTO item(-->
+<!--            name-->
+<!--        ) VALUES(-->
+<!--                #{itemName}-->
+<!--        );-->
+<!--    </insert>-->
 
 
-    <select id="getSubCategoryList" resultMap="categoryResultMap">
-        SELECT   category_code
-                ,category_title
-                ,upper_category_code
-            FROM category
---             WHERE upper_category_code IS NOT NULL
 
-    </select>
+
+
+
 
 
 <!--    <select id="selectProjectRegByProjectCode" resultMap="projectResultMap">-->
@@ -155,7 +185,11 @@
         WHERE project_code = #{ projectCode }
     </select>
 
-
+<!--    <select id="selectPricePlanRegByProjectCode">-->
+<!--        SELECT priceplan_code-->
+<!--        FROM project-->
+<!--        WHERE project_code = #{ projectCode }-->
+<!--    </select>-->
 
 
     <select id="selectPlanRegByProjectCode" resultMap="planResultMap">
@@ -170,6 +204,7 @@
     </select>
 
 
+
 <!--    파라미터로 projectCode 하나 전달해서 parametertype 생략-->
     <select id="selectInfoRegByProjectCode" resultMap="infoResultMap">
         SELECT
@@ -180,54 +215,6 @@
         FROM project
         WHERE project_code = #{ projectCode }
     </select>
-
-
-
-
-
-
-
-
-
-
-
-<!--    <insert id="registProjectInfo" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">-->
-<!--        INSERT INTO project(-->
-<!--            TITLE,-->
-<!--            CATEGORY_CODE,-->
-<!--            CONTENT-->
-<!--        )-->
-<!--        VALUES (-->
-<!--                   #{ title },-->
-<!--                   #{ categoryCode },-->
-<!--                   #{ content }-->
-
-<!--               )-->
-
-<!--    </insert>-->
-
-
-<!--    펀딩 날짜와 목표금액 입력 페이지-->
-
-<!--    <insert id="registProjectInfo" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">-->
-<!--        INSERT INTO project(-->
-<!--            TITLE,-->
-<!--            CATEGORY_CODE,-->
-<!--            CONTENT-->
-<!--        )-->
-<!--        VALUES (-->
-<!--                   #{ startDate },-->
-<!--                   #{ endDate },-->
-<!--                   #{ targetAmount },-->
-<!--                   #{ totalAmount }-->
-
-<!--               )-->
-<!--        -->
-<!--    </insert>-->
-
-
-
-
 
 
 

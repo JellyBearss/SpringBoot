@@ -21,7 +21,7 @@ public class ProjectDTO {
 
     private String content;
 
-    //private List<ImageDTO> thumbNails;
+//    private List<ThumbnailDTO> thumbNails;
 
 //    private List<TagDTO> tag;
 
