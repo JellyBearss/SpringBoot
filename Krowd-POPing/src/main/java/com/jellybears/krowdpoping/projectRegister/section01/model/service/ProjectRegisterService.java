@@ -3,9 +3,7 @@ package com.jellybears.krowdpoping.projectRegister.section01.model.service;
 
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dao.ProjectRegisterMapper;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.InfoDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
+import com.jellybears.krowdpoping.projectRegister.section01.model.dto.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -136,6 +134,31 @@ public class ProjectRegisterService {
         Integer projectCode = registerMapper.getEditProjectCode(userCode);
 
         return registerMapper.selectPricePlanRegByProjectCode(projectCode);
+
+    }
+
+    public void insertGoodsRegister(GoodsDTO goodsDTO, List<ItemDTO> items, String goodsCount, int userCode) {
+
+        Integer projectCode = registerMapper.getEditProjectCode(userCode);
+        goodsDTO.setProjectCode(projectCode);
+
+
+        System.out.println("goodsDTO = " + goodsDTO);
+
+
+        // goods insert
+//        int goodsResult = registerMapper.insertGoods(goodsDTO);
+//        System.out.println("service에서 goodsResult 성공 = " + goodsResult);
+
+        // item name insert
+//        for(String item : items){
+//            int itemResult = registerMapper.insertItem(name);
+//        }
+
+
+
+
+
 
     }
 }

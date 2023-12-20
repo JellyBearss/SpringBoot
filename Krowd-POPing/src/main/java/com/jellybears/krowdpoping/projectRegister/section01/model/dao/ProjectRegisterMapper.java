@@ -2,6 +2,7 @@ package com.jellybears.krowdpoping.projectRegister.section01.model.dao;
 
 
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
+import com.jellybears.krowdpoping.projectRegister.section01.model.dto.GoodsDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.InfoDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
@@ -40,4 +41,7 @@ public interface ProjectRegisterMapper {
             "        FROM project\n" +
             "        WHERE project_code = #{ projectCode }")
     int selectPricePlanRegByProjectCode(Integer projectCode);
+
+    int insertGoods(GoodsDTO goodsDTO);
+
 }

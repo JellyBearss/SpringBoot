@@ -69,6 +69,13 @@ input[type=text], input[type=number]{
 
 }
 
+
+/* input[type = number] 화살표 없애기 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 textarea{
 
     margin-top: 10px;
@@ -201,7 +208,7 @@ textarea{
     background: #F5F5F5;
 
     width: 350px;
-    min-height: 250px;
+    min-height: 200px;
     height: auto;
 
     border: 3px dashed rgba(132, 41, 218, 0.4);
@@ -232,12 +239,12 @@ textarea{
     background: rgba(237, 233, 254, 0.63);
 
    border: 1px solid #7D1CD8;
-   max-width: 45px;
+   max-width: 40px;
    /* width: auto; */
-   max-height: 25px;
+   max-height: 22px;
    padding-top: 3px;
     padding-left: 3px;
-   margin-top: -5px;
+   margin-top: -6px;
 }
 
 
@@ -426,7 +433,6 @@ textarea{
     
 
 }
-
 
 .premiumCard{
 

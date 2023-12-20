@@ -10,8 +10,8 @@ import lombok.*;
 public class GoodsDTO {
 
     private int goodsCode;
-    private String name;
-    private String quantity;
+    private String goodsName;
+    private int quantity;
     private int projectCode; // project 참조키
     private int amount;
 

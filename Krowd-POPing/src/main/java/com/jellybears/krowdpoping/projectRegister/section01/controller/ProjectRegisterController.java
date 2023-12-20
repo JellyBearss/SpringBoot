@@ -1,11 +1,9 @@
 package com.jellybears.krowdpoping.projectRegister.section01.controller;
 
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.InfoDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.PriceplanDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
+import com.jellybears.krowdpoping.projectRegister.section01.model.dto.*;
 import com.jellybears.krowdpoping.projectRegister.section01.model.service.ProjectRegisterService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,16 +16,21 @@ public class ProjectRegisterController {
 
     private final ProjectRegisterService registerService;
 
+    // 사진
+//    @Value("${image.image-dir}")
+//    private String IMAGE_DIR;
+//
+//    @Value("${spring.servlet.multipart.location}")
+//    private String ROOT_LOCATION;
+
     public ProjectRegisterController(ProjectRegisterService registerService) {
         this.registerService = registerService;
     }
 
 
-    @GetMapping("test")
-    public String testIndex(){
 
-        return "/projectRegister/textIndex";
-    }
+
+
 
 
 
@@ -174,6 +177,32 @@ public class ProjectRegisterController {
 
     @GetMapping("goods")
     public String goodsRegister() {
+
+        return "/projectRegister/projectReg6";
+    }
+
+
+    @PostMapping("goods")
+    public String insertGoodsRegister(@ModelAttribute GoodsDTO goodsDTO,
+                                      @RequestParam String goodsCount){
+
+//        @RequestBody List<ItemDTO> items,
+
+        if("nolimit".equals(goodsCount)){
+            goodsDTO.setQuantity(-1);
+        }
+
+        int userCode = 2; // parameter로 받을 예정
+//        registerService.insertGoodsRegister(goodsDTO, items, goodsCount, userCode);
+
+        System.out.println("goodsDTO = " + goodsDTO);
+        System.out.println("goodsCount = " + goodsCount);
+
+//        for(ItemDTO item : items){
+//            System.out.println("controller에서 받은 items = " + item);
+//
+//        }
+
 
         return "/projectRegister/projectReg6";
     }
