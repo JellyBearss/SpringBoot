@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class ReportProjectDTO {
 
-    private int projectCode;
+    private Long projectCode;
     private String projectTitle;
 
 }

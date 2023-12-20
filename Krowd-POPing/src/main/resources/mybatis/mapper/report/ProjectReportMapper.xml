@@ -28,6 +28,7 @@
         <result property="whetherCompleted" column="whether_completed"/>
         <result property="completedDate" column="completed_date"/>
         <association property="category" resultMap="ProjectReportCategoryResultMap"/>
+        <association property="reportFilesList" resultMap="reportFilesResultMap"/>
 
     </resultMap>
 
@@ -35,6 +36,16 @@
         <id property="code" column="project_report_category_code"/>
         <result property="title" column="project_report_category_title"/>
 
+    </resultMap>
+
+    <resultMap id="reportFilesResultMap" type="com.jellybears.krowdpoping.report.model.dto.ReportFilesDTO">
+        <id property="fileNo" column="file_no"/>
+        <result property="originFileName" column="origin_file_name"/>
+        <result property="ChangedFileName" column="changed_file_name"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="WhetherDeleted" column="whether_deleted"/>
+        <result property="refReportCode" column="ref_project_report_code"/>
+        <result property="savePath" column="save_path"/>
     </resultMap>
 
 
@@ -68,7 +79,7 @@
         values
             (
              2,
-             2,
+             #{ reportProjectCode },
              2,
              #{ reportTitle },
              #{ reportContent },
@@ -77,6 +88,32 @@
              #{ whetherCompleted },
              null
             )
+
+        <selectKey keyProperty="projectReportCode" resultType="long" order="AFTER">
+            select Last_insert_id()
+        </selectKey>
+
+    </insert>
+
+
+    <insert id="insertReportFiles">
+        insert into report_files
+        (
+          origin_file_name,
+          changed_file_name,
+          update_date,
+          whether_deleted,
+          ref_project_report_code,
+          save_path
+        )
+        values (
+                #{ originFileName },
+                #{ ChangedFileName },
+                now(),
+                'N',
+                #{ refReportCode },
+                #{ savePath }
+               )
 
     </insert>
 

@@ -46,7 +46,7 @@
             <!--        writer: <input type="text" name="boardWriter" th:value="${user.id}"><br>-->
             <!--        receiver: <input type="text" name="boardeReciver" th:value="${user.id}"><br>-->
 <!--            신고한 유저: <input type="text" name="reporter"><br> &lt;!&ndash; 인풋에 입력한 값이 네임에 담겨서 넘어간다. 반드시 네임 정해줘야함 &ndash;&gt;-->
-            신고대상 프로젝트 : <input type="text" name="projectCode" th:value="${reportProjectCode}"><br>
+            신고대상 프로젝트 : <input type="text" name="reportProjectCode" th:value="${reportProjectCode}"><br>
 <!--            신고카테고리: <input type="text" name="category"><br>-->
             처리상태: <input type="text" name="whetherCompleted" value="신고접수"><br>
 
@@ -65,8 +65,9 @@
 
 
 <!--                    <i class="fa-solid fa-camera" for="reportFile"></i>-->
-                    <input id="check-file-input" type="file" multiple class="reportFile" name="reportFile" accept="image/"
-                           onchange="loadFile(this)">
+                    <input id="check-file-input1" type="file" multiple class="reportFile" name="reportImg1" accept="image/" onchange="loadFile(this)">
+                    <input id="check-file-input2" type="file" multiple class="reportFile" name="reportImg2" accept="image/" onchange="loadFile(this)">
+                    <input id="check-file-input3" type="file" multiple class="reportFile" name="reportImg3" accept="image/" onchange="loadFile(this)">
                     <button type="submit" class="submit-button">파일업로드</button>
             <input type="submit" value="작성테스트">
 
