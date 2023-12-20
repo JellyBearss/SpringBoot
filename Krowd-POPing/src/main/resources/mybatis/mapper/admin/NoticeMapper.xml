@@ -51,6 +51,7 @@
         )
         VALUES ( #{ title }
                 , #{ updateDate }
+--                 , now()
                 , #{ type }
                 , #{ content }
                 , #{ noticeAdminUserCode }

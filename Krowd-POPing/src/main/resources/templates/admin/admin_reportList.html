@@ -39,11 +39,11 @@
             </nav>
 
             <!-- Default Table -->
-            <table class="table">     
+            <table class="table table-hover" id="listArea">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">신고 유형</th>
+<!--                  <th scope="col">신고 유형</th>-->
                   <th scope="col">제목</th>
                   <th scope="col">신고자 아이디</th>
                   <th scope="col">신고 일자</th>
@@ -51,13 +51,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>프로젝트 신고</td>
-                  <td><a href="/admin/reportDetail">도용 관련 신고</a></td>
-                  <td>qwe123</td>
-                  <td>2023/11/11</td>
-                  <td class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;">처리중</td>
+                <tr th:each="report : ${ reportList }">
+                  <th th:text="${ report.projectReportCode }"></th>
+<!--                  <td>프로젝트 신고</td>-->
+                  <td th:text="${ report.reportTitle }"></td>
+                  <td th:text="${ report.reporter }"></td>
+                  <td th:text="${ report.reportDate }"></td>
+                  <td th:text="${ report.whetherCompleted }" class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;"></td>
                 </tr>
               </tbody>
             </table>

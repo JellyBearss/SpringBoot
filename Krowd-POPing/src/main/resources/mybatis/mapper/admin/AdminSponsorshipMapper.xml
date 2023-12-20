@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.admin.model.dao.AdminSponsorshipMapper">
+
+    <resultMap id="AdminSponsorshipResultMap" type="com.jellybears.krowdpoping.admin.model.dto.AdminSponsorshipDTO">
+        <id property="supportCode" column="support_code"/>
+        <result property="status" column="status"/>
+        <result property="supportDate" column="support_date"/>
+        <result property="goodsCode" column="goods_code"/>
+        <result property="projectCode" column="project_code"/>
+        <result property="user_code" column="user_code"/>
+        <association property="AdminGoodsDTO" resultMap="AdminGoodsResultMap"/>
+        <association property="AdminFundingDTO" resultMap="AdminFundingResultMap"/>
+        <association property="userDTO" resultMap="UserResultMap"/>
+    </resultMap>
+
+    <resultMap id="AdminGoodsResultMap" type="com.jellybears.krowdpoping.admin.model.dto.AdminGoodsDTO">
+        <id property="goodsCode" column="goods_code"/>
+        <result property="name" column="name"/>
+        <result property="quantity" column="quantity"/>
+        <result property="projectCode" column="project_code"/>
+        <result property="amount" column="amount"/>
+    </resultMap>
+
+    <resultMap id="AdminFundingResultMap" type="com.jellybears.krowdpoping.admin.model.dto.AdminFundingDTO">
+        <id property="projectCode" column="PROJECT_CODE"/>
+        <result property="title" column="title"/>
+        <result property="categoryCode" column="category_code"/>
+        <result property="content" column="content"/>
+        <result property="startDate" column="start_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="targetAmount" column="target_amount"/>
+        <result property="totalAmount" column="total_amount"/>
+        <result property="fundingStatus" column="funding_status"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="planContent" column="plan_content"/>
+        <result property="budgetContent" column="budget_content"/>
+        <result property="infoContent" column="info_content"/>
+        <result property="user_code" column="user_code"/>
+        <result property="editStatus" column="edit_status"/>
+        <result property="sumPayAmount" column="sum_pay_amount"/>
+        <result property="judgeStatus" column="judge_status"/>
+        <result property="pricePlanCode" column="priceplan_code"/>
+
+    </resultMap>
+
+    <resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+        <id property="user_code" column="user_code"/>
+        <result property="userId" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="email" column="email"/>
+        <result property="phone_number" column="phone_number"/>
+        <result property="user_status" column="user_status"/>
+        <result property="email_code" column="email_code"/>
+        <result property="join_date" column="join_date" />
+        <result property="exit_status" column="exit_status" />
+        <result property="exit_date" column="exit_date" />
+    </resultMap>
+
+    <select id="selectAllSponsorshipList" resultMap="AdminSponsorshipResultMap">
+        SELECT  /* support_info(PK) */ A.support_code, A.support_date, A.status, /* 결제정보 */
+                /* goods(FK) */ B.goods_code, B.name, B.amount,
+                /* project(FK) */ C.project_code, C.title, /* 펀딩률 */
+                /* user_info(FK) */ D.user_code, D.id
+        FROM support_info A
+        JOIN goods B ON (A.goods_code = B.goods_code)
+        JOIN project C ON (A.project_code = C.project_code)
+        JOIN user_info D ON (A.user_code = D.user_code)
+        ORDER BY support_code DESC
+
+    </select>
+</mapper>

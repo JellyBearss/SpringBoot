@@ -1,5 +1,6 @@
 package com.jellybears.krowdpoping.admin.model.dto;
 
+import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.*;
 
 import java.math.BigInteger;
@@ -17,8 +18,8 @@ public class AdminFundingDTO {
     private String title;
     private int categoryCode;           // (FK)
     private String content;
-    private Timestamp startDate;
-    private Timestamp endDate;
+    private Date startDate;
+    private Date endDate;
     private BigInteger targetAmount;
     private BigInteger totalAmount;
     private String fundingStatus;
@@ -26,10 +27,10 @@ public class AdminFundingDTO {
     private String planContent;
     private String budgetContent;
     private String infoContent;
-    private int userCode;               // (FK)
+    private int user_code;               // (FK)
     private String editStatus;
     private BigInteger sumPayAmount;
     private String judgeStatus;
     private int pricePlanCode;          // (FK)
-
+    private UserDTO userDTO;
 }

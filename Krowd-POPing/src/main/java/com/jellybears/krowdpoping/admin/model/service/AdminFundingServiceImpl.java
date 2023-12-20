@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AdminFundingServiceImpl implements AdminFundingService{
+public class AdminFundingServiceImpl implements AdminFundingService {
 
     private final AdminFundingMapper adminFundingMapper;
 
