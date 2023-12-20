@@ -10,5 +10,6 @@ import java.util.List;
 public interface ProjectService {
     DetailProjectDTO goProjectDetail(Long no);
 
+    DetailGoodsDTO getGoodsDetails(int goodsCode);
 
 }

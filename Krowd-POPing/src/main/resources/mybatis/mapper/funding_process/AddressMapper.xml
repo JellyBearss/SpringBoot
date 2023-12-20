@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jellybears.krowdpoping.funding_process.model.dao.AddressMapper">
+<mapper namespace="com.jellybears.krowdpoping.funding_process.model.dao.FundingMapper">
 
     <insert id="saveAddress" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO">
     insert into delivery_address_info (address_title

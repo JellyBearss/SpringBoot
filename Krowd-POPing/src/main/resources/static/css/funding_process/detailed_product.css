@@ -302,7 +302,6 @@ a {
 }
 .product_category_section{
     color: #767676;
-    width:90px;
 	height:24px;
     left:320px;
 	top:40px;
@@ -385,7 +384,6 @@ a {
 }
 .options{
     color: #767676;
-    width:528px;
 	height:30px;
 	position:absolute;
 	left:320px;
@@ -393,6 +391,12 @@ a {
     font-family:Noto Sans KR;
 	text-align:left;
 	font-size:13px;
+}
+.option_name{
+    color: #767676;
+    font-family:Noto Sans KR;
+    text-align:left;
+    font-size:13px;
 }
 .product_composition{
     border: 2px solid rgba(104, 104, 104, 0.08);

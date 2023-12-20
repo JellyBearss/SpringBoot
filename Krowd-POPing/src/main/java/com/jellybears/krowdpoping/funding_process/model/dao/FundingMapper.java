@@ -4,7 +4,7 @@ import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface AddressMapper {
+public interface FundingMapper {
 
     int saveAddress(AddressDTO addressDTO);
 

@@ -96,7 +96,10 @@
 
     </select>
 
-
+<select id="getGoodsDetails" resultMap="detailGoodsResultMap">
+    select name, amount from goods
+    WHERE goods_code = #{goodsCode}
+</select>
 
 
 </mapper>

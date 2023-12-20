@@ -11,6 +11,6 @@ import java.util.List;
 @Mapper
 public interface ProjectMapper {
     DetailProjectDTO goProjectDetail(Long no);
-
+    DetailGoodsDTO getGoodsDetails(int goodsCode);
 
 }
