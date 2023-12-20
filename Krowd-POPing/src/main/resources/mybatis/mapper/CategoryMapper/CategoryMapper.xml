@@ -82,4 +82,31 @@
         order by project_code
     </select>
 
+
+    <select id="getDigitProjectList" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        where category_code = 2
+        order by project_code desc
+
+    </select>
+
+
+    <select id="getSubDigitProjectListByCategoryId" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        where category_code = #{ categoryId }
+        order by project_code desc
+    </select>
+
 </mapper>

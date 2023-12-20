@@ -39,4 +39,15 @@ public class CategoryService {
 
         return categoryMapper.getSubProjectListByCategoryId(categoryId);
     }
+
+    //전체 디지털액세서리카테고리 조회 메소드
+    public List<CaProjectDTO> getDigitProjectList() {
+
+        return categoryMapper.getDigitProjectList();
+    }
+
+    public List<CaProjectDTO> getSubDigitProjectListByCategoryId(Integer categoryId) {
+
+        return categoryMapper.getSubDigitProjectListByCategoryId(categoryId);
+    }
 }

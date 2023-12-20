@@ -63,7 +63,7 @@ public class CategoryController {
     @GetMapping("category-acc")
     public String goCategoryAcc(@RequestParam(value="categoryId", required = false, defaultValue = "1") Integer categoryId, Model model){
 
-        // 카테고리 아이디가 1이면, 즉 테이블에서 액세서리 전체이면 아래 구문 실행. 전체조회.
+        // 카테고리 아이디가 1이면, 즉 테이블에서 액세서리 전체이면 아래 구문 실행. 액세서리 전체 조회.
         if(categoryId != null && categoryId == 1) {
             List<CaProjectDTO> accProjectList = categoryService.getAccProjectList();
             model.addAttribute("accProjectList", accProjectList);
@@ -86,7 +86,23 @@ public class CategoryController {
     }
 
     @GetMapping("category-digit")
-    public String goCategoryDigit(){
+    public String goCategoryDigit(@RequestParam(value = "categoryId", required = false, defaultValue = "2") Integer categoryId, Model model){
+
+        if(categoryId != null && categoryId == 2){
+            List<CaProjectDTO> digitProjectList = categoryService.getDigitProjectList();
+            model.addAttribute("digitProjectList", digitProjectList);
+            model.addAttribute("categoryId", categoryId);
+
+            System.out.println("digitProjectList = " + digitProjectList);
+            System.out.println("categoryId = " + categoryId);
+        }else {
+            List<CaProjectDTO> subDigitProjectList = categoryService.getSubDigitProjectListByCategoryId(categoryId);
+            model.addAttribute("subDigitProjectList", subDigitProjectList);
+            model.addAttribute("categoryId", categoryId);
+
+            System.out.println("subDigitProjectList = " + subDigitProjectList);
+            System.out.println("categoryId = " + categoryId);
+        }
 
         return "/category/categorypage3-digit";
     }

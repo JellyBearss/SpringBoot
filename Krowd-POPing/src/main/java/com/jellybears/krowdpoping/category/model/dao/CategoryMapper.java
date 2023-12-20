@@ -19,4 +19,10 @@ public interface CategoryMapper {
 
     //액세서리의 카테고리 아이디에 따른 세부카테고리 검색
     List<CaProjectDTO> getSubProjectListByCategoryId(Integer categoryId);
+
+    //디지털 카테고리 전체 검색
+    List<CaProjectDTO> getDigitProjectList();
+
+    //디지털 카테고리 아이디에 따른 세부카테고리 검색
+    List<CaProjectDTO> getSubDigitProjectListByCategoryId(Integer categoryId);
 }
