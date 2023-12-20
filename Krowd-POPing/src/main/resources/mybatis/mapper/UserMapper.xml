@@ -78,7 +78,6 @@
                  INNER JOIN ROLE_TYPE C ON A.USER_CODE = C.USER_CODE
                  INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE
         WHERE A.USER_STATUS ='일반'
-            OR A.USER_STATUS='경고'
           AND A.ID = #{ userId }
     </select>
 

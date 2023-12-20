@@ -194,6 +194,11 @@ public class UserController {
         return "redirect:/krowdpoping/mainpage";
     }
 
+    @GetMapping("findId")
+    public String FindId() {
+        return "user/findPwd";
+    }
+
 
 }
 
