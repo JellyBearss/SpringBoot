@@ -3,6 +3,7 @@ package com.jellybears.krowdpoping.projectRegister.section02.model.service;
 import com.jellybears.krowdpoping.projectRegister.section02.model.dao.CreatorMapper;
 import com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO;
 import com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO;
+import com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorVO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,14 @@ public class CreatorService{
 
     private final CreatorMapper creatorMapper;
 
-    public String getCreator() {
-        String creatorDTO = creatorMapper.selectCreator();
-       // creatorDTO.setAddress("asdf");
-
+    public CreatorDTO getCreator(CreatorDTO vo) {
+        CreatorDTO creatorDTO = creatorMapper.selectCreator(vo);
         return creatorDTO;
+    }
+
+    public CreatorVO selectCreatorTmp(CreatorVO vo) {
+        CreatorVO CreatorVO = creatorMapper.selectCreatorTmp(vo);
+        return CreatorVO;
     }
 
     public int updateCreator(
@@ -28,7 +32,7 @@ public class CreatorService{
     ) throws  Exception{
         CreatorDTO regVO = new CreatorDTO();
         CreatorProfileDTO files = new CreatorProfileDTO();
-        files.setUser_code(vo.getUser_code());
+        files.setUserCode(vo.getUserCode());
 
         int i = creatorMapper.updateCreator(vo);
 
@@ -36,8 +40,12 @@ public class CreatorService{
         FileService fileService = new FileService();
 
         if(businessAttach != null && businessAttach.getSize() > 0 ) {
-            files = fileService.uploadFile(businessAttach, vo.getUser_code(), request);
-            files.setFile_type("business");
+            files.setUserCode(vo.getUserCode());
+            files.setFileType("business");
+            creatorMapper.deleteCreatorProfile(files);
+
+            files = fileService.uploadFile(businessAttach, vo.getUserCode(), request);
+            files.setFileType("business");
             creatorMapper.insertCreatorProfile(files);
         }
 
@@ -51,9 +59,10 @@ public class CreatorService{
     ) throws  Exception{
         CreatorDTO regVO = new CreatorDTO();
         CreatorProfileDTO profile = new CreatorProfileDTO();
-        profile.setUser_code(vo.getUser_code());
-        creatorMapper.deleteCreatorProfile(profile);
-        creatorMapper.deleteCreator(vo);
+        profile.setUserCode(vo.getUserCode());
+        profile.setFileType("profile");
+//        creatorMapper.deleteCreatorProfile(profile);
+//        creatorMapper.deleteCreator(vo);
 
         int i = creatorMapper.insertCreator(vo);
 
@@ -61,12 +70,17 @@ public class CreatorService{
         FileService fileService = new FileService();
 
         if(profileImg != null && profileImg.getSize() > 0 ) {
-            profile = fileService.uploadFile(profileImg, vo.getUser_code(), request);
-            profile.setFile_type("profile");
+            profile = fileService.uploadFile(profileImg, vo.getUserCode(), request);
+            profile.setFileType("profile");
             creatorMapper.insertCreatorProfile(profile);
         }
 
         return i;
+    }
+
+
+    public CreatorProfileDTO selectFilesInfo(CreatorProfileDTO vo){
+        return creatorMapper.selectFilesInfo(vo);
     }
 
 //    public void setCreator(CreatorDTO creatorDTO) {

@@ -8,28 +8,37 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CreatorDTO extends CreatorProfileDTO {
+public class CreatorDTO {
 
-    private String cr_type;
-    private String business_num;
+    private String creatorNm;
+    private int crType;
+    private String businessNum;
     private String address;
-    int user_code;
+    int userCode;
     private String phone;
     private String email;
     private String introduce;
-    private String identi_num;
-    private String acc_user_nm;
-    private String ceo_nm;
-    private int issue_type;
+    private String identiNum;
+    private String accUserNm;
+    private String ceoNm;
+    private int issueType;
+
+    private boolean isNew;
 
     @Builder
-    public CreatorDTO(String cr_type,String business_num,String address,int user_code,String phone,String email,String introduce) {
-        this.cr_type=cr_type;
-        this.business_num=business_num;
+    public CreatorDTO(int crType,String businessNum,String address,int userCode,String phone,String email,String introduce
+            , String identiNum, String accUserNm, String ceoNm, int issueType, String creatorNm) {
+        this.crType=crType;
+        this.businessNum=businessNum;
         this.address=address;
-        this.user_code=user_code;
+        this.userCode=userCode;
         this.phone=phone;
         this.email=email;
         this.introduce=introduce;
+        this.identiNum=identiNum;
+        this.accUserNm=accUserNm;
+        this.ceoNm=ceoNm;
+        this.issueType=issueType;
+        this.creatorNm=creatorNm;
     }
 }
