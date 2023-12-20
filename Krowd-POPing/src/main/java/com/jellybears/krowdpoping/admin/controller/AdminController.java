@@ -1,12 +1,14 @@
 package com.jellybears.krowdpoping.admin.controller;
 
 import com.jellybears.krowdpoping.admin.model.dto.AdminFundingDTO;
+import com.jellybears.krowdpoping.admin.model.dto.AdminSponsorshipDTO;
 import com.jellybears.krowdpoping.admin.model.dto.NoticeDTO;
 import com.jellybears.krowdpoping.admin.model.service.*;
 import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeModifyException;
 import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeRegistException;
 import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeRemoveException;
 import com.jellybears.krowdpoping.inquiry.model.dto.InquiryDTO;
+import com.jellybears.krowdpoping.report.model.dto.ProjectReportDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,14 +28,20 @@ public class AdminController {
     private final AdminUserService adminUserService;
     private final AdminInquiryService adminInquiryService;
     private final AdminFundingService adminFundingService;
+    private final AdminReportService adminReportService;
+    private final AdminSponsorshipService adminSponsorshipService;
+    private final AdminProjectService adminProjectService;
 
     @Autowired
-    public AdminController(NoticeService noticeService, AdminUserService adminUserService, AdminInquiryService adminInquiryService, AdminFundingService adminFundingService) {   // 생성자 의존성 주입
+    public AdminController(NoticeService noticeService, AdminUserService adminUserService, AdminInquiryService adminInquiryService, AdminFundingService adminFundingService, AdminReportService adminReportService, AdminSponsorshipService adminSponsorshipService, AdminProjectService adminProjectService) {   // 생성자 의존성 주입
 
         this.noticeService = noticeService; // 주입받은 noticeService 객체를 필드에 할당
         this.adminUserService = adminUserService;
         this.adminInquiryService = adminInquiryService;
         this.adminFundingService = adminFundingService;
+        this.adminReportService = adminReportService;
+        this.adminSponsorshipService = adminSponsorshipService;
+        this.adminProjectService = adminProjectService;
     }
     /* ----------------------------------------------------------------------------------------------------------------- */
     /* 회원 목록 */
@@ -71,13 +79,19 @@ public class AdminController {
     /* ----------------------------------------------------------------------------------------------------------------- */
     /* 후원 목록 */
     @GetMapping("sponsorshipList")
-    public String goSponsorshipList() {
+    public String goSponsorshipList(Model model) {
+
+        List<AdminSponsorshipDTO> sponsorshipList = adminSponsorshipService.selectAllSponsorshipList();
+        model.addAttribute("sponsorshipList", sponsorshipList);
         return "/admin/admin_sponsorshipList";
     }
     /* ----------------------------------------------------------------------------------------------------------------- */
     /* 프로젝트 목록 */
     @GetMapping("projectList")
-    public String goProjectList() {
+    public String goProjectList(Model model) {
+
+        List<AdminFundingDTO> projectList = adminProjectService.selectAllProjectList();
+        model.addAttribute("projectList", projectList);
         return "/admin/admin_projectList";
     }
     /* 프로젝트 상세 */
@@ -160,7 +174,10 @@ public class AdminController {
     /* ----------------------------------------------------------------------------------------------------------------- */
     /* 신고 목록 */
     @GetMapping("reportList")
-    public String goReportList() {
+    public String goReportList(Model model) {
+
+        List<ProjectReportDTO> reportList = adminReportService.selectAllReportList();
+        model.addAttribute("reportList", reportList);
         return "/admin/admin_reportList";
     }
     /* 신고 상세 */

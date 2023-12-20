@@ -4,4 +4,57 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.admin.model.dao.AdminReportMapper">
 
+    <resultMap id="AdminReportResultMap" type="com.jellybears.krowdpoping.admin.model.dto.AdminReportDTO">
+        <id property="projectReportCode" column="project_report_code"/>
+        <result property="reportTitle" column="report_title"/>
+        <result property="reportContent" column="report_content"/>
+        <result property="reporter" column="user_code"/>
+        <result property="reportProjectCode" column="project_code"/>
+<!--        <result property="category" column="report_category"/>-->
+        <result property="reportDate" column="report_date"/>
+        <result property="whetherDeleted" column="whether_deleted"/>
+        <result property="whetherCompleted" column="whether_completed"/>
+        <result property="completedDate" column="completed_date"/>
+
+        <result property="reportAdminUserCode" column="USER_CODE"/>
+
+<!--        <result property="projectCode" column="project_report_category_code"/>-->
+<!--        <result property="projectTitle" column="project_report_category_title"/>-->
+
+        <association property="userDTO" resultMap="UserResultMap"/>
+<!--        <association property="ProjectReportCategoryDTO" resultMap="ProjectReportCategoryResultMap"/>-->
+    </resultMap>
+
+    <resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO" >
+        <id property="user_code" column="user_code"/>
+        <result property="userId" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="nickname" column="nickname"/>
+        <result property="birthday" column="birthday"/>
+        <result property="email" column="email"/>
+        <result property="phone_number" column="phone_number"/>
+        <result property="user_status" column="user_status"/>
+    </resultMap>
+
+    <resultMap id="ProjectReportCategoryResultMap" type="com.jellybears.krowdpoping.report.model.dto.ProjectReportCategoryDTO">
+        <id property="code" column="project_report_category_code"/>
+        <result property="title" column="project_report_category_title"/>
+    </resultMap>
+
+    <!--신고코드, 신고유형, 제목, 신고자 아이디, 신고일자, 신고상태-->
+        <select id="selectAllReportList" resultMap="AdminReportResultMap">
+            SELECT A.project_report_code
+--                 , project_report_category_title 일단 킵..
+                , A.report_title
+                , A.user_code
+                , B.id
+                , A.report_date
+                , A.whether_completed
+            FROM PROJECT_REPORT A
+            JOIN USER_INFO B ON (A.USER_CODE = B.USER_CODE)
+    --         join project_report_category B on A.report_category = B.project_report_category_code
+            ORDER BY report_date DESC
+
+        </select>
 </mapper>

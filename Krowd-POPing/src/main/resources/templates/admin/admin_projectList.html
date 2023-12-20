@@ -41,7 +41,8 @@
                   <th scope="col">#</th>
                   <th scope="col">프로젝트 명칭</th>
                   <th scope="col">신청일</th>
-                  <th scope="col">프로젝트 기간</th>
+                  <th scope="col">프로젝트 시작일</th>
+                  <th scope="col">프로젝트 종료일</th>
                   <th scope="col">창작자 아이디</th>
                   <th scope="col">이메일</th>
                   <th scope="col">프로젝트 상태</th>
@@ -52,9 +53,10 @@
                   <th th:text="${ project.projectCode }"></th>
                   <td th:text="${ project.title }"></td>
                   <td th:text="${ project.updateDate }"></td>
-                  <td th:text="${ project.startDate } - ${ project.endDate }"></td>
-                  <td th:text="${ user_info.id }"></td>
-                  <td th:text="${ user_info.email }"></td>
+                  <td th:text="${ project.startDate }"></td>
+                  <td th:text="${ project.endDate }"></td>
+                  <td th:text="${ project.userDTO.userId }"></td>
+                  <td th:text="${ project.userDTO.email }"></td>
                   <td th:text="${ project.judgeStatus }" class="badge bg-danger" style="color: white; display: flex; justify-content: center; align-items: center; margin: 6px;"></td>
                 </tr>
               </tbody>

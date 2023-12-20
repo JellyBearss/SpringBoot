@@ -42,24 +42,24 @@
                   <th scope="col">펀딩 명칭</th>
                   <th scope="col">선물명</th>
                   <th scope="col">후원자 아이디</th>
-                  <th scope="col">펀딩률</th>
+<!--                  <th scope="col">펀딩률</th>-->
                   <th scope="col">금액</th>
                   <th scope="col">결제일</th>
-                  <th scope="col">결제 정보</th>
+<!--                  <th scope="col">결제 정보</th>-->
                   <th scope="col">결제 상태</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>크리스마스 단 하루를 위해 1년을 준비한 장인정신 슈톨렌</td>
-                  <td>델리타스 슈톨렌 3종 세트</td>
-                  <td>qwe456</td>
-                  <td>1357%</td>
-                  <td>45,900원</td>
-                  <td>2023/11/11</td>
-                  <td>카카오페이</td>
-                  <td class="badge bg-success" style="display: flex; justify-content: center; align-items: center; color: white; margin: 6px;">결제 완료</td>
+                <tr th:each="sponsorship : ${ sponsorshipList }">
+                  <th th:text="${ sponsorship.supportCode }"></th>
+                  <td th:text="${ sponsorship.adminFundingDTO.title }"></td>
+                  <td th:text="${ sponsorship.adminGoodsDTO.name }"></td>
+                  <td th:text="${ sponsorship.userDTO.userId }"></td>
+<!--                  <td>1357%</td>-->
+                  <td th:text="${ sponsorship.adminGoodsDTO.amount }"></td>
+                  <td th:text="${ sponsorship.supportDate }"></td>
+<!--                  <td>카카오페이</td>-->
+                  <td th:text="${ sponsorship.status }" class="badge bg-success" style="display: flex; justify-content: center; align-items: center; color: white; margin: 6px;"></td>
                 </tr>
               </tbody>
             </table>
