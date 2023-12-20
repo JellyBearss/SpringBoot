@@ -27,4 +27,16 @@ public class CategoryService {
 
         return categoryMapper.AllProjectList();
     }
+
+    //전체 액세서리카테고리 조회 메소드
+    public List<CaProjectDTO> getAccProjectList() {
+
+        return categoryMapper.AccProjectList();
+    }
+
+    //액세서리에서 서브카테고리 조회 메소드
+    public List<CaProjectDTO> getSubProjectListByCategoryId(Integer categoryId) {
+
+        return categoryMapper.getSubProjectListByCategoryId(categoryId);
+    }
 }

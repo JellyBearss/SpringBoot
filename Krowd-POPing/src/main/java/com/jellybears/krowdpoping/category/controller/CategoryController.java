@@ -3,11 +3,13 @@ package com.jellybears.krowdpoping.category.controller;
 import com.jellybears.krowdpoping.category.model.dto.CaProjectDTO;
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
 import com.jellybears.krowdpoping.category.model.service.CategoryService;
+import com.jellybears.krowdpoping.project.model.service.ProjectService;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.lang.model.SourceVersion;
 import java.util.List;
@@ -33,8 +35,52 @@ public class CategoryController {
         return "/category/categorypage1-all";
     }
 
+    /**
+     * 액세서리 카테고리 전체 목록 조회 메소드
+     * @param model
+     * @return
+     */
+//    @GetMapping("category-acc")
+//    public String goCategoryAcc(Model model){
+//
+//        List<CaProjectDTO> accProjectList = categoryService.getAccProjectList();
+//        model.addAttribute("accProjectList", accProjectList);
+//
+//        System.out.println("accProjectList = " + accProjectList);
+//
+//        return "/category/categorypage2-acc";
+//    }
+
+    /**
+     * 액세서리 카테고리에서 세부카테고리도 조회하는 메소드 작성중
+     * @param categoryId ?categoryId=값 형태로 참조하기 위함.
+     *                   required = false : 쿼리 파라미터가 필수가 아님. categoryId가 요청에 포함되지 않아도 호출
+     *                   defaultValue = "1" : categoryId 파라미터가 요청에 포함되지 않았을 때의 기본값. 1은 액세서리 카테고리이다.
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("category-acc")
-    public String goCategoryAcc(){
+    public String goCategoryAcc(@RequestParam(value="categoryId", required = false, defaultValue = "1") Integer categoryId, Model model){
+
+        // 카테고리 아이디가 1이면, 즉 테이블에서 액세서리 전체이면 아래 구문 실행. 전체조회.
+        if(categoryId != null && categoryId == 1) {
+            List<CaProjectDTO> accProjectList = categoryService.getAccProjectList();
+            model.addAttribute("accProjectList", accProjectList);
+            model.addAttribute("categoryId" ,categoryId);
+
+            System.out.println("accProjectList = " + accProjectList);
+            System.out.println("categoryId = " + categoryId);
+        }else { //세부 카테고리 데이터 요청
+
+            List<CaProjectDTO> subProjectList = categoryService.getSubProjectListByCategoryId(categoryId);
+            model.addAttribute("subProjectList", subProjectList);
+            model.addAttribute("categoryId", categoryId);
+
+            System.out.println("subProjectList = " + subProjectList);
+            System.out.println("categoryId = " + categoryId);
+
+        }
 
         return "/category/categorypage2-acc";
     }
