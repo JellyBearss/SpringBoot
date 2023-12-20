@@ -10,10 +10,11 @@ import java.sql.Date;
 @ToString
 public class ReportFilesDTO {
 
-    private int fileNo; //파일번호
+    private Long fileNo; //파일번호
     private String originFileName; //원본파일명
     private String ChangedFileName; //변경된 파일명
     private Date updateDate; //업로드일자
     private String WhetherDeleted; //삭제여부
-    private int reportType; //신고유형
+    private Long refReportCode; //프로젝트 신고 코드 참조
+    private String savePath; //저장경로
 }

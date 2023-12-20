@@ -11,5 +11,12 @@ import java.util.List;
 public interface CategoryMapper {
     List<CategoryDTO> AllCategoryList();
 
+    //전체 프로젝트
     List<CaProjectDTO> AllProjectList();
+
+    //액세서리 검색
+    List<CaProjectDTO> AccProjectList();
+
+    //액세서리의 카테고리 아이디에 따른 세부카테고리 검색
+    List<CaProjectDTO> getSubProjectListByCategoryId(Integer categoryId);
 }

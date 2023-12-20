@@ -13,11 +13,11 @@ import java.util.List;
 @ToString
 public class ProjectReportDTO {
 
-    private int projectReportCode; //게시물번호
+    private Long projectReportCode; //게시물번호
     private String reportTitle; //제목
     private String reportContent; //내용
     private String reporter; //신고한 유저 - 유저 코드에서 가져옴
-    private int reportProjectCode; //신고대상 프로젝트 - 프로젝트 코드에서 가져옴
+    private Long reportProjectCode; //신고대상 프로젝트 - 프로젝트 코드에서 가져옴
     private Date reportDate; //신고일자
     private String whetherDeleted; //삭제여부
     private String whetherCompleted; //처리상태

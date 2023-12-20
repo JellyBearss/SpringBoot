@@ -54,4 +54,32 @@
 
     </select>
 
+    <select id="AccProjectList" resultMap="caProjectResultMap">
+
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        where category_code = 1
+        order by project_code
+
+
+    </select>
+
+    <select id="getSubProjectListByCategoryId" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        where category_code = #{ categoryId }
+--         where category_code = 8
+        order by project_code
+    </select>
+
 </mapper>
