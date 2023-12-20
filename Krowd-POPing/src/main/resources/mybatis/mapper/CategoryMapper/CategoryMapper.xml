@@ -77,8 +77,8 @@
             B.nickname
         from project A
                  join user_info B on A.user_code = B.user_code
---         where category_code = #{ categoryId }
-        where category_code = 8
+        where category_code = #{ categoryId }
+--         where category_code = 8
         order by project_code
     </select>
 

@@ -141,15 +141,17 @@
                 <div class="cate-dropdown">
                     <span class="cateBtn">세부 카테고리</span>
                     <div class="cate-content">
-                        <a href="">키링</a>
-                        <a href="">지비츠</a>
-                        <a href="">뱃지</a>
+                        <a onclick="changeCategory(8)">키링</a>
+                        <a onclick="changeCategory(9)">지비츠</a>
+                        <a onclick="changeCategory(10)">뱃지</a>
                     </div>
                 </div>
             </div>
 
             <script>
-
+                function changeCategory(categoryId){
+                    window.location.href = '/category/category-acc?categoryId=' + categoryId;
+                }
             </script>
 
             <div class="cateMiddle">
