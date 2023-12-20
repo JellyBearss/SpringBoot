@@ -20,10 +20,27 @@ window.onload = function() {
             location.href = "/user/logout";
         }
     }
-    if(document.getElementById("duplicationCheck")) {
-
-        const $duplication = document.getElementById("duplicationCheck");
-
+    // if(document.getElementById("duplicationCheck")) {
+    //
+    //     const $duplication = document.getElementById("duplicationCheck");
+    //     $('#duplicationCheck').click(function() {
+    //
+    //         let userId = $("#userId").val().trim();
+    //
+    //         $.ajax({
+    //             url: "/user/idDupCheck",
+    //             type: "POST",
+    //             contentType: "application/json; charset=UTF-8",
+    //             data: JSON.stringify({userId: userId}),
+    //             success: function(data){
+    //                 alert(data);
+    //             },
+    //             error: function(error) {
+    //                 alert(error);
+    //             }
+    //         });
+    //     });
+    // }
         /* fetch API 사용 */
         // $duplication.onclick = function() {
         //     let memberId = document.getElementById("memberId").value.trim();
@@ -42,24 +59,7 @@ window.onload = function() {
         // }
 
         /* Jquery ajax 사용 */
-        $('#duplicationCheck').click(function() {
 
-            let userId = $("#userId").val().trim();
-
-            $.ajax({
-                url: "/user/idDupCheck",
-                type: "POST",
-                contentType: "application/json; charset=UTF-8",
-                data: JSON.stringify({userId: userId}),
-                success: function(data){
-                    alert(data);
-                },
-                error: function(error) {
-                    alert(error);
-                }
-            });
-        });
-    }
 
     if(document.getElementById("updateUser")) {
         const $update = document.getElementById("updateUser");

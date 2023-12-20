@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/loginandsignup/signup_2.css">
-    <script type="text/javascript" th:src="@{/js/event.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/css/js/event.js}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>회원가입</title>
@@ -83,14 +84,37 @@
                             <div id="type_id_label">아이디:</div>
                             <input type="text" id="userId" name="userId" placeholder="영어,숫자 조합 4~16자리" maxlength="16" required>
 <!--                        <a th:action="@{/user/duplicationCheck}">-->
-                            <input type="button" value="중복확인" id="duplicationCheck" name="duplicationCheck"></a>
+                            <input type="button" value="중복확인" id="duplicationCheck" name="duplicationCheck">
+                            <script>
+                                if(document.getElementById("duplicationCheck")) {
+
+                                    const $duplication = document.getElementById("duplicationCheck");
+                                    $('#duplicationCheck').click(function() {
+
+                                        let userId = $("#userId").val().trim();
+
+                                        $.ajax({
+                                            url: "/user/idDupCheck",
+                                            type: "POST",
+                                            contentType: "application/json; charset=UTF-8",
+                                            data: JSON.stringify({userId: userId}),
+                                            success: function(data){
+                                                alert(data);
+                                            },
+                                            error: function(error) {
+                                                alert(error);
+                                            }
+                                        });
+                                    });
+                                }
+                            </script>
                         </div>
                     </div>
 
                     <div class="password-container">
                         <div class="password-info">
                             <span class="password-description">비밀번호: </span>
-                            <input type="password" class="password-input" id="password" name="password" placeholder="영어,숫자 조합 8~20자리" maxlength="20" required>
+                            <input type="password" class="password-input" id="password" oninput="pwCheck()" name="password" placeholder="영어,숫자 조합 8~20자리" maxlength="20" required>
                             <span class="toggle-password" onclick="togglePasswordVisibility('password')">
                                 <img src="/icon/show.png" alt="eye-open-icon">
                             </span>
@@ -100,14 +124,14 @@
                     <div class="password-container">
                         <div class="password-info">
                             <span class="password-description">비밀번호 확인:</span>
-                            <input type="password" class="password-input" id="userPwd2" name="userPwd2" placeholder="비밀번호를 다시 입력해주세요." maxlength="20">
+                            <input type="password" class="password-input" id="userPwd2" oninput="pwCheck()" name="userPwd2" placeholder="비밀번호를 다시 입력해주세요." maxlength="20">
                             <span class="toggle-password" onclick="togglePasswordVisibility('userPwd2')">
                                 <img src="/icon/show.png" alt="eye-open-icon">
                             </span>
 
                         </div>
-
                     </div>
+                    <span id="chkPW"></span>
                 </div>
 
                 <div id="edittitle-2">회원정보</div>
@@ -127,13 +151,71 @@
                     <div id="type_email">
                         <label for="email">이메일:<span class="mandatory">*</span></label>
                         <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
-                        <input type="button" class="send_auth" id="mail-Check-Btn" value="인증번호 요청">
+                        <button type="button" class="send_auth" id="send_auth" name="send_auth" onclick="sendNumber()" >인증번호 요청</button>
                     </div>
 
-                    <div class="type_auth_num">
-                        <label for="auth_num" id="type_authnum_label">인증번호:<span class="mandatory">*</span></label>
-                        <input type="text" id="auth_num" name="auth_num" placeholder="인증번호 6자리를 입력해주세요" required>
+                    <div class="type_auth_num" id="mail_number">
+                        <label for="authNum" id="type_authnum_label">인증번호:<span class="mandatory">*</span></label>
+                        <input type="text" id="authNum" class="auth_num" name="authNum" placeholder="인증번호 8자리를 입력해주세요" maxlength="8" required>
+                        <button type="button" name="confirmBtn" id="confirmBtn" onclick="confirmNumber()">이메일 인증</button>
+                        <input type="text" id="Confirm" name="Confirm" style="display: none" value="">
                     </div>
+            <script type="text/javascript">
+                function sendNumber(){
+                    $("#mail_number").css("display","block");
+                    var email = $("#email").val();
+
+                    $.ajax({
+                        url: "/user/emailCheck",
+                        type: "post",
+                        contentType: "application/json; charset=UTF-8",
+                        data: JSON.stringify({email: email}),
+                        success: function (data) {
+                            alert("인증번호 발송");
+                            $("#Confirm").attr("value", data);
+                        },
+                        error: function () {
+                            alert("이메일 전송에 실패했습니다.");
+                        }
+                    });
+                }
+                function confirmNumber(){
+                    var number1 = $("#authNum").val();
+                    var number2 = $("#Confirm").val();
+
+                    if(number1 == number2){
+                        alert("인증되었습니다.");
+                    }else{
+                        alert("번호가 다릅니다.");
+                    }
+                }
+
+
+            </script>
+
+
+<!--                    <script type="text/javascript">-->
+<!--                        //인증하기 버튼을 눌렀을 때 동작-->
+<!--                        $("#send_auth").click(function() {-->
+<!--                            const email = $("#email").val(); //사용자가 입력한 이메일 값 얻어오기-->
+
+<!--                            //Ajax로 전송-->
+<!--                            $.ajax({-->
+<!--                                url : './EmailAuth',-->
+<!--                                data : {-->
+<!--                                    email : email-->
+<!--                                },-->
+<!--                                type : 'POST',-->
+<!--                                dataType : 'json',-->
+<!--                                success : function(result) {-->
+<!--                                    console.log("result : " + result);-->
+<!--                                    $("#auth_num").attr("disabled", false);-->
+<!--                                    code = result;-->
+<!--                                    alert("인증 코드가 입력하신 이메일로 전송 되었습니다.");-->
+<!--                                }-->
+<!--                            }); //End Ajax-->
+<!--                        });-->
+<!--                    </script>-->
 <!--                        <label for="emailProvider" name="at">@</label>-->
 <!--                        <select id="emailProvider" name="emailProvider">-->
 <!--                            <option value="naver.com">naver.com</option>-->
@@ -221,24 +303,37 @@
                 toggleButton.innerHTML = '<img src="/icon/show.png" alt="eye-open-icon">';
             }
         }
+        function pwCheck() {
+            const password = document.getElementById('password').value;
+            const userPwd2 = document.getElementById('userPwd2').value;
+            const chkPW = document.getElementById('chkPW');
+
+            if (password === userPwd2) {
+                chkPW.textContent = '비밀번호가 일치합니다';
+                chkPW.style.color = 'green';
+            } else {
+                chkPW.textContent = '비밀번호가 불일치합니다. ';
+                chkPW.style.color = 'red';
+            }
+        }
 
 
-        $('#mail-Check-Btn').click(function() {
-            const email = $('#email').val() // 이메일 주소값 얻어오기!
-            console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
-            const checkInput = $('.mail-check-input') // 인증번호 입력하는곳
-
-            $.ajax({
-                type : 'get',
-                url : '<c:url value ="/user/mailCheck?email="/>'+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
-                success : function (data) {
-                    console.log("data : " +  data);
-                    checkInput.attr('disabled',false);
-                    code =data;
-                    alert('인증번호가 전송되었습니다.')
-                }
-            }); // end ajax
-        }); // end send eamil
+        // $('#mail-Check-Btn').click(function() {
+        //     const email = $('#email').val() // 이메일 주소값 얻어오기!
+        //     console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
+        //     const checkInput = $('.mail-check-input') // 인증번호 입력하는곳
+        //
+        //     $.ajax({
+        //         type : 'get',
+        //         url : '<c:url value ="/user/mailCheck?email="/>'+email, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+        //         success : function (data) {
+        //             console.log("data : " +  data);
+        //             checkInput.attr('disabled',false);
+        //             code =data;
+        //             alert('인증번호가 전송되었습니다.')
+        //         }
+        //     }); // end ajax
+        // }); // end send email
         
 
         // var customEmailDiv = document.getElementById('customEmail');
@@ -256,5 +351,7 @@
         // });
 
     </script>
+
+
 </body>
 </html>

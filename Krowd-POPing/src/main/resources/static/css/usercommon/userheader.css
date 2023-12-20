@@ -84,31 +84,81 @@
     /* height: auto ; */
 }
 
+
 .menu{float: right;
     cursor: pointer;
+
+}
+.menu-item1,.menu-item2,.menu-item3,.menu-item4,.menu-item5{
+    float: left;
+    /* display: inline-block; */
+    margin-right: 10px;
+    margin-top: 25px;
+
+
+}
+.menu-item4 img{
+    margin-top: -10px;
+}
+.menu-item4{
+    position: relative;
+
+}
+.login_nickname1, .login_nickname2 {
+    font-size: 16px;
+    display: inline-block;
+    position: relative;
+    top: -15px;
+    right: -10px;
 }
 
+
 .menu-item1 img,.menu-item2 img,.menu-item3 img,.menu-item5 img,.menu-item4 img {
-    float: left;
-    margin: 20px 13px 10px 5px; }
+    display: inline-block;
+    /* float: left; */
+}
 
 .menu-item1 img {width: 30px;}
 .menu-item2 img {width: 32px;}
 .menu-item3 img {width: 130px;}
-.menu-item4 img {width: 48px; margin-top: 11px;}
-.menu-item4 span{
+.menu-item4 img {width: 48px; }
 
-    font-size: 16px;
-    /* background-color: #b66a6a; */
-    display: inline-block;
-    margin-top: 25px;
+.submenu {
+
+    visibility:hidden;
+    /* height: 0; */
+    overflow: hidden;
+    position: absolute;
+    background-color: white;
+    margin-left:-20px;
+    margin-top: -2px;
+    width: 150px;
+    height: 300px;
+    padding: 10px;
+    max-height: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+
+    transition: max-height 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition-delay: 0.5s;
+    z-index: 1;
+    /* text-align: center; */
 }
-.login_nickname{
-    text-decoration: underline rgb(125,28,216) 1px;
-    text-underline-offset: 4px;
-
+.submenu li {
+    margin-top: 20px; /* 원하는 값으로 조절 */
 }
 
+.menu-item4:hover .submenu {
+    visibility:visible;
+    max-height:300px;
+
+}
+.sub_li{
+    padding: 10px;
+}
+.sub_li:hover {
+    background-color: #EDE9FE; /* 선택된 카테고리에 배경색 추가 */
+}
 
 
 

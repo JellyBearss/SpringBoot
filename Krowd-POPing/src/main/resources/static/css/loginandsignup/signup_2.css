@@ -226,6 +226,9 @@ position: relative;
     width: 40px; 
     height: 40px; 
 }
+#chkPW{
+    margin-left: 110px;
+}
 
 /* ================회원정보================ */
 
@@ -357,7 +360,7 @@ width: 150px;
     align-items: center;
     font-size: 13px;
 }
-#auth_num{
+.auth_num{
     margin-left:31px;
     height: 30px;
     width: 200px;
