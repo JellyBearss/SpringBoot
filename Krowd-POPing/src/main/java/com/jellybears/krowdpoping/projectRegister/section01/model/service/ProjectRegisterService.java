@@ -23,7 +23,7 @@ public class ProjectRegisterService {
 
 
         // 사용자 code와 작성 상태를 확인한 projectCode
-        Integer projectCode = registerMapper.getEditProjectCode(2);
+        Integer projectCode = registerMapper.getEditProjectCode(project.getUserCode());
 
        System.out.println("mapper에서 받은 projectDTO = " + project);
 
@@ -56,7 +56,7 @@ public class ProjectRegisterService {
     public void updatePlanRegister(PlanDTO plan) {
 
 
-        Integer projectCode = registerMapper.getEditProjectCode(2);
+        Integer projectCode = registerMapper.getEditProjectCode(plan.getUserCode());
         plan.setProjectCode(projectCode);
 
         int result = registerMapper.updatePlanRegister(plan);
@@ -77,7 +77,6 @@ public class ProjectRegisterService {
         // 사용자 code와 작성 상태를 확인한 projectCode
         Integer projectCode = registerMapper.getEditProjectCode(userCode);
 
-        System.out.println("select planDTO에서의 projectCode = " + projectCode);
 
         // mapper에서 planDTO 잘 받았는지 확인
         PlanDTO planDTO = registerMapper.selectPlanRegByProjectCode(projectCode);
@@ -92,7 +91,7 @@ public class ProjectRegisterService {
         System.out.println("service에서 받은 infoDTO = " + infoDTO);
 
         // projectCode
-        Integer projectCode = registerMapper.getEditProjectCode(2);
+        Integer projectCode = registerMapper.getEditProjectCode(infoDTO.getUserCode());
         infoDTO.setProjectCode(projectCode);
 
         // 결과 받기
@@ -137,7 +136,7 @@ public class ProjectRegisterService {
 
     }
 
-    public void insertGoodsRegister(GoodsDTO goodsDTO, List<ItemDTO> items, String goodsCount, int userCode) {
+    public void insertGoodsRegister(GoodsDTO goodsDTO, List<ItemDTO> items, int userCode) {
 
         Integer projectCode = registerMapper.getEditProjectCode(userCode);
         goodsDTO.setProjectCode(projectCode);
@@ -147,18 +146,34 @@ public class ProjectRegisterService {
 
 
         // goods insert
-//        int goodsResult = registerMapper.insertGoods(goodsDTO);
-//        System.out.println("service에서 goodsResult 성공 = " + goodsResult);
+        int goodsResult = registerMapper.insertGoods(goodsDTO);
+        System.out.println("service에서 goodsResult 성공 = " + goodsResult);
+
+        int goodsCode = goodsDTO.getGoodsCode();
 
         // item name insert
-//        for(String item : items){
-//            int itemResult = registerMapper.insertItem(name);
-//        }
+        for(ItemDTO item : items){
+            int itemResult = registerMapper.insertItem(item);
+            System.out.println("item = " + item);
+
+            // item quantity insert
+            int itemCode = item.getItemCode();
+            int itemQuantity = item.getItemQuantity();
+            int itemQuantityResult = registerMapper.insertItemQuantity(goodsCode, itemCode, itemQuantity);
+
+            System.out.println("itemCode = " + itemCode);
+            System.out.println("itemQuantity = " + itemQuantity);
+
+        }
 
 
+    }
 
+    public List<GoodsAndItemDTO> selectGoodsRegByProjectCode(int userCode) {
 
+        Integer projectCode = registerMapper.getEditProjectCode(userCode);
 
+        return registerMapper.selectGoodsRegByProjectCode(projectCode);
 
     }
 }

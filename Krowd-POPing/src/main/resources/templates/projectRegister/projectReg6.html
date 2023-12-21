@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,9 +55,9 @@
                 <p class="subText" style="margin-top: 40px;">등록한 아이템으로 선물을 구성해보세요.</p>
                 <div class="itemBox">
                 <ul id="itemList" style="margin-left: -40px;">
-                    <li class="liItem"><span>워녕이 인형</span></i><img src="/icon/projectRegister/icon_cancel_.svg"
-                        style=" width: 16px; margin-bottom: 12px;"></li>
-
+<!--                    <li class="liItem"><span>워녕이 인형</span></i><img src="/icon/projectRegister/icon_cancel_.svg"-->
+<!--                        style=" width: 16px; margin-bottom: 12px;">-->
+<!--                    </li>-->
                 </ul>
 
                 </div>
@@ -238,10 +239,10 @@
         <br><br><br><br>
         <div class="subTitle" style="font-size: 19px;">현재 선물 구성</div>
         <br>
-        <div class="rewardCard-wrapper">
+        <div class="rewardCard-wrapper" th:each="goodsAndItem : ${goodsAndItem}">
             <div class="rewardCardInner">
                 <div class="cardAmountWrapper">
-                    <div><span class="rewardAmount">70,000<span>원</span></span></div>
+                    <div><span class="rewardAmount" th:text="${ goodsAndItem.goodsDTO.amount }">70,000</span><span>원</span></div>
                     
                     <img src="/icon/projectRegister/icon_cancel_.svg"
                         style=" width: 16px; margin-bottom: 12px; margin-left: 10px;">

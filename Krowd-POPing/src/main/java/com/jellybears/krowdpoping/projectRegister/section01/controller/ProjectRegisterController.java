@@ -3,11 +3,16 @@ package com.jellybears.krowdpoping.projectRegister.section01.controller;
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.*;
 import com.jellybears.krowdpoping.projectRegister.section01.model.service.ProjectRegisterService;
+import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,22 +21,10 @@ public class ProjectRegisterController {
 
     private final ProjectRegisterService registerService;
 
-    // 사진
-//    @Value("${image.image-dir}")
-//    private String IMAGE_DIR;
-//
-//    @Value("${spring.servlet.multipart.location}")
-//    private String ROOT_LOCATION;
-
     public ProjectRegisterController(ProjectRegisterService registerService) {
         this.registerService = registerService;
+
     }
-
-
-
-
-
-
 
 
     /**
@@ -41,14 +34,19 @@ public class ProjectRegisterController {
     public String projectRegister(Model model) {
         System.out.println("확인!!!!!!!!");
 
-        int userCode = 2;
+
+        // 로그인한 사용자 정보
+        // 프로젝트 정보가 없으면 insert에 로그인한 사용자 정보 userCode
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
+
 
         ProjectDTO projectDTO = registerService.selectProjectRegByProjectCode(userCode);
 
         if(projectDTO == null) {
 
             CategoryDTO categoryDTO = new CategoryDTO(1, "키링", 0, 1);
-            projectDTO = new ProjectDTO(0, null, categoryDTO, null);
+            projectDTO = new ProjectDTO(0, null, categoryDTO, null, userCode);
 
             System.out.println("projectDTO = " + projectDTO);
         }
@@ -70,6 +68,11 @@ public class ProjectRegisterController {
 
         System.out.println("insert의 project = " + project);
 
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
+
+        project.setUserCode(userCode);
         registerService.insertProjectRegister(project);
 
 
@@ -94,7 +97,8 @@ public class ProjectRegisterController {
     @GetMapping("priceplan")
     public String priceplanRegister(Model model) {
 
-        int userCode = 2;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
 
         int priceplanCode = registerService.selectPricePlanRegByProjectCode(userCode);
         System.out.println("priceplanCode = " + priceplanCode);
@@ -108,11 +112,11 @@ public class ProjectRegisterController {
     @PostMapping("priceplan")
     public String updatePriceplanRegister(@RequestParam int priceplanCode){
 
-        System.out.println("priceplanCode = " + priceplanCode);
 
-        int userCode = 2;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
+
         registerService.updatePriceplanRegister(priceplanCode, userCode);
-
 
 
         return "redirect:/projectReg/priceplan";
@@ -124,7 +128,9 @@ public class ProjectRegisterController {
     @GetMapping("planning")
     public String planRegister(Model model) {
 
-        int userCode = 2;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
+
         PlanDTO planDTO = registerService.selectPlanRegByProjectCode(userCode);
         System.out.println("controller planDTO = " + planDTO);
 
@@ -137,11 +143,16 @@ public class ProjectRegisterController {
     @PostMapping("planning")
     public String updatePlanRegister(@ModelAttribute PlanDTO plan){
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
+
+        // insert나 update할 때 userCode 설정
+        plan.setUserCode(userCode);
         registerService.updatePlanRegister(plan);
 
         System.out.println("plan = " + plan);
         return "redirect:/projectReg/planning";
-//        return "/projectRegister/testIndex";
+
     }
 
 
@@ -150,7 +161,9 @@ public class ProjectRegisterController {
     @GetMapping("info")
     public String infoRegister(Model model) {
 
-        int userCode = 2;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
+
 
         InfoDTO infoDTO = registerService.selectInfoRegByProjectCode(userCode);
         System.out.println("최종적으로 받은 infoDTO = " + infoDTO);
@@ -165,9 +178,10 @@ public class ProjectRegisterController {
     @PostMapping("info")
     public String updateInfoRegister(@ModelAttribute InfoDTO infoDTO){
 
-        // 데이터를 잘 받았는지 확인
-        System.out.println("infoDTO = " + infoDTO);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
 
+        infoDTO.setUserCode(userCode);
         registerService.updateInfoRegister(infoDTO);
 
 
@@ -176,7 +190,20 @@ public class ProjectRegisterController {
 
 
     @GetMapping("goods")
-    public String goodsRegister() {
+    public String goodsRegister(Model model) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
+
+
+        // list
+        List<GoodsAndItemDTO> goodsAndItem = registerService.selectGoodsRegByProjectCode(userCode);
+
+        System.out.println("최종적으로 받은 goodsAndItem = " + goodsAndItem);
+
+        //목표 : 받은 데이터 보여주기
+        model.addAttribute("goodsAndItem" ,goodsAndItem);
+
 
         return "/projectRegister/projectReg6";
     }
@@ -184,29 +211,31 @@ public class ProjectRegisterController {
 
     @PostMapping("goods")
     public String insertGoodsRegister(@ModelAttribute GoodsDTO goodsDTO,
+                                      @RequestParam List<String> itemName,
+                                      @RequestParam List<Integer> itemQuantity,
                                       @RequestParam String goodsCount){
 
-//        @RequestBody List<ItemDTO> items,
 
         if("nolimit".equals(goodsCount)){
             goodsDTO.setQuantity(-1);
         }
 
-        int userCode = 2; // parameter로 받을 예정
-//        registerService.insertGoodsRegister(goodsDTO, items, goodsCount, userCode);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
 
-        System.out.println("goodsDTO = " + goodsDTO);
-        System.out.println("goodsCount = " + goodsCount);
+        List<ItemDTO> items = new ArrayList<>();
 
-//        for(ItemDTO item : items){
-//            System.out.println("controller에서 받은 items = " + item);
-//
-//        }
+        for(int i = 0; i < itemName.size(); i++){
+            ItemDTO item = new ItemDTO();
+            item.setItemName(itemName.get(i));
+            item.setItemQuantity(itemQuantity.get(i));
+            items.add(item);
+        }
 
+        registerService.insertGoodsRegister(goodsDTO, items, userCode);
 
         return "/projectRegister/projectReg6";
     }
-
 
 
 }

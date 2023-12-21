@@ -22,4 +22,6 @@ public class PlanDTO {
     private int targetAmount;
     private int totalAmount;
 
+    private int userCode;
+
 }

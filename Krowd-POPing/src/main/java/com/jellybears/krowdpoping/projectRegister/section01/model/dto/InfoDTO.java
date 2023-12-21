@@ -14,4 +14,6 @@ public class InfoDTO {
     private String budgetContent;
     private String infoContent;
 
+    private int userCode;
+
 }

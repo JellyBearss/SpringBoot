@@ -37,6 +37,24 @@
         <result property="infoContent" column="INFO_CONTENT" />
     </resultMap>
 
+    <resultMap id="goodsResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.GoodsDTO">
+        <id property="goodsCode" column="GOODS_CODE"/>
+        <result property="goodsName" column="NAME"/>
+        <result property="quantity" column="QUANTITY"/>
+        <result property="amount" column="AMOUNT"/>
+    </resultMap>
+
+    <resultMap id="itemResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ItemDTO">
+        <id property="itemCode" column="ITEM_CODE"/>
+        <result property="itemName" column="itemName"/>
+        <result property="itemQuantity" column="itemQuantity"/>
+    </resultMap>
+
+
+    <resultMap id="goodsAndItemResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.GoodsAndItemDTO">
+        <association property="goodsDTO" resultMap="goodsResultMap" />
+        <collection property="itemDTO" resultMap="itemResultMap" />
+    </resultMap>
 
 
     <insert id="insertProjectRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
@@ -71,7 +89,7 @@
                 '',
                 '',
                 '',
-                2,
+                #{userCode},
                 '작성중',
                 1
         )
@@ -93,6 +111,7 @@
 --             WHERE upper_category_code IS NOT NULL
 
     </select>
+
 
     <update id="UpdateprojectRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
         UPDATE project
@@ -147,30 +166,31 @@
     </insert>
 
 
-<!--    <insert id="insertItem">-->
-<!--        INSERT INTO item(-->
-<!--            name-->
-<!--        ) VALUES(-->
-<!--                #{itemName}-->
-<!--        );-->
-<!--    </insert>-->
+    <insert id="insertItem">
+        INSERT INTO item(
+            name
+        ) VALUES(
+                #{itemName}
+        )
+        <selectKey keyProperty="itemCode" resultType="_int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
 
 
+    <insert id="insertItemQuantity">
+        INSERT INTO goods_details(
+                          item_code,
+                          goods_code,
+                          item_quantity
+            ) VALUES (
+                        #{ itemCode },
+                      #{ goodsCode },
+                      #{ itemQuantity }
+                      )
 
+    </insert>
 
-
-
-
-
-<!--    <select id="selectProjectRegByProjectCode" resultMap="projectResultMap">-->
-<!--        SELECT-->
-<!--               project_code-->
-<!--             , title-->
-<!--             , category_code-->
-<!--             , content-->
-<!--        FROM project-->
-<!--        WHERE project_code = #{ projectCode }-->
-<!--    </select>-->
 
     <select id="selectProjectRegByProjectCode" resultMap="projectResultMap">
         SELECT
@@ -185,11 +205,6 @@
         WHERE project_code = #{ projectCode }
     </select>
 
-<!--    <select id="selectPricePlanRegByProjectCode">-->
-<!--        SELECT priceplan_code-->
-<!--        FROM project-->
-<!--        WHERE project_code = #{ projectCode }-->
-<!--    </select>-->
 
 
     <select id="selectPlanRegByProjectCode" resultMap="planResultMap">
@@ -214,6 +229,22 @@
             , info_content
         FROM project
         WHERE project_code = #{ projectCode }
+    </select>
+
+    <select id="selectGoodsRegByProjectCode" resultMap="goodsAndItemResultMap">
+        select
+            A.project_code,
+            A.goods_code,
+            A.name,
+            A.quantity,
+            A.amount,
+            C.name as 'itemName',
+            B.item_quantity as 'itemQuantity'
+
+        from goods A
+                left join goods_details B on A.goods_code = B.goods_code
+                left join item C on B.item_code = C.item_code
+        where project_code = #{ projectCode }
     </select>
 
 

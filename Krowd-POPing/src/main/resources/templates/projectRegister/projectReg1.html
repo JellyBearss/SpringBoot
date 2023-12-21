@@ -78,9 +78,6 @@
 
                           for(let index in data) {
 
-                            // console.log("data[index].upperCategoryCode :", data[index].upperCategoryCode )
-                            // console.log("type value = ", parseInt(value) );
-
                             if(data[index].upperCategoryCode == parseInt(value)){
 
                               const $option = document.createElement('option');
@@ -115,7 +112,21 @@
         <div class="inputTitle">대표 이미지</div>
         <div class="subText">어떤 프로젝트인지 한 눈에 알아 볼 수 있도록 이미지를 등록해주세요.</div>
         <div class="subText">(최대 5장까지)</div> <br>
-        <input class="inputFile" type="file" name="thumbnail">
+        <div class="thumbnail-file-area">
+          <input type="file" id="thumbnailImg1" name="thumbnailImg1" onchange="loadImg(this,1)">
+          <input type="file" id="thumbnailImg2" name="thumbnailImg2" onchange="loadImg(this,2)">
+          <input type="file" id="thumbnailImg3" name="thumbnailImg3" onchange="loadImg(this,3)">
+          <input type="file" id="thumbnailImg4" name="thumbnailImg4" onchange="loadImg(this,4)">
+          <input type="file" id="thumbnailImg5" name="thumbnailImg5" onchange="loadImg(this,4)">
+        </div>
+
+<!--          <button-->
+<!--                  type="button"-->
+<!--                  class="btn btn-pk"-->
+<!--                  th:onclick="'location.href=\'/thumbnail/list\''">-->
+<!--            돌아가기-->
+<!--          </button>-->
+<!--          <button type="reset" class="btn btn-or">취소하기</button>-->
 
         <!-- 관심사 태그 입력 -->
         <br><br><br><br><br>
