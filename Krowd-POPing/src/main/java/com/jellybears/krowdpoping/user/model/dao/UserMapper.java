@@ -25,14 +25,12 @@ public interface UserMapper {
 
     int findIdCheck(String email);
 
-//    int findPwdCheck(UserDTO user);
-//    int findPwd(String password,String email) ;
+    String pwCheck(String email);
 
-//    public int findPwCheck(MemberVO memberVO)throws Exception;
-//
-//    public int findPw(String memberPw,String memberEmail,String memberId)throws Exception;
+    /* 비밀번호 찾기에서 비밀번호 변경 */
+    int FindUpdatePwd( UserDTO user);
 
-//    UserDTO findUserByEmail(String email);
+
 
 
 

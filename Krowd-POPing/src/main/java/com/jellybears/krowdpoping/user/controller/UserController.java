@@ -222,6 +222,14 @@ public class UserController {
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
+    @PostMapping("/find_Pwd")
+    public void find_Pwd(@ModelAttribute UserDTO user, HttpServletResponse response)throws Exception{
+        UserService.find_pwd(response,user);
+
+        log.info("비밀번호 찾기 성공");
+    }
+
+
 
 
 

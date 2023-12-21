@@ -62,7 +62,7 @@
                         console.log('서버 응답 데이터:', data); // 콘솔에 서버 응답을 출력
                         var foundId = data.userId;
                         console.log('찾은 아이디:', foundId); // 콘솔에 찾은 아이디 출력
-                        document.getElementById("foundId").innerText = "찾은 아이디는 " + foundId+" 입니다.";
+                        document.getElementById("foundId").innerText = "회원님의 아이디는 " + foundId+" 입니다.";
                         document.getElementById("resultPopup").style.display = "block";
                     })
                     .catch(error => {

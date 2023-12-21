@@ -177,6 +177,19 @@
         WHERE EMAIL = #{ email }
     </select>
 
+    <select id="pwCheck" resultType="String">
+        SELECT
+            password
+        FROM USER_INFO
+        WHERE EMAIL = #{ email }
+    </select>
+
+    <update id="FindUpdatePwd">
+        UPDATE USER_INFO
+        SET password=#{ password }
+        WHERE EMAIL = #{ email }
+    </update>
+
 <!--    <select id="findPwdByEmail" resultType="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
 <!--        SELECT *-->
 <!--        FROM USER_INFO-->
