@@ -18,4 +18,5 @@ public class DetailGoodsDTO {
     private int amount;
 //    private DetailGoodsDetailDTO goodsDetail;
     private List<DetailItemDTO> item;
+    private Object productDTO;
 }
