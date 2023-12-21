@@ -114,6 +114,20 @@
 
         });
 
+        $('#inquiryRegist').on('submit', function(e) {
+            e.preventDefault();
+
+            var summernoteContent = $('#Y-SummernoteTitle').summernote('code');
+            // HTML 태그 제거
+            var inquiryTitle = summernoteContent.replace(/<[^>]*>?/gm, '');
+
+            // html 태그 제거된 텍스트로 업데이트
+            $('#Y-SummernoteTitle').summernote('code', inquiryTitle);
+
+            // 폼 제출
+            this.submit();
+        })
+
     });
     jQuery(document).ready(function () {
 
@@ -124,6 +138,20 @@
             placeholder: '내용',
 
         });
+
+        $('#inquiryRegist').on('submit', function(e) {
+            e.preventDefault();
+
+            var summernoteContent = $('#Y-SummernoteContent').summernote('code');
+            // HTML 태그 제거
+            var inquiryContent = summernoteContent.replace(/<[^>]*>?/gm, '');
+
+            // html 태그 제거된 텍스트로 업데이트
+            $('#Y-SummernoteContent').summernote('code', inquiryContent);
+
+            // 폼 제출
+            this.submit();
+        })
 
     });
 

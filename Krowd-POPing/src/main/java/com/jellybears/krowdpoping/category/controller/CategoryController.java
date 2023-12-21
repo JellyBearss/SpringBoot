@@ -63,7 +63,7 @@ public class CategoryController {
     @GetMapping("category-acc")
     public String goCategoryAcc(@RequestParam(value="categoryId", required = false, defaultValue = "1") Integer categoryId, Model model){
 
-        // 카테고리 아이디가 1이면, 즉 테이블에서 액세서리 전체이면 아래 구문 실행. 액세서리 전체 조회.
+        // 카테고리 아이디가 1이면, 즉 테이블에서 액세서리 전체이면 아래 구문 실행. 액세서리 전체 조회. html의 th:if="${categoryId == 1}" 여기랑 맞춰준 것.
         if(categoryId != null && categoryId == 1) {
             List<CaProjectDTO> accProjectList = categoryService.getAccProjectList();
             model.addAttribute("accProjectList", accProjectList);
@@ -109,31 +109,91 @@ public class CategoryController {
 
 
     @GetMapping("category-doll")
-    public String goCategoryDoll(){
+    public String goCategoryDoll(@RequestParam(value = "categoryId", required = false, defaultValue = "3") Integer categoryId, Model model){
+
+        if(categoryId != null && categoryId == 3){
+            List<CaProjectDTO> dollProjectList = categoryService.getdollProjectList();
+            model.addAttribute("dollProjectList", dollProjectList);
+            model.addAttribute("categoryId", categoryId);
+
+            System.out.println("dollProjectList = " + dollProjectList);
+            System.out.println("categoryId = " + categoryId);
+        }else {
+            List<CaProjectDTO> subDollProjectList = categoryService.getSubDollProjectListByCategoryId(categoryId);
+            model.addAttribute("subDollProjectList", subDollProjectList);
+            model.addAttribute("categoryId", categoryId);
+
+            System.out.println("subDollProjectList = " + subDollProjectList);
+            System.out.println("categoryId = " + categoryId);
+        }
 
         return "/category/categorypage4-doll";
     }
 
     @GetMapping("category-stationery")
-    public String goCategoryStationery(){
+    public String goCategoryStationery(@RequestParam(value = "categoryId", required = false, defaultValue = "4")Integer categoryId, Model model){
+
+        if(categoryId != null && categoryId == 4){
+            List<CaProjectDTO> staProjectList = categoryService.getStaProjectList();
+            model.addAttribute("staProjectList", staProjectList);
+            model.addAttribute("categoryId",categoryId);
+
+            System.out.println("staProjectList = " + staProjectList);
+            System.out.println("categoryId = " + categoryId);
+        }else {
+            List<CaProjectDTO> subStaProjectList = categoryService.getSubStaProjectListByCategoryId(categoryId);
+            model.addAttribute("subStaProjectList", subStaProjectList);
+            model.addAttribute("categoryId", categoryId);
+        }
 
         return "/category/categorypage5-stationery";
     }
 
     @GetMapping("category-fancyGoods")
-    public String goCategoryFancyGoods(){
+    public String goCategoryFancyGoods(@RequestParam(value = "categoryId", required = false, defaultValue = "5")Integer categoryId, Model model){
 
+        if(categoryId != null && categoryId == 5){
+            List<CaProjectDTO> fanProjectList = categoryService.getFanProjectList();
+            model.addAttribute("fanProjectList", fanProjectList);
+            model.addAttribute("categoryId",categoryId);
+
+            System.out.println("fanProjectList = " + fanProjectList);
+            System.out.println("categoryId = " + categoryId);
+        }else {
+            List<CaProjectDTO> subFanProjectList = categoryService.getSubFanProjectListByCategoryId(categoryId);
+            model.addAttribute("subFanProjectList", subFanProjectList);
+            model.addAttribute("categoryId", categoryId);
+        }
         return "/category/categorypage6-fancyGoods";
     }
 
     @GetMapping("category-apparel")
-    public String goCategoryApparel(){
+    public String goCategoryApparel(@RequestParam(value = "categoryId", required = false, defaultValue = "6")Integer categoryId, Model model){
 
+        if(categoryId != null && categoryId == 6){
+            List<CaProjectDTO> appProjectList = categoryService.getAppProjectList();
+            model.addAttribute("appProjectList", appProjectList);
+            model.addAttribute("categoryId",categoryId);
+
+            System.out.println("appProjectList = " + appProjectList);
+            System.out.println("categoryId = " + categoryId);
+        }else {
+            List<CaProjectDTO> subAppProjectList = categoryService.getSubAppProjectListByCategoryId(categoryId);
+            model.addAttribute("subAppProjectList", subAppProjectList);
+            model.addAttribute("categoryId", categoryId);
+        }
         return "/category/categorypage7-apparel";
     }
 
     @GetMapping("category-etc")
-    public String goCategoryEtc(){
+    public String goCategoryEtc(@RequestParam(value = "categoryId", required = false, defaultValue = "7")Integer categoryId, Model model){
+
+        List<CaProjectDTO> etcProjectList = categoryService.getEtcProjectList();
+        model.addAttribute("etcProjectList", etcProjectList);
+        model.addAttribute("categoryId",categoryId);
+
+        System.out.println("etcProjectList = " + etcProjectList);
+        System.out.println("categoryId = " + categoryId);
 
         return "/category/categorypage8-etc";
     }

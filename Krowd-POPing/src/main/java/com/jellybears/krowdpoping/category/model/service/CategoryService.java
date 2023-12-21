@@ -46,8 +46,54 @@ public class CategoryService {
         return categoryMapper.getDigitProjectList();
     }
 
+    //디지털액세서리 서브카테고리 조회 메소드
     public List<CaProjectDTO> getSubDigitProjectListByCategoryId(Integer categoryId) {
 
         return categoryMapper.getSubDigitProjectListByCategoryId(categoryId);
+    }
+
+    //전체 인형카테고리 조회 메소드
+    public List<CaProjectDTO> getdollProjectList() {
+
+        return categoryMapper.getDollProjectList();
+    }
+
+
+    public List<CaProjectDTO> getSubDollProjectListByCategoryId(Integer categoryId) {
+
+        return categoryMapper.getSubDollProjectListByCategoryId(categoryId);
+    }
+
+    public List<CaProjectDTO> getStaProjectList() {
+
+        return categoryMapper.getStaProjectList();
+    }
+
+    public List<CaProjectDTO> getSubStaProjectListByCategoryId(Integer categoryId) {
+
+        return categoryMapper.getSubStaProjectListByCategoryId(categoryId);
+    }
+
+    public List<CaProjectDTO> getFanProjectList() {
+
+        return categoryMapper.getFanProjectList();
+    }
+
+    public List<CaProjectDTO> getSubFanProjectListByCategoryId(Integer categoryId) {
+
+        return categoryMapper.getSubFanProjectListByCategoryId(categoryId);
+    }
+
+    public List<CaProjectDTO> getAppProjectList() {
+        return categoryMapper.getAppProjectList();
+    }
+
+    public List<CaProjectDTO> getSubAppProjectListByCategoryId(Integer categoryId) {
+
+        return categoryMapper.getSubAppProjectListByCategoryId(categoryId);
+    }
+
+    public List<CaProjectDTO> getEtcProjectList() {
+        return categoryMapper.getEtcProjectList();
     }
 }
