@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/loginandsignup/findPwd.css">
+
 </head>
 <body>
 
@@ -19,24 +22,59 @@
 
             </div>
         </div>
-    
-    
+
+
         <!-- 서브페이지 1 -->
-        <div id="subpage1" class="subpage">
-            <h3>아이디 찾기</h3>
-            <span >회원가입 한 이메일을 입력해주세요.</span>
-            <div id="type_email">
-                <label for="email">이메일:</label>
-                <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
-                <button type="button" class="send_auth" id="send_auth" name="find_id"  >아이디 찾기</button>
+        <form class="user" action="/user/findIdByEmail" method="POST" onsubmit="event.preventDefault(); findId();">
+            <div id="subpage1" class="subpage">
+                <h3>아이디 찾기</h3>
+                <span >회원가입 한 이메일을 입력해주세요.</span>
+                <div id="type_email">
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+                    <button type="submit" class="send_auth" id="email_check" name="find_id" >아이디 찾기</button>
+                </div>
             </div>
-            
-
-           
-            
-
-
+       </form>
+        <div id="resultPopup" class="popup">
+            <p id="foundId"></p>
+            <button class="go_login" type="button" onclick="closePopup()">로그인하러 가기</button>
         </div>
+
+        <script>
+            function findId() {
+                var email = document.getElementById("email").value;
+
+                fetch('/user/findIdByEmail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email }),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('아이디를 찾는 데 실패했습니다.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('서버 응답 데이터:', data); // 콘솔에 서버 응답을 출력
+                        var foundId = data.userId;
+                        console.log('찾은 아이디:', foundId); // 콘솔에 찾은 아이디 출력
+                        document.getElementById("foundId").innerText = "찾은 아이디는 " + foundId+" 입니다.";
+                        document.getElementById("resultPopup").style.display = "block";
+                    })
+                    .catch(error => {
+                        console.error('에러:', error.message);
+                    });
+            }
+
+            function closePopup() {
+                location.href = '/user/login';
+            }
+        </script>
+
     <!-- 서브페이지 2 -->
         <div id="subpage2" class="subpage">
             <h3>비밀번호 찾기</h3>
@@ -44,13 +82,18 @@
             <div id="type_email_2">
                 <label for="email_2">이메일:</label>
                 <input type="email" id="email_2" name="email" placeholder="이메일 주소를 입력하세요" required>
-                <button type="button" class="send_auth_2" id="send_auth" name="send_auth" onclick="sendNumber()" >임시 비밀번호 받기</button>
+                <button type="button" class="send_auth_2" id="sendPwd" name="send_auth" onclick="sendNumber()" >임시 비밀번호 받기</button>
             </div>
 
-
-    
-
         </div>
+
+        <script type="text/javascript">
+            var msg = /*[[${msg}]]*/ '';
+
+            if (msg !== '') {
+                alert(msg);
+            }
+        </script>
     
     </div>
     

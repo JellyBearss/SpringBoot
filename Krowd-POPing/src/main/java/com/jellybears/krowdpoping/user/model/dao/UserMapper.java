@@ -21,6 +21,25 @@ public interface UserMapper {
     UserDTO selectUser(UserDTO user);
     int deleteUser(UserDTO user);
 
+    UserDTO findIdByEmail(String email);
+
+    int findIdCheck(String email);
+
+//    int findPwdCheck(UserDTO user);
+//    int findPwd(String password,String email) ;
+
+//    public int findPwCheck(MemberVO memberVO)throws Exception;
+//
+//    public int findPw(String memberPw,String memberEmail,String memberId)throws Exception;
+
+//    UserDTO findUserByEmail(String email);
+
+
+
+
+
+
+
 
 
 }

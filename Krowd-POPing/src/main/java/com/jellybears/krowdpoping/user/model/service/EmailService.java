@@ -58,6 +58,7 @@ public class EmailService {
         return message;
     }
 
+
     //실제 메일 전송
     public String sendEmail(String toEmail) throws MessagingException, UnsupportedEncodingException {
         try {
@@ -85,6 +86,52 @@ public class EmailService {
         context.setVariable("code", code);
         return emailContent;
     }
+
+
+//    // 비밀번호 찾기를 위한 이메일 양식 작성
+//    public MimeMessage createPasswordEmailForm(String email)
+//            throws MessagingException, UnsupportedEncodingException {
+//
+//        createCode();
+//        String setFrom = "krowdpoping@gmail.com"; // email-config에 설정한 자신의 이메일 주소(보내는 사람)
+//        String toEmail = email; // 받는 사람
+//        String title = "KrowdPOPing 임시 비밀번호 발송"; // 제목
+//
+//        MimeMessage message = emailSender.createMimeMessage();
+//        message.addRecipients(MimeMessage.RecipientType.TO, email); // 보낼 이메일 설정
+//        message.setSubject(title); // 제목 설정
+//        message.setFrom(setFrom); // 보내는 이메일
+//        message.setText(setPasswordContext(authNum), "utf-8", "html");
+//
+//        return message;
+//    }
+//
+//    // 비밀번호 찾기 이메일 전송
+//    public String sendPasswordEmail(String toEmail) throws MessagingException, UnsupportedEncodingException {
+//        try {
+//            MimeMessage emailForm = createPasswordEmailForm(toEmail);
+//            emailSender.send(emailForm);
+//            return authNum;
+//        } catch (MessagingException | UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//            throw new MessagingException("임시 비밀번호 이메일 전송에 실패하였습니다.", e);
+//        }
+//    }
+//
+//
+//    public String setPasswordContext(String tempPwd) {
+//        Context context = new Context();
+//        String emailContent =
+//                "<h1>안녕하세요.</h1>\n" +
+//                        "<h1>KrowdPoping 입니다.</h1>\n" +
+//                        "<br>\n" +
+//                        "<p>임시 비밀번호입니다:</p>\n" +
+//                        "<p style=\"font-size:130%;\">" + tempPwd + "</p>\n" +
+//                        "<p>로그인 후에 비밀번호를 변경해주세요.</p>\n";
+//
+//        context.setVariable("tempPwd", tempPwd);
+//        return emailContent;
+//    }
 
 
 }

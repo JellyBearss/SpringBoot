@@ -1,3 +1,5 @@
+
+
 html{
     background-image: url('/icon/login_background.svg');
 }
@@ -17,7 +19,7 @@ html{
 }
 #subpage1,#subpage2 {
     border:1px solid #d9D9D9;
-     background-color: white;
+    background-color: white;
     height: 500px;
     width: 800px;
     margin-top: 30px;
@@ -134,4 +136,36 @@ width: 200px;
 }
 .subpage.active {
     display: block;
+}
+
+#resultPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 200px;
+    z-index: 9999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* 텍스트 중앙 정렬을 위해 추가 */
+}
+
+#foundId {
+    margin-top:50px;
+    margin-bottom: 20px; /* 여백 조절을 위해 추가 */
+}
+
+.go_login {
+    border: none;
+    border: 1px solid #d9D9D9;
+    padding: 10px;
+    background-color:#EDE9FE ;
+    border-radius: 6px;
+    cursor: pointer;
 }

@@ -14,13 +14,17 @@ import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Member;
+import java.util.Map;
 import java.util.Random;
 
 @Controller
@@ -71,8 +75,6 @@ public class UserController {
         String authNum = emailService.sendEmail(userDTO.getEmail());
         return (authNum);
     }
-
-
 
 
 
@@ -194,10 +196,37 @@ public class UserController {
         return "redirect:/krowdpoping/mainpage";
     }
 
-    @GetMapping("findId")
+    @GetMapping("/findIdByEmail")
     public String FindId() {
         return "user/findPwd";
     }
+
+
+    @PostMapping("/findIdByEmail")
+    public ResponseEntity<?> findIdByEmail(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");
+
+        try {
+            // 서버 로직 수행
+            int checkResult = UserService.findIdCheck(email);
+            if (checkResult == 0) {
+                // 이메일이 존재하지 않을 경우
+                return ResponseEntity.status(404).body("이메일을 확인해주세요");
+            } else {
+                // 이메일이 존재할 경우
+                UserDTO user = UserService.findIdByEmail(email);
+                return ResponseEntity.ok().body(user);
+            }
+        } catch (Exception e) {
+            // 오류 처리
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+
+
+
+
+
 
 
 }

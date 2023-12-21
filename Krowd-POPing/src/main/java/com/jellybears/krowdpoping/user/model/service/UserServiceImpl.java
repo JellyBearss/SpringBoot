@@ -7,10 +7,13 @@ import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
 import com.jellybears.krowdpoping.user.model.dao.UserMapper;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
+import jakarta.mail.MessagingException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.UnsupportedEncodingException;
 
 //회원 정보 수정 추가 예정
 //회원 삭제 추가 예정
@@ -19,13 +22,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder;
     private final UserMapper mapper;
+    private final EmailService emailService;
 
 
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserMapper mapper) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserMapper mapper, EmailService emailService) {
         this.passwordEncoder = passwordEncoder;
         this.mapper = mapper;
 
+        this.emailService = emailService;
     }
 
 
@@ -88,6 +93,68 @@ public class UserServiceImpl implements UserService{
             throw new UserRemoveException("회원 탈퇴에 실패하셨습니다.");
         }
     }
+
+    @Override
+    public UserDTO findIdByEmail(String email) throws Exception {
+        return mapper.findIdByEmail(email);
+
+    }
+
+    @Override
+    public int findIdCheck(String email) throws Exception {
+        return mapper.findIdCheck(email);
+    }
+
+//    @Override
+//    public void findPwd(String email) throws Exception {
+//
+//    }
+
+//    @Override
+//    public int findPwdCheck(UserDTO user) throws Exception {
+//        mapper.findPwd(user.getPassword(),user.getEmail());
+//
+//        String Pwdkey=;
+//
+//        return mapper.findPwdCheck(user);
+//
+//
+//
+//    }
+
+
+
+
+
+//        String password=
+////        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//
+////        String memberKey = new TempKey().getKey(6,false);
+
+
+
+
+
+//    @Override
+//    public void findPw(String memberEmail,String memberId)throws Exception{
+//        String memberKey = new TempKey().getKey(6,false);
+//        String memberPw = BCrypt.hashpw(memberKey,BCrypt.gensalt());
+//        memberDAO.findPw(memberEmail,memberId,memberPw);
+//        MailUtils sendMail = new MailUtils(mailSender);
+//        sendMail.setSubject("[ICEWATER 커뮤니티 임시 비밀번호 입니다.]"); //메일제목
+//        sendMail.setText(
+//                "<h1>임시비밀번호 발급</h1>" +
+//                        "<br/>"+memberId+"님 "+
+//                        "<br/>비밀번호 찾기를 통한 임시 비밀번호입니다."+
+//                        "<br/>임시비밀번호 :   <h2>"+memberKey+"</h2>"+
+//                        "<br/>로그인 후 비밀번호 변경을 해주세요."+
+//                        "<a href='http://localhost:8080/member/loginView"+
+//                        ">로그인 페이지</a>");
+//        sendMail.setFrom("[보낼이메일]", "ICEWATER");
+//        sendMail.setTo(memberEmail);
+//        sendMail.send();
+//    }
+
 
 
 }

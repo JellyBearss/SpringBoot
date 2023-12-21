@@ -162,6 +162,31 @@
         AND ID = #{ userId }
     </update>
 
+    <select id="findIdByEmail" resultMap="UserResultMap">
+        SELECT
+            ID
+        FROM
+            USER_INFO
+        WHERE EMAIL = #{ email }
+    </select>
+
+    <select id="findIdCheck" resultType="int">
+        SELECT
+            count(*)
+        FROM USER_INFO
+        WHERE EMAIL = #{ email }
+    </select>
+
+<!--    <select id="findPwdByEmail" resultType="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
+<!--        SELECT *-->
+<!--        FROM USER_INFO-->
+<!--        WHERE email = #{ email }-->
+
+<!--    </select>-->
+
+
+
+
 
 
 
