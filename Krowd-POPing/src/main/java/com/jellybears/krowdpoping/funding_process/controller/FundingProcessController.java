@@ -2,7 +2,6 @@ package com.jellybears.krowdpoping.funding_process.controller;
 
 import com.jellybears.krowdpoping.common.exception.address.AddressSaveException;
 import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
-import com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO;
 import com.jellybears.krowdpoping.funding_process.model.service.FundingServiceImpl;
 import com.jellybears.krowdpoping.project.model.dto.DetailGoodsDTO;
 import com.jellybears.krowdpoping.project.model.dto.DetailProjectDTO;
@@ -60,24 +59,13 @@ public class FundingProcessController {
 
         // 타임리프로 전달해줄 내용
         model.addAttribute("daysLeftDisplay", daysLeftDisplay);
-        model.addAttribute("no", no);
-        model.addAttribute("goodsCode", goodsCode);
+
 
         return "/funding_process/detailed_product";
     }
-    @PostMapping("saveDetailedProduct")
-    public String saveDetailedProduct(@ModelAttribute ProductDTO productDTO){
-        System.out.println("start===========================");
-        System.out.println("productDTO ==================================================== " + productDTO);
-        log.info("Received ProductDTO: {}", productDTO);
-        fundingService.saveDetailedProduct(productDTO);
 
-        return "redirect:/funding_process/payReservation";
-    }
     @GetMapping("address")
-    public String defaultAddress(@RequestParam Long no,
-                                 @RequestParam int goodsCode,
-                                 Model model) {
+    public String defaultAddress(Model model) {
         // 현재 로그인한 사용자의 정보를 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -98,8 +86,6 @@ public class FundingProcessController {
 
             // 모델에 주소 객체도 추가
             model.addAttribute("defaultAddress", defaultAddress);
-            model.addAttribute("projectCode", no);
-            model.addAttribute("goodsCode", goodsCode);
         }
         return "funding_process/default_address";
     }

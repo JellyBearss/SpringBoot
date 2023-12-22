@@ -1,6 +1,7 @@
 package com.jellybears.krowdpoping.kakaopay.model.service;
 
 import com.jellybears.krowdpoping.kakaopay.model.dto.KakaoApproveResponse;
+import com.jellybears.krowdpoping.kakaopay.model.dto.KakaoCancelResponse;
 import com.jellybears.krowdpoping.kakaopay.model.dto.KakaoReadyResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -16,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @Transactional
 public class KakaoPayService {
     static final String cid = "TC0ONETIME"; // 가맹점 테스트 코드
-    static final String admin_Key = "${ADMIN_KEY}"; // 공개 조심! 본인 애플리케이션의 어드민 키를 넣어주세요
+    static final String admin_Key = "${379578af6b6035a855deaaf721d777b1}";
     private KakaoReadyResponse kakaoReady;
 
     public KakaoReadyResponse kakaoPayReady() {
@@ -52,7 +53,7 @@ public class KakaoPayService {
     /**
      * 결제 완료 승인
      */
-    public KakaoApproveResponse ApproveResponse(String pgToken) {
+    public KakaoApproveResponse approveResponse(String pgToken) {
 
         // 카카오 요청
         MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
