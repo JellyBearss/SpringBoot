@@ -51,7 +51,9 @@
                                 <a th:href="@{/user/logout}"><li class="sub_li" id="logout">로그아웃</li></a>
                             </ul>
                         </div>
-
+                    </th:block>
+                    <th:block sec:authorize="hasRole('ADMIN')">
+                        <button class="btn btn-or" id="writeNotice">작성하기</button>
                     </th:block>
                 </div>
                 <div id="search-area">

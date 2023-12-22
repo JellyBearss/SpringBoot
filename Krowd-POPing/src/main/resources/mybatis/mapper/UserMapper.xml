@@ -14,8 +14,8 @@
         <result property="phone_number" column="phone_number"/>
         <result property="user_status" column="user_status"/>
         <result property="email_code" column="email_code"/>
-
     </resultMap>
+
     <resultMap id="RoleResultMap" type="com.jellybears.krowdpoping.user.model.dto.RoleDTO">
         <id property="role_code" column="role_code"/>
         <result property="role_name" column="role_name"/>
@@ -35,19 +35,15 @@
         <association property="userDTO" resultMap="UserResultMap"/>
     </resultMap>
 
-<!--    <select id="selectUserById" resultMap="RoleTypeResultMap">-->
-<!--        SELECT-->
-<!--            A.ID,-->
-<!--            A.USER_CODE,-->
-<!--            C.ROLE_CODE,-->
-<!--            B.ROLE_NAME-->
-<!--        FROM USER_INFO A-->
-<!--                 INNER JOIN ROLE_TYPE C ON A.USER_CODE = C.USER_CODE-->
-<!--                 INNER JOIN ROLE B ON C.ROLE_CODE = B.ROLE_CODE-->
-<!--&#45;&#45;         WHERE B.ROLE_NAME = 'ROLE_ADMIN'-->
-<!--          AND A.ID = #{ userId }-->
+    <resultMap id="ProfileImgDTO" type="com.jellybears.krowdpoping.user.model.dto.ProfileImgDTO">
+        <id property="file_code" column="file_code"/>
+        <result property="original_file_name" column="original_file_name"/>
+        <result property="edited_file_name" column="edited_file_name"/>
+        <result property="upload_date" column="upload_date"/>
+        <result property="user_code" column="user_code"/>
+    </resultMap>
 
-<!--    </select>-->
+
 
     <select id="selectUserById" resultMap="UserResultMap">
         SELECT
@@ -141,8 +137,6 @@
 
 
 
-
-
     <update id="updateUser">
         UPDATE
             USER_INFO A
@@ -190,12 +184,7 @@
         WHERE EMAIL = #{ email }
     </update>
 
-<!--    <select id="findPwdByEmail" resultType="com.jellybears.krowdpoping.user.model.dto.UserDTO">-->
-<!--        SELECT *-->
-<!--        FROM USER_INFO-->
-<!--        WHERE email = #{ email }-->
 
-<!--    </select>-->
 
 
 

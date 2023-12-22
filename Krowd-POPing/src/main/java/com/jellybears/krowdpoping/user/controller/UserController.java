@@ -5,8 +5,6 @@ import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
 import com.jellybears.krowdpoping.common.util.SessionUtil;
-import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
-import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import com.jellybears.krowdpoping.user.model.service.EmailService;
 import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
@@ -14,18 +12,15 @@ import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Member;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 @Controller
 @RequestMapping("/user/*")
@@ -222,11 +217,29 @@ public class UserController {
             return ResponseEntity.status(500).body("Internal Server Error");
         }
     }
-    @PostMapping("/find_Pwd")
-    public void find_Pwd(@ModelAttribute UserDTO user, HttpServletResponse response)throws Exception{
-        UserService.find_pwd(response,user);
 
-        log.info("비밀번호 찾기 성공");
+    @PostMapping("/find_Pwd")
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> find_Pwd(@ModelAttribute UserDTO user, HttpServletResponse response) {
+        try {
+            UserService.find_pwd(response, user);
+            log.info("비밀번호 찾기 성공");
+
+            // JSON 형식의 응답 객체 생성
+            Map<String, String> responseMap = new HashMap<>();
+            responseMap.put("message", "success");
+            responseMap.put("redirectUrl", "/user/login");
+
+            return ResponseEntity.ok(responseMap);
+        } catch (Exception e) {
+            log.error("비밀번호 찾기 실패", e);
+
+            // 실패 시에도 JSON 형식의 응답 객체 생성
+            Map<String, String> responseMap = new HashMap<>();
+            responseMap.put("message", "failure");
+
+            return ResponseEntity.status(500).body(responseMap);
+        }
     }
 
 

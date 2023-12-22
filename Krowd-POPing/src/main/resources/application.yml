@@ -22,6 +22,7 @@ spring:
       suffix: .html
       cache: false
       check-template-location: true
+
   mail:
     host: smtp.gmail.com # SMTP 서버 호스트
     port: 587 # SMTP 서버 포트

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       layout:decorate="~{/layouts/user_layout}">
 <head>
     <link rel="stylesheet" href="/css/mypage/MYP_projectlist_1_end.css">
@@ -14,7 +15,7 @@
             <div id="content-1">
                 <div id="profile-container">
                     <div id="profilepic"><img src="/icon/basicpic.png" alt=""></div>
-                    <div id="nickname">이거맞나요 님</div>
+                    <div id="nickname"><span sec:authentication="principal.userDTO.nickname"></span>님</div>
                     <!-- <button type="submit" id="changepic">프로필 사진 변경</button> -->
                 </div>
 

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/loginandsignup/findPwd.css">
 
+
 </head>
 <body>
 
@@ -28,46 +29,42 @@
         <form class="user" action="/user/findIdByEmail" method="POST" onsubmit="event.preventDefault(); findId();">
             <div id="subpage1" class="subpage">
                 <h3>아이디 찾기</h3>
-                <span >회원가입 한 이메일을 입력해주세요.</span>
+                <span>회원가입 한 이메일을 입력해주세요.</span>
                 <div id="type_email">
                     <label for="email">이메일:</label>
                     <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
-                    <button type="submit" class="send_auth" id="email_check" name="find_id" >아이디 찾기</button>
+                    <button type="submit" class="send_auth" id="email_check" name="find_id">아이디 찾기</button>
                 </div>
             </div>
-       </form>
+        </form>
+
+        <!-- 결과를 표시하는 팝업 -->
         <div id="resultPopup" class="popup">
             <p id="foundId"></p>
             <button class="go_login" type="button" onclick="closePopup()">로그인하러 가기</button>
         </div>
 
+        <!-- jQuery를 사용한 Ajax 요청과 결과 처리를 담은 스크립트 -->
         <script>
             function findId() {
-                var email = document.getElementById("email").value;
+                var email = $('#email').val();
 
-                fetch('/user/findIdByEmail', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email }),
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('아이디를 찾는 데 실패했습니다.');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('서버 응답 데이터:', data); // 콘솔에 서버 응답을 출력
+                $.ajax({
+                    type: 'POST',
+                    url: '/user/findIdByEmail',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ email: email }),
+                    success: function (data) {
+                        console.log('서버 응답 데이터:', data);
                         var foundId = data.userId;
-                        console.log('찾은 아이디:', foundId); // 콘솔에 찾은 아이디 출력
-                        document.getElementById("foundId").innerText = "회원님의 아이디는 " + foundId+" 입니다.";
-                        document.getElementById("resultPopup").style.display = "block";
-                    })
-                    .catch(error => {
-                        console.error('에러:', error.message);
-                    });
+                        console.log('찾은 아이디:', foundId);
+                        $('#foundId').text('회원님의 아이디는 ' + foundId + ' 입니다.');
+                        $('#resultPopup').show();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('에러:', error);
+                    }
+                });
             }
 
             function closePopup() {
@@ -76,16 +73,48 @@
         </script>
 
     <!-- 서브페이지 2 -->
+    <form id="findPwd_form" action="/user/find_Pwd" method="post">
         <div id="subpage2" class="subpage">
             <h3>비밀번호 찾기</h3>
             <span >회원가입 한 이메일을 입력해주세요.</span>
             <div id="type_email_2">
                 <label for="email_2">이메일:</label>
                 <input type="email" id="email_2" name="email" placeholder="이메일 주소를 입력하세요" required>
-                <button type="button" class="send_auth_2" id="sendPwd" name="send_auth" onclick="sendNumber()" >임시 비밀번호 받기</button>
+                <button type="submit" class="send_auth_2" id="sendPwd" name="send_auth" >임시 비밀번호 받기</button>
             </div>
 
         </div>
+    </form>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#findPwd_form").submit(function(event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/user/find_Pwd",
+                        data: $(this).serialize(),
+                        dataType: "json",  // 데이터 타입을 JSON으로 설정
+                        success: function(response) {
+                            if (response.message === "success") {
+                                alert("이메일 전송이 성공했습니다.");
+                                // 리다이렉트 수행
+                                window.location.href = response.redirectUrl;
+                            } else {
+                                alert("이메일 전송이 실패했습니다.");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Ajax 요청 실패:', error);
+                            alert("서버와 통신 중 오류가 발생했습니다.");
+                        }
+                    });
+                });
+            });
+        </script>
+
+
 
         <script type="text/javascript">
             var msg = /*[[${msg}]]*/ '';

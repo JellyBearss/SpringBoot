@@ -125,7 +125,6 @@ public class UserServiceImpl implements UserService {
             return Pwdcode;
 
         } catch (Exception e) {
-            // 필요한대로 예외 처리를 수행합니다
             e.printStackTrace();
             throw new Exception("비밀번호 재설정 이메일 전송에 실패했습니다.", e);
         }
@@ -171,7 +170,7 @@ public class UserServiceImpl implements UserService {
     private MimeMessage createEmailForm(String email, String authCode) throws MessagingException, UnsupportedEncodingException {
         String setFrom = "krowdpoping@gmail.com"; // 이메일 설정에 있는 자신의 이메일 주소(보내는 사람)
         String toEmail = email; // 받는 사람
-        String title = "KrowdPOPing 회원가입 이메일 인증 번호"; // 제목
+        String title = "KrowdPOPing 임시 비밀번호"; // 제목
 
         MimeMessage message = emailSender.createMimeMessage();
         message.addRecipients(MimeMessage.RecipientType.TO, email); // 보낼 이메일 설정
@@ -189,7 +188,7 @@ public class UserServiceImpl implements UserService {
                 "<h1>안녕하세요.</h1>\n" +
                         "<h1>KrowdPoping 입니다.</h1>\n" +
                         "<br>\n" +
-                        "<p>임시 비밀번호 입니다:</p>\n" +
+                        "<p>회원님의 임시 비밀번호 입니다:</p>\n" +
                         "<p style=\"font-size:130%;\">" + Pwdcode + "</p>\n" +
                         "<p>로그인 후 비밀번호를 변경해주세요.</p>\n";
 
@@ -201,12 +200,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void find_pwd(HttpServletResponse response, UserDTO user) throws Exception {
         try {
-            // 임시 비밀번호 담기
+            // 사용자에게 임시 비밀번호를 전송 및 임시비번 담음
             String generatedPwd = send_PwdMail(user);
             user.setPassword(generatedPwd);
 
-            // 사용자에게 임시 비밀번호를 이메일로 전송
-            send_PwdMail(user);
 
             // 비밀번호를 암호화하여 저장
             String encPwd = passwordEncoder.encode(generatedPwd);
@@ -215,12 +212,9 @@ public class UserServiceImpl implements UserService {
             // 비밀번호 변경
             mapper.FindUpdatePwd(user);
 
-            // 클라이언트에게 메시지 전송
-//            sendClientMessage(response, "이메일로 임시 비밀번호를 발송하였습니다.");
 
         } catch (Exception e) {
-            // 실패 시 클라이언트에게 메시지 전송
-//            sendClientMessage(response, "임시 비밀번호 발송 및 변경에 실패했습니다.");
+
             e.printStackTrace();
         }
     }
