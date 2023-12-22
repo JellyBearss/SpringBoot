@@ -95,7 +95,6 @@
         </div>
         <div class="process_line"></div>
     </div>
-    <form id="saveDetailedProductForm" action="/funding_process/saveDetailedProduct" method="post" onsubmit="submitForm()">
     <div class="product">
         <div class="product_image"></div>
         <div class="product_category_section">
@@ -124,25 +123,12 @@
         <span class="composition">가격</span>
         <span class="composition_detail" th:text="${goods.amount + '원'}"></span>
     </div>
-        <script th:inline="javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-                var no = document.getElementById("user_code").value;
-                var goodsCode = document.getElementById("goodsCode").value;
-                document.getElementById("user_code_input").value = no;
-                document.getElementById("goods_code_input").value = goodsCode;
-            });
 
-            function submitForm() {
-                document.getElementById("saveDetailedProductForm").submit();
-            }
-        </script>
-        <input type="hidden" id="user_code_input" name="user_code" th:value="${user_code}">
-        <input type="hidden" id="goods_code_input" name="goods_code" th:value="${goodsCode}">
-    <a th:href="@{/funding_process/address(no=${no}, goodsCode=${goodsCode})}" onclick="submitForm()" class="next_step">
+    <a th:href="@{/funding_process/address(no=${no}, goodsCode=${goodsCode})}" class="next_step">
         <div class="next_step_box"></div>
         <span class="next_step_text">다음 단계로</span>
     </a>
-    </form>
+
 </div>
 </body>
 </html>

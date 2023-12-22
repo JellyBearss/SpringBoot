@@ -11,5 +11,4 @@ public interface FundingMapper {
 
     AddressDTO getDefaultAddress(String user_code);
 
-    int saveDetailedProduct(int userCode, int goodsCode);
 }

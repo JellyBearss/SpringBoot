@@ -39,8 +39,4 @@
           AND A.whether_default_address = 'Y'
     </select>
 
-    <insert id="saveDetailedProduct" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO">
-        insert into payment (user_code, goods_code)
-        values (#{user_code}, #{goodsCode})
-    </insert>
 </mapper>
