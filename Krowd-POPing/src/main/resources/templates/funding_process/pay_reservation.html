@@ -119,7 +119,8 @@
     </div>
 
     <div class="comment_section">
-        <form action="/" method="POST" id="form__wrap">
+<!--        <form action="/" method="POST" id="form__wrap">-->
+
         <div class="confirm_comment">후원 완료 시 결제가 진행됩니다. 프로젝트가 무산되거나 중단된 경우, 영업일 2-3일 내에 결제가 취소됩니다.</div>
         <div class="term1">
             <input type="checkbox" id="term1_check" name="term1" value="서비스 동의">
@@ -458,66 +459,117 @@
                 </script>
             </div>
         </div>
-    <div class="next_step_section">
-        <button type="submit" class="finished" disabled>
-            <div class="next_step_box"></div>
-            <span class="next_step_text">후원하기</span>
-        </button>
-    </div>
+
+        <form action="/funding_process/ready" method="post" onsubmit="openKakaoPayPopup(); return false;">
+            <div class="next_step_section">
+                <button type="submit" class="finished">
+                    <div class="next_step_box"></div>
+                    <span class="next_step_text">후원하기</span>
+                </button>
+            </div>
         </form>
+        <script>
+            function openKakaoPayPopup() {
+                fetch('/funding_process/ready', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    // 추가적인 요청 파라미터가 필요하다면 여기에 추가
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+
+                        // 여기에서 받은 데이터를 이용하여 팝업을 열기
+                        openKakaoPayPopupWindow(data);
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+            function openKakaoPayPopupWindow(data) {
+                // 팝업 창의 사이즈 및 위치 등을 설정할 수 있습니다.
+                const popupWindow = window.open(data.next_redirect_pc_url, 'KakaoPayPopup', 'width=600,height=800');
+
+                // 팝업이 차단되었을 경우 알림을 표시할 수 있습니다.
+                if (!popupWindow) {
+                    alert('팝업이 차단되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
+                } else {
+                    // 팝업이 닫힌 후에 부모 창으로 리다이렉트
+                    const checkPopupClosed = setInterval(() => {
+                        if (popupWindow.closed) {
+                            clearInterval(checkPopupClosed);
+
+                            // 팝업이 닫힌 후 부모 창으로 리다이렉트 요청
+                            window.postMessage('redirect', '*');
+                        }
+                    }, 1000);
+                }
+            }
+
+            // 부모 창에서 메시지 수신하여 리다이렉트
+            window.addEventListener('message', event => {
+                if (event.data === 'redirect') {
+                    window.location.href = "/funding_process/processFinished"; // 여기에 리다이렉트할 URL을 지정하세요.
+                }
+            });
+        </script>
+
+
+<!--        </form>-->
     </div>
-<script>
-    'use strict';
+<!--<script>-->
+<!--    'use strict';-->
 
-    const form = document.querySelector('#form__wrap');
-    const checkBoxes = document.querySelectorAll('#term1_check, #term2_check');
-    const submitButton = document.querySelector('.next_step_section button');
+<!--    const form = document.querySelector('#form__wrap');-->
+<!--    const checkBoxes = document.querySelectorAll('#term1_check, #term2_check');-->
+<!--    const submitButton = document.querySelector('.next_step_section button');-->
 
-    const agreements = {
-        term1_check: false,
-        term2_check: false,
-    };
+<!--    const agreements = {-->
+<!--        term1_check: false,-->
+<!--        term2_check: false,-->
+<!--    };-->
 
-    form.addEventListener('submit', (e) => e.preventDefault()); // 새로고침(submit) 되는 것 막음
+<!--    form.addEventListener('submit', (e) => e.preventDefault()); // 새로고침(submit) 되는 것 막음-->
 
-    checkBoxes.forEach((item) => {
-        item.addEventListener('change', toggleCheckbox);
-    });
+<!--    checkBoxes.forEach((item) => {-->
+<!--        item.addEventListener('change', toggleCheckbox);-->
+<!--    });-->
 
-    function toggleSubmitButton() {
-        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);
-        submitButton.disabled = !allChecked;
-    }
+<!--    function toggleSubmitButton() {-->
+<!--        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);-->
+<!--        submitButton.disabled = !allChecked;-->
+<!--    }-->
 
-    function toggleCheckbox(e) {
-        const { checked, id } = e.target;
-        agreements[id] = checked;
-        console.log(agreements);
-        toggleSubmitButton();
-    }
-    form.addEventListener('submit', function () {
-        // 여기에 후원 완료로 이동하는 로직 추가
-        window.location.href = "/funding_process/processFinished";
-    });
-    function toggleSubmitButton() {
-        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);
-        submitButton.disabled = !allChecked;
+<!--    function toggleCheckbox(e) {-->
+<!--        const { checked, id } = e.target;-->
+<!--        agreements[id] = checked;-->
+<!--        console.log(agreements);-->
+<!--        toggleSubmitButton();-->
+<!--    }-->
+<!--    form.addEventListener('submit', function () {-->
+<!--        // 여기에 후원 완료로 이동하는 로직 추가-->
+<!--        window.location.href = "/funding_process/processFinished";-->
+<!--    });-->
+<!--    function toggleSubmitButton() {-->
+<!--        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);-->
+<!--        submitButton.disabled = !allChecked;-->
 
-        // 배경색 조절
-        if (submitButton.disabled) {
-            submitButton.classList.add('disabled'); // 비활성화 클래스 추가
-        } else {
-            submitButton.classList.remove('disabled'); // 비활성화 클래스 제거
-        }
-    }
+<!--        // 배경색 조절-->
+<!--        if (submitButton.disabled) {-->
+<!--            submitButton.classList.add('disabled'); // 비활성화 클래스 추가-->
+<!--        } else {-->
+<!--            submitButton.classList.remove('disabled'); // 비활성화 클래스 제거-->
+<!--        }-->
+<!--    }-->
 
-    function toggleCheckbox(e) {
-        const { checked, id } = e.target;
-        agreements[id] = checked;
-        console.log(agreements);
-        toggleSubmitButton();
-    }
-</script>
+<!--    function toggleCheckbox(e) {-->
+<!--        const { checked, id } = e.target;-->
+<!--        agreements[id] = checked;-->
+<!--        console.log(agreements);-->
+<!--        toggleSubmitButton();-->
+<!--    }-->
+<!--</script>-->
 </div>
 </body>
 </html>

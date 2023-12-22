@@ -1,16 +1,25 @@
 package com.jellybears.krowdpoping.funding_process.controller;
 
+import com.jellybears.krowdpoping.common.exception.Kakaopay.BusinessLogicException;
+import com.jellybears.krowdpoping.common.exception.Kakaopay.ExceptionCode;
 import com.jellybears.krowdpoping.common.exception.address.AddressSaveException;
 import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
 import com.jellybears.krowdpoping.funding_process.model.service.FundingServiceImpl;
+import com.jellybears.krowdpoping.kakaopay.model.dto.KakaoApproveResponse;
+import com.jellybears.krowdpoping.kakaopay.model.dto.KakaoCancelResponse;
+import com.jellybears.krowdpoping.kakaopay.model.dto.KakaoReadyResponse;
+import com.jellybears.krowdpoping.kakaopay.model.service.KakaoPayService;
 import com.jellybears.krowdpoping.project.model.dto.DetailGoodsDTO;
 import com.jellybears.krowdpoping.project.model.dto.DetailProjectDTO;
 import com.jellybears.krowdpoping.project.model.service.ProjectService;
 import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import com.jellybears.krowdpoping.user.model.service.AuthenticationService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +29,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-
 @Controller
 @RequestMapping("/funding_process")
 @Slf4j
@@ -29,14 +37,17 @@ public class FundingProcessController {
     private final FundingServiceImpl fundingService;
     private final AuthenticationService authenticationService;
     private final ProjectService projectService;
+    private final KakaoPayService kakaoPayService;
 
     @Autowired
     public FundingProcessController(FundingServiceImpl fundingService,
                                     AuthenticationService authenticationService,
-                                    ProjectService projectService){
+                                    ProjectService projectService,
+                                    KakaoPayService kakaoPayService){
         this.fundingService = fundingService;
         this.authenticationService = authenticationService;
         this.projectService = projectService;
+        this.kakaoPayService = kakaoPayService;
     }
 
     @GetMapping("product")
@@ -61,7 +72,7 @@ public class FundingProcessController {
         model.addAttribute("daysLeftDisplay", daysLeftDisplay);
 
 
-        return "/funding_process/detailed_product";
+        return "funding_process/detailed_product";
     }
 
     @GetMapping("address")
@@ -97,17 +108,59 @@ public class FundingProcessController {
         addressDTO.setRecipientPhoneNumber(cleanedPhoneNumber);
 
         fundingService.saveAddress(addressDTO);
-        return "/funding_process/pay_reservation";
+        return "funding_process/pay_reservation";
     }
 
     @GetMapping("payReservation")
     public String payReservation(){
-        return "/funding_process/pay_reservation";
+        return "funding_process/pay_reservation";
+    }
+    @PostMapping("/ready")
+    @ResponseBody
+    public ResponseEntity<KakaoReadyResponse> readyToKakaoPay() {
+        System.out.println("kakaoready...................");
+        KakaoReadyResponse response = kakaoPayService.kakaoPayReady();
+        System.out.println("kakaoready.........finished............");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("/processFinished")
+    public String processFinished(@RequestParam("pg_token") String pgToken, Model model){
+        System.out.println("Received pg_token: " + pgToken);
+        KakaoApproveResponse kakaoApprove = kakaoPayService.approveResponse(pgToken);
+
+        // 데이터를 모델에 추가
+        model.addAttribute("kakaoApprove", kakaoApprove);
+
+        // 리다이렉션할 뷰 페이지 리턴
+        return "funding_process/process_finished";
+    }
+    /**
+     * 결제 진행 중 취소
+     */
+    @GetMapping("/cancel")
+    public void cancel() {
+
+        throw new BusinessLogicException(ExceptionCode.PAY_CANCEL);
     }
 
-    @GetMapping("processFinished")
-    public String processFinished(){
-        return "/funding_process/process_finished";
+    /**
+     * 결제 실패
+     */
+    @GetMapping("/fail")
+    public void fail() {
+
+        throw new BusinessLogicException(ExceptionCode.PAY_FAILED);
     }
 
+    /**
+     * 환불
+     */
+    @PostMapping("/refund")
+    public ResponseEntity refund() {
+
+        KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel();
+
+        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
+    }
 }
+
