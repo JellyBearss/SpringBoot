@@ -134,6 +134,18 @@ public class FundingProcessController {
         // 리다이렉션할 뷰 페이지 리턴
         return "funding_process/process_finished";
     }
+//    @PostMapping("savePayInfo")
+//    public String savePayInfo(@ModelAttribute AddressDTO addressDTO,
+//                              @ModelAttribute DetailGoodsDTO detailGoodsDTO) {
+//        log.info("Received AddressDTO: {}", addressDTO);
+//
+//        String cleanedPhoneNumber = addressDTO.getRecipientPhoneNumber().replace("-", "");
+//        addressDTO.setRecipientPhoneNumber(cleanedPhoneNumber);
+//
+//        fundingService.savePayInfo(addressDTO, detailGoodsDTO);
+//        return "funding_process/pay_reservation";
+//    }
+
     /**
      * 결제 진행 중 취소
      */

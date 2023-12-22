@@ -43,13 +43,4 @@ public class FundingServiceImpl implements FundingService {
         return fundingMapper.getDefaultAddress(user_code);
     }
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void saveDetailedProduct(ProductDTO productDTO) {
-        int user_code = productDTO.getUser_code();
-        int goodsCode = productDTO.getGoodsCode();
-
-        int result = fundingMapper.saveDetailedProduct(user_code, goodsCode);
-        log.info("[FundingService] Insert result: " + ((result > 0) ? "상세 상품 정보 저장 성공" : "상세 상품 정보 저장 실패"));
-    }
 }

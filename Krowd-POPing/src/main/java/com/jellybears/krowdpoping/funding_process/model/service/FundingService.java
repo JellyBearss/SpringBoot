@@ -9,5 +9,4 @@ public interface FundingService {
 
     AddressDTO getDefaultAddress(String userCode);
 
-    void saveDetailedProduct(ProductDTO productDTO);
 }

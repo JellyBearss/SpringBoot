@@ -460,59 +460,69 @@
             </div>
         </div>
 
-        <form action="/funding_process/ready" method="post" onsubmit="openKakaoPayPopup(); return false;">
+        <form id="kakaoPayForm" action="/funding_process/ready" method="post">
             <div class="next_step_section">
-                <button type="submit" class="finished">
+                <button type="button" class="finished" onclick="openKakaoPay()" disabled>
                     <div class="next_step_box"></div>
                     <span class="next_step_text">후원하기</span>
                 </button>
             </div>
         </form>
+
         <script>
-            function openKakaoPayPopup() {
-                fetch('/funding_process/ready', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    // 추가적인 요청 파라미터가 필요하다면 여기에 추가
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
+            'use strict';
 
-                        // 여기에서 받은 데이터를 이용하여 팝업을 열기
-                        openKakaoPayPopupWindow(data);
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
+            const checkBoxes = document.querySelectorAll('#term1_check, #term2_check');
+            const submitButton = document.querySelector('.finished');
 
-            function openKakaoPayPopupWindow(data) {
-                // 팝업 창의 사이즈 및 위치 등을 설정할 수 있습니다.
-                const popupWindow = window.open(data.next_redirect_pc_url, 'KakaoPayPopup', 'width=600,height=800');
+            const agreements = {
+                term1_check: false,
+                term2_check: false,
+            };
 
-                // 팝업이 차단되었을 경우 알림을 표시할 수 있습니다.
-                if (!popupWindow) {
-                    alert('팝업이 차단되었습니다. 팝업 차단을 해제하고 다시 시도해주세요.');
-                } else {
-                    // 팝업이 닫힌 후에 부모 창으로 리다이렉트
-                    const checkPopupClosed = setInterval(() => {
-                        if (popupWindow.closed) {
-                            clearInterval(checkPopupClosed);
-
-                            // 팝업이 닫힌 후 부모 창으로 리다이렉트 요청
-                            window.postMessage('redirect', '*');
-                        }
-                    }, 1000);
-                }
-            }
-
-            // 부모 창에서 메시지 수신하여 리다이렉트
-            window.addEventListener('message', event => {
-                if (event.data === 'redirect') {
-                    window.location.href = "/funding_process/processFinished"; // 여기에 리다이렉트할 URL을 지정하세요.
-                }
+            checkBoxes.forEach((item) => {
+                item.addEventListener('change', toggleCheckbox);
             });
+
+            function toggleSubmitButton() {
+                const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);
+                submitButton.disabled = !allChecked;
+
+                // 배경색 조절
+                if (submitButton.disabled) {
+                    submitButton.classList.add('disabled'); // 비활성화 클래스 추가
+                } else {
+                    submitButton.classList.remove('disabled'); // 비활성화 클래스 제거
+                }
+            }
+
+            function toggleCheckbox(e) {
+                const { checked, id } = e.target;
+                agreements[id] = checked;
+                toggleSubmitButton();
+            }
+
+            function openKakaoPay() {
+                // 모든 약관에 동의한 경우에만 결제 진행
+                if (agreements.term1_check && agreements.term2_check) {
+                    fetch('/funding_process/ready', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        // Additional request parameters if needed
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            // Perform KakaoPay process directly in the parent window
+                            window.location.href = data.next_redirect_pc_url;
+                        })
+                        .catch(error => console.error('Error:', error));
+                } else {
+                    alert('결제 진행을 위해 모든 약관에 동의해주세요.');
+                }
+            }
         </script>
 
 
