@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface InquiryService {
 
-    //관리자에게 문의 조회용
-    List<InquiryDTO> findInquiryList();
+    //관리자에게 문의 조회용. 잠시 주석
+//    List<InquiryDTO> findInquiryList();
 
     //창작자에게 문의 조회용
     List<InquiryDTO> findInquiryList2();
@@ -18,6 +18,9 @@ public interface InquiryService {
 
     //문의글 상세보기
     InquiryDTO selectInquiryContent(Long no);
+
+    //로그인한 유저 코드에 따른 문의 리스트 보기
+    List<InquiryDTO> findInquiryListByUSerCode(int userCode);
 
 
 }

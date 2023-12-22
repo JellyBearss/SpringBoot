@@ -86,7 +86,7 @@
                from category D
                where D.upper_category_code = 1)
         order by project_code desc
-        order by end_date
+--         order by end_date
 
     </select>
 

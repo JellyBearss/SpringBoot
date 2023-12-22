@@ -45,8 +45,8 @@
     <form id="inquiryRegist" method="post" action="/inquiry/save"> <!--action에는 입력한 데이터를 보낼 주소 작성. 액션속성은 목적지를 의미-->
 <!--        writer: <input type="text" name="boardWriter" th:value="${user.id}"><br>-->
 <!--        receiver: <input type="text" name="boardeReciver" th:value="${user.id}"><br>-->
-        writer: <input type="text" name="questioner"><br> <!-- 인풋에 입력한 값이 네임에 담겨서 넘어간다. 반드시 네임 정해줘야함 -->
-        receiver: <input type="text" name="replier"><br>
+        writer: <input type="text" name="questioner" th:value="${#authentication.getPrincipal().userDTO.getUser_code()}" readonly><br> <!-- 인풋에 입력한 값이 네임에 담겨서 넘어간다. 반드시 네임 정해줘야함 -->
+        receiver: <input type="text" name="replier" value="2" readonly><br> <!-- admin의 유저코드가 2여서 디폴트로 잡아줌.-->
         type: <input type="text" name="inquiryType"><br>
         status: <input type="text" name="inquiryStatus"><br>
 

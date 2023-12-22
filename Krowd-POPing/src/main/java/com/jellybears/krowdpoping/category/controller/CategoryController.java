@@ -24,6 +24,11 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+    /**
+     * 전체 카테고리 조회 메소드
+     * @param model
+     * @return
+     */
     @GetMapping("category-all")
     public String goCategory(Model model){
 
@@ -52,12 +57,13 @@ public class CategoryController {
 //    }
 
     /**
-     * 액세서리 카테고리에서 세부카테고리도 조회하는 메소드 작성중
+     * 액세서리 카테고리 전체 조회 및 세부카테고리도 조회하는 메소드
      * @param categoryId ?categoryId=값 형태로 참조하기 위함.
      *                   required = false : 쿼리 파라미터가 필수가 아님. categoryId가 요청에 포함되지 않아도 호출
-     *                   defaultValue = "1" : categoryId 파라미터가 요청에 포함되지 않았을 때의 기본값. 1은 액세서리 카테고리이다.
+     *                   defaultValue = "1" : categoryId 파라미터가 요청에 포함되지 않았을 때의 기본값. 1은 우리 데이터베이스에서 액세서리 카테고리이다.
      *
-     * @param model
+     * @param model accProjectList : 액세서리 카테고리 전체 조회
+     *              subProjectList : categoryId에 따른 액세서리 카테고리 내의 세부 카테고리 조회
      * @return
      */
     @GetMapping("category-acc")
@@ -198,13 +204,13 @@ public class CategoryController {
         return "/category/categorypage8-etc";
     }
 
-
-    @GetMapping("list")
-    public String goCategoryList(){
-
-        List<CategoryDTO> categoryList = categoryService.AllCategoryList();
-
-        return "/category/list";
-    }
+//
+//    @GetMapping("list")
+//    public String goCategoryList(){
+//
+//        List<CategoryDTO> categoryList = categoryService.AllCategoryList();
+//
+//        return "/category/list";
+//    }
 
 }
