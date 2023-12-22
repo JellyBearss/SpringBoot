@@ -162,7 +162,23 @@
             </div>
 
             <div class="card-wrapper">
-                <div th:each="project : ${accProjectList}" class="cards">
+                <div th:if="${categoryId == 1}"  th:each="project : ${accProjectList}" class="cards">
+                    <a th:href="|/projectdetail/projectdetail?no=${project.projectCode}|">
+                        <i class="fa-solid fa-heart"></i>
+                        <img src="/images/Ohmygirl.png" alt="Ohmygirl">
+                    </a>
+                    <div class="card-body">
+                        <span class="percent">38%</span>
+                        <span class="amount">17,268,000원</span>
+                        <span class="dayleft">18일 남음</span>
+                    </div>
+                    <h4 th:text="${project.projectTitle}"></h4>
+                    <p class="card-description" th:text="${project.projectDetail}"></p>
+                    <div class="creatorname" th:text="${project.creatorName.nickName}"></div>
+                    </a>
+                </div>
+
+                <div th:if="${categoryId != 1}"  th:each="project : ${subProjectList}" class="cards">
                     <a th:href="|/projectdetail/projectdetail?no=${project.projectCode}|">
                         <i class="fa-solid fa-heart"></i>
                         <img src="/images/Ohmygirl.png" alt="Ohmygirl">

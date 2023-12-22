@@ -17,13 +17,16 @@ public class InquiryServiceImpl implements InquiryService{
         this.inquiryMapper = inquiryMapper;
     }
 
-
-
-    @Override
-    public List<InquiryDTO> findInquiryList() {
-
-        return inquiryMapper.findInquiryList();
-    }
+//
+//    /**
+//     * 관리자에게 문의 조회(유저정보 적용 전)
+//     * @return
+//     */
+//    @Override
+//    public List<InquiryDTO> findInquiryList() {
+//
+//        return inquiryMapper.findInquiryList();
+//    }
 
     @Override
     public List<InquiryDTO> findInquiryList2() {
@@ -46,6 +49,11 @@ public class InquiryServiceImpl implements InquiryService{
 
 
         return inquiryMapper.selectInquiryContent(no);
+    }
+
+    @Override
+    public List<InquiryDTO> findInquiryListByUSerCode(int userCode) {
+        return inquiryMapper.findInquiryListByUSerCode(userCode);
     }
 
 

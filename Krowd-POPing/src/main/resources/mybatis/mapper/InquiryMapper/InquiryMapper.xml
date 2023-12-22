@@ -61,23 +61,25 @@
 
     </insert>
 
-    <select id="findInquiryList" resultMap="inquiryResultMap">
-        SELECT
-            A.inquiry_code,
-            A.inquiry_type,
-            A.inquiry_title,
-            A.inquiry_content,
-            A.inquiry_date,
-            A.inquiry_status,
-            B.id as questioner,
-            C.id as replier
-        FROM inquiry A
-                 LEFT JOIN user_info B on A.questioner = B.user_code
-                 LEFT JOIN user_info C on A.replier = C.user_code
-        where A.inquiry_type = '관리자에게 문의'
-        ORDER BY inquiry_code desc
+    <!--유저코드 적용전 게시글 조회(현재 로그인한 유저 아닌 총 문의 게시글 조회 메소드에 대한 쿼리문이므로 곧 삭제 예정)-->
 
-    </select>
+<!--    <select id="findInquiryList" resultMap="inquiryResultMap">-->
+<!--        SELECT-->
+<!--            A.inquiry_code,-->
+<!--            A.inquiry_type,-->
+<!--            A.inquiry_title,-->
+<!--            A.inquiry_content,-->
+<!--            A.inquiry_date,-->
+<!--            A.inquiry_status,-->
+<!--            B.id as questioner,-->
+<!--            C.id as replier-->
+<!--        FROM inquiry A-->
+<!--                 LEFT JOIN user_info B on A.questioner = B.user_code-->
+<!--                 LEFT JOIN user_info C on A.replier = C.user_code-->
+<!--        where A.inquiry_type = '관리자에게 문의'-->
+<!--        ORDER BY inquiry_code desc-->
+
+<!--    </select>-->
 
 
     <select id="findInquiryList2" resultMap="inquiryResultMap">
@@ -112,6 +114,27 @@
                  LEFT JOIN user_info B on A.questioner = B.user_code
                  LEFT JOIN user_info C on A.replier = C.user_code
         where inquiry_code = #{ no }
+
+    </select>
+
+
+    <select id="findInquiryListByUSerCode" resultMap="inquiryResultMap">
+
+        SELECT
+            A.inquiry_code,
+            A.inquiry_type,
+            A.inquiry_title,
+            A.inquiry_content,
+            A.inquiry_date,
+            A.inquiry_status,
+            B.id as questioner,
+            C.id as replier
+        FROM inquiry A
+                 LEFT JOIN user_info B on A.questioner = B.user_code
+                 LEFT JOIN user_info C on A.replier = C.user_code
+        where A.inquiry_type = '관리자에게 문의'
+          and A.questioner = #{ user_code }
+        ORDER BY inquiry_code desc
 
     </select>
 
