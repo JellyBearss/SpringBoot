@@ -24,7 +24,11 @@ public class UserDTO  {
     private String email;
     private String phone_number;
     private String user_status;
+    private Date join_date;
+    private Date exit_date;
+    private Character exit_status;
     private int email_code;
+    private Object addressDTO;
 
     public int getUser_code() {
         return user_code;
@@ -106,4 +110,35 @@ public class UserDTO  {
         this.email_code = email_code;
     }
 
+    public Date getJoin_date() {
+        return join_date;
+    }
+
+    public void setJoin_date(Date join_date) {
+        this.join_date = join_date;
+    }
+
+    public Date getExit_date() {
+        return exit_date;
+    }
+
+    public void setExit_date(Date exit_date) {
+        this.exit_date = exit_date;
+    }
+
+    public Character getExit_status() {
+        return exit_status;
+    }
+
+    public void setExit_status(Character exit_status) {
+        this.exit_status = exit_status;
+    }
+
+    public Object getAddressDTO() {
+        return addressDTO;
+    }
+
+    public void setAddressDTO(Object addressDTO) {
+        this.addressDTO = addressDTO;
+    }
 }

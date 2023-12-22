@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.projectList.model.dao.ProjectListMapper">
+
+    <select id="selectProjectList" parameterType="com.jellybears.krowdpoping.projectList.model.dto.ProjectDTO" resultType="com.jellybears.krowdpoping.projectList.model.dto.ProjectDTO">
+        select p.project_code, p.title, p.sum_pay_amount, p.target_amount, p.end_date, p.judge_status, f.thumbnail_path
+        from project p
+            left outer join project_files f
+            on p.project_code = f.project_code
+        <if test='judgeStatus != null and !judgeStatus.equals("")'>
+        where p.judge_status = #{judgeStatus}
+        </if>
+    </select>
+</mapper>

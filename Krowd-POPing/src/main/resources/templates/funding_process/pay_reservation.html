@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,31 +18,64 @@
 </head>
 <body>
 <div id="header">
-    <a href="/home" class="logo">
-        <img src="/icon/logo2.png" alt="">
-    </a>
-    <a href="/upload" class=upload_project>
-        <div class=upload_box>
-        <b><span  class="upload_text">프로젝트 올리기</span></b>
-        <svg viewBox="-12 -10 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.21429 16.0588H14.7857V8.64706H20.5L10.5 0L0.5 8.64706H6.21429V16.0588ZM0.5 18.5294H20.5V21H0.5V18.5294Z" fill="#7D1CD8"/>
-        </svg>
+    <div class=cartbar>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="category-box">
+            <div class="category"><a href="home.html">홈</a></div>
+            <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
+            <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
+            <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
         </div>
-    </a>
-    <a href="/profile" class="profile">
-        <div class="default_profile_circle"></div>
-        <div class="default_profile_face"></div>
-        <div class="nickname">체리토끼</div>
-        <div class="nickname_title">님</div>
-    </a>
+    </div>
+    <div class="logo">
+        <a href="/krowdpoping/mainpage">
+        <img src="/icon/logo2.png" alt="">
+        </a>
+    </div>
+    <div class="menu">
+        <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
+        <a th:onclick="'location.href=\'/mypage/projectlist2_yes\''" class="menu-item1">
+            <img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
+        <a href="alarm.html" class="menu-item2">
+            <img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
+        <a th:onclick="'location.href=\'/startProject/start\''" class="menu-item3">
+            <img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
+
+        <th:block sec:authorize="isAnonymous()">
+            <a th:href="@{/user/login}"
+               class="menu-item5" id="login">
+                <img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
+        </th:block>
+
+        <th:block sec:authorize="isAuthenticated()">
+            <a href="login.html" class="menu-item4"><img src="/icon/basicpic.png" alt="" ><span class="login_nickname" sec:authentication="principal.userDTO.nickname"></span><span>님</span></a>
+            <!--                <a th:href="@{/user/logout}">-->
+            <!--                    <input type="button" class="btn btn-or" value="로그아웃" id="logout"></a>-->
+
+        </th:block>
+    </div>
+    <div id="search-area">
+        <form id="search-form">
+            <div id="search-text-area">
+                <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
+                       onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
+            </div>
+            <div id="search-btn-area">
+                <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
+            </div>
+        </form>
+    </div>
+    <!-- </div> -->
+
+
 </div>
 
 <div id="content">
-    <div class="title_section">
         <div class="section">
             <div class="funding_title">후원하기</div>
         </div>
-    </div>
     <div class="funding_process">
         <div class="product_description">
             <div class="purple_des"></div>
@@ -71,12 +104,6 @@
         <span class="show_price">상품 금액</span>
         <span class="chosen_price">52,000</span>
         <span class="price_unit">원</span>
-    </div>
-
-    <div class="additional_funding">
-        <span class="show_additional_funding">추가 후원금</span>
-        <span class="chosen_additional_funding">1,000</span>
-        <span class="additional_funding_unit">원</span>
     </div>
 
     <div class="delivery_fee">

@@ -22,10 +22,13 @@
                 <div class="dropdown">
                   <select>
                     <option value="">전체</option>
-                    <option value="apple">일반 회원</option>
-                    <option value="banana">탈퇴 회원</option>
-                    <option value="orange">경고 회원</option>
-                    <option value="orange">블랙 회원</option>
+                    <option value="프로젝트 불이행 또는 지연">프로젝트 불이행 또는 지연</option>
+                    <option value="부적절한 콘텐츠 또는 디자인">부적절한 콘텐츠 또는 디자인</option>
+                    <option value="허위 광고">허위 광고</option>
+                    <option value="저작권 침해">저작권 침해</option>
+                    <option value="후원자와의 분쟁">후원자와의 분쟁</option>
+                    <option value="플랫폼 정책 위반">플랫폼 정책 위반</option>
+                    <option value="기타">기타</option>
                   </select>
                 </div>
                 <form class="d-flex" role="search">
@@ -36,11 +39,11 @@
             </nav>
 
             <!-- Default Table -->
-            <table class="table">     
+            <table class="table table-hover" id="listArea">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">신고 유형</th>
+<!--                  <th scope="col">신고 유형</th>-->
                   <th scope="col">제목</th>
                   <th scope="col">신고자 아이디</th>
                   <th scope="col">신고 일자</th>
@@ -48,13 +51,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>프로젝트 신고</td>
-                  <td><a href="/admin/reportDetail">도용 관련 신고</a></td>
-                  <td>qwe123</td>
-                  <td>2023/11/11</td>
-                  <td class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;">처리중</td>
+                <tr th:each="report : ${ reportList }">
+                  <th th:text="${ report.projectReportCode }"></th>
+<!--                  <td>프로젝트 신고</td>-->
+                  <td th:text="${ report.reportTitle }"></td>
+                  <td th:text="${ report.reporter }"></td>
+                  <td th:text="${ report.reportDate }"></td>
+                  <td th:text="${ report.whetherCompleted }" class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;"></td>
                 </tr>
               </tbody>
             </table>

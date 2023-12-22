@@ -22,10 +22,9 @@
                 <div class="dropdown">
                   <select>
                     <option value="">전체</option>
-                    <option value="apple">일반 회원</option>
-                    <option value="banana">탈퇴 회원</option>
-                    <option value="orange">경고 회원</option>
-                    <option value="orange">블랙 회원</option>
+                    <option value="일반 공지">일반 공지</option>
+                    <option value="긴급 공지">긴급 공지</option>
+                    <option value="이벤트 공지">이벤트 공지</option>
                   </select>
                 </div>
                 <form class="d-flex" role="search">
@@ -55,6 +54,7 @@
                   <td th:text="${ notice.title }"></td>
                   <td th:text="${ notice.updateDate }"></td>
                   <td th:text="${ notice.userDTO.nickname }"></td>
+<!--                  <td>조회수값</td>-->
                 </tr>
             </table>
             </div>

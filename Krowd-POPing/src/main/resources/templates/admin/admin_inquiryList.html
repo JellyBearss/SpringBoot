@@ -21,10 +21,9 @@
                 <div class="dropdown">
                   <select>
                     <option value="">전체</option>
-                    <option value="apple">일반 회원</option>
-                    <option value="banana">탈퇴 회원</option>
-                    <option value="orange">경고 회원</option>
-                    <option value="orange">블랙 회원</option>
+                    <option value="apple">창작자 문의</option>
+                    <option value="banana">후워자 문의</option>
+                    <option value="orange">기타 문의</option>
                   </select>
                 </div>
                 <form class="d-flex" role="search">
@@ -35,7 +34,7 @@
             </nav>
 
             <!-- Default Table -->
-            <table class="table">     
+            <table class="table table-hover" id="listArea">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -47,13 +46,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>창작자 문의</td>
-                  <td><a href="/admin/inquiryDetail">프로젝트 신청 관련</a></td>
-                  <td>qwe123</td>
-                  <td>2023/11/11</td>
-                  <td class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;">처리중</td>>
+                <tr th:each="inquiry : ${ inquiryList }">
+                  <th th:text="${ inquiry.inquiryCode }"></th>
+                  <td th:text="${ inquiry.inquiryType }"></td>
+                  <td th:text="${ inquiry.inquiryTitle }"></td>
+                  <td th:text="${ inquiry.questioner }"></td> <!-- 유저 아이디로 조인해서 가져와야함...나중에 -->
+                  <td th:text="${ inquiry.inquiryDate }"></td>
+                  <td th:text="${ inquiry.inquiryStatus }" class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;"></td>
                 </tr>
               </tbody>
             </table>
@@ -69,6 +68,32 @@
               <a href="#">&raquo;</a>
             </div>
             <!-- End 페이징 처리 -->
+
+            <!-- 리스트를 누르면 디테일로 가는 이벤트처리 -->
+            <script th:inline="javascript">
+              /*<![CDATA[*/
+              let message = '[[${message}]]';
+              if(message != null && message !== 'null') {
+                alert(message);
+              }
+              /*]]>*/
+
+              /* 게시글 리스트에서 해당 게시글에 마우스를 올릴 떄에 대한 스타일 처리 */
+              if (document.querySelectorAll("#listArea td")) {
+                const $tds = document.querySelectorAll("#listArea td");
+                for (let i = 0; i < $tds.length; i++) {
+
+                  $tds[i].onmouseenter = function() {
+                    this.parentNode.style.cursor = "pointer";
+                  }
+
+                  $tds[i].onclick = function() {
+                    const no = this.parentNode.children[0].innerText;
+                    location.href = "/admin/inquiryDetail?inquiryCode=" + no;
+                  }
+                }
+              }
+            </script>
           </div>
         </div>
       </div>

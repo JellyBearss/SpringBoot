@@ -1,7 +1,10 @@
 package com.jellybears.krowdpoping.user.model.service;
 
+
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
+
+import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
 import com.jellybears.krowdpoping.user.model.dao.UserMapper;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -17,16 +20,20 @@ public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder;
     private final UserMapper mapper;
 
+
+
     public UserServiceImpl(PasswordEncoder passwordEncoder, UserMapper mapper) {
         this.passwordEncoder = passwordEncoder;
         this.mapper = mapper;
 
     }
 
+
+
     /*-------------회원 조회-----------*/
     @Override
     public boolean selectUserById(String userId) {
-        String result = mapper.selectUserById(userId);
+        UserDTO result = mapper.selectUserById(userId);
         return result !=null? true : false;
     }
 
@@ -49,6 +56,9 @@ public class UserServiceImpl implements UserService{
         int result1 = mapper.insertRoletype(userCode);
 
 
+        System.out.println("result1.getUserId()========== : ");
+
+
         log.info("[UserService] Insert User : " + ((result > 0) ? "회원가입 성공" : "회원가입 실패"));
 
         if(!(result > 0 )){
@@ -65,6 +75,17 @@ public class UserServiceImpl implements UserService{
 
         if(!(result > 0)) {
             throw new UserModifyException("회원 정보 수정에 실패하셨습니다.");
+        }
+    }
+
+
+    /*-------------회원 탈퇴------------*/
+    @Override
+    public void removeUser(UserDTO user) throws UserRemoveException {
+        int result = mapper.deleteUser(user);
+
+        if(!(result > 0)) {
+            throw new UserRemoveException("회원 탈퇴에 실패하셨습니다.");
         }
     }
 

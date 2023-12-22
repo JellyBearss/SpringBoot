@@ -4,6 +4,7 @@ import com.jellybears.krowdpoping.user.model.dao.UserMapper;
 import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,6 +36,6 @@ public class AuthenticationService implements UserDetailsService {
         }
         log.info("[AuthenticationService] ===================================================== end");
         return user;
-
     }
+
 }

@@ -1,10 +1,16 @@
 package com.jellybears.krowdpoping.user.controller;
 
+
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
+import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
 import com.jellybears.krowdpoping.common.util.SessionUtil;
+import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
+import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
+import com.jellybears.krowdpoping.user.model.service.EmailService;
 import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -14,17 +20,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Random;
+
 @Controller
 @RequestMapping("/user/*")
 @Slf4j
 public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final UserServiceImpl UserService;
+    private final EmailService emailService;
 
-    public UserController(PasswordEncoder passwordEncoder, UserServiceImpl userService) {
+
+    public UserController(PasswordEncoder passwordEncoder, UserServiceImpl userService,EmailService emailService) {
         this.passwordEncoder = passwordEncoder;
         this.UserService = userService;
+        this.emailService = emailService;
+
     }
+
 
     /**
      * 로그인 하기
@@ -48,6 +62,14 @@ public class UserController {
     public String TermOfService() {
 
         return "/user/Signup_1";
+    }
+
+    @ResponseBody
+    @PostMapping("/emailCheck")
+    public String EmailCheck(@RequestBody UserDTO userDTO)
+            throws MessagingException, UnsupportedEncodingException {
+        String authNum = emailService.sendEmail(userDTO.getEmail());
+        return (authNum);
     }
 
 
@@ -88,9 +110,7 @@ public class UserController {
 
         return "redirect:/user/signupsuccess";
     }
-
-
-    @PostMapping("idDupCheck")
+    @PostMapping("/idDupCheck")
     public ResponseEntity<String> checkDuplication(@RequestBody UserDTO userDTO) {
         log.info("");
         log.info("");
@@ -110,14 +130,6 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/mailCheck")
-    @ResponseBody
-    public String mailCheck(String email) {
-        System.out.println("이메일 인증 요청이 들어옴!");
-        System.out.println("이메일 인증 이메일 : " + email);
-
-        return "";
-    }
 
     @GetMapping("signupsuccess")
     public String SignupSuccess() {
@@ -154,6 +166,32 @@ public class UserController {
         log.info("[UserController] modifyUser========================================================== end");
 
         return "redirect:/user/login";
+    }
+
+    @GetMapping("/delete")
+    public String deleteMember(@ModelAttribute UserDTO user,
+                               RedirectAttributes rttr,
+                               HttpServletRequest request,
+                               HttpServletResponse response) throws UserRemoveException {
+
+        log.info("");
+        log.info("");
+        log.info("[MemberController] deleteMember ========================================================== start");
+
+        String userId = request.getParameter("id");
+        user.setUserId(userId);
+
+        log.info("[UserController] user : " + user);
+        UserService.removeUser(user);
+
+        // 회원 탈퇴후 로그아웃 프로세스 진행
+        SessionUtil.invalidateSession(request, response);
+
+        rttr.addFlashAttribute("message", "회원 탈퇴에 성공하셨습니다. 로그아웃됩니다.");
+
+        log.info("[MemberController] deleteMember ========================================================== end");
+
+        return "redirect:/";
     }
 
 

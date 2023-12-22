@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,31 +20,64 @@
 </head>
 <body>
 <div id="header">
-    <a href="/home" class="logo">
-        <img src="/icon/logo2.png" alt="">
-    </a>
-    <a href="/upload" class=upload_project>
-        <div class=upload_box>
-            <b><span  class="upload_text">프로젝트 올리기</span></b>
-            <svg viewBox="-12 -10 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.21429 16.0588H14.7857V8.64706H20.5L10.5 0L0.5 8.64706H6.21429V16.0588ZM0.5 18.5294H20.5V21H0.5V18.5294Z" fill="#7D1CD8"/>
-            </svg>
+    <div class=cartbar>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="category-box">
+            <div class="category"><a href="home.html">홈</a></div>
+            <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
+            <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
+            <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
         </div>
-    </a>
-    <a href="/profile" class="profile">
-        <div class="default_profile_circle"></div>
-        <div class="default_profile_face"></div>
-        <div class="nickname">체리토끼</div>
-        <div class="nickname_title">님</div>
-    </a>
+    </div>
+    <div class="logo">
+        <a href="/krowdpoping/mainpage">
+            <img src="/icon/logo2.png" alt="">
+        </a>
+    </div>
+    <div class="menu">
+        <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
+        <a th:onclick="'location.href=\'/mypage/projectlist2_yes\''" class="menu-item1">
+            <img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
+        <a href="alarm.html" class="menu-item2">
+            <img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
+        <a th:onclick="'location.href=\'/startProject/start\''" class="menu-item3">
+            <img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
+
+        <th:block sec:authorize="isAnonymous()">
+            <a th:href="@{/user/login}"
+               class="menu-item5" id="login">
+                <img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
+        </th:block>
+
+        <th:block sec:authorize="isAuthenticated()">
+            <a href="login.html" class="menu-item4"><img src="/icon/basicpic.png" alt="" ><span class="login_nickname" sec:authentication="principal.userDTO.nickname"></span><span>님</span></a>
+            <!--                <a th:href="@{/user/logout}">-->
+            <!--                    <input type="button" class="btn btn-or" value="로그아웃" id="logout"></a>-->
+
+        </th:block>
+    </div>
+    <div id="search-area">
+        <form id="search-form">
+            <div id="search-text-area">
+                <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
+                       onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
+            </div>
+            <div id="search-btn-area">
+                <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
+            </div>
+        </form>
+    </div>
+    <!-- </div> -->
+
+
 </div>
 
 <div id="content">
-    <div class="title_section">
         <div class="section">
             <div class="funding_title">후원하기</div>
         </div>
-    </div>
     <div class="funding_process">
         <div class="product_description">
             <div class="purple_des"></div>
@@ -60,42 +94,76 @@
         <div class="process_line"></div>
     </div>
 
+    <th:block sec:authorize="isAuthenticated()">
     <div class="supporter_info">
         <div class="supporter_info_title">후원자 정보</div>
-
         <div class="nickname_section">
             <span class="supporter_nickname">후원자명</span>
             <div class="input_nickname_section">
-                <input type="text" name ="input_nickname" placeholder="후원자명을 입력하세요.">
+                <input type="text" name ="input_nickname" th:value="${ #authentication.getPrincipal().userDTO.getNickname() }" placeholder="후원자명을 입력하세요.">
             </div>
         </div>
 
         <div class="name_section">
             <span class="name">이름</span>
             <div class="input_name_section">
-                <input type="text" name ="input_name" placeholder="이름을 입력하세요.">
+                <input type="text" name ="input_name" th:value="${ #authentication.getPrincipal().userDTO.getName() }" placeholder="이름을 입력하세요.">
             </div>
         </div>
 
         <div class="phone_number_section">
             <span class="phone_number">연락처</span>
             <div class="input_phone_number_section">
-                <input type="text" name ="input_phone_number" placeholder="연락처를 입력하세요.">
+                <input type="text" name ="input_phone_number" th:value="${ #authentication.getPrincipal().userDTO.getPhone_number() }" placeholder="연락처를 입력하세요.">
             </div>
         </div>
 
         <div class="email_section">
             <span class="email">이메일</span>
             <div class="input_email_section">
-                <input type="text" name ="input_email" placeholder="이메일을 입력하세요.">
+                <input type="text" name ="input_email" th:value="${ #authentication.getPrincipal().userDTO.getEmail() }" placeholder="이메일을 입력하세요.">
             </div>
         </div>
 
         <div class="same_as_profile">
-            <input type="checkbox" id="same" name="whether_same" value="가입 정보와 동일">
+            <input type="checkbox" id="same" name="whether_same" value="가입 정보와 동일" onchange="toggleUserInfoVisibility()" checked>
             <label for="same">가입 정보와 동일</label>
         </div>
     </div>
+
+        <script th:inline="javascript">
+            function toggleUserInfoVisibility() {
+                var checkbox = document.getElementById('same');
+                var nicknameInput = document.querySelector('[name=input_nickname]');
+                var nameInput = document.querySelector('[name=input_name]');
+                var phoneNumberInput = document.querySelector('[name=input_phone_number]');
+                var emailInput = document.querySelector('[name=input_email]');
+
+                // 첫 번째 체크 시 원래 값 설정
+                if (!nicknameInput.dataset.originalValue) {
+                    nicknameInput.dataset.originalValue = nicknameInput.value;
+                    nameInput.dataset.originalValue = nameInput.value;
+                    phoneNumberInput.dataset.originalValue = phoneNumberInput.value;
+                    emailInput.dataset.originalValue = emailInput.value;
+                }
+
+                // 체크박스가 체크되었을 때
+                if (checkbox.checked) {
+                    nicknameInput.value = nicknameInput.dataset.originalValue;
+                    nameInput.value = nameInput.dataset.originalValue;
+                    phoneNumberInput.value = phoneNumberInput.dataset.originalValue;
+                    emailInput.value = emailInput.dataset.originalValue;
+                } else {
+                    // 체크가 해제되면 값 초기화
+                    nicknameInput.value = '';
+                    nameInput.value = '';
+                    phoneNumberInput.value = '';
+                    emailInput.value = '';
+                }
+            }
+        </script>
+
+    </th:block>
 </div>
 
 <div class="default_address">
@@ -110,56 +178,48 @@
             <div class="underline"></div>
         </div>
     </div>
+
     <div id="subpage1" class="subpage">
+        <th:block sec:authorize="isAuthenticated()">
         <div class="default_address_section">
-            <span class="default_address_name">하이미디어</span>
+            <span class="default_address_name" th:text="${defaultAddress.getAddressTitle()}" name="addressTitle"></span>
             <div class="default_address_icon">
                 <span class="default_address_icon_text">기본 배송지</span>
                 <div class="default_address_icon_box"></div>
             </div>
         </div>
         <div class="default_name_info">
-            <form action="#" method="get">
                 <span class="d_i_name">받는 사람</span>
                 <div class="input_d_i_name_section">
-                    <input type="text" name ="input_d_i_name">
+                    <input type="text" th:value="${defaultAddress.getRecipientName()}" name="recipientName">
                 </div>
-            </form>
         </div>
 
         <div class="default_postcode_info">
-            <form action="#" method="get">
                 <span class="d_i_postcode">우편번호</span>
                 <div class="input_d_i_postcode_section">
-                    <input type="text" name ="input_d_i_postcode">
+                    <input type="text" th:value="${defaultAddress.getZipCode()}" name ="input_d_i_postcode">
                 </div>
-            </form>
         </div>
 
         <div class="default_address_info">
-            <form action="#" method="get">
                 <span class="d_i_address">주소</span>
                 <div class="input_d_i_address_section">
-                    <input type="text" name ="input_d_i_address">
+                    <input type="text" th:value="${defaultAddress.getRecipientAddress()}" name ="input_d_i_address">
                 </div>
-            </form>
         </div>
 
         <div class="default_detailed_address_info">
-            <form action="#" method="get">
                 <span class="d_i_d_address">상세 주소</span>
                 <div class="input_d_i_d_address_section">
-                    <input type="text" name ="input_d_i_d_address">
+                    <input type="text" th:value="${defaultAddress.getDetailedAddress()}" name ="input_d_i_d_address">
                 </div>
-            </form>
         </div>
         <div class="default_phone_info">
-            <form action="#" method="get">
                 <span class="d_i_phone">연락처</span>
                 <div class="input_d_i_phone_section">
-                    <input type="text" name ="input_d_i_phone">
+                    <input type="text" th:value="${defaultAddress.getRecipientPhoneNumber()}" name="recipientPhoneNumber">
                 </div>
-            </form>
         </div>
 
         <div class="d_i_delivery_comment">
@@ -183,7 +243,9 @@
                 <span class="next_step_text1">다음 단계로</span>
             </a>
         </div>
+        </th:block>
     </div>
+
     <div id="subpage2" class="subpage">
         <form id="saveAddressForm" action="/funding_process/saveAddress" method="post" onsubmit="submitForm()">
             <div class="add_address_name_info">
@@ -352,6 +414,10 @@
 </div>
 
 <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 'subpage1'을 인자로 하여 showSubpage 함수 호출하여 초기에 표시
+        showSubpage('subpage1');
+    });
     document.getElementById('deliveryOptions').value = 'default';
     showSubpage('subpage1');
     function showSubpage(subpageId) {
@@ -360,6 +426,7 @@
         subpages.forEach(function(subpage) {
             subpage.classList.remove('active');
         });
+
 
         // 클릭한 subpage를 활성화
         var activeSubpage = document.getElementById(subpageId);

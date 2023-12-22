@@ -199,31 +199,43 @@ body{
 #profile_img img{
     width: 75px;}
 
-#changepicture,#deletepicture{
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    /* flex-direction: column;  */
-    margin-left: 443px;
-    margin-top: 10px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    border: 1px solid #6d6d6d; 
-    font-size: 12px;
-    width: 70px;
-    height: 25px;
-    text-align: center; 
-    font-family: 'Noto Sans KR', sans-serif;
-}
+
 
 #edittitle-2{
     margin-left: 30px;
 }
 
-#edittitle-1,#edittitle-2,#edittitle-3{
-    font-size: 15px;    
+.id_part{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#id_title{
+
+    margin-left: 30px;
+    margin-right: 335px;
+
+}
+#edittitle-1,#edittitle-2,#edittitle-3,#id_title{
+    font-size: 15px;
     color: #6d6d6d;
     font-weight: 600;
+}
+
+#changepicture,#deletepicture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column;  */
+    margin-left: 733px;
+    margin-top: 10px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid #6d6d6d;
+    font-size: 12px;
+    width: 70px;
+    height: 25px;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .profile_password{
@@ -239,7 +251,7 @@ body{
     margin-bottom: 20px;
     /* background-color: #EADBF9; */
 }
-.password-input{
+.password-input1,.password-input2,.password-input3{
     font-size: 11px;
     height: 16px;
     color: #616060;
@@ -251,14 +263,14 @@ body{
     align-items: center;
 }
 
-.password-input {
+.password-input1,.password-input2,.password-input3{
     border: 1px solid #ccc;
     padding: 5px;
     margin-left: -95px;
     /* width: 100%; */
     width: 180px;
 }
-#password-description{
+#password-description1,#password-description2,#password-description3{
     font-size: 13px;
     width: 200px;
 }
@@ -278,7 +290,7 @@ body{
 }
 .nickname-container {
     color: #6d6d6d;
-    transform:translateX(35%);
+    transform:translateX(52%);
     display: flex;
     align-items: center;
     margin-bottom: 25px;
@@ -298,7 +310,7 @@ body{
 
 #change_nickname {
     color: #6d6d6d;
-    transform:translateX(35%);
+    transform:translateX(52%);
     margin-top: 15px;
     display: flex;
     align-items: center;

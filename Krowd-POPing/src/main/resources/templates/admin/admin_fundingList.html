@@ -22,10 +22,9 @@
                 <div class="dropdown">
                   <select>
                     <option value="">전체</option>
-                    <option value="apple">일반 회원</option>
-                    <option value="banana">탈퇴 회원</option>
-                    <option value="orange">경고 회원</option>
-                    <option value="orange">블랙 회원</option>
+                    <option value="진행중">진행중</option>
+                    <option value="펀딩 성공">펀딩 성공</option>
+                    <option value="펀딩 실패">펀딩 실패</option>
                   </select>
                 </div>
                 <form class="d-flex" role="search">
@@ -36,7 +35,7 @@
             </nav>
 
 <!--             Default Table-->
-            <table class="table">     
+            <table class="table table-hover" id="listArea">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -45,24 +44,49 @@
                   <th scope="col">마감일자</th>
                   <th scope="col">목표금액</th>
                   <th scope="col">모금금액</th>
-                  <th scope="col">펀딩률</th>
+<!--                  <th scope="col">펀딩률</th>-->
                   <th scope="col">진행상태</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="/admin/fundingDetail">크리스마스 단 하루를 위해 1년을 준비한 장인정신 슈톨렌</a></td>
-                  <td>2023/09/09</td>
-                  <td>2023/11/25</td>
-                  <td>1,000,000원</td>
-                  <td>500,000원</td>
-                  <td>50%</td>
-                  <td class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;">진행중</td>
+                <tr th:each="funding : ${ fundingList }">
+                  <th th:text="${ funding.projectCode }"></th>
+                  <td th:text="${ funding.title }"></td>
+                  <td th:text="${ funding.startDate }"></td>
+                  <td th:text="${ funding.endDate }"></td>
+                  <td th:text="${ funding.targetAmount }"></td>
+                  <td th:text="${ funding.totalAmount }"></td>
+<!--                  <td>50%</td>-->
+                  <td th:text="${ funding.judgeStatus }" class="badge bg-warning" style="display: flex; justify-content: center; align-items: center; margin: 6px;"></td>
                 </tr>
               </tbody>
             </table>
             <!-- End Default Table Example -->
+            <!-- 리스트를 누르면 디테일로 가는 이벤트처리 -->
+            <script th:inline="javascript">
+              /*<![CDATA[*/
+              let message = '[[${message}]]';
+              if(message != null && message !== 'null') {
+                alert(message);
+              }
+              /*]]>*/
+
+              /* 게시글 리스트에서 해당 게시글에 마우스를 올릴 떄에 대한 스타일 처리 */
+              if (document.querySelectorAll("#listArea td")) {
+                const $tds = document.querySelectorAll("#listArea td");
+                for (let i = 0; i < $tds.length; i++) {
+
+                  $tds[i].onmouseenter = function() {
+                    this.parentNode.style.cursor = "pointer";
+                  }
+
+                  $tds[i].onclick = function() {
+                    const no = this.parentNode.children[0].innerText;
+                    location.href = "/admin/fundingDetail?projectCode=" + no;
+                  }
+                }
+              }
+            </script>
             <div class="pagination">
               <a href="#">1</a>
               <a href="#">2</a>

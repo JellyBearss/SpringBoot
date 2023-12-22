@@ -4,10 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.projectRegister.section02.model.dao.CreatorMapper">
 
-    <select id="selectCreator" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
-        select *
+    <select id="selectCreator" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
+        select cr_type
+             , business_num
+             , address
+             , user_code
+             , phone
+             , email
+             , introduce
+             , identi_num
+             , issue_type
+             , acc_user_nm
+             , ceo_nm
+             , creator_nm
         from creator
-        where user_code = #{user_code}
+        where user_code = #{userCode}
     </select>
 
     <insert id="insertCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
@@ -23,28 +34,30 @@
                              , issue_type
                              , acc_user_nm
                              , ceo_nm
+                             , creator_nm
          ) values (
-                    #{cr_type}
-                  , #{user_code}
-                  , #{business_num}
+                    #{crType}
+                  , #{userCode}
+                  , #{businessNum}
                   , #{address}
                   , #{phone}
                   , #{email}
                   , #{introduce}
-                  , #{identi_num}
-                  , #{issue_type}
-                  , #{acc_user_nm}
-                  , #{ceo_nm}
+                  , #{identiNum}
+                  , #{issueType}
+                  , #{accUserNm}
+                  , #{ceoNm}
+                  , #{creatorNm}
           )
     </insert>
 
     <update id="updateCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
-        update creator set user_code = #{user_code}
-                            <if test = 'cr_type ge 0'>
-                                , cr_type = #{cr_type}
+        update creator set user_code = #{userCode}
+                            <if test = 'crType gte 0'>
+                                , cr_type = #{crType}
                             </if>
-                            <if test = 'business_num != null and !"".equals(business_num)'>
-                                , business_num = #{business_num}
+                            <if test = 'businessNum != null and !"".equals(businessNum)'>
+                                , business_num = #{businessNum}
                             </if>
                             <if test = 'address != null and !"".equals(address)'>
                                 , address = #{address}
@@ -58,27 +71,30 @@
                             <if test = 'introduce != null and !"".equals(introduce)'>
                                 , introduce = #{introduce}
                             </if>
-                            <if test = 'identi_num != null and !"".equals(identi_num)'>
-                                , identi_num = #{identi_num}
+                            <if test = 'identiNum != null and !"".equals(identiNum)'>
+                                , identi_num = #{identiNum}
                             </if>
-                            <if test = 'ceo_nm != null and !"".equals(ceo_nm)'>
-                                , ceo_nm = #{ceo_nm}
+                            <if test = 'ceoNm != null and !"".equals(ceoNm)'>
+                                , ceo_nm = #{ceoNm}
                             </if>
-                            <if test = 'acc_user_nm != null and !"".equals(acc_user_nm)'>
-                                , acc_user_nm = #{acc_user_nm}
+                            <if test = 'accUserNm != null and !"".equals(accUserNm)'>
+                                , acc_user_nm = #{accUserNm}
                             </if>
-                            <if test = 'issue_type ge 0'>
-                                , issue_type = #{issue_type}
+                            <if test = "issueType gte 0">
+                                , issue_type = #{issueType}
                             </if>
-        where user_code = #{user_code}
+                            <if test = 'creatorNm != null and !"".equals(creatorNm)'>
+                                , creator_nm = #{creatorNm}
+                            </if>
+        where user_code = #{userCode}
     </update>
 
     <delete id="deleteCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
-        delete from creator where user_code = #{user_code}
+        delete from creator where user_code = #{userCode}
     </delete>
 
     <delete id="deleteCreatorProfile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">
-        delete from creator_files where user_code = #{user_code}
+        delete from creator_files where user_code = #{userCode}
     </delete>
 
     <insert id="insertCreatorProfile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">
@@ -90,13 +106,19 @@
                     , user_code
                     , file_type
         ) values (
-                #{origin_name}
-                 , #{update_name}
+                #{originName}
+                 , #{updateName}
                  , NOW()
                  , 1
-                 , #{user_code}
-                 , #{file_type}
+                 , #{userCode}
+                 , #{fileType}
                  )
     </insert>
+
+    <select id="selectFilesInfo" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">
+        select * from creator_files
+        where user_code = #{userCode}
+        and file_type = #{fileType}
+    </select>
 </mapper>
 

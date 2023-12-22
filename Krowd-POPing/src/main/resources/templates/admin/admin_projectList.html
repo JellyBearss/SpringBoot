@@ -22,10 +22,9 @@
                 <div class="dropdown">
                   <select>
                     <option value="">전체</option>
-                    <option value="apple">일반 회원</option>
-                    <option value="banana">탈퇴 회원</option>
-                    <option value="orange">경고 회원</option>
-                    <option value="orange">블랙 회원</option>
+                    <option value="심사중">심사중</option>
+                    <option value="승인">승인</option>
+                    <option value="반려">반려</option>
                   </select>
                 </div>
                 <form class="d-flex" role="search">
@@ -42,23 +41,23 @@
                   <th scope="col">#</th>
                   <th scope="col">프로젝트 명칭</th>
                   <th scope="col">신청일</th>
-                  <th scope="col">프로젝트 기간</th>
-                  <th scope="col">상호명</th>
+                  <th scope="col">프로젝트 시작일</th>
+                  <th scope="col">프로젝트 종료일</th>
                   <th scope="col">창작자 아이디</th>
                   <th scope="col">이메일</th>
                   <th scope="col">프로젝트 상태</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="/admin/applicationDetail">크리스마스 단 하루를 위해 1년을 준비한 장인정신 슈톨렌</a></td>
-                  <td>2023/09/09</td>
-                  <td>2023/11/25</td>
-                  <td>델리타스</td>
-                  <td>qwe123</td>
-                  <td>qwe123@gmail.com</td>
-                  <td class="badge bg-danger" style="color: white; display: flex; justify-content: center; align-items: center; margin: 6px;">반려</td>
+                <tr th:each="project : ${ projectList }">
+                  <th th:text="${ project.projectCode }"></th>
+                  <td th:text="${ project.title }"></td>
+                  <td th:text="${ project.updateDate }"></td>
+                  <td th:text="${ project.startDate }"></td>
+                  <td th:text="${ project.endDate }"></td>
+                  <td th:text="${ project.userDTO.userId }"></td>
+                  <td th:text="${ project.userDTO.email }"></td>
+                  <td th:text="${ project.judgeStatus }" class="badge bg-danger" style="color: white; display: flex; justify-content: center; align-items: center; margin: 6px;"></td>
                 </tr>
               </tbody>
             </table>

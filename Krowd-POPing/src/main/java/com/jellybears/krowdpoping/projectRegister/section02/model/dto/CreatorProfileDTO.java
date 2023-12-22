@@ -8,11 +8,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CreatorProfileDTO {
-    private int profile_code;
-    private String origin_name;
-    private String update_name;
-    private String register_date;
-    private int delete_opt;
-    private int user_code;
-    private String file_type;
+    private int profileCode;
+    private String originName;
+    private String updateName;
+    private String registerDate;
+    private int deleteOpt;
+    private int userCode;
+    private String fileType;
 }

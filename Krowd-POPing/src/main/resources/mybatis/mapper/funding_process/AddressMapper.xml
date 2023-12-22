@@ -21,4 +21,21 @@
            , #{ whetherDefaultAddress }
            )
     </insert>
+    <resultMap id="addressResultMap" type="com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO">
+        <result property="deliveryCode" column="delivery_code"/>
+        <result property="user_code" column="user_code"/>
+        <result property="addressTitle" column="address_title"/>
+        <result property="recipientName" column="recipient_name"/>
+        <result property="mergedAddress" column="recipient_address"/>
+        <result property="recipientPhoneNumber" column="recipient_phone_number"/>
+        <result property="deliveryComment" column="delivery_comment"/>
+        <result property="whetherDefaultAddress" column="whether_default_address"/>
+    </resultMap>
+    <select id="getDefaultAddress" resultMap="addressResultMap">
+        SELECT A.delivery_code, A.address_title, A.recipient_name, A.recipient_address, A.recipient_phone_number, A.delivery_comment, A.whether_default_address, B.user_code
+        FROM delivery_address_info A
+                 INNER JOIN delivery_address B ON A.delivery_code = B.delivery_code
+        WHERE B.user_code = #{user_code}
+          AND A.whether_default_address = 'Y'
+    </select>
 </mapper>
