@@ -12,5 +12,5 @@ public class DetailGoodsDetailDTO {
     private int DetailItemCode;
     private int goodsCode;
     private int itemQuantity;
-
+    private int amount;
 }

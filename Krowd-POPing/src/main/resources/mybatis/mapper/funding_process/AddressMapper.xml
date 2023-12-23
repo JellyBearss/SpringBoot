@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jellybears.krowdpoping.funding_process.model.dao.AddressMapper">
+<mapper namespace="com.jellybears.krowdpoping.funding_process.model.dao.FundingMapper">
 
     <insert id="saveAddress" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO">
     insert into delivery_address_info (address_title
@@ -38,4 +38,15 @@
         WHERE B.user_code = #{user_code}
           AND A.whether_default_address = 'Y'
     </select>
+
+    <insert id="savePaymentInfo" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO">
+        INSERT INTO payment (user_code, goods_code, pay_approval_code, total_amount, payed_time)
+        VALUES (
+        #{user_code},
+        #{goodsCode},
+        #{payApprovalCode, jdbcType=VARCHAR},
+        #{totalAmount, jdbcType=INTEGER},
+        #{payedTime, jdbcType=TIMESTAMP}
+        )
+    </insert>
 </mapper>

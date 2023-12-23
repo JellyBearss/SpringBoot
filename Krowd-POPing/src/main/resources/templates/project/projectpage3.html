@@ -377,7 +377,9 @@
 <!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
                                 </ul>
                             </div>
-                            <span class="card-hubtn" th:text="${goods.amount + '원 후원하기'}"></span>
+                            <a th:href="@{/funding_process/product(no=${detail.projectCode}, goodsCode=${goods.goodsCode})}">
+                                <span class="card-hubtn" th:text="${goods.amount + '원 후원하기'}"></span>
+                            </a>
                         </div>
                     </div>
 <!--                    <div class="rewardCard-wrapper">-->

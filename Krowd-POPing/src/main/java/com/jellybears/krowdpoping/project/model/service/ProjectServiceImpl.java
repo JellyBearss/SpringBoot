@@ -23,5 +23,8 @@ public class ProjectServiceImpl implements ProjectService{
         return projectMapper.goProjectDetail(no);
     }
 
-
+    @Override
+    public DetailGoodsDTO getGoodsDetails(int goodsCode) {
+        return projectMapper.getGoodsDetails(goodsCode);
+    }
 }
