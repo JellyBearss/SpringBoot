@@ -16,6 +16,7 @@ import com.jellybears.krowdpoping.project.model.service.ProjectService;
 import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import com.jellybears.krowdpoping.user.model.service.AuthenticationService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,14 +58,13 @@ public class FundingProcessController {
     @GetMapping("product")
     public String detailedProduct(@RequestParam Long no,
                                   @RequestParam int goodsCode,
-                                  Model model){
+                                  Model model,
+                                  HttpSession session){
         DetailProjectDTO detail = projectService.goProjectDetail(no);
         model.addAttribute("detail", detail);
-        System.out.println("detail ======= " + detail);
 
         DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
         model.addAttribute("goods", goods);
-        System.out.println("goods ====== " + goods);
 
         //남은 기간 계산
         LocalDate startDate = detail.getStartDate().toLocalDate();
@@ -77,6 +77,10 @@ public class FundingProcessController {
         // 타임리프로 전달해줄 내용
         model.addAttribute("daysLeftDisplay", daysLeftDisplay);
 
+        // 세션에 goods 정보 저장
+        session.setAttribute("detail", detail);
+        session.setAttribute("goods", goods);
+
         return "funding_process/detailed_product";
     }
 
@@ -86,11 +90,9 @@ public class FundingProcessController {
                                  Model model) {
         DetailProjectDTO detail = projectService.goProjectDetail(no);
         model.addAttribute("detail", detail);
-        System.out.println("detail1111 ======= " + detail);
 
         DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
         model.addAttribute("goods", goods);
-        System.out.println("goods1111 ====== " + goods);
 
         // 현재 로그인한 사용자의 정보를 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -134,7 +136,6 @@ public class FundingProcessController {
 
         DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
         model.addAttribute("goods", goods);
-        System.out.println("goods ====== " + goods);
 
         // 현재 로그인한 사용자의 정보를 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -187,16 +188,13 @@ public class FundingProcessController {
 
         fundingService.savePaymentInfo(productDTO);
 
-        System.out.println("save.....................");
         return "funding_process/process_finished";
     }
 
     @PostMapping("/ready")
     @ResponseBody
     public ResponseEntity<KakaoReadyResponse> readyToKakaoPay() {
-        System.out.println("kakaoready...................");
         KakaoReadyResponse response = kakaoPayService.kakaoPayReady();
-        System.out.println("kakaoready.........finished............");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

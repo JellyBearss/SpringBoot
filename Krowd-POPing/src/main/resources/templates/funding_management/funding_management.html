@@ -52,7 +52,7 @@
             <div class="product_image"></div>
             <div class="title"><b>
                 <span class="subject">[IVE] [장원영]</span>
-                <span class="product_title">비주얼 천재만재 핑크공주 워뇨 인형</span>
+                <span class="product_title" th:text="${detail.title}"></span>
             </b></div>
             <div class="amounts">
                 <span class="amount_title">창작자 : </span>
@@ -60,7 +60,7 @@
             </div>
             <div class="packages">
                 <span class="package_title">구성 : </span>
-                <span class="package">인형 + 리본 머리띠(옵션)</span>
+                <span class="package" th:text="${goods.goodsName}"></span>
             </div>
             <div class="achievements">
                 <span class="achievement_title">달성률 : </span>
@@ -72,7 +72,7 @@
             </div>
             <div class="funding_periods">
                 <span class="funding_period_title">후원 기간 : </span>
-                <span class="funding_period">2024.01.29 - 2024.02.28</span>
+                <span class="funding_period" th:text="${detail.startDate} + ' - ' + ${detail.endDate}"></span>
             </div>
 
             <div class="buttons">
@@ -218,17 +218,17 @@
             <div class="pay_info_title"><b>결제 정보</b></div>
             <div class="product_price">
                 <span class="price_title">상품 금액 : </span>
-                <span class="price">52,000</span>
+                <span class="price" th:text="${goods.amount}"></span>
                 <span class="price_unit">원</span>
             </div>
             <div class="additional_pay">
                 <span class="additional_title">배송비 : </span>
-                <span class="additional">4,000</span>
+                <span class="additional" th:text="${goods.amount >= 30000 ? '0' : '4,000'}"></span>
                 <span class="additional_unit">원</span>
             </div>
             <div class="delivery_fee">
                 <span class="fee_title">최종 후원 금액 : </span>
-                <span class="fee">57,000</span>
+                <span class="fee" th:text="${goods.amount + (goods.amount >= 30000 ? 0 : 4000)}"></span>
                 <span class="fee_unit">원</span>
             </div>
             <div class="total_pay">

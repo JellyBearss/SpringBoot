@@ -526,58 +526,7 @@
         </script>
         <!--        </form>-->
     </div>
-<!--<script>-->
-<!--    'use strict';-->
 
-<!--    const form = document.querySelector('#form__wrap');-->
-<!--    const checkBoxes = document.querySelectorAll('#term1_check, #term2_check');-->
-<!--    const submitButton = document.querySelector('.next_step_section button');-->
-
-<!--    const agreements = {-->
-<!--        term1_check: false,-->
-<!--        term2_check: false,-->
-<!--    };-->
-
-<!--    form.addEventListener('submit', (e) => e.preventDefault()); // 새로고침(submit) 되는 것 막음-->
-
-<!--    checkBoxes.forEach((item) => {-->
-<!--        item.addEventListener('change', toggleCheckbox);-->
-<!--    });-->
-
-<!--    function toggleSubmitButton() {-->
-<!--        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);-->
-<!--        submitButton.disabled = !allChecked;-->
-<!--    }-->
-
-<!--    function toggleCheckbox(e) {-->
-<!--        const { checked, id } = e.target;-->
-<!--        agreements[id] = checked;-->
-<!--        console.log(agreements);-->
-<!--        toggleSubmitButton();-->
-<!--    }-->
-<!--    form.addEventListener('submit', function () {-->
-<!--        // 여기에 후원 완료로 이동하는 로직 추가-->
-<!--        window.location.href = "/funding_process/processFinished";-->
-<!--    });-->
-<!--    function toggleSubmitButton() {-->
-<!--        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);-->
-<!--        submitButton.disabled = !allChecked;-->
-
-<!--        // 배경색 조절-->
-<!--        if (submitButton.disabled) {-->
-<!--            submitButton.classList.add('disabled'); // 비활성화 클래스 추가-->
-<!--        } else {-->
-<!--            submitButton.classList.remove('disabled'); // 비활성화 클래스 제거-->
-<!--        }-->
-<!--    }-->
-
-<!--    function toggleCheckbox(e) {-->
-<!--        const { checked, id } = e.target;-->
-<!--        agreements[id] = checked;-->
-<!--        console.log(agreements);-->
-<!--        toggleSubmitButton();-->
-<!--    }-->
-<!--</script>-->
 </div>
 </body>
 </html>

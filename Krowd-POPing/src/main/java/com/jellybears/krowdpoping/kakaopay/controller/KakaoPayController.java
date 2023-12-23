@@ -17,25 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class KakaoPayController {
     private final KakaoPayService kakaoPayService;
 
-    /**
-     * 결제요청
-     */
-    @PostMapping("/ready")
-    public KakaoReadyResponse readyToKakaoPay() {
-
-        return kakaoPayService.kakaoPayReady();
-    }
-
-    /**
-     * 결제 성공
-     */
-    @GetMapping("/success")
-    public ResponseEntity afterPayRequest(@RequestParam("pg_token") String pgToken) {
-
-        KakaoApproveResponse kakaoApprove = kakaoPayService.approveResponse(pgToken);
-
-        return new ResponseEntity<>(kakaoApprove, HttpStatus.OK);
-    }
 
     /**
      * 결제 진행 중 취소
