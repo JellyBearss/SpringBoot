@@ -102,19 +102,19 @@
 
     <div class="product_price">
         <span class="show_price">상품 금액</span>
-        <span class="chosen_price">52,000</span>
+        <span class="chosen_price" th:text="${goods.amount}"></span>
         <span class="price_unit">원</span>
     </div>
 
     <div class="delivery_fee">
         <span class="show_delivery_fee">배송비</span>
-        <span class="chosen_delivery_fee">4,000</span>
+        <span class="chosen_delivery_fee" th:text="${goods.amount >= 30000 ? '0' : '4,000'}"></span>
         <span class="delivery_fee_unit">원</span>
     </div>
 
     <div class="total_funding_amount">
         <span class="show_total">최종 후원금액</span>
-        <span class="chosen_total">57,000</span>
+        <span class="chosen_total" th:text="${goods.amount + (goods.amount >= 30000 ? 0 : 4000)}"></span>
         <span class="total_unit">원</span>
     </div>
 
@@ -404,6 +404,8 @@
                 });
             </script>
         </div>
+
+
         <div class="term2">
             <input type="checkbox" id="term2_check" name="term2" value="제공 동의">
             <label>개인정보 제3자 제공 동의</label>
@@ -459,7 +461,6 @@
                 </script>
             </div>
         </div>
-
         <form id="kakaoPayForm" action="/funding_process/ready" method="post">
             <div class="next_step_section">
                 <button type="button" class="finished" onclick="openKakaoPay()" disabled>
@@ -468,7 +469,6 @@
                 </button>
             </div>
         </form>
-
         <script>
             'use strict';
 
@@ -524,9 +524,7 @@
                 }
             }
         </script>
-
-
-<!--        </form>-->
+        <!--        </form>-->
     </div>
 <!--<script>-->
 <!--    'use strict';-->

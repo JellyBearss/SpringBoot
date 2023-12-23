@@ -3,6 +3,7 @@ package com.jellybears.krowdpoping.user.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
+import com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO;
 import lombok.*;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,6 +26,7 @@ public class RoleTypeDTO implements UserDetails {
     private UserDTO userDTO;
     private AddressDTO addressDTO;
     private AddressDTO defaultAddress;
+    private ProductDTO productDTO;
 
 
     @Override

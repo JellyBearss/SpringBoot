@@ -238,7 +238,9 @@
             </div>
         </div>
         <div>
-            <a th:href="@{/funding_process/payReservation}" class="next_step1">
+            <input type="hidden" name="goodsCode" th:value="${goods.goodsCode}" />
+            <input type="hidden" name="projectCode" th:value="${detail.projectCode}" />
+            <a th:href="@{/funding_process/payReservation(no=${detail.projectCode}, goodsCode=${goods.goodsCode})}" class="next_step1">
                 <div class="next_step_box1"></div>
                 <span class="next_step_text1">다음 단계로</span>
             </a>
@@ -404,6 +406,7 @@
                 });
             </script>
             <input type="hidden" name="mergedAddress" id="mergedAddress">
+            <input type="hidden" id="goodsCode" name="goodsCode" th:value="${goods.goodsCode}">
             <a href="javascript:void(0);" onclick="submitForm()" class="next_step2">
                 <div class="next_step_box2"></div>
                 <span class="next_step_text2">다음 단계로</span>

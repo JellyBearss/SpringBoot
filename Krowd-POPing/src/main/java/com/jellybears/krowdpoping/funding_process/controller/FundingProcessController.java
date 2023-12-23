@@ -4,6 +4,7 @@ import com.jellybears.krowdpoping.common.exception.Kakaopay.BusinessLogicExcepti
 import com.jellybears.krowdpoping.common.exception.Kakaopay.ExceptionCode;
 import com.jellybears.krowdpoping.common.exception.address.AddressSaveException;
 import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
+import com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO;
 import com.jellybears.krowdpoping.funding_process.model.service.FundingServiceImpl;
 import com.jellybears.krowdpoping.kakaopay.model.dto.KakaoApproveResponse;
 import com.jellybears.krowdpoping.kakaopay.model.dto.KakaoCancelResponse;
@@ -29,6 +30,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/funding_process")
 @Slf4j
@@ -56,9 +60,11 @@ public class FundingProcessController {
                                   Model model){
         DetailProjectDTO detail = projectService.goProjectDetail(no);
         model.addAttribute("detail", detail);
+        System.out.println("detail ======= " + detail);
 
         DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
         model.addAttribute("goods", goods);
+        System.out.println("goods ====== " + goods);
 
         //남은 기간 계산
         LocalDate startDate = detail.getStartDate().toLocalDate();
@@ -76,7 +82,17 @@ public class FundingProcessController {
     }
 
     @GetMapping("address")
-    public String defaultAddress(Model model) {
+    public String defaultAddress(@RequestParam Long no,
+                                 @RequestParam int goodsCode,
+                                 Model model) {
+        DetailProjectDTO detail = projectService.goProjectDetail(no);
+        model.addAttribute("detail", detail);
+        System.out.println("detail1111 ======= " + detail);
+
+        DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
+        model.addAttribute("goods", goods);
+        System.out.println("goods1111 ====== " + goods);
+
         // 현재 로그인한 사용자의 정보를 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -97,6 +113,7 @@ public class FundingProcessController {
 
             // 모델에 주소 객체도 추가
             model.addAttribute("defaultAddress", defaultAddress);
+            model.addAttribute("user_code", loggedInUser.getUser_code());
         }
         return "funding_process/default_address";
     }
@@ -112,9 +129,69 @@ public class FundingProcessController {
     }
 
     @GetMapping("payReservation")
-    public String payReservation(){
+    public String payReservation(@RequestParam Long no,
+                                 @RequestParam int goodsCode,
+                                 Model model){
+
+        DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
+        model.addAttribute("goods", goods);
+        System.out.println("goods ====== " + goods);
+
+        // 현재 로그인한 사용자의 정보를 가져옴
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // AuthenticationService에서 반환하는 UserDetails를 가져옴
+        UserDetails userDetails = authenticationService.loadUserByUsername(authentication.getName());
+
+        if (userDetails instanceof RoleTypeDTO) {
+            // RoleTypeDTO인 경우 UserDTO를 추출
+            UserDTO loggedInUser = ((RoleTypeDTO) userDetails).getUserDTO();
+
+            // ProductDTO 생성 및 설정
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setUser_code(loggedInUser.getUser_code());
+            productDTO.setGoodsCode(goodsCode);
+
+            // 기존에 이미 가져온 goods 객체를 사용하여 DetailGoodsDTO 설정
+            productDTO.setDetailGoodsDTO(goods);
+
+            // totalAmount 계산 (goods.amount + 배송비)
+            int deliveryFee = (goods.getAmount() >= 30000) ? 0 : 4000;
+            int totalAmount = goods.getAmount() + deliveryFee;
+
+            // 계산된 totalAmount를 ProductDTO에 설정합니다.
+            productDTO.setTotalAmount(totalAmount);
+
+            // savePaymentInfo 호출
+            fundingService.savePaymentInfo(productDTO);
+
+            // 모델에 사용자 코드 추가
+            model.addAttribute("user_code", loggedInUser.getUser_code());
+        }
+
         return "funding_process/pay_reservation";
     }
+
+    @PostMapping("savePaymentInfo")
+    public String savePaymentInfo(@ModelAttribute ProductDTO productDTO,
+                                  Model model){
+
+        int goodsAmount = productDTO.getDetailGoodsDTO().getAmount();
+        // totalAmount 계산 (goods.amount + 배송비)
+        int deliveryFee = (goodsAmount >= 30000) ? 0 : 4000;
+        int totalAmount = goodsAmount + deliveryFee;
+
+        // 계산된 totalAmount를 ProductDTO에 설정합니다.
+        productDTO.setTotalAmount(totalAmount);
+
+        productDTO.generateRandomValues();
+
+        fundingService.savePaymentInfo(productDTO);
+
+        System.out.println("save.....................");
+        return "funding_process/process_finished";
+    }
+
     @PostMapping("/ready")
     @ResponseBody
     public ResponseEntity<KakaoReadyResponse> readyToKakaoPay() {
@@ -123,6 +200,8 @@ public class FundingProcessController {
         System.out.println("kakaoready.........finished............");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+
     @GetMapping("/processFinished")
     public String processFinished(@RequestParam("pg_token") String pgToken, Model model){
         System.out.println("Received pg_token: " + pgToken);
@@ -134,17 +213,6 @@ public class FundingProcessController {
         // 리다이렉션할 뷰 페이지 리턴
         return "funding_process/process_finished";
     }
-//    @PostMapping("savePayInfo")
-//    public String savePayInfo(@ModelAttribute AddressDTO addressDTO,
-//                              @ModelAttribute DetailGoodsDTO detailGoodsDTO) {
-//        log.info("Received AddressDTO: {}", addressDTO);
-//
-//        String cleanedPhoneNumber = addressDTO.getRecipientPhoneNumber().replace("-", "");
-//        addressDTO.setRecipientPhoneNumber(cleanedPhoneNumber);
-//
-//        fundingService.savePayInfo(addressDTO, detailGoodsDTO);
-//        return "funding_process/pay_reservation";
-//    }
 
     /**
      * 결제 진행 중 취소

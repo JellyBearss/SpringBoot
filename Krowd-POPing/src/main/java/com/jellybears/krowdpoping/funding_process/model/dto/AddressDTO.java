@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 public class AddressDTO {
-    private String deliveryCode;
+    private int deliveryCode;
     private String user_code;
     private String addressTitle;
     private String recipientName;

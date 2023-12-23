@@ -97,7 +97,7 @@
     </select>
 
 <select id="getGoodsDetails" resultMap="detailGoodsResultMap">
-    select name, amount from goods
+    select goods_code, name, amount from goods
     WHERE goods_code = #{goodsCode}
 </select>
 

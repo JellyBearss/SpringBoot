@@ -43,4 +43,14 @@ public class FundingServiceImpl implements FundingService {
         return fundingMapper.getDefaultAddress(user_code);
     }
 
+    public void savePaymentInfo(ProductDTO productDTO) {
+        log.info("[FundingService] 결제 정보 저장: " + productDTO);
+
+        productDTO.generateRandomValues();
+
+        // FundingMapper에 결제 정보를 저장하기 위한 메서드를 가정합니다.
+        int result = fundingMapper.savePaymentInfo(productDTO);
+
+        log.info("[FundingService] 삽입 결과: " + ((result > 0) ? "결제 정보 저장 성공" : "결제 정보 저장 실패"));
+    }
 }

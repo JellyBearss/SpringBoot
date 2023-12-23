@@ -39,4 +39,14 @@
           AND A.whether_default_address = 'Y'
     </select>
 
+    <insert id="savePaymentInfo" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO">
+        INSERT INTO payment (user_code, goods_code, pay_approval_code, total_amount, payed_time)
+        VALUES (
+        #{user_code},
+        #{goodsCode},
+        #{payApprovalCode, jdbcType=VARCHAR},
+        #{totalAmount, jdbcType=INTEGER},
+        #{payedTime, jdbcType=TIMESTAMP}
+        )
+    </insert>
 </mapper>
