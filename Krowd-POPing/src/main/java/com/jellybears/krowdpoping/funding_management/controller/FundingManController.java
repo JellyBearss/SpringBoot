@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FundingManController {
 
     @GetMapping("management")
-    public String goFAQ() {
+    public String management() {
         return "/funding_management/funding_management";
     }
 
