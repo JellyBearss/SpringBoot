@@ -77,7 +77,6 @@ public class FundingProcessController {
         // 타임리프로 전달해줄 내용
         model.addAttribute("daysLeftDisplay", daysLeftDisplay);
 
-
         return "funding_process/detailed_product";
     }
 
@@ -203,13 +202,25 @@ public class FundingProcessController {
 
 
     @GetMapping("/processFinished")
-    public String processFinished(@RequestParam("pg_token") String pgToken, Model model){
+    public String processFinished(@RequestParam("pg_token") String pgToken,
+                                  Model model){
         System.out.println("Received pg_token: " + pgToken);
         KakaoApproveResponse kakaoApprove = kakaoPayService.approveResponse(pgToken);
 
         // 데이터를 모델에 추가
         model.addAttribute("kakaoApprove", kakaoApprove);
 
+        // 현재 로그인한 사용자 정보를 가져옴
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = authenticationService.loadUserByUsername(authentication.getName());
+
+        if (userDetails instanceof RoleTypeDTO) {
+            // RoleTypeDTO인 경우 UserDTO를 추출
+            UserDTO loggedInUser = ((RoleTypeDTO) userDetails).getUserDTO();
+
+            // 닉네임을 모델에 추가
+            model.addAttribute("userNickname", loggedInUser.getNickname());
+        }
         // 리다이렉션할 뷰 페이지 리턴
         return "funding_process/process_finished";
     }

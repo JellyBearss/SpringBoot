@@ -139,6 +139,9 @@
                 var phoneNumberInput = document.querySelector('[name=input_phone_number]');
                 var emailInput = document.querySelector('[name=input_email]');
 
+                // "가입 정보와 동일" 체크 여부에 따라 값 설정
+                nicknameInput.value = checkbox.checked ? nicknameInput.dataset.originalValue : nicknameInput.value;
+
                 // 첫 번째 체크 시 원래 값 설정
                 if (!nicknameInput.dataset.originalValue) {
                     nicknameInput.dataset.originalValue = nicknameInput.value;
