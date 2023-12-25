@@ -151,7 +151,7 @@
         WHERE
             project_code = #{ no }
         ORDER BY
-            update_date DESC
+            projectfile_code desc
             LIMIT 1;
     </select>
 

@@ -31,9 +31,9 @@
                 </div>
                 <div class="menu">
                     <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-                    <div class="menu-item1"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></div>
-                    <div class="menu-item2"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></div>
-                    <div class="menu-item3"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></div>
+<!--                    <div class="menu-item1"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></div>-->
+<!--                    <div class="menu-item2"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></div>-->
+                    <div class="menu-item3" th:onclick="'location.href=\'/startProject/start\''"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></div>
 
                     <th:block sec:authorize="isAnonymous()">
                     <div class="menu-item5"> <a th:href="@{/user/login}" id="login">
@@ -215,71 +215,7 @@
 
                         </div>
                     </div>
-                    <div class="proStatusTitle">
-                        <span>체리토끼님이 최근에 본 프로젝트</span>
-                    </div>
 
-
-                    <div class="card-wrapper">
-                        <div class="cards">
-
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/B1A4.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/BTS.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/CLASSy.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/DreamAcademyHQ.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-                        <br><br>
-                        <hr>
-                    </div>
 
                     <div class="proStatusTitle">
                         <span>신규 프로젝트</span>
@@ -291,60 +227,13 @@
                     <div class="card-wrapper">
                         <div class="cards">
                             <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
                                 <img src="/images/EXO.png" alt="Ohmygirl">
                             </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">88일 남음</span>
-                            </div>
                             <h4>프로젝트 제목</h4>
                             <div class="creatorname">창작자명</div>
                         </div>
 
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/FTisland.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">100%</span>
-                                <span id="amount">268,000원</span>
-                                <span id="dayleft">8일 남음</span>
-                            </div>
 
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/JustB.jpeg" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/KangTa.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
                         <br><br>
                         <hr>
                     </div>
@@ -418,74 +307,6 @@
                         <hr>
                     </div>
 
-                    <div class="proStatusTitle">
-                        <span>얼리버드 혜택</span>
-                    </div>
-                    <div class="proStatusSub">
-                        <span class="proStatusSubText">선물이 듬뿍!</span>
-                    </div>
-
-                    <div class="card-wrapper">
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/WayV.jpeg" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">88일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/WheelIn.jpeg" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">100%</span>
-                                <span id="amount">268,000원</span>
-                                <span id="dayleft">8일 남음</span>
-                            </div>
-
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/XG.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/imase.jpeg" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-                        <br><br>
-                        <hr>
-                    </div>
-
 
 
                     <!-- </div> -->
@@ -524,7 +345,7 @@
             <div id="footer-5">
                 <p>고객지원</p>
                 <p>평일 9:00 ~ 17:00 (12:00 ~14:00 제외)</p>
-                <a href="contact.html"><button>고객센터에 문의</button></a>
+                <a href="/inquiry/inquiryForm"><button>고객센터에 문의</button></a>
             </div>
 
         </div>
