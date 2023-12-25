@@ -16,7 +16,7 @@ public class CaProjectDTO {
     private CaUserDTO creatorName; //창작자명
     private String projectTitle; //프로젝트 제목
     private String projectDetail; //프로젝트 소개
-    private CaProjectImageDTO image; //카테고리에는 썸네일 이미지만 받으면 되서 List로 받지 않아도 된다.
+    private List<CaProjectImageDTO> image;
 
 
 }

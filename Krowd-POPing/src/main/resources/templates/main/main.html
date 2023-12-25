@@ -164,29 +164,26 @@
                                     <li class="slideitem">
                                         <a>
                                             <div class="textbox">
-                                                <h3>프로젝트 생성하러 가기</h3>
-                                                <p>설명이 들어갑니다.</p>
+                                                <p class="pro">프로젝트 생성하러 가기</p>
                                             </div>
-                                            <a href=""><img src="/images/banner1.jpeg"></a>
+                                            <a href="/startProject/start"><img src="/images/크라우드파핑 메인배너.png"></a>
                                         </a>
                                     </li>
                                     <li class="slideitem">
                                         <a>
 
                                             <div class="textbox">
-                                                <h3>오늘 마감! 프로젝트</h3>
-                                                <p>설명이 들어갑니다.</p>
+                                                <p class="noti">공지사항 보러가기</p>
                                             </div>
-                                            <a href="#"><img src="/images/banner2.jpeg"></a>
+                                            <a href="/notice/notice"><img src="/images/태연배너.jpg"></a>
                                         </a>
                                     </li>
                                     <li class="slideitem">
                                         <a>
                                             <div class="textbox">
-                                                <h3>공개 예정 프로젝트</h3>
-                                                <p>설명이 들어갑니다.</p>
+                                                <p class="hu">후원하러 가기</p>
                                             </div>
-                                            <a href="#"><img src="/images/banner3.png"></a>
+                                            <a href="/category/category-all"><img src="/images/오마이걸 배너.jpg"></a>
                                         </a>
                                     </li>
 
@@ -216,21 +213,39 @@
                         </div>
                     </div>
 
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let slideIndex = 0;
+                            const slides = document.querySelectorAll('input[name="slide"]');
+                            const totalSlides = slides.length;
+
+                            function nextSlide() {
+                                slides[slideIndex].checked = false;
+                                slideIndex = (slideIndex + 1) % totalSlides;
+                                slides[slideIndex].checked = true;
+                            }
+
+                            // 슬라이드가 4.5초(4500밀리초)마다 전환되도록 설정
+                            setInterval(nextSlide, 4500);
+                        });
+                    </script>
+
 
                     <div class="proStatusTitle">
                         <span>신규 프로젝트</span>
                     </div>
                     <div class="proStatusSub">
-                        <span class="proStatusSubText">오늘 올라온 따끈따끈한 프로젝트</span>
+                        <span class="proStatusSubText">최근에 등록된 따끈따끈한 프로젝트</span>
                     </div>
 
                     <div class="card-wrapper">
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <img src="/images/EXO.png" alt="Ohmygirl">
+                        <div th:each="main : ${mainAllProjectList}" class="cards">
+                            <a th:href="|/projectdetail/projectdetail?no=${main.projectCode}|">
+
+                                <img th:src="@{|/thumbPath${main.image[0].getThumbnailPath()}|}" alt="이미지"  width="266" height="266">
                             </a>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
+                            <h4 th:text="${main.projectTitle}"></h4>
+                            <div class="creatorname" th:text="${main.creatorName.nickName}"></div>
                         </div>
 
 
@@ -239,73 +254,28 @@
                     </div>
 
                     <div class="proStatusTitle">
-                        <span>오늘 마감! 프로젝트</span>
+                        <span>마감임박! 프로젝트</span>
                     </div>
                     <div class="proStatusSub">
-                        <span class="proStatusSubTime">19:40:48</span>
-                        <span class="proStatusSubText">남았어요</span>
+                        <span class="proStatusSubText">일주일 이내에 마감되요</span>
+
                     </div>
 
                     <div class="card-wrapper">
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/Ohmygirl.png" alt="Ohmygirl">
+                        <div th:each="main : ${mainDeadlineProjectList}" class="cards">
+                            <a th:href="|/projectdetail/projectdetail?no=${main.projectCode}|">
+                                <img th:src="@{|/thumbPath${main.image[0].getThumbnailPath()}|}" alt="이미지"  width="266" height="266">
                             </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">88일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
+                            <h4 th:text="${main.projectTitle}"></h4>
+                            <div class="creatorname" th:text="${main.creatorName.nickName}"></div>
                         </div>
 
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/PurpleKiss.jpeg" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">100%</span>
-                                <span id="amount">268,000원</span>
-                                <span id="dayleft">8일 남음</span>
-                            </div>
 
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/RedVelvet.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
-
-                        <div class="cards">
-                            <a target="_blank" href="projectpage3.html">
-                                <i class="fa-solid fa-heart"></i>
-                                <img src="/images/Tribe.png" alt="Ohmygirl">
-                            </a>
-                            <div class="card-body">
-                                <span id="percent">38%</span>
-                                <span id="amount">17,268,000원</span>
-                                <span id="dayleft">18일 남음</span>
-                            </div>
-                            <h4>프로젝트 제목</h4>
-                            <div class="creatorname">창작자명</div>
-                        </div>
                         <br><br>
                         <hr>
                     </div>
+
+
 
 
 
