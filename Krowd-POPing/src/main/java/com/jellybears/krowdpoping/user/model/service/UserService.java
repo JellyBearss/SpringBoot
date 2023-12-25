@@ -4,10 +4,8 @@ package com.jellybears.krowdpoping.user.model.service;
 import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
-import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
-import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
-import org.springframework.stereotype.Service;
+import jakarta.servlet.http.HttpServletResponse;
 
 
 public interface UserService {
@@ -23,12 +21,20 @@ public interface UserService {
     public void modifyUser(UserDTO user) throws UserModifyException;
 
     /*-------------회원 탈퇴------------*/
-    void removeUser(UserDTO user) throws UserRemoveException;
+    public void removeUser(UserDTO user) throws UserRemoveException;
 
-//    public int insertEmailCode(EmailDTO emailDTO) throws Exception;
-//
-//    public int updateEmailCertificate(EmailandUserDTO emailandUserDTO)throws Exception;
+    public UserDTO findIdByEmail(String email) throws Exception;
+    public int findIdCheck(String email) throws Exception;
+
+    public void find_pwd(HttpServletResponse response, UserDTO user) throws Exception;
+
+    public String send_PwdMail(UserDTO user) throws Exception;
 
 
-//회원 삭제 추가 예정
+
 }
+
+
+
+
+

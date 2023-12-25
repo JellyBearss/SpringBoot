@@ -95,18 +95,16 @@
         </div>
         <div class="process_line"></div>
     </div>
-
-    <th:block sec:authorize="isAuthenticated()">
     <div class="product">
         <div class="product_image"></div>
         <div class="product_category_section">
-            <span class="product_category">인형</span>
+            <span class="product_category" th:text="${detail.category.categoryTitle}"></span>
             <span class="space"> | </span>
             <span class="creator">워뇨뇽</span>
         </div>
         <div class="title"><b>
             <span class="subject">[IVE] [장원영]</span>
-            <span class="product_title">비주얼 천재만재 핑크공주 워뇨 인형</span>
+            <span class="product_title" th:text="${detail.title}"></span>
         </b></div>
         <div class="funding_amount">
             <b><span class="percent">98%</span></b>
@@ -114,23 +112,23 @@
         </div>
         <div class="funding_date">
             <span class="purple_box"></span>
-            <b><span class="day_left">2일 남음</span></b>
+            <b><span class="day_left" th:text="${daysLeftDisplay}"></span></b>
         </div>
         <div class="options">
-            <span class="option">옵션 : </span>
-            <span class="option_name">리본 머리띠</span>
+            <span class="option">구성 : </span>
+            <span class="option_name" th:text="${goods.goodsName}"></span>
         </div>
     </div>
     <div class="product_composition">
-        <span class="composition">구성</span>
-        <span class="composition_detail">인형 + 리본 머리띠(옵션)</span>
+        <span class="composition">가격</span>
+        <span class="composition_detail" th:text="${goods.amount + '원'}"></span>
     </div>
 
-    <a th:href="@{/funding_process/address}" class="next_step">
+    <a th:href="@{/funding_process/address(no=${detail.projectCode}, goodsCode=${goods.goodsCode})}" class="next_step">
         <div class="next_step_box"></div>
         <span class="next_step_text">다음 단계로</span>
     </a>
-    </th:block>
+
 </div>
 </body>
 </html>

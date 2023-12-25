@@ -5,8 +5,6 @@ import com.jellybears.krowdpoping.common.exception.user.UserModifyException;
 import com.jellybears.krowdpoping.common.exception.user.UserRegistException;
 import com.jellybears.krowdpoping.common.exception.user.UserRemoveException;
 import com.jellybears.krowdpoping.common.util.SessionUtil;
-import com.jellybears.krowdpoping.user.model.dto.EmailDTO;
-import com.jellybears.krowdpoping.user.model.dto.EmailandUserDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import com.jellybears.krowdpoping.user.model.service.EmailService;
 import com.jellybears.krowdpoping.user.model.service.UserServiceImpl;
@@ -21,7 +19,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Random;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user/*")
@@ -71,8 +70,6 @@ public class UserController {
         String authNum = emailService.sendEmail(userDTO.getEmail());
         return (authNum);
     }
-
-
 
 
 
@@ -191,8 +188,66 @@ public class UserController {
 
         log.info("[MemberController] deleteMember ========================================================== end");
 
-        return "redirect:/";
+        return "redirect:/krowdpoping/mainpage";
     }
+
+    @GetMapping("/findIdByEmail")
+    public String FindId() {
+        return "user/findPwd";
+    }
+
+
+    @PostMapping("/findIdByEmail")
+    public ResponseEntity<?> findIdByEmail(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");
+
+        try {
+            // 서버 로직 수행
+            int checkResult = UserService.findIdCheck(email);
+            if (checkResult == 0) {
+                // 이메일이 존재하지 않을 경우
+                return ResponseEntity.status(404).body("이메일을 확인해주세요");
+            } else {
+                // 이메일이 존재할 경우
+                UserDTO user = UserService.findIdByEmail(email);
+                return ResponseEntity.ok().body(user);
+            }
+        } catch (Exception e) {
+            // 오류 처리
+            return ResponseEntity.status(500).body("Internal Server Error");
+        }
+    }
+
+    @PostMapping("/find_Pwd")
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> find_Pwd(@ModelAttribute UserDTO user, HttpServletResponse response) {
+        try {
+            UserService.find_pwd(response, user);
+            log.info("비밀번호 찾기 성공");
+
+            // JSON 형식의 응답 객체 생성
+            Map<String, String> responseMap = new HashMap<>();
+            responseMap.put("message", "success");
+            responseMap.put("redirectUrl", "/user/login");
+
+            return ResponseEntity.ok(responseMap);
+        } catch (Exception e) {
+            log.error("비밀번호 찾기 실패", e);
+
+            // 실패 시에도 JSON 형식의 응답 객체 생성
+            Map<String, String> responseMap = new HashMap<>();
+            responseMap.put("message", "failure");
+
+            return ResponseEntity.status(500).body(responseMap);
+        }
+    }
+
+
+
+
+
+
+
 
 
 }

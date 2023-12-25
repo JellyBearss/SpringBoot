@@ -16,6 +16,8 @@
         <id property="categoryCode" column="category_code"/>
         <result property="categoryTitle" column="category_title"/>
         <result property="upperCategoryCode" column="upper_category_code"/>
+        <result property="subCategoryCode" column="CATEGORY_CODE"/>
+
     </resultMap>
 
     <resultMap id="caProjectResultMap" type="com.jellybears.krowdpoping.category.model.dto.CaProjectDTO">
@@ -23,6 +25,21 @@
         <result property="projectTitle" column="title"/>
         <result property="projectDetail" column="content"/>
         <association property="creatorName" resultMap="CaUserResultMap"/>
+        <association property="image" resultMap="caProjectImageResultMap"/>
+    </resultMap>
+
+
+    <resultMap id="caProjectImageResultMap" type="com.jellybears.krowdpoping.category.model.dto.CaProjectImageDTO">
+        <id property="projectFileCode" column="projectfile_code"/>
+        <result property="originFileName" column="original_name"/>
+        <result property="changedFileName" column="saved_name"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="whetherDeleted" column="whether_deleted"/>
+        <result property="fileType" column="file_type"/>
+        <result property="refProjectCode" column="project_code"/>
+        <result property="savePath" column="save_path"/>
+        <result property="thumbnailPath" column="thumbnail_path"/>
+
     </resultMap>
 
 
@@ -40,32 +57,75 @@
     </select>
 
 
+<!--    <select id="AllProjectList" resultMap="caProjectResultMap">-->
+
+<!--        select-->
+<!--            A.project_code,-->
+<!--            A.title,-->
+<!--            A.content,-->
+<!--            B.nickname-->
+<!--        from project A-->
+<!--                 join user_info B on A.user_code = B.user_code-->
+<!--        order by project_code-->
+
+
+<!--    </select>-->
+
     <select id="AllProjectList" resultMap="caProjectResultMap">
 
         select
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            C.original_name,
+            C.save_path,
+            C.saved_name,
+            C.file_type,
+            C.thumbnail_path,
+            C.whether_deleted,
+            C.update_date
+
+
         from project A
                  join user_info B on A.user_code = B.user_code
+        left join project_files C on A.project_code = C.project_code
         order by project_code
 
 
     </select>
 
-    <select id="AccProjectList" resultMap="caProjectResultMap">
+<!--    <select id="AccProjectList" resultMap="caProjectResultMap">-->
 
+<!--        select-->
+<!--            A.project_code,-->
+<!--            A.title,-->
+<!--            A.content,-->
+<!--            B.nickname-->
+<!--        from project A-->
+<!--                 join user_info B on A.user_code = B.user_code-->
+<!--        where category_code = 1-->
+<!--        order by project_code-->
+
+
+<!--    </select>-->
+    <select id="AccProjectList" resultMap="caProjectResultMap">
         select
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            A.end_date
         from project A
                  join user_info B on A.user_code = B.user_code
-        where category_code = 1
-        order by project_code
-
+                 join category C on A.category_code = C.category_code
+        where A.category_code in
+              (select
+                   D.category_code
+               from category D
+               where D.upper_category_code = 1)
+        order by project_code desc
+--         order by end_date
 
     </select>
 
@@ -79,7 +139,181 @@
                  join user_info B on A.user_code = B.user_code
         where category_code = #{ categoryId }
 --         where category_code = 8
-        order by project_code
+        order by project_code desc
     </select>
+
+
+    <select id="getDigitProjectList" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+                 join category C on A.category_code = C.category_code
+        where A.category_code in
+              (select
+                   D.category_code
+               from category D
+               where D.upper_category_code = 2)
+        order by project_code desc
+
+    </select>
+
+
+    <select id="getSubDigitProjectListByCategoryId" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        where category_code = #{ categoryId }
+        order by project_code desc
+    </select>
+
+
+    <select id="getDollProjectList" resultMap="caProjectResultMap">
+
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+        join user_info B on A.user_code = B.user_code
+        join category C on A.category_code = C.category_code
+        where A.category_code in
+        (select
+             D.category_code
+             from category D
+             where D.upper_category_code = 3
+        )
+        order by A.project_code desc
+    </select>
+
+    <select id="getSubDollProjectListByCategoryId" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+            from project A
+        join user_info B on A.user_code = B.user_code
+        where category_code = #{ categoryId }
+        order by A.project_code desc
+    </select>
+
+
+    <select id="getStaProjectList" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+                 join category C on A.category_code = C.category_code
+        where A.category_code in
+              (select
+                   D.category_code
+               from category D
+               where D.upper_category_code = 4
+              )
+        order by A.project_code desc
+    </select>
+
+    <select id="getSubStaProjectListByCategoryId" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        where category_code = #{ categoryId }
+        order by A.project_code desc
+    </select>
+
+
+    <select id="getFanProjectList" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+                 join category C on A.category_code = C.category_code
+        where A.category_code in
+              (select
+                   D.category_code
+               from category D
+               where D.upper_category_code = 5
+              )
+        order by A.project_code desc
+    </select>
+
+    <select id="getSubFanProjectListByCategoryId" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        where category_code = #{ categoryId }
+        order by A.project_code desc
+    </select>
+
+
+    <select id="getAppProjectList" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+                 join category C on A.category_code = C.category_code
+        where A.category_code in
+              (select
+                   D.category_code
+               from category D
+               where D.upper_category_code = 6
+              )
+        order by A.project_code desc
+    </select>
+
+    <select id="getSubAppProjectListByCategoryId" resultMap="caProjectResultMap">
+        select
+            A.project_code,
+            A.title,
+            A.content,
+            B.nickname
+        from project A
+                 join user_info B on A.user_code = B.user_code
+        where category_code = #{ categoryId }
+        order by A.project_code desc
+    </select>
+
+
+
+        <select id="getEtcProjectList" resultMap="caProjectResultMap">
+
+            select
+                A.project_code,
+                A.title,
+                A.content,
+                B.nickname
+            from project A
+                     join user_info B on A.user_code = B.user_code
+            where category_code = 7
+            order by project_code desc
+
+
+        </select>
 
 </mapper>

@@ -152,8 +152,12 @@ body{
 .project4{ 
     color: #7D1CD8;
     font-weight: 700;
-    
 
+}
+
+.delete_user{
+    margin-top: 30px;
+    font-size: 12px;
 }
 
         /* ==================== 오른쪽 (내용) 부분(content-2)================== */

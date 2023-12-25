@@ -19,52 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/mypage/*")
 @Slf4j
 public class MyPageController {
-//    private final PasswordEncoder passwordEncoder;
-//    private final UserService userService;
-//
-//    public MyPageController(PasswordEncoder passwordEncoder, UserService userService) {
-//        this.passwordEncoder = passwordEncoder;
-//        this.userService = userService;
-//    }
 
-
-
-
-        /**
-         * 마이페이지- 내 정보 수정
-         */
-//    @GetMapping("update")
-//    public String editProfile() {
-//        log.info("editProfile method called");
-//
-//        return "mypage/mypage_editprofile.html";
-//    }
-//    @PostMapping("update")
-//    public String modifyUser(@ModelAttribute UserDTO user,
-//                             HttpServletRequest request,
-//                             HttpServletResponse response,
-//                             RedirectAttributes rttr) throws UserModifyException {
-//
-//        log.info("");
-//        log.info("");
-//        log.info("[MemberController] modifyUser ========================================================== start");
-//
-//        user.setPhone_number(user.getPhone_number().replace("-", ""));
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//
-//        log.info("[UserController] modifyUser request User : " + user);
-//
-//        userService.modifyUser(user);
-//
-//        // 회원정보 수정후 로그아웃 프로세스 진행
-//        SessionUtil.invalidateSession(request, response);
-//
-//        rttr.addFlashAttribute("message", "회원 정보 수정에 성공하셨습니다. 다시 로그인해주세요.");
-//
-//        log.info("[UserController] modifyUser========================================================== end");
-//
-//        return "redirect:mypage/mypage_projectlist_1_ing.html";
-//    }
     /**
      * 마이페이지-후원한 프로젝트(진행중인)
      */

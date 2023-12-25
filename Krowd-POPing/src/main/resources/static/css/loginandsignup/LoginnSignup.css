@@ -8,7 +8,10 @@ body {
     
 }
 
-
+a {
+    color: inherit; /* 링크 색상 파란색 제거 */
+    text-decoration: none; /*링크 밑줄 제거*/
+}
 body {
     display: flex;
     flex-direction: column;

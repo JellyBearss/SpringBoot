@@ -102,24 +102,25 @@
 
     <div class="product_price">
         <span class="show_price">상품 금액</span>
-        <span class="chosen_price">52,000</span>
+        <span class="chosen_price" th:text="${goods.amount}"></span>
         <span class="price_unit">원</span>
     </div>
 
     <div class="delivery_fee">
         <span class="show_delivery_fee">배송비</span>
-        <span class="chosen_delivery_fee">4,000</span>
+        <span class="chosen_delivery_fee" th:text="${goods.amount >= 30000 ? '0' : '4,000'}"></span>
         <span class="delivery_fee_unit">원</span>
     </div>
 
     <div class="total_funding_amount">
         <span class="show_total">최종 후원금액</span>
-        <span class="chosen_total">57,000</span>
+        <span class="chosen_total" th:text="${goods.amount + (goods.amount >= 30000 ? 0 : 4000)}"></span>
         <span class="total_unit">원</span>
     </div>
 
     <div class="comment_section">
-        <form action="/" method="POST" id="form__wrap">
+<!--        <form action="/" method="POST" id="form__wrap">-->
+
         <div class="confirm_comment">후원 완료 시 결제가 진행됩니다. 프로젝트가 무산되거나 중단된 경우, 영업일 2-3일 내에 결제가 취소됩니다.</div>
         <div class="term1">
             <input type="checkbox" id="term1_check" name="term1" value="서비스 동의">
@@ -403,6 +404,8 @@
                 });
             </script>
         </div>
+
+
         <div class="term2">
             <input type="checkbox" id="term2_check" name="term2" value="제공 동의">
             <label>개인정보 제3자 제공 동의</label>
@@ -458,66 +461,123 @@
                 </script>
             </div>
         </div>
-    <div class="next_step_section">
-        <button type="submit" class="finished" disabled>
-            <div class="next_step_box"></div>
-            <span class="next_step_text">후원하기</span>
-        </button>
-    </div>
+        <form id="kakaoPayForm" action="/funding_process/ready" method="post">
+            <div class="next_step_section">
+                <button type="button" class="finished" onclick="openKakaoPay()" disabled>
+                    <div class="next_step_box"></div>
+                    <span class="next_step_text">후원하기</span>
+                </button>
+            </div>
         </form>
+        <script>
+            'use strict';
+
+            const checkBoxes = document.querySelectorAll('#term1_check, #term2_check');
+            const submitButton = document.querySelector('.finished');
+
+            const agreements = {
+                term1_check: false,
+                term2_check: false,
+            };
+
+            checkBoxes.forEach((item) => {
+                item.addEventListener('change', toggleCheckbox);
+            });
+
+            function toggleSubmitButton() {
+                const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);
+                submitButton.disabled = !allChecked;
+
+                // 배경색 조절
+                if (submitButton.disabled) {
+                    submitButton.classList.add('disabled'); // 비활성화 클래스 추가
+                } else {
+                    submitButton.classList.remove('disabled'); // 비활성화 클래스 제거
+                }
+            }
+
+            function toggleCheckbox(e) {
+                const { checked, id } = e.target;
+                agreements[id] = checked;
+                toggleSubmitButton();
+            }
+
+            function openKakaoPay() {
+                // 모든 약관에 동의한 경우에만 결제 진행
+                if (agreements.term1_check && agreements.term2_check) {
+                    fetch('/funding_process/ready', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        // Additional request parameters if needed
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            // Perform KakaoPay process directly in the parent window
+                            window.location.href = data.next_redirect_pc_url;
+                        })
+                        .catch(error => console.error('Error:', error));
+                } else {
+                    alert('결제 진행을 위해 모든 약관에 동의해주세요.');
+                }
+            }
+        </script>
+        <!--        </form>-->
     </div>
-<script>
-    'use strict';
+<!--<script>-->
+<!--    'use strict';-->
 
-    const form = document.querySelector('#form__wrap');
-    const checkBoxes = document.querySelectorAll('#term1_check, #term2_check');
-    const submitButton = document.querySelector('.next_step_section button');
+<!--    const form = document.querySelector('#form__wrap');-->
+<!--    const checkBoxes = document.querySelectorAll('#term1_check, #term2_check');-->
+<!--    const submitButton = document.querySelector('.next_step_section button');-->
 
-    const agreements = {
-        term1_check: false,
-        term2_check: false,
-    };
+<!--    const agreements = {-->
+<!--        term1_check: false,-->
+<!--        term2_check: false,-->
+<!--    };-->
 
-    form.addEventListener('submit', (e) => e.preventDefault()); // 새로고침(submit) 되는 것 막음
+<!--    form.addEventListener('submit', (e) => e.preventDefault()); // 새로고침(submit) 되는 것 막음-->
 
-    checkBoxes.forEach((item) => {
-        item.addEventListener('change', toggleCheckbox);
-    });
+<!--    checkBoxes.forEach((item) => {-->
+<!--        item.addEventListener('change', toggleCheckbox);-->
+<!--    });-->
 
-    function toggleSubmitButton() {
-        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);
-        submitButton.disabled = !allChecked;
-    }
+<!--    function toggleSubmitButton() {-->
+<!--        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);-->
+<!--        submitButton.disabled = !allChecked;-->
+<!--    }-->
 
-    function toggleCheckbox(e) {
-        const { checked, id } = e.target;
-        agreements[id] = checked;
-        console.log(agreements);
-        toggleSubmitButton();
-    }
-    form.addEventListener('submit', function () {
-        // 여기에 후원 완료로 이동하는 로직 추가
-        window.location.href = "/funding_process/processFinished";
-    });
-    function toggleSubmitButton() {
-        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);
-        submitButton.disabled = !allChecked;
+<!--    function toggleCheckbox(e) {-->
+<!--        const { checked, id } = e.target;-->
+<!--        agreements[id] = checked;-->
+<!--        console.log(agreements);-->
+<!--        toggleSubmitButton();-->
+<!--    }-->
+<!--    form.addEventListener('submit', function () {-->
+<!--        // 여기에 후원 완료로 이동하는 로직 추가-->
+<!--        window.location.href = "/funding_process/processFinished";-->
+<!--    });-->
+<!--    function toggleSubmitButton() {-->
+<!--        const allChecked = Array.from(checkBoxes).every(item => agreements[item.id]);-->
+<!--        submitButton.disabled = !allChecked;-->
 
-        // 배경색 조절
-        if (submitButton.disabled) {
-            submitButton.classList.add('disabled'); // 비활성화 클래스 추가
-        } else {
-            submitButton.classList.remove('disabled'); // 비활성화 클래스 제거
-        }
-    }
+<!--        // 배경색 조절-->
+<!--        if (submitButton.disabled) {-->
+<!--            submitButton.classList.add('disabled'); // 비활성화 클래스 추가-->
+<!--        } else {-->
+<!--            submitButton.classList.remove('disabled'); // 비활성화 클래스 제거-->
+<!--        }-->
+<!--    }-->
 
-    function toggleCheckbox(e) {
-        const { checked, id } = e.target;
-        agreements[id] = checked;
-        console.log(agreements);
-        toggleSubmitButton();
-    }
-</script>
+<!--    function toggleCheckbox(e) {-->
+<!--        const { checked, id } = e.target;-->
+<!--        agreements[id] = checked;-->
+<!--        console.log(agreements);-->
+<!--        toggleSubmitButton();-->
+<!--    }-->
+<!--</script>-->
 </div>
 </body>
 </html>

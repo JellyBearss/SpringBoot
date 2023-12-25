@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/loginandsignup/findPwd.css">
+
+
+</head>
+<body>
+
+    <div class="default_address">
+        <div class="find_title">아이디/비밀번호 찾기</div>
+        <div class="find_navigator">
+            <div class="find_id_title" onclick="showSubpage('subpage1')">
+                <span class="id_text">아이디 찾기</span>
+
+            </div>
+            <div class="find_pwd_title" onclick="showSubpage('subpage2')">
+                <span class="pwd_text">비밀번호 찾기</span>
+
+            </div>
+        </div>
+
+
+        <!-- 서브페이지 1 -->
+        <form class="user" action="/user/findIdByEmail" method="POST" onsubmit="event.preventDefault(); findId();">
+            <div id="subpage1" class="subpage">
+                <h3>아이디 찾기</h3>
+                <span>회원가입 한 이메일을 입력해주세요.</span>
+                <div id="type_email">
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+                    <button type="submit" class="send_auth" id="email_check" name="find_id">아이디 찾기</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- 결과를 표시하는 팝업 -->
+        <div id="resultPopup" class="popup">
+            <p id="foundId"></p>
+            <button class="go_login" type="button" onclick="closePopup()">로그인하러 가기</button>
+        </div>
+
+        <!-- jQuery를 사용한 Ajax 요청과 결과 처리를 담은 스크립트 -->
+        <script>
+            function findId() {
+                var email = $('#email').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/user/findIdByEmail',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ email: email }),
+                    success: function (data) {
+                        console.log('서버 응답 데이터:', data);
+                        var foundId = data.userId;
+                        console.log('찾은 아이디:', foundId);
+                        $('#foundId').text('회원님의 아이디는 ' + foundId + ' 입니다.');
+                        $('#resultPopup').show();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('에러:', error);
+                    }
+                });
+            }
+
+            function closePopup() {
+                location.href = '/user/login';
+            }
+        </script>
+
+    <!-- 서브페이지 2 -->
+    <form id="findPwd_form" action="/user/find_Pwd" method="post">
+        <div id="subpage2" class="subpage">
+            <h3>비밀번호 찾기</h3>
+            <span >회원가입 한 이메일을 입력해주세요.</span>
+            <div id="type_email_2">
+                <label for="email_2">이메일:</label>
+                <input type="email" id="email_2" name="email" placeholder="이메일 주소를 입력하세요" required>
+                <button type="submit" class="send_auth_2" id="sendPwd" name="send_auth" >임시 비밀번호 받기</button>
+            </div>
+
+        </div>
+    </form>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#findPwd_form").submit(function(event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/user/find_Pwd",
+                        data: $(this).serialize(),
+                        dataType: "json",  // 데이터 타입을 JSON으로 설정
+                        success: function(response) {
+                            if (response.message === "success") {
+                                alert("이메일 전송이 성공했습니다.");
+                                // 리다이렉트 수행
+                                window.location.href = response.redirectUrl;
+                            } else {
+                                alert("이메일 전송이 실패했습니다.");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Ajax 요청 실패:', error);
+                            alert("서버와 통신 중 오류가 발생했습니다.");
+                        }
+                    });
+                });
+            });
+        </script>
+
+
+
+        <script type="text/javascript">
+            var msg = /*[[${msg}]]*/ '';
+
+            if (msg !== '') {
+                alert(msg);
+            }
+        </script>
+    
+    </div>
+    
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // 'subpage1'을 인자로 하여 showSubpage 함수 호출하여 초기에 표시
+            showSubpage('subpage1');
+        });
+
+        function showSubpage(subpageId) {
+            // 모든 subpage를 비활성화
+            var subpages = document.querySelectorAll('.subpage');
+            subpages.forEach(function(subpage) {
+                subpage.style.display = 'none';
+            });
+
+            // 클릭한 subpage를 활성화
+            var activeSubpage = document.getElementById(subpageId);
+            activeSubpage.style.display = 'block';
+
+            // 선택한 subpage의 텍스트 스타일 변경
+            var addressListText = document.querySelector('.find_id_title span');
+            var inputAddressText = document.querySelector('.find_pwd_title span');
+    
+        if (subpageId === 'subpage1') {
+            addressListText.style.color = '#0D0D0D';
+            addressListText.style.fontWeight = 'bold';
+            inputAddressText.style.color = ''; // 원래 색으로 돌아오게 설정
+            inputAddressText.style.fontWeight = ''; 
+            inputAddressText.style.backgroundColor = '';
+            addressListText.style.backgroundColor = 'white';// 원래 굵기로 돌아오게 설정
+        } else if (subpageId === 'subpage2') {
+            addressListText.style.color = ''; // 원래 색으로 돌아오게 설정
+            addressListText.style.fontWeight = ''; // 원래 굵기로 돌아오게 설정
+            inputAddressText.style.color = '#0D0D0D';
+            inputAddressText.style.fontWeight = 'bold';
+            inputAddressText.style.backgroundColor = 'white';
+            addressListText.style.backgroundColor = '';
+        }
+        }
+
+
+    </script>
+</body>
+</html>

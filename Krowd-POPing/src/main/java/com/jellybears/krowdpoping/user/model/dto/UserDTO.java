@@ -29,6 +29,7 @@ public class UserDTO  {
     private Character exit_status;
     private int email_code;
     private Object addressDTO;
+    private Object productDTO;
 
     public int getUser_code() {
         return user_code;
@@ -140,5 +141,13 @@ public class UserDTO  {
 
     public void setAddressDTO(Object addressDTO) {
         this.addressDTO = addressDTO;
+    }
+
+    public Object getProductDTO() {
+        return productDTO;
+    }
+
+    public void setProductDTO(Object productDTO) {
+        this.productDTO = productDTO;
     }
 }

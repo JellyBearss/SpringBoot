@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>category</title>
 </head>
+<body>
 <div id="wrapper">
     <div id="header">
         <div class=cartbar>
@@ -22,33 +25,49 @@
                 <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
             </div>
         </div>
-        <div class="logo">
+        <div class="logo"  th:onclick="'location.href=\'/krowdpoping/mainpage\''">
             <img src="/icon/logo2.png" alt="">
         </div>
         <div class="menu">
-            <!-- <div class="menu-item"><img src ="/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-            <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></a>
-            <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></a>
-            <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></a>
-            <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a>
-        </div>               
+            <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
+            <div class="menu-item1"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></div>
+            <div class="menu-item2"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></div>
+            <div class="menu-item3"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></div>
+
+            <th:block sec:authorize="isAnonymous()">
+                <div class="menu-item5"> <a th:href="@{/user/login}" id="login">
+                    <img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a></div>
+            </th:block>
+
+            <th:block sec:authorize="isAuthenticated()">
+                <div class="menu-item4"><img src="/icon/basicpic.png" alt="" >
+                    <span class="login_nickname1" sec:authentication="principal.userDTO.nickname"></span><span class="login_nickname2">님</span>
+                    <ul class="submenu">
+                        <a th:onclick="'location.href=\'/user/update\''"><li class="sub_li">마이페이지</li></a>
+                        <a th:onclick="'location.href=\'/mypage/projectlist1_ing\''"><li class="sub_li">후원한 프로젝트</li></a>
+                        <a th:onclick="'location.href=\'/mypage/followerlist_yes\''"><li class="sub_li">팔로워</li></a>
+                        <a th:onclick="'location.href=\'/mypage/followinglist_yes\''"><li class="sub_li">팔로잉</li></a>
+                        <a th:href="@{/user/logout}"><li class="sub_li" id="logout">로그아웃</li></a>
+                    </ul>
+                </div>
+
+            </th:block>
+        </div>
         <div id="search-area">
             <form id="search-form">
                 <div id="search-text-area">
-                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요." 
-                    onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
+                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
+                           onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
                 </div>
                 <div id="search-btn-area">
                     <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
                 </div>
             </form>
         </div>
-
+        <!-- </div> -->
 
 
     </div>
-<body>
-
 <div id="content">
 
         <div class="proCategoryInner">
@@ -76,8 +95,8 @@
                     <li>
                         <a href="/category/category-digit">
                                 <span class="categoryimg Digit"><img
-                                        src="/icon/CategoryIcon4_doll.png" alt="디지털액세서리"></span>
-                            <span class="categorytext">디지털<br>액세서리</span>
+                                        src="/icon/CategoryIcon3_digitalAccessory.png" alt="디지털액세서리"></span>
+                            <span class="categorytext">디지털</span>
                         </a>
                     </li>
                 </ul>
@@ -137,156 +156,62 @@
                 
             <div class="dropdown-cate-wrapper">
                 
-                <div class="cate-dropdown">
-                    <span class="cateBtn">상태</span>
-                    <div class="cate-content">
-                        <a href="">얼리버드 프로젝트</a>
-                        <a href="">마감임박 프로젝트</a>
-                        <a href="">신규 프로젝트</a>
-                    </div>
-                </div>
+
                 <div class="cate-dropdown">
                     <span class="cateBtn">세부 카테고리</span>
                     <div class="cate-content">
-                        <a href="">거울</a>
-                        <a href="">파우치</a>
-<!--                        <a href="">뱃지</a>-->
+                        <a onclick="changeCategory(19)">거울</a>
+                        <a onclick="changeCategory(20)">파우치</a>
+
                     </div>
                 </div>
             </div>
 
-            <div class="cateMiddle">
-                <div class="proCount">
-                    53,043개의 프로젝트가 있습니다.
-                </div>
-                <div class="cateRow">최신순 | 인기순 | 마감임박순</div>
-            </div>
+            <script>
+                function changeCategory(categoryId){
+                    window.location.href = '/category/category-fancyGoods?categoryId=' + categoryId;
+                }
+            </script>
+
+<!--            <div class="cateMiddle">-->
+<!--                <div class="proCount">-->
+<!--                    53,043개의 프로젝트가 있습니다.-->
+<!--                </div>-->
+<!--                <div class="cateRow">최신순 | 인기순 | 마감임박순</div>-->
+<!--            </div>-->
 
             <div class="card-wrapper">
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
+                <div th:if="${categoryId == 5}"  th:each="project : ${fanProjectList}" class="cards">
+                    <a th:href="|/projectdetail/projectdetail?no=${project.projectCode}|">
+<!--                        <i class="fa-solid fa-heart"></i>-->
+                        <img src="/images/Ohmygirl.png" alt="Ohmygirl">
+                    </a>
+<!--                    <div class="card-body">-->
+<!--                        <span class="percent">38%</span>-->
+<!--                        <span class="amount">17,268,000원</span>-->
+<!--                        <span class="dayleft">18일 남음</span>-->
+<!--                    </div>-->
+                    <h4 th:text="${project.projectTitle}"></h4>
+                    <p class="card-description" th:text="${project.projectDetail}"></p>
+                    <div class="creatorname" th:text="${project.creatorName.nickName}"></div>
+                    </a>
                 </div>
-                <h4>프로젝트 제목</h4>
-                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
-                <div class="creatorname">창작자명</div>
-            </div>
 
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
+                <div th:if="${categoryId != 5}"  th:each="project : ${subFanProjectList}" class="cards">
+                    <a th:href="|/projectdetail/projectdetail?no=${project.projectCode}|">
+<!--                        <i class="fa-solid fa-heart"></i>-->
+                        <img src="/images/Ohmygirl.png" alt="Ohmygirl">
+                    </a>
+<!--                    <div class="card-body">-->
+<!--                        <span class="percent">38%</span>-->
+<!--                        <span class="amount">17,268,000원</span>-->
+<!--                        <span class="dayleft">18일 남음</span>-->
+<!--                    </div>-->
+                    <h4 th:text="${project.projectTitle}"></h4>
+                    <p class="card-description" th:text="${project.projectDetail}"></p>
+                    <div class="creatorname" th:text="${project.creatorName.nickName}"></div>
+                    </a>
                 </div>
-                <h4>프로젝트 제목</h4>
-                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
-                <div class="creatorname">창작자명</div>
-            </div>
-            <br><br>
-            <hr>
-        </div>
-
-        <div class="card-wrapper">
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">88일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">100%</span>
-                    <span id="amount">268,000원</span>
-                    <span id="dayleft">8일 남음</span>
-                </div>
-                
-                <h4>프로젝트 제목</h4>
-                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
-                <div class="creatorname">창작자명</div>
-            </div>
-
-            <div class="cards">
-                <a target="_blank" href="projectpage3.html">
-                    <i class="fa-solid fa-heart"></i>
-                    <img src="/images/Ohmygirl.png" alt="Ohmygirl">
-                </a>
-                <div class="card-body">
-                    <span id="percent">38%</span>
-                    <span id="amount">17,268,000원</span>
-                    <span id="dayleft">18일 남음</span>
-                </div>
-                <h4>프로젝트 제목</h4>
-                <p class="card-description">여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기.여기에 설명이 들어갑니다. 테스트를 위해 설명을 많이 써보기. </p>
-                <div class="creatorname">창작자명</div>
-            </div>
             <br><br>
             <hr>
         </div>

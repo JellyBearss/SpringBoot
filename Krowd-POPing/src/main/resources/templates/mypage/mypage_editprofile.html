@@ -18,12 +18,12 @@
 
                 <button type="submit" id="changepic" >프로필 사진 변경</button>
                 <ul class="mplist1">
-                    <li><a href="/user/regist">내 정보 수정</a></li>
+                    <li><a href="/user/update">내 정보 수정</a></li>
                     <li>나의 배송지</li>
 
                     <ul class="tree">
                         <a class="projectlink">프로젝트</a>
-                            <li><a href="/user/regist">후원한 프로젝트</a></li>
+                            <li><a href="/mypage/projectlist1_ing">후원한 프로젝트</a></li>
                             <li><a href="/mypage/projectlist2_yes">찜한 프로젝트</a></li>
                             <li><a href="/mypage/projectlist3_no">등록한 프로젝트</a></li>
                             <li><a href="/mypage/projectlist4">최근 본 프로젝트</a></li>
@@ -33,12 +33,14 @@
                         <li><a href="/mypage/followinglist_yes">팔로잉 목록</a></li>
                         <li><a href="/mypage/followerlist_yes">내 팔로워</a></li>
                         <li>알림</li>
+
                     </ul>
                 </ul>
                 <ul class="mplist2">
                     <li>신고</li>
                     <li>고객센터</li>
-                    <li>로그아웃</li>
+                    <a th:href="@{/user/logout}"><li>로그아웃</li></a>
+                    <li class="delete_user" th:onclick="'location.href=\'/user/delete?id='+ @{${ #authentication.getPrincipal().userDTO.getUserId() }} + '\''">회원탈퇴</li>
                 </ul>
 
             </div>

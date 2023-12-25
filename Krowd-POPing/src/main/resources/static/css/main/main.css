@@ -10,7 +10,7 @@
 }
 
 html,body{
-    height: 100%;
+    height: auto;
     margin:0;
 
 }
@@ -409,6 +409,7 @@ div{
     height:100%;
     margin:auto;
     width: 1170px;
+    margin-bottom: 150px;
     /* background-color: rgb(243, 236, 228); */
 
 

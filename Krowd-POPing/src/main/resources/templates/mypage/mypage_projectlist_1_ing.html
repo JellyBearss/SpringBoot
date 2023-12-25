@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       layout:decorate="~{/layouts/user_layout}">
 <head>    <link rel="stylesheet" href="/css/mypage/MYP_projectlist_1_ing.css"></head>
 <th:block layout:fragment="content">
@@ -11,13 +12,13 @@
             <div id="content-1">
                 <div id="profile-container">
                     <div id="profilepic"><img src="/icon/basicpic.png" alt=""></div>
-                    <div id="nickname">체리토끼 님</div>
+                    <div id="nickname"><span sec:authentication="principal.userDTO.nickname"></span>님</div>
                     <!-- <button type="submit" id="changepic">프로필 사진 변경</button> -->
                 </div>
 
                 <button type="submit" id="changepic" >프로필 사진 변경</button>
                 <ul class="mplist1">
-                    <li><a href="/user/regist">내 정보 수정</a></li>                    <li>나의 배송지</li>
+                    <li><a href="/user/update">내 정보 수정</a></li>                    <li>나의 배송지</li>
                     <ul class="tree">
                         <a class="projectlink">프로젝트</a>
                         <li class="project1"><a href="/mypage/projectlist1_ing">후원한 프로젝트</a></li>
@@ -30,12 +31,14 @@
                         <li><a href="/mypage/followinglist_yes">팔로잉 목록</a></li>
                         <li><a href="/mypage/followerlist_yes">내 팔로워</a></li>
                         <li>알림</li>
+
                     </ul>
                 </ul>
                 <ul class="mplist2">
                     <li>신고</li>
                     <li>고객센터</li>
-                    <li>로그아웃</li>
+                    <a th:href="@{/user/logout}"><li>로그아웃</li></a>
+                    <li class="delete_user" th:onclick="'location.href=\'/user/delete?id='+ @{${ #authentication.getPrincipal().userDTO.getUserId() }} + '\''">회원탈퇴</li>
                 </ul>
 
             </div>

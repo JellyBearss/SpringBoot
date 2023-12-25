@@ -21,6 +21,23 @@ public interface UserMapper {
     UserDTO selectUser(UserDTO user);
     int deleteUser(UserDTO user);
 
+    UserDTO findIdByEmail(String email);
+
+    int findIdCheck(String email);
+
+    String pwCheck(String email);
+
+    /* 비밀번호 찾기에서 비밀번호 변경 */
+    int FindUpdatePwd( UserDTO user);
+
+
+
+
+
+
+
+
+
 
 
 }

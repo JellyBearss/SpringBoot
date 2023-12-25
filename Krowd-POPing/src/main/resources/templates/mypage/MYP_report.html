@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{/layouts/user_layout}">
 
 <head>
     <meta charset="UTF-8">
@@ -21,73 +24,75 @@
 
     <title>MYP_report</title>
 </head>
+<th:block layout:fragment="content">
 
-<body>
+<!--<body>-->
 <div id="wrapper">
-    <div id="header">
-        <div class=cartbar>
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-            <div class="category-box">
-                <div class="category"><a href="home.html">홈</a></div>
-                <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
-                <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
-                <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
-            </div>
-        </div>
-        <div class="logo">
-            <img src="/icon/logo2.png" alt="">
-        </div>
-        <div class="menu">
-            <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-            <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px"
-                                                       height="35px"></a>
-            <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px"
-                                                        height="35.36px"></a>
-            <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px"
-                                                         height="35.36px"></a>
-            <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px"
-                                                        height="35.36px"></a>
-        </div>
-        <div id="search-area">
-            <form id="search-form">
-                <div id="search-text-area">
-                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
-                           onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'">
-                </div>
-                <div id="search-btn-area">
-                    <button type="submit" id="search-btn"><img src="/icon/searchbutton.png"></button>
-                </div>
-            </form>
-        </div>
+<!--    <div id="header">-->
+<!--        <div class=cartbar>-->
+<!--            <div class="bar1"></div>-->
+<!--            <div class="bar2"></div>-->
+<!--            <div class="bar3"></div>-->
+<!--            <div class="category-box">-->
+<!--                <div class="category"><a href="home.html">홈</a></div>-->
+<!--                <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>-->
+<!--                <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>-->
+<!--                <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="logo">-->
+<!--            <img src="/icon/logo2.png" alt="">-->
+<!--        </div>-->
+<!--        <div class="menu">-->
+<!--            &lt;!&ndash; <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> &ndash;&gt;-->
+<!--            <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px"-->
+<!--                                                       height="35px"></a>-->
+<!--            <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px"-->
+<!--                                                        height="35.36px"></a>-->
+<!--            <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px"-->
+<!--                                                         height="35.36px"></a>-->
+<!--            <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px"-->
+<!--                                                        height="35.36px"></a>-->
+<!--        </div>-->
+<!--        <div id="search-area">-->
+<!--            <form id="search-form">-->
+<!--                <div id="search-text-area">-->
+<!--                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."-->
+<!--                           onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'">-->
+<!--                </div>-->
+<!--                <div id="search-btn-area">-->
+<!--                    <button type="submit" id="search-btn"><img src="/icon/searchbutton.png"></button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
 
 
-    </div>
+<!--    </div>-->
     <div id="content">
         <!-- 여기가 중간 부분 여기에 코드 작성-->
         <div id="content-1">
             <div id="profile-container">
                 <div id="profilepic"><img src="/icon/basicpic.png" alt=""></div>
-                <div id="nickname">체리토끼 님</div>
+                <div id="nickname"><span sec:authentication="principal.userDTO.nickname"></span>님</div>
                 <!-- <button type="submit" id="changepic">프로필 사진 변경</button> -->
             </div>
 
-            <button type="submit" id="changepic">프로필 사진 변경</button>
+            <button type="submit" id="changepic" >프로필 사진 변경</button>
             <ul class="mplist1">
-                <li><a href="/mypage(done)/mypage_editprofile.html">내 정보 수정</a></li>
+                <li><a href="/user/regist">내 정보 수정</a></li>
                 <li>나의 배송지</li>
+
                 <ul class="tree">
                     <a class="projectlink">프로젝트</a>
-                    <li><a href="/mypage(done)/mypage_projectlist_1_ing.html">후원한 프로젝트</a></li>
-                    <li><a href="/mypage(done)/mypage_projectlist_2_no.html">찜한 프로젝트</a></li>
-                    <li><a href="/mypage(done)/mypage_projectlist_3_no.html">등록한 프로젝트</a></li>
-                    <li><a href="/mypage(done)/mypage_projectlist_4.html">최근 본 프로젝트</a></li>
+                    <li><a href="/mypage/projectlist1_ing">후원한 프로젝트</a></li>
+                    <li><a href="/mypage/projectlist2_yes">찜한 프로젝트</a></li>
+                    <li><a href="/mypage/projectlist3_no">등록한 프로젝트</a></li>
+                    <li><a href="/mypage/projectlist4">최근 본 프로젝트</a></li>
                 </ul>
                 <ul class="mypageunder">
                     <li>결제 내역</li>
-                    <li><a href="/mypage(done)/mypage_followinglist_yes.html">팔로잉 목록</a></li>
-                    <li><a href="/mypage(done)/mypage_followerlist_yes.html">내 팔로워</a></li>
+                    <li><a href="/mypage/followinglist_yes">팔로잉 목록</a></li>
+                    <li><a href="/mypage/followerlist_yes">내 팔로워</a></li>
                     <li>알림</li>
                 </ul>
             </ul>
@@ -106,17 +111,21 @@
             <div id="projectlist_menucontainer">
                 <div class="lm-1 project-report-active active" onclick="showSubPage('subpage1')">프로젝트 신고
                 </div>
-                <div class="lm-2 creator-report-active active" onclick="showSubPage('subpage2')">창작자 신고
-                </div>
-                <div class="lm-3 user-report-active active" onclick="showSubPage('subpage3')">유저 신고</div>
+<!--                <div class="lm-2 creator-report-active active" onclick="showSubPage('subpage2')">창작자 신고-->
+<!--                </div>-->
+<!--                <div class="lm-3 user-report-active active" onclick="showSubPage('subpage3')">유저 신고</div>-->
             </div>
             <div id="pjminilist">
                 <div class="mini-1">&nbsp&nbsp&nbsp</div>
 
-                <div class="report-wrapper subpage" id="subpage1">
+<!--                <div class="report-wrapper subpage" id="subpage1">-->
+                    <div class="report-wrapper">
+
                     <div class="reportPush">
                         <div class="reportPushInner"></div>
-                        <div class="rep-write"><a href="#">신고 작성하기</a></div>
+<!--                        <div class="rep-write"><a href="#">신고 작성하기</a></div>-->
+                        <div></div>
+
                     </div>
                     <div class="space-description">*<span class="report-type">프로젝트 신고</span> 내역입니다.</div>
 
@@ -161,116 +170,116 @@
                     </div>
                 </div>
 
-                <div class="report-wrapper subpage" id="subpage2">
-                    <div class="reportPush">
-                        <div class="reportPushInner"></div>
-                        <div class="rep-write"><a href="#">신고 작성하기</a></div>
-                    </div>
-                    <div class="space-description">*<span class="report-type">창작자 신고</span> 내역입니다.</div>
+<!--                <div class="report-wrapper subpage" id="subpage2">-->
+<!--                    <div class="reportPush">-->
+<!--                        <div class="reportPushInner"></div>-->
+<!--                        <div class="rep-write"><a href="#">신고 작성하기</a></div>-->
+<!--                    </div>-->
+<!--                    <div class="space-description">*<span class="report-type">창작자 신고</span> 내역입니다.</div>-->
 
-                    <table class="report-category">
-                        <colgroup>
-                            <col style="width: 80px;">
-                            <col style="width: 120px;">
-                            <col>
-                            <col style="width: 160px;">
-                            <col style="width: 100px;">
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">유형</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">답변 상태</th>
-                            <th scope="col">등록일</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>욕설</td>
-                            <td class="dynamic-col"><a href="#">창작자와의 1:1 문의 중 욕설을 들었어요.</a></td>
-                            <td>처리 완료</td>
-                            <td>2023.12.20</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>성희롱</td>
-                            <td class="dynamic-col"><a href="#">창작자가 댓글에 성희롱 발언을 했어요.</a></td>
-                            <td>신고 접수</td>
-                            <td>2023.12.20</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-
-                    <div class="inquiry-pagination">
-                        <!-- <div class="inquiry-active-page">1</div> -->
-                        <button class="pagebtn" onclick="backbtn()">이전</button>
-                        <ul class="no-margin-padding">
-                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>
-                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>
-                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>
-                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>
-                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>
-                        </ul>
-                        <button class="pagebtn" onclick="nextbtn()">다음</button>
-                    </div>
-                </div>
-
-                <div class="report-wrapper subpage" id="subpage3">
+<!--                    <table class="report-category">-->
+<!--                        <colgroup>-->
+<!--                            <col style="width: 80px;">-->
+<!--                            <col style="width: 120px;">-->
+<!--                            <col>-->
+<!--                            <col style="width: 160px;">-->
+<!--                            <col style="width: 100px;">-->
+<!--                        </colgroup>-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            <th scope="col">번호</th>-->
+<!--                            <th scope="col">유형</th>-->
+<!--                            <th scope="col">제목</th>-->
+<!--                            <th scope="col">답변 상태</th>-->
+<!--                            <th scope="col">등록일</th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <td>1</td>-->
+<!--                            <td>욕설</td>-->
+<!--                            <td class="dynamic-col"><a href="#">창작자와의 1:1 문의 중 욕설을 들었어요.</a></td>-->
+<!--                            <td>처리 완료</td>-->
+<!--                            <td>2023.12.20</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <td>2</td>-->
+<!--                            <td>성희롱</td>-->
+<!--                            <td class="dynamic-col"><a href="#">창작자가 댓글에 성희롱 발언을 했어요.</a></td>-->
+<!--                            <td>신고 접수</td>-->
+<!--                            <td>2023.12.20</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
 
 
-                    <div class="reportPush">
-                        <div class="reportPushInner"></div>
-                        <div class="rep-write"><a href="#">신고 작성하기</a></div>
-                    </div>
-                    <div class="space-description">*<span class="report-type">유저 신고</span> 내역입니다.</div>
-                    <table class="report-category">
-                        <colgroup>
-                            <col style="width: 80px;">
-                            <col style="width: 120px;">
-                            <col>
-                            <col style="width: 160px;">
-                            <col style="width: 100px;">
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">유형</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">답변 상태</th>
-                            <th scope="col">등록일</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>부적절한 닉네임</td>
-                            <td class="dynamic-col"><a href="#">커뮤니티 유저중 이상한 닉네임이 있어요.</a></td>
-                            <td>처리 완료</td>
-                            <td>2023.11.30</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                    </table>
+<!--                    <div class="inquiry-pagination">-->
+<!--                        &lt;!&ndash; <div class="inquiry-active-page">1</div> &ndash;&gt;-->
+<!--                        <button class="pagebtn" onclick="backbtn()">이전</button>-->
+<!--                        <ul class="no-margin-padding">-->
+<!--                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>-->
+<!--                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>-->
+<!--                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>-->
+<!--                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>-->
+<!--                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>-->
+<!--                        </ul>-->
+<!--                        <button class="pagebtn" onclick="nextbtn()">다음</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="report-wrapper subpage" id="subpage3">-->
 
 
-                    <div class="inquiry-pagination">
-                        <!-- <div class="inquiry-active-page">1</div> -->
-                        <button class="pagebtn" onclick="backbtn()">이전</button>
-                        <ul class="no-margin-padding">
-                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>
-                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>
-                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>
-                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>
-                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>
-                        </ul>
-                        <button class="pagebtn" onclick="nextbtn()">다음</button>
-                    </div>
-                </div>
+<!--                    <div class="reportPush">-->
+<!--                        <div class="reportPushInner"></div>-->
+<!--                        <div class="rep-write"><a href="#">신고 작성하기</a></div>-->
+<!--                    </div>-->
+<!--                    <div class="space-description">*<span class="report-type">유저 신고</span> 내역입니다.</div>-->
+<!--                    <table class="report-category">-->
+<!--                        <colgroup>-->
+<!--                            <col style="width: 80px;">-->
+<!--                            <col style="width: 120px;">-->
+<!--                            <col>-->
+<!--                            <col style="width: 160px;">-->
+<!--                            <col style="width: 100px;">-->
+<!--                        </colgroup>-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            <th scope="col">번호</th>-->
+<!--                            <th scope="col">유형</th>-->
+<!--                            <th scope="col">제목</th>-->
+<!--                            <th scope="col">답변 상태</th>-->
+<!--                            <th scope="col">등록일</th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <td>1</td>-->
+<!--                            <td>부적절한 닉네임</td>-->
+<!--                            <td class="dynamic-col"><a href="#">커뮤니티 유저중 이상한 닉네임이 있어요.</a></td>-->
+<!--                            <td>처리 완료</td>-->
+<!--                            <td>2023.11.30</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                        <tbody>-->
+<!--                    </table>-->
+
+
+<!--                    <div class="inquiry-pagination">-->
+<!--                        &lt;!&ndash; <div class="inquiry-active-page">1</div> &ndash;&gt;-->
+<!--                        <button class="pagebtn" onclick="backbtn()">이전</button>-->
+<!--                        <ul class="no-margin-padding">-->
+<!--                            <li class="pagelink no-margin-padding active" value="1" onclick="activeLink()">1</li>-->
+<!--                            <li class="pagelink no-margin-padding" value="2" onclick="activeLink()">2</li>-->
+<!--                            <li class="pagelink no-margin-padding" value="3" onclick="activeLink()">3</li>-->
+<!--                            <li class="pagelink no-margin-padding" value="4" onclick="activeLink()">4</li>-->
+<!--                            <li class="pagelink no-margin-padding" value="5" onclick="activeLink()">5</li>-->
+<!--                        </ul>-->
+<!--                        <button class="pagebtn" onclick="nextbtn()">다음</button>-->
+<!--                    </div>-->
+<!--                </div>-->
 
 
 
@@ -331,56 +340,58 @@
 
 
 
-<script>
+<!--<script>-->
 
-    function showSubPage(subpageId) {
-
-
-        var subpages = document.querySelectorAll('.subpage');
-        subpages.forEach(function (subpage) {
-            subpage.classList.remove('active');
-
-        });
-
-        var activeSubpage = document.getElementById(subpageId);
-        activeSubpage.classList.add('active');
+<!--    function showSubPage(subpageId) {-->
 
 
-    }
+<!--        var subpages = document.querySelectorAll('.subpage');-->
+<!--        subpages.forEach(function (subpage) {-->
+<!--            subpage.classList.remove('active');-->
+
+<!--        });-->
+
+<!--        var activeSubpage = document.getElementById(subpageId);-->
+<!--        activeSubpage.classList.add('active');-->
 
 
-    let pagelink = document.getElementsByClassName("pagelink");
-    let currentValue = 1;
+<!--    }-->
 
-    function activeLink() {
-        for (link of pagelink) {
-            link.classList.remove("active");
-        }
-        event.target.classList.add("active");
-        currentValue = event.target.value;
-    }
 
-    function backbtn() {
-        if (currentValue > 1) {
-            for (link of pagelink) {
-                link.classList.remove("active");
-            }
-            currentValue--;
-            pagelink[currentValue - 1].classList.add("active");
-        }
-    }
+<!--    let pagelink = document.getElementsByClassName("pagelink");-->
+<!--    let currentValue = 1;-->
 
-    function nextbtn() {
-        if (currentValue < 5) {
-            for (link of pagelink) {
-                link.classList.remove("active");
-            }
-            currentValue++;
-            pagelink[currentValue - 1].classList.add("active");
-        }
-    }
+<!--    function activeLink() {-->
+<!--        for (link of pagelink) {-->
+<!--            link.classList.remove("active");-->
+<!--        }-->
+<!--        event.target.classList.add("active");-->
+<!--        currentValue = event.target.value;-->
+<!--    }-->
 
-</script>
+<!--    function backbtn() {-->
+<!--        if (currentValue > 1) {-->
+<!--            for (link of pagelink) {-->
+<!--                link.classList.remove("active");-->
+<!--            }-->
+<!--            currentValue&#45;&#45;;-->
+<!--            pagelink[currentValue - 1].classList.add("active");-->
+<!--        }-->
+<!--    }-->
+
+<!--    function nextbtn() {-->
+<!--        if (currentValue < 5) {-->
+<!--            for (link of pagelink) {-->
+<!--                link.classList.remove("active");-->
+<!--            }-->
+<!--            currentValue++;-->
+<!--            pagelink[currentValue - 1].classList.add("active");-->
+<!--        }-->
+<!--    }-->
+
+<!--</script>-->
+
+</th:block>
 
 <!-- <script>
 jQuery(document).ready(function() {

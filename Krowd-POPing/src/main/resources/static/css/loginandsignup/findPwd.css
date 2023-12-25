@@ -1,0 +1,171 @@
+
+
+html{
+    background-image: url('/icon/login_background.svg');
+}
+.default_address {
+    background-color: white;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    box-sizing: border-box;
+    width: 1000px;
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 8px;
+}
+#subpage1,#subpage2 {
+    border:1px solid #d9D9D9;
+    background-color: white;
+    height: 500px;
+    width: 800px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    
+}
+#type_email,#type_email_2{
+    color: #6d6d6d;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 50px;
+    margin-left: 150px;
+    
+    
+    
+}
+
+
+
+
+label[for="email"],label[for="email_2"]{
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#email,#email_2 {
+border: 1px solid #ccc;
+padding: 5px;
+font-size: 13px;
+/* margin-left: 36px; */
+padding-left: 10px;
+height: 30px;
+width: 200px;
+
+
+}
+
+.send_auth,.send_auth_2{
+    margin-left: 10px;
+    padding: 5px;
+}
+
+#subpage1 h3,#subpage2 h3 {
+    align-self: flex-start; 
+    margin-left: 80px;
+    margin-top: 60px;
+}
+#subpage1 span,#subpage2 span{
+    /* align-self: flex-start; */
+    display: flex; 
+    margin-left: 80px;
+    margin-top: 70px;
+    margin-bottom: 10px;
+    /* background-color: gray; */
+    /* padding-top: 100px; */
+}
+
+
+.find_title {
+
+    color: #0D0D0D;
+    top: 45px;
+    left: 50px;
+    font-family: Noto Sans KR;
+    position: absolute;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+.id_text, .pwd_text {
+    color: #767676;
+    font-family: Noto Sans KR;
+    font-size: 16px;
+    /* background-color: white; */
+    border-radius: 8px;
+    padding: 10px;
+    width: 225px;
+    text-align: center;
+}
+.find_navigator {
+    border-radius: 8px;
+    background-color: #EDE9FE;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    width: 530px;
+    height: 50px;
+}
+.find_id_title,
+.find_pwd_title {
+    cursor: pointer;
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* .active {
+    visibility: visible;
+} */
+.subpage {
+    display: none;
+}
+
+.find_id_title.active .underline,
+.find_pwd_title.active .underline {
+    visibility: visible;
+}
+.subpage.active {
+    display: block;
+}
+
+#resultPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 200px;
+    z-index: 9999;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* 텍스트 중앙 정렬을 위해 추가 */
+}
+
+#foundId {
+    margin-top:50px;
+    margin-bottom: 20px; /* 여백 조절을 위해 추가 */
+}
+
+.go_login {
+    border: none;
+    border: 1px solid #d9D9D9;
+    padding: 10px;
+    background-color:#EDE9FE ;
+    border-radius: 6px;
+    cursor: pointer;
+}

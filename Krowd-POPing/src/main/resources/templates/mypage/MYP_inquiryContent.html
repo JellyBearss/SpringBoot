@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{/layouts/user_layout}">
 
 
 <head>
@@ -24,71 +26,74 @@
     <title>MYP_inquiry</title>
 </head>
 
-<body>
-<div id="wrapper">
-    <div id="header">
-        <div class=cartbar>
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-            <div class="category-box">
-                <div class="category"><a href="home.html">홈</a></div>
-                <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
-                <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
-                <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
-            </div>
-        </div>
-        <div class="logo">
-            <img src="/icon/logo2.png" alt="">
-        </div>
-        <div class="menu">
-            <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-            <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px"
-                                                       height="35px"></a>
-            <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px"
-                                                        height="35.36px"></a>
-            <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px"
-                                                         height="35.36px"></a>
-            <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px"
-                                                        height="35.36px"></a>
-        </div>
-        <div id="search-area">
-            <form id="search-form">
-                <div id="search-text-area">
-                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
-                           onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'">
-                </div>
-                <div id="search-btn-area">
-                    <button type="submit" id="search-btn"><img src="/icon/searchbutton.png"></button>
-                </div>
-            </form>
-        </div>
+<th:block layout:fragment="content">
 
-    </div>
+<!--<body>-->
+<div id="wrapper">
+<!--    <div id="header">-->
+<!--        <div class=cartbar>-->
+<!--            <div class="bar1"></div>-->
+<!--            <div class="bar2"></div>-->
+<!--            <div class="bar3"></div>-->
+<!--            <div class="category-box">-->
+<!--                <div class="category"><a href="home.html">홈</a></div>-->
+<!--                <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>-->
+<!--                <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>-->
+<!--                <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="logo">-->
+<!--            <img src="/icon/logo2.png" alt="">-->
+<!--        </div>-->
+<!--        <div class="menu">-->
+<!--            &lt;!&ndash; <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> &ndash;&gt;-->
+<!--            <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt="" width="35px"-->
+<!--                                                       height="35px"></a>-->
+<!--            <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt="" width="37px"-->
+<!--                                                        height="35.36px"></a>-->
+<!--            <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt="" width="118px"-->
+<!--                                                         height="35.36px"></a>-->
+<!--            <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt="" width="118px"-->
+<!--                                                        height="35.36px"></a>-->
+<!--        </div>-->
+<!--        <div id="search-area">-->
+<!--            <form id="search-form">-->
+<!--                <div id="search-text-area">-->
+<!--                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."-->
+<!--                           onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'">-->
+<!--                </div>-->
+<!--                <div id="search-btn-area">-->
+<!--                    <button type="submit" id="search-btn"><img src="/icon/searchbutton.png"></button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+
+<!--    </div>-->
     <div id="content">
         <!-- 여기가 중간 부분 여기에 코드 작성-->
         <div id="content-1">
             <div id="profile-container">
                 <div id="profilepic"><img src="/icon/basicpic.png" alt=""></div>
-                <div id="nickname">체리토끼 님</div>
+                <div id="nickname"><span sec:authentication="principal.userDTO.nickname"></span>님</div>
                 <!-- <button type="submit" id="changepic">프로필 사진 변경</button> -->
             </div>
 
-            <button type="submit" id="changepic">프로필 사진 변경</button>
+            <button type="submit" id="changepic" >프로필 사진 변경</button>
             <ul class="mplist1">
-                <li><a href="/mypage(done)/mypage_editprofile.html">내 정보 수정</a></li>
+                <li><a href="/user/regist">내 정보 수정</a></li>
                 <li>나의 배송지</li>
+
                 <ul class="tree">
                     <a class="projectlink">프로젝트</a>
-                    <li><a href="/mypage(done)/mypage_projectlist_1_ing.html">후원한 프로젝트</a></li>
-                    <li><a href="/mypage(done)/mypage_projectlist_2_no.html">찜한 프로젝트</a></li>
-                    <li><a href="/mypage(done)/mypage_projectlist_3_no.html">등록한 프로젝트</a></li>
-                    <li><a href="/mypage(done)/mypage_projectlist_4.html">최근 본 프로젝트</a></li>
+                    <li><a href="/mypage/projectlist1_ing">후원한 프로젝트</a></li>
+                    <li><a href="/mypage/projectlist2_yes">찜한 프로젝트</a></li>
+                    <li><a href="/mypage/projectlist3_no">등록한 프로젝트</a></li>
+                    <li><a href="/mypage/projectlist4">최근 본 프로젝트</a></li>
                 </ul>
                 <ul class="mypageunder">
                     <li>결제 내역</li>
-                    <li><a href="/mypage(done)/mypage_followinglist_yes.html">팔로잉 목록</a></li>
-                    <li><a href="/mypage(done)/mypage_followerlist_yes.html">내 팔로워</a></li>
+                    <li><a href="/mypage/followinglist_yes">팔로잉 목록</a></li>
+                    <li><a href="/mypage/followerlist_yes">내 팔로워</a></li>
                     <li>알림</li>
                 </ul>
             </ul>
@@ -141,8 +146,8 @@
 
                         <div class="inquiry-status-result" th:text="${ inquiryContent.inquiryDate }">2023.12.20</div>
                         <div class="inquiry-btn-wrapper">
-                            <a href="#" class="inq-list-btn">목록</a>
-                            <a href="#" class="inq-list-btn">삭제</a>
+                            <a href="/inquiry/list" class="inq-list-btn">목록</a>
+<!--                            <a href="#" class="inq-list-btn">삭제</a>-->
                         </div>
                     </div>
                 </div>
@@ -157,13 +162,13 @@
                                 </textarea>
 
 
-                    <form><div class="inquiry-reply">답변 제목이 들어갑니다.
-                        <textarea readonly class="inqu-textarea">
-답변 내용이 들어감.
-                                    </textarea>
+<!--                    <form><div class="inquiry-reply">답변 제목이 들어갑니다.-->
+<!--                        <textarea readonly class="inqu-textarea">-->
+<!--답변 내용이 들어감.-->
+<!--                                    </textarea>-->
 
-                    </div>
-                    </form>
+<!--                    </div>-->
+<!--                    </form>-->
                 </div>
             </div>
         </div>
@@ -189,6 +194,8 @@
         }
 
     </script>
+
+</th:block>
 
     <!-- <script>
 jQuery(document).ready(function() {

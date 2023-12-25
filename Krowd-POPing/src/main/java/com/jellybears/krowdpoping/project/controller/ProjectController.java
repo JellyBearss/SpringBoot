@@ -1,10 +1,8 @@
 package com.jellybears.krowdpoping.project.controller;
 
-import com.jellybears.krowdpoping.project.model.dto.DetailGoodsDTO;
-import com.jellybears.krowdpoping.project.model.dto.DetailGoodsDetailDTO;
-import com.jellybears.krowdpoping.project.model.dto.DetailItemDTO;
-import com.jellybears.krowdpoping.project.model.dto.DetailProjectDTO;
+import com.jellybears.krowdpoping.project.model.dto.*;
 import com.jellybears.krowdpoping.project.model.service.ProjectService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +28,8 @@ public class ProjectController {
      * @return
      */
     @GetMapping("projectdetail")
-    public String goProjectDetail(@RequestParam Long no, Model model){
+    public String goProjectDetail(@RequestParam Long no,
+                                  Model model){
 
         System.out.println("no = " + no);
 
@@ -38,6 +37,8 @@ public class ProjectController {
         model.addAttribute("detail", detail);
         System.out.println("detail = " + detail);
 
+        DetailProjectImageDTO projectFile = projectService.getProjectFile(no);
+        model.addAttribute("projectFile", projectFile);
 
         //남은 기간 계산
         LocalDate startDate = detail.getStartDate().toLocalDate();

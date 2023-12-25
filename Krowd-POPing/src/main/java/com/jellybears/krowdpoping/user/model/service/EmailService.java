@@ -58,6 +58,7 @@ public class EmailService {
         return message;
     }
 
+
     //실제 메일 전송
     public String sendEmail(String toEmail) throws MessagingException, UnsupportedEncodingException {
         try {
@@ -85,6 +86,8 @@ public class EmailService {
         context.setVariable("code", code);
         return emailContent;
     }
+
+
 
 
 }
