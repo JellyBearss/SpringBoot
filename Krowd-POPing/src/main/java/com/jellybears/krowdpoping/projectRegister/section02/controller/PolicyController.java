@@ -1,9 +1,13 @@
 package com.jellybears.krowdpoping.projectRegister.section02.controller;
 
+import com.jellybears.krowdpoping.projectList.model.dto.ProjectDTO;
+import com.jellybears.krowdpoping.projectRegister.section02.model.dto.PolicyDTO;
 import com.jellybears.krowdpoping.projectRegister.section02.model.service.PolicyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -11,15 +15,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/projectReg/*")
+@RequestMapping("/projectReg")
 public class PolicyController {
 
     private final PolicyService policyService;
 
-    @GetMapping("policy")
+    @GetMapping("/policy")
     public String goPolicy() {
 
         return "policy/policy";
     }
+
+    @PostMapping("/policyReg")
+    public String registerPolicy(Model model, PolicyDTO policy) {
+        ProjectDTO project=new ProjectDTO();
+        policy.setProjectCode(project.getProjectCode());
+
+        return "/projectReg/policy";
+    }
+
+
 
 }

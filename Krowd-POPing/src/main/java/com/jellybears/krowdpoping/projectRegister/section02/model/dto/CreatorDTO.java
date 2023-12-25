@@ -1,44 +1,28 @@
 package com.jellybears.krowdpoping.projectRegister.section02.model.dto;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class CreatorDTO {
 
-    private String creatorNm;
-    private int crType;
-    private String businessNum;
-    private String address;
-    int userCode;
-    private String phone;
-    private String email;
-    private String introduce;
-    private String identiNum;
-    private String accUserNm;
-    private String ceoNm;
-    private int issueType;
+    private String creatorNm; // 창작자 프로필명
+    private int crType; // 창작자 유형
+    private String introduce; // 소개
+    private String inquiryEmail; // 문의 이메일
+    private String email; // user의 email 가져오기
+    private String phone; // 전화번호
+    private int issueType; // 발행 여부(개인/개인 사업자)
+    private String name;  // user의 name 가져오기
+    private String address; // 주소
+    private int userCode;
+    private MultipartFile fileInput;
 
-    private boolean isNew;
 
-    @Builder
-    public CreatorDTO(int crType,String businessNum,String address,int userCode,String phone,String email,String introduce
-            , String identiNum, String accUserNm, String ceoNm, int issueType, String creatorNm) {
-        this.crType=crType;
-        this.businessNum=businessNum;
-        this.address=address;
-        this.userCode=userCode;
-        this.phone=phone;
-        this.email=email;
-        this.introduce=introduce;
-        this.identiNum=identiNum;
-        this.accUserNm=accUserNm;
-        this.ceoNm=ceoNm;
-        this.issueType=issueType;
-        this.creatorNm=creatorNm;
-    }
 }
