@@ -137,7 +137,7 @@
 <div id="content">
     <section class="proMain">
         <div class="section">
-            <img th:src="@{|/imagePath/${detail.image.getOriginFileName()}|}" alt="이미지" width="649" height="457">
+            <img th:src="@{|/imagePath/${projectFile.getOriginFileName()}|}" alt="이미지" width="649" height="457">
 
 <!--            <input type="radio" name="slide" id="slide01" checked>-->
 <!--            <input type="radio" name="slide" id="slide02">-->
@@ -393,468 +393,469 @@
             </div>
 
 
-            <div class="subpage" id="subpage3">
-                <span class="proMenuSelect">업데이트</span>
+<!--            <div class="subpage" id="subpage3">-->
+<!--                <span class="proMenuSelect">업데이트</span>-->
 
-                <div class="creatorCard-inner-subpage3">
-                    <div class="creatorCard-info">
-                        <div>
-                            <img class="ctimg" src="/images/imase.jpeg">
-                        </div>
-                        <div class="ctInfo">
-                            <div class="ctInner">
-                                <h4>비타민젤리</h4>
-                                <span class="creatorCard-inner-subpage3-style">*창작자</span>
-                                <span class="creator-update-date">2023.12.20 수정됨</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="update-btn-wrapper">
-                        <a href="#" class="update-list-btn">수정</a>
-                        <a href="#" class="update-list-btn">삭제</a>
-                    </div> -->
-                    <div class="update-detail-wrapper">
+<!--                <div class="creatorCard-inner-subpage3">-->
+<!--                    <div class="creatorCard-info">-->
+<!--                        <div>-->
+<!--                            <img class="ctimg" src="/images/imase.jpeg">-->
+<!--                        </div>-->
+<!--                        <div class="ctInfo">-->
+<!--                            <div class="ctInner">-->
+<!--                                <h4>비타민젤리</h4>-->
+<!--                                <span class="creatorCard-inner-subpage3-style">*창작자</span>-->
+<!--                                <span class="creator-update-date">2023.12.20 수정됨</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; <div class="update-btn-wrapper">-->
+<!--                        <a href="#" class="update-list-btn">수정</a>-->
+<!--                        <a href="#" class="update-list-btn">삭제</a>-->
+<!--                    </div> &ndash;&gt;-->
+<!--                    <div class="update-detail-wrapper">-->
 
-                        <div class="update-detail">
+<!--                        <div class="update-detail">-->
 
-                            <div class="update-title">
-                                <p>업데이트 제목이 들어갑니다.</p>
-                            </div>
-                        </div>
-                        <div class="update-content">
-                                <textarea readonly class="update-textarea">
-        수정, 삭제를 위해서는 권한으로 페이지 들어오는 것을 구분해야되므로 창작자 업데이트 페이지, 후원자 업데이트 페이지를 디자인은 같지만 주소를 다르게 만들어야 할 것 같다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
+<!--                            <div class="update-title">-->
+<!--                                <p>업데이트 제목이 들어갑니다.</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="update-content">-->
+<!--                                <textarea readonly class="update-textarea">-->
+<!--        수정, 삭제를 위해서는 권한으로 페이지 들어오는 것을 구분해야되므로 창작자 업데이트 페이지, 후원자 업데이트 페이지를 디자인은 같지만 주소를 다르게 만들어야 할 것 같다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
 
-                                </textarea>
-
-
-                            <!--댓글 작성 폼-->
-                            <!-- <div>
-
-                                <form method="post" action="/reply/write">
-
-                                    <p>
-                                        <label>댓글 작성자</label> <input type="text" name="writer">
-                                    </p>
-                                    <p>
-                                        <textarea rows="5" cols="50" name="content"></textarea>
-                                    </p>
-                                    <p>
-                                        <button type="submit">댓글 작성</button>
-                                    </p>
-                                </form>
-
-                            </div> -->
-
-                            <div class="reply-solid-wrapper">
-                                <div class="reply-info">
-                                    <div>
-                                        <img class="reply-img" src="/images/Tribe.png">
-                                    </div>
-                                    <div class="reply-wrapper">
-                                        <div class="reply-inner">
-                                            <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                            <span class="reply-update-date">2023.12.20 수정됨</span>
-                                            <!-- <div class="reply-btn-wrapper">
-                                                <a href="#" class="reply-list-btn rebtn1">수정</a>
-                                                <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                </textarea>-->
 
 
+<!--                            &lt;!&ndash;댓글 작성 폼&ndash;&gt;-->
+<!--                            &lt;!&ndash; <div>-->
 
-                                <textarea readonly class="reply-textarea">
-        댓글이 들어감
-                                    </textarea>
-                            </div>
+<!--                                <form method="post" action="/reply/write">-->
 
-                            <div class="reply-solid-wrapper">
+<!--                                    <p>-->
+<!--                                        <label>댓글 작성자</label> <input type="text" name="writer">-->
+<!--                                    </p>-->
+<!--                                    <p>-->
+<!--                                        <textarea rows="5" cols="50" name="content"></textarea>-->
+<!--                                    </p>-->
+<!--                                    <p>-->
+<!--                                        <button type="submit">댓글 작성</button>-->
+<!--                                    </p>-->
+<!--                                </form>-->
 
-                                <!--댓글영역시작-->
-                                <div class="reply-info">
-                                    <div>
-                                        <img class="reply-img" src="/images/Tribe.png">
-                                    </div>
-                                    <div class="reply-wrapper">
-                                        <div class="reply-inner">
-                                            <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                            <span class="reply-update-date">2023.12.20 수정됨</span>
-                                            <!-- <div class="reply-btn-wrapper">
-                                                <a href="#" class="reply-list-btn rebtn1">수정</a>
-                                                <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
+<!--                            </div> &ndash;&gt;-->
 
-
-                                <textarea readonly class="reply-textarea">
-            댓글이 들어감
-                                        </textarea>
-
-                            </div>
-
-                            <!--댓글영역끝-->
-                        </div>
-                    </div>
-                </div>
+<!--                            <div class="reply-solid-wrapper">-->
+<!--                                <div class="reply-info">-->
+<!--                                    <div>-->
+<!--                                        <img class="reply-img" src="/images/Tribe.png">-->
+<!--                                    </div>-->
+<!--                                    <div class="reply-wrapper">-->
+<!--                                        <div class="reply-inner">-->
+<!--                                            <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                            <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                            &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                                <a href="#" class="reply-list-btn rebtn1">수정</a>-->
+<!--                                                <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                            </div> &ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
 
-                <div class="creatorCard-inner-subpage3">
-                    <div class="creatorCard-info">
-                        <div>
-                            <img class="ctimg" src="/images/imase.jpeg">
-                        </div>
-                        <div class="ctInfo">
-                            <div class="ctInner">
-                                <h4>비타민젤리</h4>
-                                <span class="creatorCard-inner-subpage3-style">*창작자</span>
-                                <span class="creator-update-date">2023.12.20 수정됨</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="update-btn-wrapper">
-                        <a href="#" class="update-list-btn">수정</a>
-                        <a href="#" class="update-list-btn">삭제</a>
-                    </div> -->
-                    <div class="update-detail-wrapper">
 
-                        <div class="update-detail">
+<!--                                <textarea readonly class="reply-textarea">-->
+<!--        댓글이 들어감-->
+<!--                                    </textarea>-->
+<!--                            </div>-->
 
-                            <div class="update-title">
-                                <p>업데이트 제목이 들어갑니다.</p>
-                            </div>
-                        </div>
-                        <div class="update-content">
-                                <textarea readonly class="update-textarea">
-        수정, 삭제를 위해서는 권한으로 페이지 들어오는 것을 구분해야되므로 창작자 업데이트 페이지, 후원자 업데이트 페이지를 디자인은 같지만 주소를 다르게 만들어야 할 것 같다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
+<!--                            <div class="reply-solid-wrapper">-->
 
-                                </textarea>
-                            <div class="reply-solid-wrapper">
-
-                                <div class="reply-info">
-                                    <div>
-                                        <img class="reply-img" src="/images/Tribe.png">
-                                    </div>
-                                    <div class="reply-wrapper">
-                                        <div class="reply-inner">
-                                            <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                            <span class="reply-update-date">2023.12.20 수정됨</span>
-                                            <!-- <div class="reply-btn-wrapper">
-                                                <a href="#" class="reply-list-btn rebtn1">수정</a>
-                                                <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                &lt;!&ndash;댓글영역시작&ndash;&gt;-->
+<!--                                <div class="reply-info">-->
+<!--                                    <div>-->
+<!--                                        <img class="reply-img" src="/images/Tribe.png">-->
+<!--                                    </div>-->
+<!--                                    <div class="reply-wrapper">-->
+<!--                                        <div class="reply-inner">-->
+<!--                                            <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                            <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                            &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                                <a href="#" class="reply-list-btn rebtn1">수정</a>-->
+<!--                                                <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                            </div> &ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
 
 
-                                <textarea readonly class="reply-textarea">
-        댓글이 들어감
-                                    </textarea>
-                            </div>
+<!--                                <textarea readonly class="reply-textarea">-->
+<!--            댓글이 들어감-->
+<!--                                        </textarea>-->
 
-                            <!--댓글영역시작-->
-                            <div class="reply-solid-wrapper">
+<!--                            </div>-->
 
-                                <div class="reply-info">
-                                    <div>
-                                        <img class="reply-img" src="/images/Tribe.png">
-                                    </div>
-                                    <div class="reply-wrapper">
-                                        <div class="reply-inner">
-                                            <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                            <span class="reply-update-date">2023.12.20 수정됨</span>
-                                            <!-- <div class="reply-btn-wrapper">
-                                                <span class="reply-list-btn rebtn1">수정</span>
-                                                <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </div>
+<!--                            &lt;!&ndash;댓글영역끝&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
 
-                                <textarea readonly class="reply-textarea">
-            댓글이 들어감
-                                </textarea>
-                            </div>
-                            <!--댓글영역끝-->
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="creatorCard-inner-subpage3">-->
+<!--                    <div class="creatorCard-info">-->
+<!--                        <div>-->
+<!--                            <img class="ctimg" src="/images/imase.jpeg">-->
+<!--                        </div>-->
+<!--                        <div class="ctInfo">-->
+<!--                            <div class="ctInner">-->
+<!--                                <h4>비타민젤리</h4>-->
+<!--                                <span class="creatorCard-inner-subpage3-style">*창작자</span>-->
+<!--                                <span class="creator-update-date">2023.12.20 수정됨</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; <div class="update-btn-wrapper">-->
+<!--                        <a href="#" class="update-list-btn">수정</a>-->
+<!--                        <a href="#" class="update-list-btn">삭제</a>-->
+<!--                    </div> &ndash;&gt;-->
+<!--                    <div class="update-detail-wrapper">-->
+
+<!--                        <div class="update-detail">-->
+
+<!--                            <div class="update-title">-->
+<!--                                <p>업데이트 제목이 들어갑니다.</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="update-content">-->
+<!--                                <textarea readonly class="update-textarea">-->
+<!--        수정, 삭제를 위해서는 권한으로 페이지 들어오는 것을 구분해야되므로 창작자 업데이트 페이지, 후원자 업데이트 페이지를 디자인은 같지만 주소를 다르게 만들어야 할 것 같다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+
+<!--                                </textarea>-->
+<!--                            <div class="reply-solid-wrapper">-->
+
+<!--                                <div class="reply-info">-->
+<!--                                    <div>-->
+<!--                                        <img class="reply-img" src="/images/Tribe.png">-->
+<!--                                    </div>-->
+<!--                                    <div class="reply-wrapper">-->
+<!--                                        <div class="reply-inner">-->
+<!--                                            <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                            <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                            &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                                <a href="#" class="reply-list-btn rebtn1">수정</a>-->
+<!--                                                <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                            </div> &ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+<!--                                <textarea readonly class="reply-textarea">-->
+<!--        댓글이 들어감-->
+<!--                                    </textarea>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash;댓글영역시작&ndash;&gt;-->
+<!--                            <div class="reply-solid-wrapper">-->
+
+<!--                                <div class="reply-info">-->
+<!--                                    <div>-->
+<!--                                        <img class="reply-img" src="/images/Tribe.png">-->
+<!--                                    </div>-->
+<!--                                    <div class="reply-wrapper">-->
+<!--                                        <div class="reply-inner">-->
+<!--                                            <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                            <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                            &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                                <span class="reply-list-btn rebtn1">수정</span>-->
+<!--                                                <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                            </div> &ndash;&gt;-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+
+<!--                                <textarea readonly class="reply-textarea">-->
+<!--            댓글이 들어감-->
+<!--                                </textarea>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash;댓글영역끝&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <!--여기까지 게시글과 댓글 영역-->
-                <div class="subpage" id="subpage3">
-                    <span class="proMenuSelect">업데이트</span>
+<!--                <div class="subpage" id="subpage3">-->
+<!--                    <span class="proMenuSelect">업데이트</span>-->
 
-                    <div class="creatorCard-inner-subpage3">
-                        <div class="creatorCard-info">
-                            <div>
-                                <img class="ctimg" src="/images/imase.jpeg">
-                            </div>
-                            <div class="ctInfo">
-                                <div class="ctInner">
-                                    <h4>비타민젤리</h4>
-                                    <span class="creatorCard-inner-subpage3-style">*창작자</span>
-                                    <span class="creator-update-date">2023.12.20 수정됨</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="update-btn-wrapper">
-                            <a href="#" class="update-list-btn">수정</a>
-                            <a href="#" class="update-list-btn">삭제</a>
-                        </div> -->
-                        <div class="update-detail-wrapper">
+<!--                    <div class="creatorCard-inner-subpage3">-->
+<!--                        <div class="creatorCard-info">-->
+<!--                            <div>-->
+<!--                                <img class="ctimg" src="/images/imase.jpeg">-->
+<!--                            </div>-->
+<!--                            <div class="ctInfo">-->
+<!--                                <div class="ctInner">-->
+<!--                                    <h4>비타민젤리</h4>-->
+<!--                                    <span class="creatorCard-inner-subpage3-style">*창작자</span>-->
+<!--                                    <span class="creator-update-date">2023.12.20 수정됨</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; <div class="update-btn-wrapper">-->
+<!--                            <a href="#" class="update-list-btn">수정</a>-->
+<!--                            <a href="#" class="update-list-btn">삭제</a>-->
+<!--                        </div> &ndash;&gt;-->
+<!--                        <div class="update-detail-wrapper">-->
 
-                            <div class="update-detail">
+<!--                            <div class="update-detail">-->
 
-                                <div class="update-title">
-                                    <p>업데이트 제목이 들어갑니다.</p>
-                                </div>
-                            </div>
-                            <div class="update-content">
-                                <textarea readonly class="update-textarea">
-        수정, 삭제를 위해서는 권한으로 페이지 들어오는 것을 구분해야되므로 창작자 업데이트 페이지, 후원자 업데이트 페이지를 디자인은 같지만 주소를 다르게 만들어야 할 것 같다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
+<!--                                <div class="update-title">-->
+<!--                                    <p>업데이트 제목이 들어갑니다.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="update-content">-->
+<!--                                <textarea readonly class="update-textarea">-->
+<!--        수정, 삭제를 위해서는 권한으로 페이지 들어오는 것을 구분해야되므로 창작자 업데이트 페이지, 후원자 업데이트 페이지를 디자인은 같지만 주소를 다르게 만들어야 할 것 같다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
 
-                                </textarea>
-
-
-                                <!--댓글 작성 폼-->
-                                <!-- <div>
-
-                                    <form method="post" action="/reply/write">
-
-                                        <p>
-                                            <label>댓글 작성자</label> <input type="text" name="writer">
-                                        </p>
-                                        <p>
-                                            <textarea rows="5" cols="50" name="content"></textarea>
-                                        </p>
-                                        <p>
-                                            <button type="submit">댓글 작성</button>
-                                        </p>
-                                    </form>
-
-                                </div> -->
-
-                                <div class="reply-solid-wrapper">
-                                    <div class="reply-info">
-                                        <div>
-                                            <img class="reply-img" src="/images/Tribe.png">
-                                        </div>
-                                        <div class="reply-wrapper">
-                                            <div class="reply-inner">
-                                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                                <span class="reply-update-date">2023.12.20 수정됨</span>
-                                                <!-- <div class="reply-btn-wrapper">
-                                                    <a href="#" class="reply-list-btn rebtn1">수정</a>
-                                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                </textarea>-->
 
 
+<!--                                &lt;!&ndash;댓글 작성 폼&ndash;&gt;-->
+<!--                                &lt;!&ndash; <div>-->
 
-                                    <textarea readonly class="reply-textarea">
-        댓글이 들어감
-                                    </textarea>
-                                </div>
+<!--                                    <form method="post" action="/reply/write">-->
 
-                                <div class="reply-solid-wrapper">
+<!--                                        <p>-->
+<!--                                            <label>댓글 작성자</label> <input type="text" name="writer">-->
+<!--                                        </p>-->
+<!--                                        <p>-->
+<!--                                            <textarea rows="5" cols="50" name="content"></textarea>-->
+<!--                                        </p>-->
+<!--                                        <p>-->
+<!--                                            <button type="submit">댓글 작성</button>-->
+<!--                                        </p>-->
+<!--                                    </form>-->
 
-                                    <!--댓글영역시작-->
-                                    <div class="reply-info">
-                                        <div>
-                                            <img class="reply-img" src="/images/Tribe.png">
-                                        </div>
-                                        <div class="reply-wrapper">
-                                            <div class="reply-inner">
-                                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                                <span class="reply-update-date">2023.12.20 수정됨</span>
-                                                <!-- <div class="reply-btn-wrapper">
-                                                    <a href="#" class="reply-list-btn rebtn1">수정</a>
-                                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                </div> &ndash;&gt;-->
 
-
-                                    <textarea readonly class="reply-textarea">
-            댓글이 들어감
-                                        </textarea>
-
-                                </div>
-
-                                <!--댓글영역끝-->
-                            </div>
-                        </div>
-                    </div>
+<!--                                <div class="reply-solid-wrapper">-->
+<!--                                    <div class="reply-info">-->
+<!--                                        <div>-->
+<!--                                            <img class="reply-img" src="/images/Tribe.png">-->
+<!--                                        </div>-->
+<!--                                        <div class="reply-wrapper">-->
+<!--                                            <div class="reply-inner">-->
+<!--                                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                                <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                                &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                                    <a href="#" class="reply-list-btn rebtn1">수정</a>-->
+<!--                                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                                </div> &ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
 
-                    <div class="creatorCard-inner-subpage3">
-                        <div class="creatorCard-info">
-                            <div>
-                                <img class="ctimg" src="/images/imase.jpeg">
-                            </div>
-                            <div class="ctInfo">
-                                <div class="ctInner">
-                                    <h4>비타민젤리</h4>
-                                    <span class="creatorCard-inner-subpage3-style">*창작자</span>
-                                    <span class="creator-update-date">2023.12.20 수정됨</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="update-btn-wrapper">
-                            <a href="#" class="update-list-btn">수정</a>
-                            <a href="#" class="update-list-btn">삭제</a>
-                        </div> -->
-                        <div class="update-detail-wrapper">
 
-                            <div class="update-detail">
+<!--                                    <textarea readonly class="reply-textarea">-->
+<!--        댓글이 들어감-->
+<!--                                    </textarea>-->
+<!--                                </div>-->
 
-                                <div class="update-title">
-                                    <p>업데이트 제목이 들어갑니다.</p>
-                                </div>
-                            </div>
-                            <div class="update-content">
-                                <textarea readonly class="update-textarea">
-        수정, 삭제를 위해서는 권한으로 페이지 들어오는 것을 구분해야되므로 창작자 업데이트 페이지, 후원자 업데이트 페이지를 디자인은 같지만 주소를 다르게 만들어야 할 것 같다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
-        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.
+<!--                                <div class="reply-solid-wrapper">-->
 
-                                </textarea>
-                                <div class="reply-solid-wrapper">
-
-                                    <div class="reply-info">
-                                        <div>
-                                            <img class="reply-img" src="/images/Tribe.png">
-                                        </div>
-                                        <div class="reply-wrapper">
-                                            <div class="reply-inner">
-                                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                                <span class="reply-update-date">2023.12.20 수정됨</span>
-                                                <!-- <div class="reply-btn-wrapper">
-                                                    <a href="#" class="reply-list-btn rebtn1">수정</a>
-                                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                    &lt;!&ndash;댓글영역시작&ndash;&gt;-->
+<!--                                    <div class="reply-info">-->
+<!--                                        <div>-->
+<!--                                            <img class="reply-img" src="/images/Tribe.png">-->
+<!--                                        </div>-->
+<!--                                        <div class="reply-wrapper">-->
+<!--                                            <div class="reply-inner">-->
+<!--                                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                                <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                                &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                                    <a href="#" class="reply-list-btn rebtn1">수정</a>-->
+<!--                                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                                </div> &ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
 
-                                    <textarea readonly class="reply-textarea">
-        댓글이 들어감
-                                    </textarea>
-                                </div>
+<!--                                    <textarea readonly class="reply-textarea">-->
+<!--            댓글이 들어감-->
+<!--                                        </textarea>-->
 
-                                <!--댓글영역시작-->
-                                <div class="reply-solid-wrapper">
+<!--                                </div>-->
 
-                                    <div class="reply-info">
-                                        <div>
-                                            <img class="reply-img" src="/images/Tribe.png">
-                                        </div>
-                                        <div class="reply-wrapper">
-                                            <div class="reply-inner">
-                                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                                <span class="reply-update-date">2023.12.20 수정됨</span>
-                                                <!-- <div class="reply-btn-wrapper">
-                                                    <span class="reply-list-btn rebtn1">수정</span>
-                                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </div>
+<!--                                &lt;!&ndash;댓글영역끝&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
 
-                                    <textarea readonly class="reply-textarea">
-            댓글이 들어감
-                                </textarea>
-                                </div>
-                                <!--댓글영역끝-->
-                            </div>
-                        </div>
-                    </div>
-                    <!--여기까지 게시글과 댓글 영역-->
+<!--                    <div class="creatorCard-inner-subpage3">-->
+<!--                        <div class="creatorCard-info">-->
+<!--                            <div>-->
+<!--                                <img class="ctimg" src="/images/imase.jpeg">-->
+<!--                            </div>-->
+<!--                            <div class="ctInfo">-->
+<!--                                <div class="ctInner">-->
+<!--                                    <h4>비타민젤리</h4>-->
+<!--                                    <span class="creatorCard-inner-subpage3-style">*창작자</span>-->
+<!--                                    <span class="creator-update-date">2023.12.20 수정됨</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; <div class="update-btn-wrapper">-->
+<!--                            <a href="#" class="update-list-btn">수정</a>-->
+<!--                            <a href="#" class="update-list-btn">삭제</a>-->
+<!--                        </div> &ndash;&gt;-->
+<!--                        <div class="update-detail-wrapper">-->
 
-                </div>
+<!--                            <div class="update-detail">-->
+
+<!--                                <div class="update-title">-->
+<!--                                    <p>업데이트 제목이 들어갑니다.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="update-content">-->
+<!--                                <textarea readonly class="update-textarea">-->
+<!--        수정, 삭제를 위해서는 권한으로 페이지 들어오는 것을 구분해야되므로 창작자 업데이트 페이지, 후원자 업데이트 페이지를 디자인은 같지만 주소를 다르게 만들어야 할 것 같다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+<!--        안녕하세요, 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다. 테스트를 위해 긴 문장을 적어본다.-->
+
+<!--                                </textarea>-->
+<!--                                <div class="reply-solid-wrapper">-->
+
+<!--                                    <div class="reply-info">-->
+<!--                                        <div>-->
+<!--                                            <img class="reply-img" src="/images/Tribe.png">-->
+<!--                                        </div>-->
+<!--                                        <div class="reply-wrapper">-->
+<!--                                            <div class="reply-inner">-->
+<!--                                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                                <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                                &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                                    <a href="#" class="reply-list-btn rebtn1">수정</a>-->
+<!--                                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                                </div> &ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+
+<!--                                    <textarea readonly class="reply-textarea">-->
+<!--        댓글이 들어감-->
+<!--                                    </textarea>-->
+<!--                                </div>-->
+
+<!--                                &lt;!&ndash;댓글영역시작&ndash;&gt;-->
+<!--                                <div class="reply-solid-wrapper">-->
+
+<!--                                    <div class="reply-info">-->
+<!--                                        <div>-->
+<!--                                            <img class="reply-img" src="/images/Tribe.png">-->
+<!--                                        </div>-->
+<!--                                        <div class="reply-wrapper">-->
+<!--                                            <div class="reply-inner">-->
+<!--                                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                                <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                                &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                                    <span class="reply-list-btn rebtn1">수정</span>-->
+<!--                                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                                </div> &ndash;&gt;-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+
+<!--                                    <textarea readonly class="reply-textarea">-->
+<!--            댓글이 들어감-->
+<!--                                </textarea>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash;댓글영역끝&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;여기까지 게시글과 댓글 영역&ndash;&gt;-->
+
+<!--                </div>-->
             </div>
             <!--여기까지가 업데이트 영역-->
 
-            <div class="subpage" id="subpage4">
-                <span class="proMenuSelect">커뮤니티</span>
-                <br><br><br>
-                <div>커뮤니티는 후원자와 창작자만 이용할 수 있어요.</div>
-                <br><br>
-                <div id="write_area">
+<!--            <div class="subpage" id="subpage4">-->
+<!--                <span class="proMenuSelect">커뮤니티</span>-->
+<!--                <br><br><br>-->
+<!--                <div>커뮤니티는 후원자와 창작자만 이용할 수 있어요.</div>-->
+<!--                <br><br>-->
+<!--                <div id="write_area">-->
 
-                    <form action="" method="post">
-                        <textarea id="C-SummernoteContent" name="editor"></textarea>
-                        <div class="bt_se">
-                            <button type="submit">글 작성</button>
-                        </div>
-                    </form>
-                </div>
+<!--                    <form action="" method="post">-->
+<!--                        <textarea id="C-SummernoteContent" name="editor"></textarea>-->
+<!--                        <div class="bt_se">-->
+<!--                            <button type="submit">글 작성</button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
 
-                <br><br><br>
-                <div class="reply-solid-wrapper">
-                    <div class="reply-info">
-                        <div>
-                            <img class="reply-img" src="/images/Tribe.png">
-                        </div>
-                        <div class="reply-wrapper">
-                            <div class="reply-inner">
-                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                <span class="reply-update-date">2023.12.20 수정됨</span>
-                                <!-- <div class="reply-btn-wrapper">
-                                    <a href="#" class="reply-list-btn rebtn1">수정</a>
-                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <textarea readonly class="reply-textarea">
-    댓글이 들어감
-                                </textarea>
-                </div>
-                <div class="reply-solid-wrapper">
-                    <!--댓글영역시작-->
-                    <div class="reply-info">
-                        <div>
-                            <img class="reply-img" src="/images/Tribe.png">
-                        </div>
-                        <div class="reply-wrapper">
-                            <div class="reply-inner">
-                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>
-                                <span class="reply-update-date">2023.12.20 수정됨</span>
-                                <!-- <div class="reply-btn-wrapper">
-                                    <a href="#" class="reply-list-btn rebtn1">수정</a>
-                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <textarea readonly class="reply-textarea">
-        댓글이 들어감
-                            </textarea>
-                </div>
-                <!--댓글영역끝-->
-            </div>
+<!--                <br><br><br>-->
+<!--                <div class="reply-solid-wrapper">-->
+<!--                    <div class="reply-info">-->
+<!--                        <div>-->
+<!--                            <img class="reply-img" src="/images/Tribe.png">-->
+<!--                        </div>-->
+<!--                        <div class="reply-wrapper">-->
+<!--                            <div class="reply-inner">-->
+<!--                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                    <a href="#" class="reply-list-btn rebtn1">수정</a>-->
+<!--                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                </div> &ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <textarea readonly class="reply-textarea">-->
+<!--    댓글이 들어감-->
+<!--                                </textarea>-->
+<!--                </div>-->
+<!--                <div class="reply-solid-wrapper">-->
+<!--                    &lt;!&ndash;댓글영역시작&ndash;&gt;-->
+<!--                    <div class="reply-info">-->
+<!--                        <div>-->
+<!--                            <img class="reply-img" src="/images/Tribe.png">-->
+<!--                        </div>-->
+<!--                        <div class="reply-wrapper">-->
+<!--                            <div class="reply-inner">-->
+<!--                                <span class="reply-user">후원자2 닉네임 글자수 테스트</span>-->
+<!--                                <span class="reply-update-date">2023.12.20 수정됨</span>-->
+<!--                                &lt;!&ndash; <div class="reply-btn-wrapper">-->
+<!--                                    <a href="#" class="reply-list-btn rebtn1">수정</a>-->
+<!--                                    <a href="#" class="reply-list-btn rebtn2">삭제</a>-->
+<!--                                </div> &ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <textarea readonly class="reply-textarea">-->
+<!--        댓글이 들어감-->
+<!--                            </textarea>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;댓글영역끝&ndash;&gt;-->
+<!--            </div>-->
         </div>
     </div>
+
 
 
     <!-- <div>
@@ -912,33 +913,33 @@
 
     <!-- 여기까지가 커뮤니티-->
 
-    <div class="subpage" id="subpage5">
-        <span class="proMenuSelect">1:1 문의</span>
-        <br><br><br>
-        <div id="board_write">
-            <h4>창작자에게 궁금한 점을 1:1로 문의해보세요.</h4>
-            <div id="write_area">
+<!--    <div class="subpage" id="subpage5">-->
+<!--        <span class="proMenuSelect">1:1 문의</span>-->
+<!--        <br><br><br>-->
+<!--        <div id="board_write">-->
+<!--            <h4>창작자에게 궁금한 점을 1:1로 문의해보세요.</h4>-->
+<!--            <div id="write_area">-->
 
-                <form enctype="multipart/form-data" action="" method="post">
-                    <textarea id="Y-SummernoteTitle" name="editor"></textarea>
+<!--                <form enctype="multipart/form-data" action="" method="post">-->
+<!--                    <textarea id="Y-SummernoteTitle" name="editor"></textarea>-->
 
-                    <textarea id="Y-SummernoteContent" name="editor">
-                                        </textarea>
+<!--                    <textarea id="Y-SummernoteContent" name="editor">-->
+<!--                                        </textarea>-->
 
-                    <input type="file" name="SelectFile" />
+<!--                    <input type="file" name="SelectFile" />-->
 
 
-                    <div class="bt_se">
-                        <button type="submit">글 작성</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+<!--                    <div class="bt_se">-->
+<!--                        <button type="submit">글 작성</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <br><br><br><br><br>
-        <!--1:1문의 영역 끝-->
+<!--        <br><br><br><br><br>-->
+<!--        &lt;!&ndash;1:1문의 영역 끝&ndash;&gt;-->
 
-    </div>
+<!--    </div>-->
 
 </div>
 </div>

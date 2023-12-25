@@ -1,9 +1,6 @@
 package com.jellybears.krowdpoping.project.model.service;
 
-import com.jellybears.krowdpoping.project.model.dto.DetailGoodsDTO;
-import com.jellybears.krowdpoping.project.model.dto.DetailGoodsDetailDTO;
-import com.jellybears.krowdpoping.project.model.dto.DetailItemDTO;
-import com.jellybears.krowdpoping.project.model.dto.DetailProjectDTO;
+import com.jellybears.krowdpoping.project.model.dto.*;
 
 import java.util.List;
 
@@ -12,4 +9,5 @@ public interface ProjectService {
 
     DetailGoodsDTO getGoodsDetails(int goodsCode);
 
+    DetailProjectImageDTO getProjectFile(Long no);
 }

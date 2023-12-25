@@ -18,7 +18,7 @@
         <association property="category" resultMap="detailCategoryResultMap"/>
         <association property="goods" resultMap="detailGoodsResultMap"/>
         <association property="creator" resultMap="detailCreatorResultMap"/>
-        <association property="image" resultMap="DetailProjectImageResultMap"/>
+<!--        <association property="image" resultMap="DetailProjectImageResultMap"/>-->
 
         <!--        <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>-->
 <!--        <association property="item" resultMap="detailItemResultMap"/>-->
@@ -112,14 +112,14 @@
             D.item_quantity,
             F.creator_nm,
             F.introduce,
-            F.inquiry_email,
-            G.original_name,
-            G.save_path,
-            G.saved_name,
-            G.file_type,
-            G.thumbnail_path,
-            G.whether_deleted,
-            G.update_date
+            F.inquiry_email
+--             G.original_name,
+--             G.save_path,
+--             G.saved_name,
+--             G.file_type,
+--             G.thumbnail_path,
+--             G.whether_deleted,
+--             G.update_date
 
         from project A
                  left join category B on A.category_code = B.category_code
@@ -127,7 +127,7 @@
                  left join goods_details D on C.goods_code = D.goods_code
                  left join item E on D.item_code = E.item_code
                  left join creator F on A.user_code = F.user_code
-                 left join project_files G on A.project_code = G.project_code
+--                  left join project_files G on A.project_code = G.project_code
 
         where A.project_code = #{ no }
 
@@ -137,6 +137,23 @@
     select goods_code, name, amount from goods
     WHERE goods_code = #{goodsCode}
 </select>
+
+    <select id="getProjectFile" resultMap="DetailProjectImageResultMap">
+        SELECT
+            original_name,
+            save_path,
+            saved_name,
+            file_type,
+            thumbnail_path,
+            update_date
+        FROM
+            project_files
+        WHERE
+            project_code = #{ no }
+        ORDER BY
+            update_date DESC
+            LIMIT 1;
+    </select>
 
 
 </mapper>
