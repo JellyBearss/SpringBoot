@@ -33,7 +33,7 @@ public class KakaoPayService {
         parameters.add("vat_amount", "100");
         parameters.add("tax_free_amount", "100");
         parameters.add("approval_url", "http://localhost:8080/funding_process/processFinished"); // 성공 시 redirect url
-        parameters.add("cancel_url", "http://localhost:8080/funding_process/cancel"); // 취소 시 redirect url
+        parameters.add("cancel_url", "http://localhost:8080/funding_management/management"); // 취소 시 redirect url
         parameters.add("fail_url", "http://localhost:8080/funding_process/fail"); // 실패 시 redirect url
 
         // 파라미터, 헤더
@@ -85,7 +85,7 @@ public class KakaoPayService {
         // 카카오페이 요청
         MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
         parameters.add("cid", cid);
-        parameters.add("tid", "1004");
+        parameters.add("tid", kakaoReady.getTid());
         parameters.add("cancel_amount", "1000");
         parameters.add("cancel_tax_free_amount", "100");
         parameters.add("cancel_vat_amount", "100");

@@ -22,6 +22,8 @@ public class ProductDTO {
     private Date payedTime;
     private DetailGoodsDTO detailGoodsDTO;
     private AddressDTO addressDTO;
+    private String payStatus;
+    private Date canceledTime;
 
     public void generateRandomValues() {
         // PayApprovalCode를 랜덤으로 생성하는 코드

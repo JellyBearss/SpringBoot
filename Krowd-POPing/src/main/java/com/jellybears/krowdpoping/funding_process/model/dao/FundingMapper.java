@@ -12,4 +12,8 @@ public interface FundingMapper {
     AddressDTO getDefaultAddress(String user_code);
 
     int savePaymentInfo(ProductDTO productDTO);
+
+    int savePaymentStatus(ProductDTO productDTO);
+
+    int saveCancel(ProductDTO productDTO);
 }

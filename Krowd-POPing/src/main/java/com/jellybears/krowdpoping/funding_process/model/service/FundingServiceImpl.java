@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 @Service
 @Slf4j
 public class FundingServiceImpl implements FundingService {
@@ -52,5 +54,24 @@ public class FundingServiceImpl implements FundingService {
         int result = fundingMapper.savePaymentInfo(productDTO);
 
         log.info("[FundingService] 삽입 결과: " + ((result > 0) ? "결제 정보 저장 성공" : "결제 정보 저장 실패"));
+    }
+
+    public void savePaymentStatus(ProductDTO productDTO){
+
+        String payApprovalCode = productDTO.getPayApprovalCode();
+        Date payed_time = productDTO.getPayedTime();
+
+        productDTO.setPayedTime(payed_time);
+        productDTO.setPayStatus("결제 완료");
+
+        int result = fundingMapper.savePaymentStatus(productDTO);
+    }
+
+    public void saveCancel(ProductDTO productDTO){
+        productDTO.setPayStatus("결제 취소");
+        productDTO.setCanceledTime(new Date());   // 현재 시간으로 설정
+
+        // 결제 정보 업데이트를 데이터베이스에 반영
+        fundingMapper.saveCancel(productDTO);
     }
 }

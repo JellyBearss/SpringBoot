@@ -10,4 +10,8 @@ public interface FundingService {
     AddressDTO getDefaultAddress(String userCode);
 
     void savePaymentInfo(ProductDTO productDTO);
+
+    void savePaymentStatus(ProductDTO productDTO);
+
+    void saveCancel(ProductDTO productDTO);
 }

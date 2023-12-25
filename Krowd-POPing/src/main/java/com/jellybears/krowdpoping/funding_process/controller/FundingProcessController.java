@@ -116,7 +116,9 @@ public class FundingProcessController {
             // 모델에 주소 객체도 추가
             model.addAttribute("defaultAddress", defaultAddress);
             model.addAttribute("user_code", loggedInUser.getUser_code());
+            session.setAttribute("user_code", loggedInUser.getUser_code());
             session.setAttribute("deliveryCode", defaultAddress.getDeliveryCode());
+            session.setAttribute("addressDTO", defaultAddress);
         }
         return "funding_process/default_address";
     }
@@ -170,9 +172,11 @@ public class FundingProcessController {
 
             // savePaymentInfo 호출
             fundingService.savePaymentInfo(productDTO);
+            fundingService.savePaymentStatus(productDTO);
 
             // 모델에 사용자 코드 추가
             model.addAttribute("user_code", loggedInUser.getUser_code());
+            session.setAttribute("savedProductDTO", productDTO);
         }
 
         return "funding_process/pay_reservation";
@@ -197,6 +201,9 @@ public class FundingProcessController {
         productDTO.generateRandomValues();
 
         fundingService.savePaymentInfo(productDTO);
+        fundingService.savePaymentStatus(productDTO);
+
+        session.setAttribute("savedProductDTO", productDTO);
 
         return "funding_process/process_finished";
     }
@@ -251,15 +258,5 @@ public class FundingProcessController {
         throw new BusinessLogicException(ExceptionCode.PAY_FAILED);
     }
 
-    /**
-     * 환불
-     */
-    @PostMapping("/refund")
-    public ResponseEntity refund() {
-
-        KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel();
-
-        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
-    }
 }
 
