@@ -90,7 +90,8 @@
         from project A
                  join user_info B on A.user_code = B.user_code
         left join project_files C on A.project_code = C.project_code
-        order by project_code
+--         where judge_status = '심사완료'
+        order by project_code desc
 
 
     </select>

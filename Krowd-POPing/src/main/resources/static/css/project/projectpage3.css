@@ -1078,6 +1078,11 @@ h3{
 }
 
 /*======== 선물 카드 ======*/
+.disabled-button {
+    pointer-events: none; /* 클릭 이벤트 무시 */
+    opacity: 0.5;
+}
+
 
 .rewards{
     display: flex;

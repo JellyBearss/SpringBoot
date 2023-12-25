@@ -95,9 +95,9 @@
         </div>
         <div class="menu">
             <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-            <div class="menu-item1"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></div>
-            <div class="menu-item2"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></div>
-            <div class="menu-item3"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></div>
+<!--            <div class="menu-item1"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></div>-->
+<!--            <div class="menu-item2"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></div>-->
+            <div class="menu-item3" th:onclick="'location.href=\'/startProject/start\''"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></div>
 
             <th:block sec:authorize="isAnonymous()">
                 <div class="menu-item5"> <a th:href="@{/user/login}" id="login">
@@ -137,7 +137,7 @@
 <div id="content">
     <section class="proMain">
         <div class="section">
-            <img th:src="@{|/imagePath/${projectFile.getOriginFileName()}|}" alt="이미지" width="649" height="457">
+            <img th:src="@{|/imagePath/${projectFile.getChangedFileName()}|}" alt="이미지" width="649" height="457">
 
 <!--            <input type="radio" name="slide" id="slide01" checked>-->
 <!--            <input type="radio" name="slide" id="slide02">-->
@@ -383,14 +383,19 @@
 <!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
                                 </ul>
                             </div>
-                            <a th:href="@{/funding_process/product(no=${detail.projectCode}, goodsCode=${goods.goodsCode})}">
-                                <span class="card-hubtn" th:text="${goods.amount + '원 후원하기'}"></span>
+<!--                            <a th:href="@{/funding_process/product(no=${detail.projectCode}, goodsCode=${goods.goodsCode})}">-->
+<!--                                <span class="card-hubtn" th:text="${goods.amount + '원 후원하기'}"></span>-->
+<!--                            </a>-->
+                            <a th:href="${daysLeftDisplay != '종료됨'} ? @{/funding_process/product(no=${detail.projectCode}, goodsCode=${goods.goodsCode})} : '#'">
+                                <span class="card-hubtn" th:classappend="${daysLeftDisplay == '종료됨'} ? 'disabled-button'" th:text="${goods.amount + '원 후원하기'}"></span>
                             </a>
+
                         </div>
                     </div>
 
                 </div>
             </div>
+
 
 
 <!--            <div class="subpage" id="subpage3">-->
