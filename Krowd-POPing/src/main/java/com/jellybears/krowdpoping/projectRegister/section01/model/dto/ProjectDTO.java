@@ -21,7 +21,9 @@ public class ProjectDTO {
 
     private String content;
 
-//    private List<ThumbnailDTO> thumbNails;
+    private int userCode;
+
+    private List<ThumbnailDTO> thumbnailList;
 
 //    private List<TagDTO> tag;
 

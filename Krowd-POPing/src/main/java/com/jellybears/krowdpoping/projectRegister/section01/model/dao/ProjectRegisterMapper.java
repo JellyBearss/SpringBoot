@@ -2,10 +2,8 @@ package com.jellybears.krowdpoping.projectRegister.section01.model.dao;
 
 
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.GoodsDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.InfoDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.PlanDTO;
-import com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO;
+import com.jellybears.krowdpoping.projectRegister.section01.model.dto.*;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -44,4 +42,12 @@ public interface ProjectRegisterMapper {
 
     int insertGoods(GoodsDTO goodsDTO);
 
+    int insertItem(ItemDTO item);
+
+
+    int insertItemQuantity(int goodsCode, int itemCode, int itemQuantity);
+
+    List<GoodsAndItemDTO> selectGoodsRegByProjectCode(Integer projectCode);
+
+    int insertThumbnail(ThumbnailDTO thumbnailDTO);
 }

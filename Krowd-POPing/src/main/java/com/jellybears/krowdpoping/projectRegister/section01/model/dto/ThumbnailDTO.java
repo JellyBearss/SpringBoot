@@ -13,17 +13,25 @@ public class ThumbnailDTO {
 
     private int projectFileCode;
 
+    private int projectCode;
+
     private String originalName;
 
-    private String changedName;
+    private String savedName;
 
-    private Date updateDate;
-    private String whetherDeleted;
+    private String savePath;
 
     private String fileType;
 
-    private int projectCode;
-    private String savePath;
     private String thumbnailPath;
+
+    private String whetherDeleted;
+
+    private Date updateDate;
+
+
+
+
+
 
 }
