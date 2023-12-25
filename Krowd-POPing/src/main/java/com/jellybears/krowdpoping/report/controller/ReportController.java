@@ -118,7 +118,7 @@ public class ReportController {
 
         String rootLocation = ROOT_LOCATION + IMAGE_DIR;
 
-        String fileUploadDirectory = rootLocation + "/upload/orginal";
+        String fileUploadDirectory = rootLocation + "/upload/original";
         String thumbnailDirectory = rootLocation + "/upload/thumbnail";
 
 

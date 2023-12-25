@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 
 <head>
@@ -26,103 +27,164 @@
     <title>projectPage</title>
 </head>
 
-<header>
-    <div id="wrapper">
-        <div id="header">
-            <div class=cartbar>
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-                <div class="category-box">
-                    <div class="category"><a href="home.html">홈</a></div>
-                    <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
-                    <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
-                    <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
-                </div>
-            </div>
-            <div class="logo">
-                <img src="/icon/logo2.png" alt="">
-            </div>
-            <div class="menu">
-                <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
-                <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt=""
-                                                           width="35px" height="35px"></a>
-                <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt=""
-                                                            width="37px" height="35.36px"></a>
-                <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt=""
-                                                             width="118px" height="35.36px"></a>
-                <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt=""
-                                                            width="118px" height="35.36px"></a>
-            </div>
-            <div id="search-area">
-                <form id="search-form">
-                    <div id="search-text-area">
-                        <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
-                               onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'">
-                    </div>
-                    <div id="search-btn-area">
-                        <button type="submit" id="search-btn"><img
-                                src="/icon/searchbutton.png"></button>
-                    </div>
-                </form>
-            </div>
+<!--<header>-->
+<!--    <div id="wrapper">-->
+<!--        <div id="header">-->
+<!--            <div class=cartbar>-->
+<!--                <div class="bar1"></div>-->
+<!--                <div class="bar2"></div>-->
+<!--                <div class="bar3"></div>-->
+<!--                <div class="category-box">-->
+<!--                    <div class="category"><a href="home.html">홈</a></div>-->
+<!--                    <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>-->
+<!--                    <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>-->
+<!--                    <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="logo">-->
+<!--                <img src="/icon/logo2.png" alt="">-->
+<!--            </div>-->
+<!--            <div class="menu">-->
+<!--                &lt;!&ndash; <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> &ndash;&gt;-->
+<!--                <a href="like.html" class="menu-item"><img src="/icon/likebutton.svg" alt=""-->
+<!--                                                           width="35px" height="35px"></a>-->
+<!--                <a href="alarm.html" class="menu-item"><img src="/icon/alarmbutton.svg" alt=""-->
+<!--                                                            width="37px" height="35.36px"></a>-->
+<!--                <a href="upload.html" class="menu-item"><img src="/icon/uploadbutton.svg" alt=""-->
+<!--                                                             width="118px" height="35.36px"></a>-->
+<!--                <a href="login.html" class="menu-item"><img src="/icon/loginbutton.svg" alt=""-->
+<!--                                                            width="118px" height="35.36px"></a>-->
+<!--            </div>-->
+<!--            <div id="search-area">-->
+<!--                <form id="search-form">-->
+<!--                    <div id="search-text-area">-->
+<!--                        <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."-->
+<!--                               onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'">-->
+<!--                    </div>-->
+<!--                    <div id="search-btn-area">-->
+<!--                        <button type="submit" id="search-btn"><img-->
+<!--                                src="/icon/searchbutton.png"></button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
 
-        </div> <!--추가-->
+<!--        </div> &lt;!&ndash;추가&ndash;&gt;-->
 
 
 
-    </div>
-</header>
+<!--    </div>-->
+<!--</header>-->
 
 
 <body>
+<div id="wrapper">
+    <div id="header">
+        <div class=cartbar>
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="category-box">
+                <div class="category"><a href="home.html">홈</a></div>
+                <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
+                <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
+                <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
+            </div>
+        </div>
+        <div class="logo"  th:onclick="'location.href=\'/krowdpoping/mainpage\''">
+            <img src="/icon/logo2.png" alt="">
+        </div>
+        <div class="menu">
+            <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
+            <div class="menu-item1"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></div>
+            <div class="menu-item2"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></div>
+            <div class="menu-item3"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></div>
+
+            <th:block sec:authorize="isAnonymous()">
+                <div class="menu-item5"> <a th:href="@{/user/login}" id="login">
+                    <img src="/icon/loginbutton.svg" alt="" width="118px" height="35.36px"></a></div>
+            </th:block>
+
+            <th:block sec:authorize="isAuthenticated()">
+                <div class="menu-item4"><img src="/icon/basicpic.png" alt="" >
+                    <span class="login_nickname1" sec:authentication="principal.userDTO.nickname"></span><span class="login_nickname2">님</span>
+                    <ul class="submenu">
+                        <a th:onclick="'location.href=\'/user/update\''"><li class="sub_li">마이페이지</li></a>
+                        <a th:onclick="'location.href=\'/mypage/projectlist1_ing\''"><li class="sub_li">후원한 프로젝트</li></a>
+                        <a th:onclick="'location.href=\'/mypage/followerlist_yes\''"><li class="sub_li">팔로워</li></a>
+                        <a th:onclick="'location.href=\'/mypage/followinglist_yes\''"><li class="sub_li">팔로잉</li></a>
+                        <a th:href="@{/user/logout}"><li class="sub_li" id="logout">로그아웃</li></a>
+                    </ul>
+                </div>
+
+            </th:block>
+        </div>
+        <div id="search-area">
+            <form id="search-form">
+                <div id="search-text-area">
+                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
+                           onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
+                </div>
+                <div id="search-btn-area">
+                    <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
+                </div>
+            </form>
+        </div>
+         </div>
+
+
+<!--    </div>-->
+
 <div id="content">
     <section class="proMain">
         <div class="section">
-            <input type="radio" name="slide" id="slide01" checked>
-            <input type="radio" name="slide" id="slide02">
-            <input type="radio" name="slide" id="slide03">
-            <div class="slidewrap">
+            <img th:src="@{|/imagePath/${detail.image.getOriginFileName()}|}" alt="이미지" width="649" height="457">
 
-                <ul class="slidelist">
-                    <li class="slideitem">
-                        <a>
-                            <img src="/images/unsplash_eVaxJVA2zHI.png">
-                        </a>
-                    </li>
-                    <li class="slideitem">
-                        <a>
-                            <img src="/images/unsplash_eVaxJVA2zHI.png">
-                        </a>
-                    </li>
-                    <li class="slideitem">
-                        <a>
-                            <img src="/images/unsplash_eVaxJVA2zHI.png">
-                        </a>
-                    </li>
+<!--            <input type="radio" name="slide" id="slide01" checked>-->
+<!--            <input type="radio" name="slide" id="slide02">-->
+<!--            <input type="radio" name="slide" id="slide03">-->
+<!--            <div class="slidewrap">-->
 
-                    <div class="slide-control">
-                        <div>
-                            <label for="slide03" class="left"></label>
-                            <label for="slide02" class="right"></label>
-                        </div>
-                        <div>
-                            <label for="slide01" class="left"></label>
-                            <label for="slide03" class="right"></label>
-                        </div>
-                        <div>
-                            <label for="slide02" class="left"></label>
-                            <label for="slide01" class="right"></label>
-                        </div>
-                    </div>
+<!--                <ul class="slidelist">-->
+<!--                    <li class="slideitem">-->
+<!--                        <a>-->
+<!--&lt;!&ndash;                            <img src="/images/unsplash_eVaxJVA2zHI.png">&ndash;&gt;-->
+<!--                            <img th:src="@{|/imagePath/${detail.image.getOriginFileName()}|}" alt="이미지" width="649" height="457">-->
 
-                </ul>
-                <ul class="slide-pagelist">
-                    <li><label for="slide01"></label></li>
-                    <li><label for="slide02"></label></li>
-                    <li><label for="slide03"></label></li>
-                </ul>
-            </div>
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="slideitem">-->
+<!--                        <a>-->
+<!--                            <img src="/images/unsplash_eVaxJVA2zHI.png">-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="slideitem">-->
+<!--                        <a>-->
+<!--                            <img src="/images/unsplash_eVaxJVA2zHI.png">-->
+<!--                        </a>-->
+<!--                    </li>-->
+
+<!--                    <div class="slide-control">-->
+<!--                        <div>-->
+<!--                            <label for="slide03" class="left"></label>-->
+<!--                            <label for="slide02" class="right"></label>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <label for="slide01" class="left"></label>-->
+<!--                            <label for="slide03" class="right"></label>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <label for="slide02" class="left"></label>-->
+<!--                            <label for="slide01" class="right"></label>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </ul>-->
+<!--                <ul class="slide-pagelist">-->
+<!--                    <li><label for="slide01"></label></li>-->
+<!--                    <li><label for="slide02"></label></li>-->
+<!--                    <li><label for="slide03"></label></li>-->
+<!--                </ul>-->
+<!--            </div>-->
 
         </div>
         <div class="proText">
@@ -157,27 +219,27 @@
     </section>
     <div class="proInfoMiddle-wrapper">
         <div class="proMainUp-wrapper">
-            <div class="proInfo1">
-                <ul>
-                    <li>모인금액</li>
-                    <li>4,932,489원<span id="proMainPercent">364%</span></li>
+<!--            <div class="proInfo1">-->
+<!--                <ul>-->
+<!--                    <li>모인금액</li>-->
+<!--                    <li>4,932,489원<span id="proMainPercent">364%</span></li>-->
 
 
 
-                </ul>
-                <ul>
-                    <li>남은기간</li>
-                    <span th:text="${daysLeftDisplay}"></span>
+<!--                </ul>-->
+<!--                <ul>-->
+<!--                    <li>남은기간</li>-->
+<!--                    <span th:text="${daysLeftDisplay}"></span>-->
 
-                </ul>
-                <ul>
-                    <li>
-                        <div is="proInfoDonor">후원자</div>
-                    </li>
-                    <li>4,310명
-                    </li>
-                </ul>
-            </div>
+<!--                </ul>-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <div is="proInfoDonor">후원자</div>-->
+<!--                    </li>-->
+<!--                    <li>4,310명-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
 
             <div class="proInfo2">
                 <ul>
@@ -192,32 +254,34 @@
 
                 </ul>
                 <ul>
-                    <li></li>
+                    <li>남은기간</li>
+                    <span th:text="${daysLeftDisplay}"></span>
 
                 </ul>
             </div>
         </div>
 
         <div class="creatorCard-wrapper">
-            <div>
-                <img class="ctimg" src="/images/imase.jpeg">
-            </div>
+<!--            <div>-->
+<!--                <img class="ctimg" src="/images/imase.jpeg">-->
+<!--            </div>-->
             <div class="ctInfo">
                 <div class="ctInner">
-                    <h4>비타민젤리</h4>
-                    <span class="followerCnt">팔로워 100명</span>
+                    <h4 class="creator-name" th:text="${detail.creator.creatorNm}"></h4>
+<!--                    <span class="followerCnt">팔로워 100명</span>-->
                 </div>
-                <span class="ctdInfo">창작자 소개가 들어갑니다. 소개글 확인을 위해 긴 텍스트 작성중. html 너무 어렵다..자바스크립트도 이제 적용해야되는데 클남. 그나저나
-                        50개 남음 저거 글씨 정렬이 왜저러는지 모르겠네 엉엉..그리고 하트 아이콘도 정렬이 안맞는당.창작자 소개가 들어갑니다. 소개글 확인을 위해 긴 텍스트 작성중. html
-                        너무 어렵다..자바스크립트도 이제 적용해야되는데 클남. 그나저나 50개 남음 저거 글씨 정렬이 왜저러는지 모르겠네 엉엉..그리고 하트 아이콘도 정렬이 안맞는당</span>
+                <span class="ctdInfo"  th:text="${detail.creator.introduce}"></span>
                 <div class="followAndSns">
                     <!-- <i class="fa-solid fa-check"></i> -->
-                    <i class="fa-solid fa-comment"></i>
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-twitter"></i>
+<!--                    <i class="fa-solid fa-comment"></i>-->
+<!--                    <i class="fa-brands fa-facebook"></i>-->
+<!--                    <i class="fa-brands fa-instagram"></i>-->
+<!--                    <i class="fa-brands fa-twitter"></i>-->
                     <i class="fa-solid fa-envelope"></i>
-                    <div class="follow-wrapper" onclick="toggleFollow()">팔로우</div>
+                    <span class="creator-email" th:text="${detail.creator.inquiryEmail}"></span>
+
+
+                    <!--                    <div class="follow-wrapper" onclick="toggleFollow()">팔로우</div>-->
                 </div>
             </div>
 
@@ -229,9 +293,9 @@
                 <span class="project-description-active active" onclick="showSubPage('subpage1')">프로젝트
                     소개</span>
             <span class="reward-select-active active" onclick="showSubPage('subpage2')">선물 선택</span>
-            <span class="update-active active" onclick="showSubPage('subpage3')">업데이트</span>
-            <span class="community-active active" onclick="showSubPage('subpage4')">커뮤니티</span>
-            <span class="inquiry-to-creator-active active" onclick="showSubPage('subpage5')">1:1 문의</span>
+<!--            <span class="update-active active" onclick="showSubPage('subpage3')">업데이트</span>-->
+<!--            <span class="community-active active" onclick="showSubPage('subpage4')">커뮤니티</span>-->
+<!--            <span class="inquiry-to-creator-active active" onclick="showSubPage('subpage5')">1:1 문의</span>-->
         </div>
     </div>
     <div class="proBottom-wrapper">
@@ -255,23 +319,9 @@
 
                     <h3>소개</h3>
                     <br>
-                    <img src="/images/banner2.jpeg">
+<!--                    <img src="/images/banner2.jpeg">-->
                     <br>
-                    <p>
-                        "지하철을 타면 요즘은 모두 핸드폰만 보고 있더라.
-                        모바일 기계들은 이제 우리 생활에서 뗄래야 뗄 수 없는 물건들이야.
-                        집에서도 직장에서도 이동하는 지하철 안에서도 우리는 끊임없이 작은 화면으로 세상을 보지.
-                        그런데 가끔은 이런 기계들을 모두 꺼 두고 싶어."
-                        "지하철을 타면 요즘은 모두 핸드폰만 보고 있더라.
-                        모바일 기계들은 이제 우리 생활에서 뗄래야 뗄 수 없는 물건들이야.
-                        집에서도 직장에서도 이동하는 지하철 안에서도 우리는 끊임없이 작은 화면으로 세상을 보지.
-                        그런데 가끔은 이런 기계들을 모두 꺼 두고 싶어."
-                        "지하철을 타면 요즘은 모두 핸드폰만 보고 있더라.
-                        모바일 기계들은 이제 우리 생활에서 뗄래야 뗄 수 없는 물건들이야.
-                        집에서도 직장에서도 이동하는 지하철 안에서도 우리는 끊임없이 작은 화면으로 세상을 보지.
-                        그런데 가끔은 이런 기계들을 모두 꺼 두고 싶어."
-
-                    </p>
+                    <p th:text="${detail.infoContent}"></p>
                     <br>
 
 
@@ -281,46 +331,9 @@
                 <div id="budget" class="proContentMainInner">
                     <h3>예산</h3>
                     <br>
-                    <img src="/images/DreamAcademyHQ.png">
+<!--                    <img src="/images/DreamAcademyHQ.png">-->
                     <br>
-                    <p>
-                        "잠시 기계들로부터 벗어나 오로지 나에게 집중 할 수 있는 시간을 갖는 거야.
-                        묵혀 두었던 책을 꺼내어 읽어 보고, 여유 있게 차도 한잔 마시자
-                        그리고 아끼는 펜을 꺼내서 일상 풍경들 그리고 감정들을 적어보는 거야.
-
-                        요즘 것들의 '문방사우'는 우리의 일상에 틈을 만들려 해.
-                        잠시 숨 고를 틈.
-
-                        책을 읽고, 생각하고, 글을 쓰자.
-                        우리는 '기계'가 아니잖아."
-                        "잠시 기계들로부터 벗어나 오로지 나에게 집중 할 수 있는 시간을 갖는 거야.
-                        묵혀 두었던 책을 꺼내어 읽어 보고, 여유 있게 차도 한잔 마시자
-                        그리고 아끼는 펜을 꺼내서 일상 풍경들 그리고 감정들을 적어보는 거야.
-
-                        요즘 것들의 '문방사우'는 우리의 일상에 틈을 만들려 해.
-                        잠시 숨 고를 틈.
-
-                        책을 읽고, 생각하고, 글을 쓰자.
-                        우리는 '기계'가 아니잖아."
-                        "잠시 기계들로부터 벗어나 오로지 나에게 집중 할 수 있는 시간을 갖는 거야.
-                        묵혀 두었던 책을 꺼내어 읽어 보고, 여유 있게 차도 한잔 마시자
-                        그리고 아끼는 펜을 꺼내서 일상 풍경들 그리고 감정들을 적어보는 거야.
-
-                        요즘 것들의 '문방사우'는 우리의 일상에 틈을 만들려 해.
-                        잠시 숨 고를 틈.
-
-                        책을 읽고, 생각하고, 글을 쓰자.
-                        우리는 '기계'가 아니잖아."
-                        "잠시 기계들로부터 벗어나 오로지 나에게 집중 할 수 있는 시간을 갖는 거야.
-                        묵혀 두었던 책을 꺼내어 읽어 보고, 여유 있게 차도 한잔 마시자
-                        그리고 아끼는 펜을 꺼내서 일상 풍경들 그리고 감정들을 적어보는 거야.
-
-                        요즘 것들의 '문방사우'는 우리의 일상에 틈을 만들려 해.
-                        잠시 숨 고를 틈.
-
-                        책을 읽고, 생각하고, 글을 쓰자.
-                        우리는 '기계'가 아니잖아."
-                    </p>
+                    <p th:text="${detail.budgetContent}"></p>
                     <br>
 
                 </div>
@@ -328,16 +341,9 @@
                 <div id="schedule" class="proContentMainInner">
                     <h3>일정</h3>
                     <br>
-                    <img src="/images/CLASSy.png">
+<!--                    <img src="/images/CLASSy.png">-->
                     <br>
-                    <p>
-                        예나 지금이나 글을 쓰는 행위는 인간 사회의 가장 필수적인 요소입니다.
-                        컴퓨터는 커녕 잉크조차 없었던 시절에도 인간은 어떤 도구라도 사용하여 글을 쓰거나 그림을 그렸습니다.
-                        예나 지금이나 글을 쓰는 행위는 인간 사회의 가장 필수적인 요소입니다.
-                        컴퓨터는 커녕 잉크조차 없었던 시절에도 인간은 어떤 도구라도 사용하여 글을 쓰거나 그림을 그렸습니다.
-                        예나 지금이나 글을 쓰는 행위는 인간 사회의 가장 필수적인 요소입니다.
-                        컴퓨터는 커녕 잉크조차 없었던 시절에도 인간은 어떤 도구라도 사용하여 글을 쓰거나 그림을 그렸습니다.
-                    </p>
+                    <p th:text="${detail.planContent}"><p>
                     <br>
 
                 </div>
@@ -382,79 +388,7 @@
                             </a>
                         </div>
                     </div>
-<!--                    <div class="rewardCard-wrapper">-->
-<!--                        <div class="rewardCardInner">-->
-<!--                            <div class="cardAmount-wrapper">-->
-<!--                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>-->
-<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
-<!--                            </div>-->
-<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
-<!--                            <div class="rewardContent">-->
-<!--                                <ul>-->
-<!--                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
 
-<!--                    <div class="rewardCard-wrapper">-->
-<!--                        <div class="rewardCardInner">-->
-<!--                            <div class="cardAmount-wrapper">-->
-<!--                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>-->
-<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
-<!--                            </div>-->
-<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
-<!--                            <div class="rewardContent">-->
-<!--                                <ul>-->
-<!--                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="rewardCard-wrapper">-->
-<!--                        <div class="rewardCardInner">-->
-<!--                            <div class="cardAmount-wrapper">-->
-<!--                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>-->
-<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
-<!--                            </div>-->
-<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
-<!--                            <div class="rewardContent">-->
-<!--                                <ul>-->
-<!--                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="rewardCard-wrapper">-->
-<!--                        <div class="rewardCardInner">-->
-<!--                            <div class="cardAmount-wrapper">-->
-<!--                                <div><span class="rewardCardAmount">펀딩 시작 기념 구성</span></div>-->
-<!--                                <div class="rewardCount"><span>50</span><span>개 남음</span></div>-->
-<!--                            </div>-->
-<!--                            <div class="rewardCardTitle">[얼리버드]</div>-->
-<!--                            <div class="rewardContent">-->
-<!--                                <ul>-->
-<!--                                    <li>워녕이 인형 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>워녕이 키링 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>IVE 거울 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <li>보관용 파우치 &nbsp;<span>( x 1 )</span></li>-->
-<!--                                    <span class="card-hubtn">70,000<span class="card-hubtn-won">원 후원하기</span></span>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
                 </div>
             </div>
 
@@ -1006,7 +940,7 @@
 
     </div>
 
-
+</div>
 </div>
 
 

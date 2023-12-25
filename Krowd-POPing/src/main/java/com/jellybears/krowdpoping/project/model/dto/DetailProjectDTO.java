@@ -23,6 +23,9 @@ public class DetailProjectDTO {
     private String infoContent; //소개
     private DetailCategoryDTO category; //카테고리
     private List<DetailGoodsDTO> goods; //굿즈디테일DTO와 아이템DTO 에 대한 것까지 모두 담아준다.
+    private DetailCreatorDTO creator; //창작자 정보
+    private int userCode;
+    private DetailProjectImageDTO image; // 대표이미지 불러오기
     private Object productDTO;
 
 }
