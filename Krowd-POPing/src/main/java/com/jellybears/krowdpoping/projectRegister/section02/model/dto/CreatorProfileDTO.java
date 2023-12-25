@@ -7,12 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CreatorProfileDTO {
+public class CreatorProfileDTO { // creator_files
     private int profileCode;
     private String originName;
     private String updateName;
     private String registerDate;
     private int deleteOpt;
     private int userCode;
-    private String fileType;
 }

@@ -137,17 +137,17 @@ body {
 
 header{
     min-width: 1200px;
-    
+
     background-color:rgb(255, 255, 255);
     border-bottom: 1px solid lightgray;
     z-index: 999;
     position: fixed;
     top: 0;
     left: 0;
-    
-    
+
+
     }
-    
+
     .container{
     position: relative;
     background-color: rgb(255, 255, 255, 1);
@@ -157,77 +157,77 @@ header{
     display: flex;
     justify-content: space-between;
     }
-    
+
     .backArrow{
         display: flex;
         margin-top: 20px;
     }
-    
+
     .logo{
-    
+
     margin-top:5px;
     margin-left: 40px;
     text-align: center;
     }
-    
+
     .logo img{
-    max-width: 40%; 
+    max-width: 40%;
     height: auto ;
-    
+
     }
-    
+
     .menu{float: right;}
-    
+
     .menu-item{
         float: left;
-        margin: 20px 13px 10px 5px; 
-    
+        margin: 20px 13px 10px 5px;
+
     }
-    
+
     .menu-item > img {width: 110px;}
-    
-    
+
+
     /*************** processTab ********************/
-    
-    
+
+
     .processTabWrapper{
         width: 1300px;
         margin-left: 230px;
     }
-    
+
     .processTab{
         display: flex;
         list-style-type: none;
         font-weight: bold;
         color: #4D4D4D;
         margin-bottom: 0;
-        
+
     }
-    
+
     .tabItem{
         margin:0 35px;
         padding-bottom: 15px;
     }
-    
+
     .tabItem > a{
         text-decoration: none;
         color: #4D4D4D;
-    
+
     }
-    
+
     /* 선택하면 표시되는 보라색 바 */
     .tabBar {
-    
+
         border-bottom: 3px solid #7D1CD8;
         padding: 0px 3px;
     }
-    
+
     .container2{
-    
+
         padding-top: 50px;
         width: 65%;
         margin: auto;
-    
+
     }
 
 main {
@@ -370,24 +370,24 @@ label {
 .tax-nav{
     display: flex;
   }
-  
+
   #subpage1 {
     height: 720px;
   }
   #subpage2 {
     height: 720px;
   }
-  
+
   .active {
     visibility: visible;
   }
-  
+
   .subpage {
     display: none;
   }
-  
+
   .subpage.active {
-    display: block; 
+    display: block;
   }
 
   .sub{
@@ -398,7 +398,7 @@ label {
   .sub.active{
     display:block;
   }
-  
+
   #personal{
     width:180px;
     height:35px;
@@ -409,7 +409,7 @@ label {
     margin-right:10px;
     cursor: pointer;
   }
-  
+
   #business{
     width:180px;
     height:35px;
@@ -419,49 +419,49 @@ label {
     font-weight:700;
     cursor:pointer;
   }
-  
+
   .identi{
     display: flex;
   }
-  
+
   .sub-input{
     width:300px;
     height:30px;
   }
-  
+
   .sub-input-half {
     width:110px;
     height:30px;
   }
-  
+
   .sub-input-halft {
     width:200px;
     height:30px;
   }
-  
+
   .sub-input-dhalf{
     margin-right:20px;
     width:150px;
     height:30px;
   }
-  
+
   .dash{
     margin-right:20px;
   }
-  
+
   .id-num{
     margin-left:30px;
   }
-  
+
   .identinum{
     display:flex;
   }
-  
+
   .id-text{
     width:450px;
     color:#6D6D6D;
   }
-  
+
   .upload-button{
     margin-top:20px;
     margin-left:70px;
@@ -471,7 +471,7 @@ label {
     border-color: #EDEAFF;
     cursor: pointer;
   }
-  
+
   .upload-button2{
     margin-top:5px;
     width:300px;
@@ -480,22 +480,22 @@ label {
     border-color: #EDEAFF;
     cursor: pointer;
   }
-  
+
   #upload-input{
     visibility: hidden;
   }
-  
+
   #upload-input2{
     visibility: hidden;
   }
-  
+
   #id-content{
     margin-right: 300px;
     margin-top:5px;
     color:#7C1CD8;
     font-weight: 700;
   }
-  
+
   #id-content2{
     margin-right: 300px;
     margin-top:5px;
@@ -524,15 +524,22 @@ label {
   .first_button_div{
       display: flex;
       justify-content: center;
-      border-bottom: 0.5px solid #6D6D6D;
   }
 
   .first_button{
-      width:200px;
-      height:30px;
-      background-color: #fff;
-      border-color:#7C1CD8;
-      margin-bottom:20px;
+      width:180px;
+      height:50px;
+      font-size: 18px;
+      border-radius: 1px;
+      margin-top:40px;
+      border: 0px;
+      outline: none;
+      font-weight: normal;
+      box-sizing: border-box;
+      padding: 0px 16px;
+      background-color: #EDEAFF;
+      color: #6d6d6d;
+      font-weight: 700;
   }
 
 
