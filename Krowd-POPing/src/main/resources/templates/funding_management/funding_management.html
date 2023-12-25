@@ -17,17 +17,17 @@
 
         <div class="product">
             <div class="product_image"></div>
-            <div class="title"><b>
-                <span class="product_title" th:text="${detail.title}"></span>
-            </b>
-            </div>
             <div class="default_address_icon">
                 <span class="default_address_icon_box" id="statusBox"></span>
                 <span class="default_address_icon_text" id="statusText">후원 완료</span>
             </div>
+            <div class="title"><b>
+                <span class="product_title" th:text="${detail.title}"></span>
+            </b>
+            </div>
             <div class="amounts">
                 <span class="amount_title">창작자 : </span>
-                <span class="amount">워뇨뇽</span>
+                <span class="amount" th:text="${detail.creator.creatorNm}"></span>
             </div>
             <div class="packages">
                 <span class="package_title">구성 : </span>
@@ -35,11 +35,11 @@
             </div>
             <div class="achievements">
                 <span class="achievement_title">달성률 : </span>
-                <span class="achievement">98%</span>
+                <span class="achievement" th:text="${detail.achievement} + '%'"></span>
             </div>
             <div class="achieved_fundings">
                 <span class="achieved_funding_title">모인 금액 : </span>
-                <span class="achieved_funding">1,831,000원</span>
+                <span class="achieved_funding" th:text="${detail.sumPayAmount} + '원'"></span>
             </div>
             <div class="funding_periods">
                 <span class="funding_period_title">후원 기간 : </span>

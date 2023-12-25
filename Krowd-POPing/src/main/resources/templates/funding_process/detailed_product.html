@@ -100,14 +100,14 @@
         <div class="product_category_section">
             <span class="product_category" th:text="${detail.category.categoryTitle}"></span>
             <span class="space"> | </span>
-            <span class="creator">워뇨뇽</span>
+            <span class="creator" th:text="${detail.creator.creatorNm}"></span>
         </div>
         <div class="title"><b>
             <span class="product_title" th:text="${detail.title}"></span>
         </b></div>
         <div class="funding_amount">
-            <b><span class="percent">98%</span></b>
-            <span class="amount">1,831,000원</span>
+            <b><span class="percent" th:text="${roundedAchievement} + '%'"></span></b>
+            <span class="amount" th:text="${detail.sumPayAmount} + '원'"></span>
         </div>
         <div class="funding_date">
             <span class="purple_box"></span>
