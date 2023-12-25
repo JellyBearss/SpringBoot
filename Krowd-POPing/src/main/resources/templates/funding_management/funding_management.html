@@ -35,7 +35,7 @@
             </div>
             <div class="achievements">
                 <span class="achievement_title">달성률 : </span>
-                <span class="achievement" th:text="${detail.achievement} + '%'"></span>
+                <span class="achievement" th:text="${roundedAchievement} + '%'"></span>
             </div>
             <div class="achieved_fundings">
                 <span class="achieved_funding_title">모인 금액 : </span>
@@ -168,6 +168,12 @@
 
                 <script>
                     function cancelFunding() {
+                        // 후원이 이미 취소된 경우 알림을 표시하고 함수 종료
+                        if ($('#statusText').text() === '후원 취소') {
+                            alert('이미 취소 처리된 후원 건입니다.');
+                            return;
+                        }
+
                         // 후원 취소 여부를 확인하는 알림 창을 띄웁니다
                         var confirmed = window.confirm('후원을 취소하시겠습니까?');
 
@@ -181,7 +187,6 @@
                                     $('#statusText').css('color', '#0D0D0D');
                                     $('#statusBox').css('background-color', '#D9D9D9');
                                     console.log('후원이 성공적으로 취소되었습니다');
-
                                 },
                                 error: function(error) {
                                     // 에러 시 처리, 에러 메시지를 표시하거나 추가 동작을 수행할 수 있습니다

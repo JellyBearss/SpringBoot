@@ -54,6 +54,9 @@ public class FundingManController {
 
         // 세션에서 가져온 정보를 모델에 추가
         model.addAttribute("savedProductDTO", savedProductDTO);
+        double achievement = (double) detail.getSumPayAmount() / detail.getTargetAmount() * 100;
+        double roundedAchievement = Math.round(achievement * 10.0) / 10.0;
+        model.addAttribute("roundedAchievement", roundedAchievement);
 
         return "/funding_management/funding_management";
     }
@@ -64,13 +67,21 @@ public class FundingManController {
     @PostMapping("/refund")
     public ResponseEntity refund(HttpSession session) {
 
+        // 이미 취소된 경우 처리
+        if ("후원 취소".equals(session.getAttribute("refundStatus"))) {
+            return new ResponseEntity<>("이미 취소 처리된 후원 건입니다.", HttpStatus.BAD_REQUEST);
+        }
+
         KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel();
 
-            // 세션에서 저장된 productDTO 정보 가져오기
-            ProductDTO savedProductDTO = (ProductDTO) session.getAttribute("savedProductDTO");
+        // 세션에서 저장된 productDTO 정보 가져오기
+        ProductDTO savedProductDTO = (ProductDTO) session.getAttribute("savedProductDTO");
 
-            // 저장된 ProductDTO의 정보를 사용하여 결제 정보 업데이트
-            fundingService.saveCancel(savedProductDTO);
+        // 저장된 ProductDTO의 정보를 사용하여 결제 정보 업데이트
+        fundingService.saveCancel(savedProductDTO);
+
+        // 이미 취소된 상태를 세션에 저장
+        session.setAttribute("refundStatus", "후원 취소");
 
         return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
     }
