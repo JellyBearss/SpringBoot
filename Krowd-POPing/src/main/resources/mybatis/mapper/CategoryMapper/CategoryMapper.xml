@@ -25,6 +25,21 @@
         <result property="projectTitle" column="title"/>
         <result property="projectDetail" column="content"/>
         <association property="creatorName" resultMap="CaUserResultMap"/>
+        <association property="image" resultMap="caProjectImageResultMap"/>
+    </resultMap>
+
+
+    <resultMap id="caProjectImageResultMap" type="com.jellybears.krowdpoping.category.model.dto.CaProjectImageDTO">
+        <id property="projectFileCode" column="projectfile_code"/>
+        <result property="originFileName" column="original_name"/>
+        <result property="changedFileName" column="saved_name"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="whetherDeleted" column="whether_deleted"/>
+        <result property="fileType" column="file_type"/>
+        <result property="refProjectCode" column="project_code"/>
+        <result property="savePath" column="save_path"/>
+        <result property="thumbnailPath" column="thumbnail_path"/>
+
     </resultMap>
 
 
@@ -42,15 +57,39 @@
     </select>
 
 
+<!--    <select id="AllProjectList" resultMap="caProjectResultMap">-->
+
+<!--        select-->
+<!--            A.project_code,-->
+<!--            A.title,-->
+<!--            A.content,-->
+<!--            B.nickname-->
+<!--        from project A-->
+<!--                 join user_info B on A.user_code = B.user_code-->
+<!--        order by project_code-->
+
+
+<!--    </select>-->
+
     <select id="AllProjectList" resultMap="caProjectResultMap">
 
         select
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            C.original_name,
+            C.save_path,
+            C.saved_name,
+            C.file_type,
+            C.thumbnail_path,
+            C.whether_deleted,
+            C.update_date
+
+
         from project A
                  join user_info B on A.user_code = B.user_code
+        left join project_files C on A.project_code = C.project_code
         order by project_code
 
 

@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/templates/", "classpath:/static/");
+                .addResourceLocations("classpath:/static/");
 
         // 이미지 불러올 수 있도록 세팅
         registry.addResourceHandler("/upload/**")
@@ -17,6 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/thumbPath/**")
                 .addResourceLocations("file:///c:/jellybears-springboot/img/upload/thumbnail/");
+
         registry.addResourceHandler("/imagePath/**")
                 .addResourceLocations("file:///c:/jellybears-springboot/img/upload/original/");
 

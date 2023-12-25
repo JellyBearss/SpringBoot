@@ -14,8 +14,11 @@
         <result property="planContent" column="plan_content"/>
         <result property="budgetContent" column="budget_content"/>
         <result property="infoContent" column="info_content"/>
+        <result property="userCode" column="user_code"/>
         <association property="category" resultMap="detailCategoryResultMap"/>
         <association property="goods" resultMap="detailGoodsResultMap"/>
+        <association property="creator" resultMap="detailCreatorResultMap"/>
+        <association property="image" resultMap="DetailProjectImageResultMap"/>
 
         <!--        <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>-->
 <!--        <association property="item" resultMap="detailItemResultMap"/>-->
@@ -49,6 +52,26 @@
         <result property="itemName" column="itemName"/>
         <association property="goodsDetail" resultMap="detailGoodsDetailResultMap"/>
 
+    </resultMap>
+
+    <resultMap id="detailCreatorResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailCreatorDTO">
+        <id property="CreatorUserCode" column="user_code"/>
+        <result property="creatorNm" column="creator_nm"/>
+        <result property="introduce" column="introduce"/>
+        <result property="inquiryEmail" column="inquiry_email"/>
+    </resultMap>
+
+
+    <resultMap id="DetailProjectImageResultMap" type="com.jellybears.krowdpoping.project.model.dto.DetailProjectImageDTO">
+    <id property="projectFileCode" column="projectfile_code"/>
+    <result property="originFileName" column="original_name"/>
+    <result property="changedFileName" column="saved_name"/>
+    <result property="updateDate" column="update_date"/>
+    <result property="whetherDeleted" column="whether_deleted"/>
+    <result property="fileType" column="file_type"/>
+    <result property="refProjectCode" column="project_code"/>
+    <result property="savePath" column="save_path"/>
+    <result property="thumbnailPath" column="thumbnail_path"/>
     </resultMap>
 
 <!--    <select id="goProjectDetail" resultMap="detailProjectResultMap">-->
@@ -86,12 +109,26 @@
             C.quantity,
             C.amount,
             E.name as itemName,
-            D.item_quantity
+            D.item_quantity,
+            F.creator_nm,
+            F.introduce,
+            F.inquiry_email,
+            G.original_name,
+            G.save_path,
+            G.saved_name,
+            G.file_type,
+            G.thumbnail_path,
+            G.whether_deleted,
+            G.update_date
+
         from project A
                  left join category B on A.category_code = B.category_code
                  left join goods C on A.project_code = C.project_code
                  left join goods_details D on C.goods_code = D.goods_code
                  left join item E on D.item_code = E.item_code
+                 left join creator F on A.user_code = F.user_code
+                 left join project_files G on A.project_code = G.project_code
+
         where A.project_code = #{ no }
 
     </select>
