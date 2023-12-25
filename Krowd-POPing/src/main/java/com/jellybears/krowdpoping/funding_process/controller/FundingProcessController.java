@@ -16,6 +16,7 @@ import com.jellybears.krowdpoping.project.model.service.ProjectService;
 import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
 import com.jellybears.krowdpoping.user.model.service.AuthenticationService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,14 +58,13 @@ public class FundingProcessController {
     @GetMapping("product")
     public String detailedProduct(@RequestParam Long no,
                                   @RequestParam int goodsCode,
-                                  Model model){
+                                  Model model,
+                                  HttpSession session){
         DetailProjectDTO detail = projectService.goProjectDetail(no);
         model.addAttribute("detail", detail);
-        System.out.println("detail ======= " + detail);
 
         DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
         model.addAttribute("goods", goods);
-        System.out.println("goods ====== " + goods);
 
         //남은 기간 계산
         LocalDate startDate = detail.getStartDate().toLocalDate();
@@ -77,20 +77,23 @@ public class FundingProcessController {
         // 타임리프로 전달해줄 내용
         model.addAttribute("daysLeftDisplay", daysLeftDisplay);
 
+        // 세션에 goods 정보 저장
+        session.setAttribute("detail", detail);
+        session.setAttribute("goods", goods);
+
         return "funding_process/detailed_product";
     }
 
     @GetMapping("address")
     public String defaultAddress(@RequestParam Long no,
                                  @RequestParam int goodsCode,
-                                 Model model) {
+                                 Model model,
+                                 HttpSession session) {
         DetailProjectDTO detail = projectService.goProjectDetail(no);
         model.addAttribute("detail", detail);
-        System.out.println("detail1111 ======= " + detail);
 
         DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
         model.addAttribute("goods", goods);
-        System.out.println("goods1111 ====== " + goods);
 
         // 현재 로그인한 사용자의 정보를 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -113,6 +116,9 @@ public class FundingProcessController {
             // 모델에 주소 객체도 추가
             model.addAttribute("defaultAddress", defaultAddress);
             model.addAttribute("user_code", loggedInUser.getUser_code());
+            session.setAttribute("user_code", loggedInUser.getUser_code());
+            session.setAttribute("deliveryCode", defaultAddress.getDeliveryCode());
+            session.setAttribute("addressDTO", defaultAddress);
         }
         return "funding_process/default_address";
     }
@@ -130,11 +136,11 @@ public class FundingProcessController {
     @GetMapping("payReservation")
     public String payReservation(@RequestParam Long no,
                                  @RequestParam int goodsCode,
-                                 Model model){
+                                 Model model,
+                                 HttpSession session){
 
         DetailGoodsDTO goods = projectService.getGoodsDetails(goodsCode);
         model.addAttribute("goods", goods);
-        System.out.println("goods ====== " + goods);
 
         // 현재 로그인한 사용자의 정보를 가져옴
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -161,11 +167,16 @@ public class FundingProcessController {
             // 계산된 totalAmount를 ProductDTO에 설정합니다.
             productDTO.setTotalAmount(totalAmount);
 
+            int deliveryCode = (int) session.getAttribute("deliveryCode");
+            productDTO.setDeliveryCode(deliveryCode);
+
             // savePaymentInfo 호출
             fundingService.savePaymentInfo(productDTO);
+            fundingService.savePaymentStatus(productDTO);
 
             // 모델에 사용자 코드 추가
             model.addAttribute("user_code", loggedInUser.getUser_code());
+            session.setAttribute("savedProductDTO", productDTO);
         }
 
         return "funding_process/pay_reservation";
@@ -173,7 +184,9 @@ public class FundingProcessController {
 
     @PostMapping("savePaymentInfo")
     public String savePaymentInfo(@ModelAttribute ProductDTO productDTO,
-                                  Model model){
+                                  Model model,
+                                  HttpSession session){
+        int deliveryCode = (int)session.getAttribute("deliveryCode");
 
         int goodsAmount = productDTO.getDetailGoodsDTO().getAmount();
         // totalAmount 계산 (goods.amount + 배송비)
@@ -183,20 +196,22 @@ public class FundingProcessController {
         // 계산된 totalAmount를 ProductDTO에 설정합니다.
         productDTO.setTotalAmount(totalAmount);
 
+        productDTO.setDeliveryCode(deliveryCode);
+
         productDTO.generateRandomValues();
 
         fundingService.savePaymentInfo(productDTO);
+        fundingService.savePaymentStatus(productDTO);
 
-        System.out.println("save.....................");
+        session.setAttribute("savedProductDTO", productDTO);
+
         return "funding_process/process_finished";
     }
 
     @PostMapping("/ready")
     @ResponseBody
     public ResponseEntity<KakaoReadyResponse> readyToKakaoPay() {
-        System.out.println("kakaoready...................");
         KakaoReadyResponse response = kakaoPayService.kakaoPayReady();
-        System.out.println("kakaoready.........finished............");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -243,15 +258,5 @@ public class FundingProcessController {
         throw new BusinessLogicException(ExceptionCode.PAY_FAILED);
     }
 
-    /**
-     * 환불
-     */
-    @PostMapping("/refund")
-    public ResponseEntity refund() {
-
-        KakaoCancelResponse kakaoCancelResponse = kakaoPayService.kakaoCancel();
-
-        return new ResponseEntity<>(kakaoCancelResponse, HttpStatus.OK);
-    }
 }
 

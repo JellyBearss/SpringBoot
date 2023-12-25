@@ -40,13 +40,31 @@
     </select>
 
     <insert id="savePaymentInfo" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO">
-        INSERT INTO payment (user_code, goods_code, pay_approval_code, total_amount, payed_time)
+        INSERT INTO payment (user_code, goods_code, pay_approval_code, total_amount, payed_time, delivery_code)
         VALUES (
         #{user_code},
         #{goodsCode},
         #{payApprovalCode, jdbcType=VARCHAR},
         #{totalAmount, jdbcType=INTEGER},
-        #{payedTime, jdbcType=TIMESTAMP}
+        #{payedTime, jdbcType=TIMESTAMP},
+        #{deliveryCode}
         )
     </insert>
+
+    <insert id="savePaymentStatus" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO">
+        INSERT into pay_info (pay_approval_code, pay_status, payed_time)
+        values (
+                #{payApprovalCode},
+                #{payStatus},
+                #{payedTime, jdbcType=TIMESTAMP}
+               )
+    </insert>
+
+    <update id="saveCancel" parameterType="com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO">
+        update pay_info
+        set pay_status = #{payStatus},
+            canceled_time = #{canceledTime, jdbcType=TIMESTAMP}
+        WHERE
+            pay_approval_code = #{payApprovalCode}
+    </update>
 </mapper>

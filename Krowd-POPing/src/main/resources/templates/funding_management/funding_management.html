@@ -1,48 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{/layouts/user_layout}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/funding_management/funding_management.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Funding management</title>
 </head>
-<body>
+<th:block layout:fragment="content">
 <div id="wrapper">
-    <div id="header">
-        <div class=cartbar>
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-            <div class="category-box">
-                <div class="category"><a href="home.html">홈</a></div>
-                <div class="category"><a href="new_projects.html">신규 프로젝트</a></div>
-                <div class="category"><a href="closing_soon_projects.html">마감 임박 프로젝트</a></div>
-                <div class="category"><a href="early_bird_projects.html">얼리버드 프로젝트</a></div>
-            </div>
-        </div>
-        <div class="logo">
-            <img src="/icon/logo2.png" alt="">
-        </div>
-        <div class="menu">
-            <div class="menu-item"><img src ="/icon/likebutton.svg" alt="" width="35px" height="35px"></div>
-            <div class="menu-item"><img src ="/icon/alarmbutton.svg" alt=""width="37px" height="35.36px"></div>
-            <div class="menu-item"><img src ="/icon/uploadbutton.svg" alt=""width="118px" height="35.36px"></div>
-            <div class="menu-item"><img src="/icon/loginbutton.svg"alt=""width="118px" height="35.36px"></div>
-        </div>
-        <div id="search-area">
-            <form id="search-form">
-                <div id="search-text-area">
-                    <input type="text" id="search-input" name="search-input" placeholder="  검색어를 입력해주세요."
-                           onfocus="this.placeholder=''" onblur="this.placeholder='  검색어를 입력해주세요.'" >
-                </div>
-                <div id="search-btn-area">
-                    <button type="submit" id="search-btn" ><img src="/icon/searchbutton.png"></button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <div id="content">
         <div class="title_section">
             <div class="notice_title">후원한 프로젝트</div>
@@ -51,16 +18,20 @@
         <div class="product">
             <div class="product_image"></div>
             <div class="title"><b>
-                <span class="subject">[IVE] [장원영]</span>
-                <span class="product_title">비주얼 천재만재 핑크공주 워뇨 인형</span>
-            </b></div>
+                <span class="product_title" th:text="${detail.title}"></span>
+            </b>
+            </div>
+            <div class="default_address_icon">
+                <span class="default_address_icon_box" id="statusBox"></span>
+                <span class="default_address_icon_text" id="statusText">후원 완료</span>
+            </div>
             <div class="amounts">
                 <span class="amount_title">창작자 : </span>
                 <span class="amount">워뇨뇽</span>
             </div>
             <div class="packages">
                 <span class="package_title">구성 : </span>
-                <span class="package">인형 + 리본 머리띠(옵션)</span>
+                <span class="package" th:text="${goods.goodsName}"></span>
             </div>
             <div class="achievements">
                 <span class="achievement_title">달성률 : </span>
@@ -72,7 +43,7 @@
             </div>
             <div class="funding_periods">
                 <span class="funding_period_title">후원 기간 : </span>
-                <span class="funding_period">2024.01.29 - 2024.02.28</span>
+                <span class="funding_period" th:text="${detail.startDate} + ' - ' + ${detail.endDate}"></span>
             </div>
 
             <div class="buttons">
@@ -191,7 +162,35 @@
                     </script>
                 </div>
                 <span class="ask_creator">창작자에게 문의하기</span>
-                <span class="cancel_funding">후원 취소하기</span>
+                <span class="cancel_funding" style="cursor:pointer;" onclick="cancelFunding()">후원 취소하기</span>
+
+                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+                <script>
+                    function cancelFunding() {
+                        // 후원 취소 여부를 확인하는 알림 창을 띄웁니다
+                        var confirmed = window.confirm('후원을 취소하시겠습니까?');
+
+                        // 확인이 선택된 경우에만 후원 취소 요청을 보냅니다
+                        if (confirmed) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '/funding_management/refund',
+                                success: function(response) {
+                                    $('#statusText').text('후원 취소');
+                                    $('#statusText').css('color', '#0D0D0D');
+                                    $('#statusBox').css('background-color', '#D9D9D9');
+                                    console.log('후원이 성공적으로 취소되었습니다');
+
+                                },
+                                error: function(error) {
+                                    // 에러 시 처리, 에러 메시지를 표시하거나 추가 동작을 수행할 수 있습니다
+                                    console.error('후원 취소 중 오류 발생', error);
+                                }
+                            });
+                        }
+                    }
+                </script>
             </div>
         </div>
 
@@ -199,83 +198,44 @@
             <div class="info_title"><b>배송지 정보</b></div>
             <div class="recipient">
                 <span class="recipient_title">받는 사람 : </span>
-                <span class="rec_name">연인지</span>
+                <span class="rec_name" th:text="${addressDTO.getRecipientName()}"></span>
             </div>
             <div class="address">
                 <span class="address_title">주소 : </span>
-                <span class="address_info">[03163] 서울 종로구 인사동길 12</span>
+                <span class="address_info" th:text="${'[' + addressDTO.getZipCode() + ']' + addressDTO.getRecipientAddress() + ' ' + addressDTO.getDetailedAddress()}"></span>
             </div>
             <div class="phone">
                 <span class="phone_title">연락처 : </span>
-                <span class="phone_num">010-0000-0000</span>
+                <span class="phone_num" th:text="${addressDTO.getRecipientPhoneNumber()}"></span>
             </div>
             <div class="delivery_request">
                 <span class="request_title">배송 요청 사항 : </span>
-                <span class="request">문 앞에 놓아주세요.</span>
+                <span class="request" th:text="${addressDTO.getDeliveryComment()}"></span>
             </div>
         </div>
         <div class="payed_info">
             <div class="pay_info_title"><b>결제 정보</b></div>
             <div class="product_price">
                 <span class="price_title">상품 금액 : </span>
-                <span class="price">52,000</span>
+                <span class="price" th:text="${goods.amount}"></span>
                 <span class="price_unit">원</span>
             </div>
             <div class="additional_pay">
                 <span class="additional_title">배송비 : </span>
-                <span class="additional">4,000</span>
+                <span class="additional" th:text="${goods.amount >= 30000 ? '0' : '4,000'}"></span>
                 <span class="additional_unit">원</span>
             </div>
             <div class="delivery_fee">
                 <span class="fee_title">최종 후원 금액 : </span>
-                <span class="fee">57,000</span>
+                <span class="fee" th:text="${goods.amount + (goods.amount >= 30000 ? 0 : 4000)}"></span>
                 <span class="fee_unit">원</span>
             </div>
             <div class="total_pay">
                 <span class="total_title">결제 완료일 : </span>
-                <span class="total">57,000</span>
+                <span class="total" th:utext="${#dates.format(savedProductDTO.payedTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
             </div>
         </div>
     </div>
-
 </div>
-<div id="footer">
-    <div id="footer-1">
-        <img src="/icon/logo2.png" alt="" class="img-responsive">
-        <div class="text-container">
-            <p><a href="https://github.com/JellyBearss" target="_blank" class="my-link">https://github.com/JellyBearss</a></p>
-            <p> Team :  JellyBears</p></div>
-
-    </div>
-    <div id="footer-2">
-        <ul><li>공지사항</li></ul>
-    </div>
-    <div id="footer-3">
-        <ul>
-            <li>이용안내</li>
-            <li>첫 후원 가이드</li>
-            <li>창작자 가이드</li>
-            <li>저작권 안내</li>
-        </ul>
-    </div>
-    <div id="footer-4">
-        <ul>
-            <li>정책</li>
-            <li>이용약관</li>
-            <li>개인정보 처리방침</li>
-            <li>프로젝트 심사 기준</li>
-        </ul>
-    </div>
-    <div id="footer-5">
-        <p>고객지원</p>
-        <p>평일 9:00 ~ 17:00 (12:00 ~14:00 제외)</p>
-        <button>고객센터에 문의</button>
-    </div>
-
-</div>
-<div id="notify">
-    <p>크라우드 팝핑은 플랫폼 제공자로서 프로젝트의 당사자가 아니며,
-        직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 선물제공의 책임은 해당 프로젝트의 창작자에게 있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자가 부담합니다. </p>
-</div>
-</body>
+</th:block>
 </html>
