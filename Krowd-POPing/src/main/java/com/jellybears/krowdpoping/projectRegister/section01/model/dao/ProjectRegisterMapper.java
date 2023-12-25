@@ -48,4 +48,6 @@ public interface ProjectRegisterMapper {
     int insertItemQuantity(int goodsCode, int itemCode, int itemQuantity);
 
     List<GoodsAndItemDTO> selectGoodsRegByProjectCode(Integer projectCode);
+
+    int insertThumbnail(ThumbnailDTO thumbnailDTO);
 }

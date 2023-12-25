@@ -2,9 +2,11 @@ package com.jellybears.krowdpoping.projectRegister.section01.model.service;
 
 
 import com.jellybears.krowdpoping.category.model.dto.CategoryDTO;
+import com.jellybears.krowdpoping.common.thumbnail.ThumbnailRegistException;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dao.ProjectRegisterMapper;
 import com.jellybears.krowdpoping.projectRegister.section01.model.dto.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,20 +21,44 @@ public class ProjectRegisterService {
 
 
     // 저장하고 수정하는 임시 저장 메소드
-    public void insertProjectRegister(ProjectDTO project) {
+    public void insertProjectRegister(ProjectDTO project) throws ThumbnailRegistException {
 
 
         // 사용자 code와 작성 상태를 확인한 projectCode
         Integer projectCode = registerMapper.getEditProjectCode(project.getUserCode());
 
+        /* Attachment 리스트를 불러온다. */
+        List<ThumbnailDTO> thumbnailList = project.getThumbnailList();
+
        System.out.println("mapper에서 받은 projectDTO = " + project);
 
         if(projectCode == null){
             registerMapper.insertProjectRegister(project);
+            int currentCode = project.getProjectCode();
+            System.out.println("currentCode = " + currentCode);
+
         } else {
             // 코드가 있어야 update
             project.setProjectCode(projectCode);
             registerMapper.UpdateprojectRegister(project);
+        }
+
+
+        /* fileList에 boardNo값을 넣는다. */
+        for(int i = 0; i < thumbnailList.size(); i++) {
+            thumbnailList.get(i).setProjectCode(project.getProjectCode());
+            System.out.println("ThumbnailList.getProjectCode = " + thumbnailList.get(i).getProjectCode());
+        }
+
+        /* Attachment 테이블에 list size만큼 insert 한다. */
+        int attachmentResult = 0;
+        for(int i = 0; i < thumbnailList.size(); i++) {
+            attachmentResult += registerMapper.insertThumbnail(thumbnailList.get(i));
+        }
+
+//        * 게시글 추가 및 첨부파일 갯수 만큼 첨부파일 내용 insert에 실패 시 예외 발생 */
+        if(!(attachmentResult == thumbnailList.size())) {
+            throw new ThumbnailRegistException("사진 게시판 등록에 실패하셨습니다.");
         }
 
 
@@ -174,6 +200,12 @@ public class ProjectRegisterService {
         Integer projectCode = registerMapper.getEditProjectCode(userCode);
 
         return registerMapper.selectGoodsRegByProjectCode(projectCode);
+
+    }
+
+    @Transactional
+    public void registThumbnail(ProjectDTO project) throws ThumbnailRegistException {
+
 
     }
 }

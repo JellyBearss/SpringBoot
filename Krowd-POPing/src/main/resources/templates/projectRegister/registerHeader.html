@@ -38,13 +38,13 @@
     <nav>
         <div class="processTabWrapper">
             <ul class="processTab">
-                <li class="tabItem "><a href="/projectReg/project">기본 정보</a></li>
+                <li class="tabItem"><a href="/projectReg/project">기본 정보</a></li>
                 <li class="tabItem"><a href="/projectReg/creator">창작자 정보</a></li>
-                <li class="tabItem tabBar"><a href="/projectReg/priceplan">요금제</a></li>
+                <li class="tabItem"><a href="/projectReg/priceplan">요금제</a></li>
                 <li class="tabItem"><a href="/projectReg/planning">펀딩 계획</a></li>
                 <li class="tabItem"><a href="/projectReg/info">상세 정보</a></li>
                 <li class="tabItem"><a href="/projectReg/goods">선물 구성</a></li>
-                <li class="tabItem"><a href="/projectReg#">정책</a></li>
+                <li class="tabItem"><a href="/projectReg/">정책</a></li>
             </ul>
         </div>
     </nav>
@@ -52,6 +52,21 @@
 
 </div>    
 </header>
+
+<script>
+    const tabItem = document.querySelectorAll('.tabItem');
+    tabItem.forEach((tab, idx)=> {
+        tab.addEventListener('click', function(){
+
+            tabItem.forEach((item)=> {
+                item.classList.remove('tabBar')
+            })
+
+            tabItem[idx].classList.add('tabBar')
+
+        })
+    })
+</script>
 
 <div id="article">
     <div class="container2">
@@ -61,7 +76,6 @@
     </div>
 </div>
 
-    
 
 </body>
 

@@ -82,8 +82,8 @@ header{
 
 }
 
-/* 선택하면 표시되는 보라색 바 */
-.tabBar {
+/* 선택하면 표시되는 보라색 바 tabBar*/
+.tabItem:hover {
 
     border-bottom: 3px solid #7D1CD8;
     padding: 0px 3px;

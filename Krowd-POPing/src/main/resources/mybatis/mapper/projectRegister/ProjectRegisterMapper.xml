@@ -9,6 +9,18 @@
         <result property="title" column="TITLE"/>
         <result property="content" column="CONTENT"/>
         <association property="categoryDTO" resultMap="categoryResultMap" />
+        <collection property="thumbnailList" resultMap="thumbnailResultMap"/>
+    </resultMap>
+
+    <resultMap id="thumbnailResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ThumbnailDTO" >
+        <id property="projectFileCode" column="PROJECTFILE_CODE" />
+        <result property="projectCode" column="PROJECT_CODE"/>
+        <result property="originalName" column="ORIGINAL_NAME"/>
+        <result property="savedName" column="SAVED_NAME"/>
+        <result property="savePath" column="SAVE_PATH"/>
+        <result property="fileType" column="FILE_TYPE"/>
+        <result property="thumbnailPath" column="THUMBNAIL_PATH"/>
+        <result property="updateDate" column="UPDATE_DATE"/>
     </resultMap>
 
 
@@ -52,7 +64,10 @@
 
 
     <resultMap id="goodsAndItemResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.GoodsAndItemDTO">
-        <association property="goodsDTO" resultMap="goodsResultMap" />
+        <id property="goodsCode" column="GOODS_CODE"/>
+        <result property="goodsName" column="NAME"/>
+        <result property="quantity" column="QUANTITY"/>
+        <result property="amount" column="AMOUNT"/>
         <collection property="itemDTO" resultMap="itemResultMap" />
     </resultMap>
 
@@ -65,7 +80,6 @@
                             START_DATE,
                             END_DATE,
                             TARGET_AMOUNT,
-                            TOTAL_AMOUNT,
                             FUNDING_STATUS,
                             UPDATE_DATE,
                             PLAN_CONTENT,
@@ -73,7 +87,8 @@
                             INFO_CONTENT,
                             USER_CODE,
                             EDIT_STATUS,
-                            PRICEPLAN_CODE
+                            PRICEPLAN_CODE,
+                            JUDGE_STATUS
 
         )
         VALUES (
@@ -83,7 +98,6 @@
                 NOW(),
                 NOW(),
                 0,
-                0,
                 '',
                 current_date,
                 '',
@@ -91,8 +105,13 @@
                 '',
                 #{userCode},
                 '작성중',
-                1
+                1,
+                '심사중'
         )
+
+        <selectKey keyProperty="projectCode" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
 
     </insert>
 
@@ -111,6 +130,31 @@
 --             WHERE upper_category_code IS NOT NULL
 
     </select>
+
+
+    <insert id="insertThumbnail">
+        INSERT /* com.ohgiraffers.thymeleafspringboot.board.dao.BoardMapper#insertAttachment() */
+        INTO PROJECT_FILES     (
+                                  PROJECT_CODE
+                                , ORIGINAL_NAME
+                                , SAVED_NAME
+                                , SAVE_PATH
+                                , FILE_TYPE
+                                , THUMBNAIL_PATH
+                                , WHETHER_DELETED
+                                , UPDATE_DATE
+        )
+        VALUES  (
+                  #{ projectCode }
+                , #{ originalName }
+                , #{ savedName }
+                , #{ savePath }
+                , #{ fileType }
+                , #{ thumbnailPath }
+                , 'N'
+                , NOW()
+                )
+    </insert>
 
 
     <update id="UpdateprojectRegister" parameterType="com.jellybears.krowdpoping.projectRegister.section01.model.dto.ProjectDTO">
@@ -132,8 +176,7 @@
         UPDATE project
         SET start_date = #{ startDate },
             end_date = #{ endDate },
-            target_amount = #{ targetAmount },
-            total_amount = #{ totalAmount }
+            target_amount = #{ targetAmount }
         WHERE project_code = #{ projectCode }
 
     </update>
@@ -213,7 +256,6 @@
             , start_date
             , end_date
             , target_amount
-            , total_amount
         FROM project
         WHERE project_code = #{ projectCode }
     </select>
@@ -234,7 +276,7 @@
     <select id="selectGoodsRegByProjectCode" resultMap="goodsAndItemResultMap">
         select
             A.project_code,
-            A.goods_code,
+            A.goods_code ,
             A.name,
             A.quantity,
             A.amount,

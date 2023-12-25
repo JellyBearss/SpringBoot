@@ -22,7 +22,15 @@
         <br><br><br><br><br>
 
         <form action="/projectReg/planning" method="post" th:object="${ planDTO }">
-            <h2>펀딩 계획</h2> <button type="submit" > 저장 </button>
+            <div style="display: flex; justify-content: space-between">
+                <h2>펀딩 계획</h2>
+                <button type="submit" onclick="alert('저장되었습니다.')"
+                        style="width: 100px; height: 45px; background-color: #EDE9FE; color: #7D1CD8; font-size: 17px;
+                            border: none; border-radius: 10px; cursor: pointer; margin-right: 300px;"
+                > 저장 </button>
+            </div>
+
+
             <br><br>
         <div class="subTitle">펀딩 기간</div>
         
@@ -34,7 +42,7 @@
 
             <div style="margin: 25px 100px;">
             <img src="/icon/projectStart/doublearrow_right.svg">
-            <div style="color: rgba(125, 28, 216, 0.64); font-weight: 600;">30일</div>
+<!--            <div style="color: rgba(125, 28, 216, 0.64); font-weight: 600;">30일</div>-->
             </div>
 
             <div>
@@ -81,12 +89,12 @@
         </div>
 
 
-        <div>
-            <div class="subTitle" style="margin-top: -100px">최종 금액</div>
-            <p class="subText">목표 금액 달성 시 수령되는 수수료가 적용된 금액입니다.</p>
-            <input type="number" style="text-align: right" name="totalAmount" th:value="${planDTO.totalAmount}"><span>  원</span>
-            <!-- <div class="subText" style="font-size: 12px;" >수수료 적용된 금액</div> -->
-        </div>
+<!--        <div>-->
+<!--            <div class="subTitle" style="margin-top: -100px">최종 금액</div>-->
+<!--            <p class="subText">목표 금액 달성 시 수령되는 수수료가 적용된 금액입니다.</p>-->
+<!--            <input type="number" style="text-align: right" name="totalAmount" th:value="${planDTO.totalAmount}"><span>  원</span>-->
+<!--            &lt;!&ndash; <div class="subText" style="font-size: 12px;" >수수료 적용된 금액</div> &ndash;&gt;-->
+<!--        </div>-->
 
             <!-- <div>
                 <div class="subTitle">정산일</div>

@@ -23,8 +23,7 @@ public class ProjectDTO {
 
     private int userCode;
 
-
-//    private List<ThumbnailDTO> thumbNails;
+    private List<ThumbnailDTO> thumbnailList;
 
 //    private List<TagDTO> tag;
 
