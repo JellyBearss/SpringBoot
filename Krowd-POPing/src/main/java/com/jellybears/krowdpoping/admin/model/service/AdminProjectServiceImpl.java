@@ -3,6 +3,7 @@ package com.jellybears.krowdpoping.admin.model.service;
 import com.jellybears.krowdpoping.admin.model.dao.AdminProjectMapper;
 import com.jellybears.krowdpoping.admin.model.dto.AdminFundingDTO;
 import com.jellybears.krowdpoping.common.exception.admin.notice.FundingAcceptException;
+import com.jellybears.krowdpoping.common.exception.admin.notice.FundingRejectException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,18 +58,19 @@ public class AdminProjectServiceImpl implements AdminProjectService {
         }
     }
 
+    /**
+     * 프로젝트 반려
+     * @param adminFundingDTO
+     * @throws FundingRejectException
+     */
+    @Override
+    @Transactional
+    public void fundingReject(AdminFundingDTO adminFundingDTO) throws FundingRejectException {
 
-    // /**
-    //  * 프로젝트 반려
-    //  * @param adminFundingDTO
-    //  * @return
-    //  */
-    // @Transactional(rollbackFor = Exception.class)
-    // @Override
-    // public int fundingReject(AdminFundingDTO adminFundingDTO) {
-    //
-    //     adminProjectMapper.fundingReject(adminFundingDTO);
-    //
-    //     return 0;
-    // }
+        int result = adminProjectMapper.fundingReject(adminFundingDTO);
+
+        if (!(result > 0)) {
+            throw new FundingRejectException("승인을 실패하였습니다.");
+        }
+    }
 }

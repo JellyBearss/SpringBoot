@@ -14,5 +14,5 @@ public interface AdminProjectMapper {
     /* 프로젝트 승인 */
     int fundingAccept(AdminFundingDTO adminFundingDTO);
     /* 프로젝트 반려 */
-    // int fundingReject(AdminFundingDTO adminFundingDTO);
+    int fundingReject(AdminFundingDTO adminFundingDTO);
 }

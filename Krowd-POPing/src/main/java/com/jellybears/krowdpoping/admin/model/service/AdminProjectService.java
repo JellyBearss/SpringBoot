@@ -2,6 +2,7 @@ package com.jellybears.krowdpoping.admin.model.service;
 
 import com.jellybears.krowdpoping.admin.model.dto.AdminFundingDTO;
 import com.jellybears.krowdpoping.common.exception.admin.notice.FundingAcceptException;
+import com.jellybears.krowdpoping.common.exception.admin.notice.FundingRejectException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface AdminProjectService {
     /* 프로젝트 승인 */
     void fundingAccept(AdminFundingDTO adminFundingDTO) throws FundingAcceptException;
     /* 프로젝트 반려 */
-    // int fundingReject(AdminFundingDTO adminFundingDTO);
+    void fundingReject(AdminFundingDTO adminFundingDTO) throws FundingRejectException;
 }

@@ -43,7 +43,7 @@ public class AdminFundingDTO {
     private CategoryDTO categoryDTO;
     private String categoryTitle;       // 카테고리목록
 
-    private CreatorDTO creatorDTO;
+    private AdminCreatorDTO adminCreatorDTO;
     // private String accUserNm;         // 세금계산서 발행 성명(상호명)
 
     private GoodsDTO goodsDTO;

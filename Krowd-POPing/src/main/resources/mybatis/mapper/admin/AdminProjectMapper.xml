@@ -26,7 +26,7 @@
 
         <association property="categoryDTO" resultMap="CategoryResultMap"/>
         <association property="userDTO" resultMap="UserResultMap"/>
-        <association property="creatorDTO" resultMap="CreatorResultMap"/>
+        <association property="adminCreatorDTO" resultMap="CreatorResultMap"/>
         <association property="goodsDTO" resultMap="GoodsResultMap"/>
     </resultMap>
 
@@ -48,7 +48,7 @@
         <result property="upperCategoryCode" column="upper_category_code"/>
     </resultMap>
 
-    <resultMap id="CreatorResultMap" type="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
+    <resultMap id="CreatorResultMap" type="com.jellybears.krowdpoping.admin.model.dto.AdminCreatorDTO">
         <id property="crType" column="cr_type"/>
         <result property="businessNum" column="business_num"/>
         <result property="address" column="address"/>
@@ -121,4 +121,9 @@
         where project_code = #{ projectCode }
     </update>
 
+    <update id="fundingReject" parameterType="com.jellybears.krowdpoping.admin.model.dto.AdminFundingDTO">
+        update project
+        set judge_status = '반려됨'
+        where project_code = #{ projectCode }
+    </update>
 </mapper>

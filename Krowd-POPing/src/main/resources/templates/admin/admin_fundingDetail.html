@@ -71,7 +71,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">상호명</label>
                                     <div class="col-sm-10">
-                                        <p type="text" class="form-control" id="accUserNm" th:text="${ funding.creatorDTO.accUserNm }"></p>
+                                        <p type="text" class="form-control" id="accUserNm" th:text="${ funding.adminCreatorDTO.accUserNm }"></p>
                                     </div>
                                 </div>
 
@@ -88,7 +88,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">사업자번호</label>
                                     <div class="col-sm-10">
-                                        <p type="text" class="form-control" id="businessNum" th:text="${ funding.creatorDTO.businessNum }"></p>
+                                        <p type="text" class="form-control" id="businessNum" th:text="${ funding.adminCreatorDTO.businessNum }"></p>
                                     </div>
                                 </div>
 
@@ -148,6 +148,7 @@
                                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                             </div>
+
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
                                                     <img src="/assets/img/slides-1.jpg" class="d-block w-100" alt="...">
