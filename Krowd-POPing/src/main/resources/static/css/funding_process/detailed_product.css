@@ -344,17 +344,17 @@ a {
     width:84px;
 	height:24px;
 	position:absolute;
-	left:48px;
-	top:-6px;
+	left:60px;
+	top:-10px;
 	font-family:Noto Sans KR;
 	text-align:left;
-	font-size:13px;
+	font-size:18px;
 }
 .funding_date{
     width:528px;
 	height:30px;
 	position:absolute;
-	left:298px;
+	left:318px;
 	top:119px;
 }
 .purple_box{

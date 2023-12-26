@@ -75,7 +75,11 @@ public class FundingProcessController {
         String daysLeftDisplay = daysLeft > 0 ? daysLeft + "일 남음" : "종료됨";
 
         // 타임리프로 전달해줄 내용
-        model.addAttribute("daysLeftDisplay", daysLeftDisplay);
+        model.addAttribute("daysLeftDisplay", daysLeftDisplay)
+        ;
+        double achievement = (double) detail.getSumPayAmount() / detail.getTargetAmount() * 100;
+        double roundedAchievement = Math.round(achievement * 10.0) / 10.0;
+        model.addAttribute("roundedAchievement", roundedAchievement);
 
         // 세션에 goods 정보 저장
         session.setAttribute("detail", detail);
@@ -236,6 +240,7 @@ public class FundingProcessController {
             // 닉네임을 모델에 추가
             model.addAttribute("userNickname", loggedInUser.getNickname());
         }
+
         // 리다이렉션할 뷰 페이지 리턴
         return "funding_process/process_finished";
     }

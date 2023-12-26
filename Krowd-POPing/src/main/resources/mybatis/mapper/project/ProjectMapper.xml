@@ -15,6 +15,8 @@
         <result property="budgetContent" column="budget_content"/>
         <result property="infoContent" column="info_content"/>
         <result property="userCode" column="user_code"/>
+        <result property="sumPayAmount" column="sum_pay_amount"/>
+
         <association property="category" resultMap="detailCategoryResultMap"/>
         <association property="goods" resultMap="detailGoodsResultMap"/>
         <association property="creator" resultMap="detailCreatorResultMap"/>
@@ -112,7 +114,13 @@
             D.item_quantity,
             F.creator_nm,
             F.introduce,
-            F.inquiry_email
+            F.inquiry_email,
+            (select sum(C1.amount)
+            from goods C1
+                join payment G1 on C1.goods_code = G1.goods_code
+                join pay_info H1 on G1.pay_approval_code = H1.pay_approval_code
+            where C1.project_code = A.project_code
+            and H1.pay_status = '결제 완료') as sum_pay_amount
 --             G.original_name,
 --             G.save_path,
 --             G.saved_name,
