@@ -15,4 +15,8 @@ public class CBusinessDTO extends CreatorDTO{
     private String accUserNm; // 상호명
     private String ceoNm; // 대표자명
     private String businessNum; // 사업자등록번호
+
+
+
+
 }

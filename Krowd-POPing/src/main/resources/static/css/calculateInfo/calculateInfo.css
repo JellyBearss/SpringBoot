@@ -125,7 +125,7 @@ a:hover {
     box-sizing: border-box;
 }
 body{
-    padding: 50px;
+    margin:0 800px;
 }
 header{
     display: block;
@@ -139,7 +139,7 @@ img{
 }
 
 main {
-    width: 1200px;
+    width: 2000px;
     margin: 0 auto;
 }
 .info-section {

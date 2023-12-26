@@ -36,9 +36,8 @@
 </header>
 
 <div id="content">
-    <!-- 여기에 동적으로 변경될 내용이 들어가기. -->
-    <!-- 초기에는 전체 내용을 보여주는 것으로 설정 -->
    <div th:each="project,iter : ${projectList}">
+<!--       <div th:each="img,iter : ${projectImageList}">-->
        <div th:if="${project.judgeStatus == '진행중'}">
             <div class="status">
                 <h5 th:text="${project.judgeStatus}"></h5>
@@ -46,22 +45,19 @@
             </div>
             <div class="pr-div">
                 <div class="img-div">
-                    <img src="">
+<!--                    <img th:src="@{|/imagePath/${img.getSavedName()}|}">-->
+                    <img src="/images/new_jeans.png">
                 </div>
                 <div class="content-div">
                     <h3 th:text="${project.title}">[디즈니 정품] "난 너의 친구야" 토이스토리 굿즈 정품 시리즈</h3>
                     <div class="project-content">
-                        <div class="content1 aim" th:text="${project.sumPayAmount/project.targetAmount}">64% 달성</div>
-                        <div class="content1 fund">745,000원</div>
+                        <div class="content1 aim">64% 달성</div>
+                        <div class="content1 fund" th:text="${project.sumPayAmount}+'원'">745,000원</div>
                         <div class="content2 date">31일 남음</div>
                     </div>
                     <div>
                         <progress id="progress" value="64" max="100"></progress>
                     </div>
-                </div>
-                <div class="button-div">
-                    <button class="general-btn"><a th:href="@{/projectList/projectManage(no=${project.projectCode})}">프로젝트 관리</a></button>
-                    <button class="general-btn">후원자 관리</button>
                 </div>
             </div>
        </div>
@@ -73,7 +69,9 @@
            </div>
            <div class="pr-div">
                <div class="img-div">
-                   <img src="">
+                   <img src="/images/new_jeans.png">
+<!--                   <img  id="image2"-->
+<!--                         th:src="'/original/'+ ${image.getOriginalName()} + '/'" />-->
                </div>
                <div class="content-div">
                    <h3 class="end">프로젝트가 성공적으로 종료되었습니다.</h3>
@@ -87,7 +85,6 @@
                    </div>
                </div>
                <div class="button-div">
-                   <button class="general-btn">후원자 관리</button>
                    <button class="general-btn"><a th:href="@{/projectList/calculate(no=${project.projectCode})}">정산 관리</a></button>
                </div>
 
@@ -102,7 +99,9 @@
            </div>
            <div class="pr-div">
                <div class="img-div">
-                   <img src="">
+<!--                   <img  id="image3"-->
+<!--                         th:src="'/original/'+ ${image.getOriginalName()} + '/'" />-->
+                   <img src="/images/new_jeans.png">
                </div>
                <div class="content-div">
                    <h3  th:text="${project.title}">경쾌한 딸깍! 소리가 매력적인 <마르지 않는 펜></h3>
@@ -113,6 +112,7 @@
                </div>
            </div>
        </div>
+<!--       </div>-->
    </div>
 
 </div>  <!--content-->
