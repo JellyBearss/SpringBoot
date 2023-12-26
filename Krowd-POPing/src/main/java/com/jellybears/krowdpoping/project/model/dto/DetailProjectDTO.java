@@ -27,5 +27,6 @@ public class DetailProjectDTO {
     private int userCode;
 //    private DetailProjectImageDTO image; // 대표이미지 불러오기
     private Object productDTO;
-
+    private int sumPayAmount;
+    private double achievement;
 }

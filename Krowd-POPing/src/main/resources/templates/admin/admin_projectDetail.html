@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{/layouts/admin_layout}"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <th:block layout:fragment="content">
@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <h5 class="card-title">신청 프로젝트 상세 페이지</h5>
                             <!-- General Form Elements -->
-                            <form th:action="@{/admin/projectDetail}" method="post">
+                            <form id="frm">
                                 <input type="hidden" id="projectCode" name="projectCode" th:value="${ project.projectCode }">
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">프로젝트제목</label>
@@ -69,7 +69,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">상호명</label>
                                     <div class="col-sm-10">
-                                        <p type="text" class="form-control" id="accUserNm" th:text="${ project.creatorDTO.accUserNm }"></p>
+                                        <p type="text" class="form-control" id="accUserNm" th:text="${ project.adminCreatorDTO.accUserNm }"></p>
                                     </div>
                                 </div>
 
@@ -86,7 +86,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">사업자번호</label>
                                     <div class="col-sm-10">
-                                        <p type="text" class="form-control" id="businessNum" th:text="${ project.creatorDTO.businessNum }"></p>
+                                        <p type="text" class="form-control" id="businessNum" th:text="${ project.adminCreatorDTO.businessNum }"></p>
                                     </div>
                                 </div>
 
@@ -94,7 +94,7 @@
                                     <label class="col-sm-2 col-form-label">사업자등록증</label>
                                     <div class="col-sm-10">
                                         <!-- Slides with indicators -->
-                                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                        <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
                                             <div class="carousel-indicators">
                                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -124,7 +124,7 @@
 
                                     </div>
                                 </div>
-                            </form><!-- End General Form Elements -->
+
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,6 @@
                         <div class="card-body">
                             <h5 class="card-title"></h5>
                             <!-- Advanced Form Elements -->
-                            <form>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">대표 사진</label>
@@ -208,7 +207,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                        <button type="submit" class="btn btn-primary" th:onclick="'location.href=\'/admin/projectDetail?projectCode=' + @{${ project.projectCode }} + '\''">확인</button>
+                                                        <button type="submit" id="btnAccept" class="btn btn-primary">확인</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,22 +225,32 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                        <a type="submit" class="btn btn-primary">확인</a>
+                                                        <button type="submit" id="btnReject" class="btn btn-primary">확인</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div><!-- End Basic Modal-->
                                     </div>
                                 </div>
-                            </form><!-- End General Form Elements -->
-
                         </div>
                     </div>
-
+                </div>
+                </form>
+                </div>
                 </div>
             </div>
+
         </section>
     </main><!-- End #main -->
+    <script>
+        $("#btnAccept").click(function(){
+            $('#frm').attr('action', '/admin/fundingAccept').attr("method","post").submit();
+        });
+
+        $("#btnReject").click(function(){
+            $('#frm').attr('action', '/admin/fundingReject').attr("method","post").submit();
+        });
+    </script>
     <!-- End main ================================================================================================== -->
 </th:block>
 </html>

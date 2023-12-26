@@ -17,17 +17,17 @@
 
         <div class="product">
             <div class="product_image"></div>
-            <div class="title"><b>
-                <span class="product_title" th:text="${detail.title}"></span>
-            </b>
-            </div>
             <div class="default_address_icon">
                 <span class="default_address_icon_box" id="statusBox"></span>
                 <span class="default_address_icon_text" id="statusText">후원 완료</span>
             </div>
+            <div class="title"><b>
+                <span class="product_title" th:text="${detail.title}"></span>
+            </b>
+            </div>
             <div class="amounts">
                 <span class="amount_title">창작자 : </span>
-                <span class="amount">워뇨뇽</span>
+                <span class="amount" th:text="${detail.creator.creatorNm}"></span>
             </div>
             <div class="packages">
                 <span class="package_title">구성 : </span>
@@ -35,11 +35,11 @@
             </div>
             <div class="achievements">
                 <span class="achievement_title">달성률 : </span>
-                <span class="achievement">98%</span>
+                <span class="achievement" th:text="${roundedAchievement} + '%'"></span>
             </div>
             <div class="achieved_fundings">
                 <span class="achieved_funding_title">모인 금액 : </span>
-                <span class="achieved_funding">1,831,000원</span>
+                <span class="achieved_funding" th:text="${detail.sumPayAmount} + '원'"></span>
             </div>
             <div class="funding_periods">
                 <span class="funding_period_title">후원 기간 : </span>
@@ -168,6 +168,12 @@
 
                 <script>
                     function cancelFunding() {
+                        // 후원이 이미 취소된 경우 알림을 표시하고 함수 종료
+                        if ($('#statusText').text() === '후원 취소') {
+                            alert('이미 취소 처리된 후원 건입니다.');
+                            return;
+                        }
+
                         // 후원 취소 여부를 확인하는 알림 창을 띄웁니다
                         var confirmed = window.confirm('후원을 취소하시겠습니까?');
 
@@ -181,7 +187,6 @@
                                     $('#statusText').css('color', '#0D0D0D');
                                     $('#statusBox').css('background-color', '#D9D9D9');
                                     console.log('후원이 성공적으로 취소되었습니다');
-
                                 },
                                 error: function(error) {
                                     // 에러 시 처리, 에러 메시지를 표시하거나 추가 동작을 수행할 수 있습니다

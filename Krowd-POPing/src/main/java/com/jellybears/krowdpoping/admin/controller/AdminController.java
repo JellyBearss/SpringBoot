@@ -115,7 +115,9 @@ public class AdminController {
     @GetMapping("projectDetail")
     public String goProjectDetail(@RequestParam("projectCode") int projectCode, Model model) {
 
+        System.out.println("=========================================="+projectCode);
         AdminFundingDTO projectDetail = adminProjectService.selectProjectDetail(projectCode);
+        System.out.println("projectDetail ================================== " + projectDetail);
         model.addAttribute("project", projectDetail);
         return "/admin/admin_projectDetail";
     }
@@ -125,15 +127,27 @@ public class AdminController {
     @PostMapping("/fundingAccept")
     public String fundingAccept(@ModelAttribute AdminFundingDTO adminFundingDTO, RedirectAttributes rttr) throws FundingAcceptException {
 
+        System.out.println("========================================== fundingAccept :"+adminFundingDTO);
+
         adminProjectService.fundingAccept(adminFundingDTO);
 
         rttr.addFlashAttribute("message", "승인 성공하였습니다.");
         return "redirect:/admin/projectList";
+
     }
 
-
     /* 프로젝트 반려 */
+    @PostMapping("/fundingReject")
+    public String fundingReject(@ModelAttribute AdminFundingDTO adminFundingDTO, RedirectAttributes rttr) throws FundingRejectException {
 
+        System.out.println("==================반려"+adminFundingDTO);
+
+        adminProjectService.fundingReject(adminFundingDTO);
+
+        rttr.addFlashAttribute("message", "반려 성공하였습니다.");
+        return "redirect:/admin/projectList";
+
+    }
     /* ----------------------------------------------------------------------------------------------------------------- */
     /* 카테고리 목록 */
     @GetMapping("categoryList")
