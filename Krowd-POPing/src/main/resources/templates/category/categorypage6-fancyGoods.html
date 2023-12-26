@@ -184,7 +184,7 @@
                 <div th:if="${categoryId == 5}"  th:each="project : ${fanProjectList}" class="cards">
                     <a th:href="|/projectdetail/projectdetail?no=${project.projectCode}|">
 <!--                        <i class="fa-solid fa-heart"></i>-->
-                        <img th:src="@{|/thumbPath${project.image[0].getThumbnailPath()}|}" alt="이미지"  width="266" height="266">
+                        <img th:src="@{|/imagePath/${project.image[0].getChangedFileName()}|}" alt="이미지"  width="266" height="266">
                     </a>
 <!--                    <div class="card-body">-->
 <!--                        <span class="percent">38%</span>-->
@@ -200,7 +200,7 @@
                 <div th:if="${categoryId != 5}"  th:each="project : ${subFanProjectList}" class="cards">
                     <a th:href="|/projectdetail/projectdetail?no=${project.projectCode}|">
 <!--                        <i class="fa-solid fa-heart"></i>-->
-                        <img th:src="@{|/thumbPath${project.image[0].getThumbnailPath()}|}" alt="이미지"  width="266" height="266">
+                        <img th:src="@{|/imagePath/${project.image[0].getChangedFileName()}|}" alt="이미지"  width="266" height="266">
                     </a>
 <!--                    <div class="card-body">-->
 <!--                        <span class="percent">38%</span>-->

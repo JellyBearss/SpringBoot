@@ -242,7 +242,7 @@
                         <div th:each="main : ${mainAllProjectList}" class="cards">
                             <a th:href="|/projectdetail/projectdetail?no=${main.projectCode}|">
 
-                                <img th:src="@{|/thumbPath${main.image[0].getThumbnailPath()}|}" alt="이미지"  width="266" height="266">
+                                <img th:src="@{|/imagePath/${main.image[0].getChangedFileName()}|}" alt="이미지"  width="266" height="266">
                             </a>
                             <h4 th:text="${main.projectTitle}"></h4>
                             <div class="creatorname" th:text="${main.creatorName.nickName}"></div>
@@ -264,7 +264,7 @@
                     <div class="card-wrapper">
                         <div th:each="main : ${mainDeadlineProjectList}" class="cards">
                             <a th:href="|/projectdetail/projectdetail?no=${main.projectCode}|">
-                                <img th:src="@{|/thumbPath${main.image[0].getThumbnailPath()}|}" alt="이미지"  width="266" height="266">
+                                <img th:src="@{|/imagePath/${main.image[0].getChangedFileName()}|}" alt="이미지"  width="266" height="266">
                             </a>
                             <h4 th:text="${main.projectTitle}"></h4>
                             <div class="creatorname" th:text="${main.creatorName.nickName}"></div>
