@@ -128,3 +128,45 @@ select::after {
     margin-bottom: 2px;
     margin-top: 5px;
 }
+
+
+.reportInner h2, h4 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    color: #505050;
+    font-size: 18px; /* 폰트 크기 조정 */
+}
+
+/* 주의사항 텍스트 스타일 */
+.reportAttention {
+    font-size: 14px;
+    color: #d9534f; /* 강조 색상 추가 */
+    margin-bottom: 20px;
+}
+
+/* 입력 필드 스타일링 */
+.reportInner input[type="text"], textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+}
+
+/* 버튼 스타일링 */
+.reportInner input[type="submit"], .submit-button {
+    padding: 10px 15px;
+    background-color: rgba(137, 26, 247, 0.8);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px; /* 여백 추가 */
+}
+
+.reportInner input[type="submit"]:hover, .submit-button:hover {
+    background-color: #7d1cdb;
+}

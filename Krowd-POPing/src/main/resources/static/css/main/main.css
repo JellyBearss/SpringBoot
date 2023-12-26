@@ -540,18 +540,43 @@ div{
     transform:translate(-50%,-50%);
 
 }
-.section .slidelist .textbox h3 {
-    font-size:30px;
-    color:#fff;
+/*.section .slidelist .textbox h3 {*/
+/*    font-size:30px;*/
+/*    color:#7d1cdb;*/
+/*    transform:translateY(250px);*/
+/*    transition:all .5s;*/
+/*}*/
+
+.section .slidelist .textbox .pro {
+    font-size:25px;
+    color:#7d1cdb;
+    font-weight: bold;
     transform:translateY(250px);
     transition:all .5s;
 }
-.section .slidelist .textbox p {
-    font-size:16px;
+
+.section .slidelist .textbox .noti {
+    font-size:25px;
     color:#fff;
-    transform:translateY(255px);
+    font-weight: bold;
+
+    transform:translateY(250px);
     transition:all .5s;
 }
+
+.section .slidelist .textbox .hu{
+    font-size:25px;
+    color:black;
+    font-weight: bold;
+    transform:translateY(250px);
+    transition:all .5s;
+}
+/*.section .slidelist .textbox p {*/
+/*    font-size:16px;*/
+/*    color:#fff;*/
+/*    transform:translateY(255px);*/
+/*    transition:all .5s;*/
+/*}*/
 
 .section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {
     transform:translateX(0%);

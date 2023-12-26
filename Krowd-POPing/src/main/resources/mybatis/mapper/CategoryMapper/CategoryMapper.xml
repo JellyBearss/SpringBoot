@@ -25,7 +25,7 @@
         <result property="projectTitle" column="title"/>
         <result property="projectDetail" column="content"/>
         <association property="creatorName" resultMap="CaUserResultMap"/>
-        <association property="image" resultMap="caProjectImageResultMap"/>
+        <collection property="image" resultMap="caProjectImageResultMap"/>
     </resultMap>
 
 
@@ -116,10 +116,19 @@
             A.title,
             A.content,
             B.nickname,
-            A.end_date
+            A.end_date,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
                  join category C on A.category_code = C.category_code
+                 left join project_files D on A.project_code = D.project_code
+
         where A.category_code in
               (select
                    D.category_code
@@ -135,9 +144,18 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
+                 left join project_files D on A.project_code = D.project_code
+
         where category_code = #{ categoryId }
 --         where category_code = 8
         order by project_code desc
@@ -149,10 +167,19 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
                  join category C on A.category_code = C.category_code
+                 left join project_files D on A.project_code = D.project_code
+
         where A.category_code in
               (select
                    D.category_code
@@ -168,9 +195,18 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
+                 left join project_files D on A.project_code = D.project_code
+
         where category_code = #{ categoryId }
         order by project_code desc
     </select>
@@ -182,10 +218,19 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
         join user_info B on A.user_code = B.user_code
         join category C on A.category_code = C.category_code
+        left join project_files D on A.project_code = D.project_code
+
         where A.category_code in
         (select
              D.category_code
@@ -200,9 +245,18 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
             from project A
         join user_info B on A.user_code = B.user_code
+        left join project_files D on A.project_code = D.project_code
+
         where category_code = #{ categoryId }
         order by A.project_code desc
     </select>
@@ -213,10 +267,19 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
                  join category C on A.category_code = C.category_code
+                 left join project_files D on A.project_code = D.project_code
+
         where A.category_code in
               (select
                    D.category_code
@@ -231,9 +294,18 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
+                 left join project_files D on A.project_code = D.project_code
+
         where category_code = #{ categoryId }
         order by A.project_code desc
     </select>
@@ -244,10 +316,19 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
                  join category C on A.category_code = C.category_code
+                 left join project_files D on A.project_code = D.project_code
+
         where A.category_code in
               (select
                    D.category_code
@@ -262,9 +343,18 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
+                 left join project_files D on A.project_code = D.project_code
+
         where category_code = #{ categoryId }
         order by A.project_code desc
     </select>
@@ -275,10 +365,19 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
                  join category C on A.category_code = C.category_code
+                 left join project_files D on A.project_code = D.project_code
+
         where A.category_code in
               (select
                    D.category_code
@@ -293,9 +392,18 @@
             A.project_code,
             A.title,
             A.content,
-            B.nickname
+            B.nickname,
+            D.original_name,
+            D.save_path,
+            D.saved_name,
+            D.file_type,
+            D.thumbnail_path,
+            D.whether_deleted,
+            D.update_date
         from project A
                  join user_info B on A.user_code = B.user_code
+                 left join project_files D on A.project_code = D.project_code
+
         where category_code = #{ categoryId }
         order by A.project_code desc
     </select>
@@ -308,9 +416,18 @@
                 A.project_code,
                 A.title,
                 A.content,
-                B.nickname
+                B.nickname,
+                D.original_name,
+                D.save_path,
+                D.saved_name,
+                D.file_type,
+                D.thumbnail_path,
+                D.whether_deleted,
+                D.update_date
             from project A
                      join user_info B on A.user_code = B.user_code
+                     left join project_files D on A.project_code = D.project_code
+
             where category_code = 7
             order by project_code desc
 
