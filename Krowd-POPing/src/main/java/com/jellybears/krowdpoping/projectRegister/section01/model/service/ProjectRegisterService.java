@@ -23,20 +23,15 @@ public class ProjectRegisterService {
     // 저장하고 수정하는 임시 저장 메소드
     public void insertProjectRegister(ProjectDTO project) throws ThumbnailRegistException {
 
-
         // 사용자 code와 작성 상태를 확인한 projectCode
         Integer projectCode = registerMapper.getEditProjectCode(project.getUserCode());
 
         /* Attachment 리스트를 불러온다. */
         List<ThumbnailDTO> thumbnailList = project.getThumbnailList();
 
-       System.out.println("mapper에서 받은 projectDTO = " + project);
 
         if(projectCode == null){
             registerMapper.insertProjectRegister(project);
-            int currentCode = project.getProjectCode();
-            System.out.println("currentCode = " + currentCode);
-
         } else {
             // 코드가 있어야 update
             project.setProjectCode(projectCode);
