@@ -90,7 +90,6 @@ public class ProjectRegisterController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
-
         project.setUserCode(userCode);
 
 
