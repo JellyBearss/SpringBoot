@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/static/");
+                .addResourceLocations("classpath:/templates/", "classpath:/static/");
 
         // 이미지 불러올 수 있도록 세팅
         registry.addResourceHandler("/upload/**")
