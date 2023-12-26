@@ -161,10 +161,7 @@ public class ProjectRegisterService {
 
         Integer projectCode = registerMapper.getEditProjectCode(userCode);
         goodsDTO.setProjectCode(projectCode);
-
-
         System.out.println("goodsDTO = " + goodsDTO);
-
 
         // goods insert
         int goodsResult = registerMapper.insertGoods(goodsDTO);
@@ -175,18 +172,13 @@ public class ProjectRegisterService {
         // item name insert
         for(ItemDTO item : items){
             int itemResult = registerMapper.insertItem(item);
-            System.out.println("item = " + item);
 
             // item quantity insert
             int itemCode = item.getItemCode();
             int itemQuantity = item.getItemQuantity();
             int itemQuantityResult = registerMapper.insertItemQuantity(goodsCode, itemCode, itemQuantity);
 
-            System.out.println("itemCode = " + itemCode);
-            System.out.println("itemQuantity = " + itemQuantity);
-
         }
-
 
     }
 

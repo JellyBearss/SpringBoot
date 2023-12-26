@@ -128,7 +128,8 @@
             }
 
 
-
+            // 아이템 박스
+            const $itemBox = document.getElementById("itemBox");
             // 아이템 추가
             // const $itemInput = document.querySelector("input[name=itemInput]");
 
@@ -139,11 +140,6 @@
             const $itemList = document.getElementById("itemList");
 
 
-            // 아이템 박스
-            const $itemBox = document.getElementById("itemBox");
-
-
-
             $arrowdown.addEventListener('click', () => {
 
                 const $li = document.createElement('li');
@@ -152,7 +148,6 @@
 
                 const $itemCountWrapper = document.createElement('div');
                 $itemCountWrapper.className = "itemCountWrapper";
-
 
                 const $count = document.createElement('input');
                 $count.type = 'number';
@@ -188,17 +183,12 @@
 
                 $deleteBtn.addEventListener('click', () => {
 
-
                     $itemList.removeChild($li);
                     $itemList.removeChild($input);
 
-
                 })
 
-
             });
-
-
 
 
         </script>
@@ -252,7 +242,10 @@
                 <div style="display: flex; justify-content: space-between;">
                     <div class="rewardCardTitle" th:text="${goodsAndItem.goodsName}">[ 얼리버드 ] 펀딩 시작 기념 구성</div>
                     <!-- 개수는 수량 제한이 없을 경우 표시안함 -->
-                    <div class="rewardCount"><span th:text="${goodsAndItem.quantity}">50</span><span>개 남음</span></div>
+
+                    <div th:if="${goodsAndItem.quantity == -1}" class="rewardCount"><span>제한 없음</span></div>
+                    <div th:unless="${goodsAndItem.quantity == -1}" class="rewardCount"><span th:text="${goodsAndItem.quantity}">50</span><span>개 남음</span></div>
+<!--                    <div class="rewardCount"><span th:text="${goodsAndItem.quantity}">50</span><span>개 남음</span></div>-->
                 </div>
                 <div class="rewardContent">
                     <ul th:each="item : ${goodsAndItem.itemDTO}">
