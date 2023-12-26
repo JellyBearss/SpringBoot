@@ -693,6 +693,15 @@ div{
 
 }
 
+h4{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.2em;
+    max-height: 2.4em; /* 2 줄의 높이 */
+    height: 2.4em; /* 고정 높이 */
+}
 
 .cards img{
     width: 200px;
