@@ -12,46 +12,9 @@
 </head>
 
 <body>
-<header>
-  <div class="header">
-    <div class="container">
-
-      <div class="backArrow">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 25 30" fill="none">
-          <path d="M9.11701 29.6743C8.88368 29.6751 8.65314 29.6236 8.44233 29.5236C8.23152 29.4236 8.04579 29.2777 7.8988 29.0965L0.355291 19.7256C0.125579 19.4462 0 19.0956 0 18.7339C0 18.3721 0.125579 18.0216 0.355291 17.7421L8.16431 8.37133C8.4294 8.05239 8.81034 7.85181 9.22333 7.81374C9.63631 7.77566 10.0475 7.9032 10.3664 8.1683C10.6854 8.4334 10.886 8.81434 10.924 9.22732C10.9621 9.6403 10.8346 10.0515 10.5695 10.3704L3.58822 18.7417L10.3352 27.113C10.5262 27.3422 10.6475 27.6214 10.6848 27.9174C10.7221 28.2134 10.6738 28.514 10.5457 28.7834C10.4175 29.0529 10.2148 29.28 9.96166 29.4379C9.70848 29.5958 9.41536 29.6778 9.11701 29.6743Z" fill="#231F20" />
-        </svg>
-        <span style="padding-top: 4px;">내가 만든 프로젝트</span>
-      </div>
-      <div class="logo">
-        <img src="../../resources/icons/logo2.png" alt="로고">
-      </div>
-
-      <div class="menu">
-        <div class="menu-item" onclick="alert('프로젝트 심사 약관')"><img src="../img/project_terms_btn.svg" alt="프로젝트 심사 약관"></div>
-        <div class="menu-item" onclick="alert('창작자 가이드')"><img src="../img/creator_guide_btn.svg" alt="창작자 가이드"></div>
-      </div>
-
-    </div>
-
-    <nav>
-      <div class="processTabWrapper">
-        <ul class="processTab">
-          <li class="tabItem "><a href="#">기본 정보</a></li>
-          <li class="tabItem tabBar"><a href="#">창작자 정보</a></li>
-          <li class="tabItem"><a href="#">요금제</a></li>
-          <li class="tabItem"><a href="#">펀딩 계획</a></li>
-          <li class="tabItem"><a href="#">상세 정보</a></li>
-          <li class="tabItem"><a href="#">선물 구성</a></li>
-          <li class="tabItem"><a href="#">정책</a></li>
-        </ul>
-      </div>
-    </nav>
-
-
-  </div>
-</header>
+<th:block th:replace="creatorInfo/registerHeader.html"></th:block>
 <main>
-  <form name="creator-form" id="frm" method="post" enctype="multipart/form-data">
+<!--  <form name="creator-form" id="frm" method="post",>-->
     <input type="hidden" name="isNew" id="isNew"  />
 
     <input type="hidden" name="crType" id="cr_type"/>
@@ -66,7 +29,7 @@
       </div>
       <div class="content-div">
         <div>
-        <input name="creatorNm" id="creator_nm" class="input" type="text" maxlength="21" onkeyup="countern(this,20)" placeholder="창작자님의 이름을 입력해주세요" /> <!--   th:field="${creator.creatorNm}"-->
+          <input name="creatorNm" id="creator_nm" class="input" type="text" maxlength="21" onkeyup="countern(this,20)" placeholder="창작자님의 이름을 입력해주세요" /> <!--   th:field="${creator.creatorNm}"-->
         </div>
         <div class="text-length-check">
           <span class="text-length-check" id="text-length-checkn">(0 / 20)</span>
@@ -105,7 +68,7 @@
       <div class="content-idiv">
         <div class="image-div">
           <input id="file-input" name="fileInput" class="file" type="file" accept="image/*" onchange="readURL(this)">
-            <div><img id="preview"></div>
+          <div><img id="preview"></div>
           <div><button type="button" id="image-button" class="image-button"><i class="fa-solid fa-arrow-up-from-bracket"></i> 이미지 파일 업로드</button></div>
         </div>
       </div>
@@ -166,7 +129,7 @@
         </div>
       </div>
     </div>
-<!--    <input type="hidden" name="userCode" id="user_code2" th:value="${creator.userCode}" /> 확인 -->
+    <!--    <input type="hidden" name="userCode" id="user_code2" th:value="${creator.userCode}" /> 확인 -->
     <input type="hidden" name="issueType" id="issue_type" />
 
     <div class="out-div" id="accountInfo">
@@ -194,76 +157,65 @@
           </div>
 
 
-<!--          <form id="subpage1" name="subpage1" action="/projectReg/creatorAccount" method="post" enctype="multipart/form-data">-->
-<!--            <input type="hidden" name="isNew" th:value="${isNew}" />  확인 -->
+          <!--          <form id="subpage1" name="subpage1" action="/projectReg/creatorAccount" method="post" enctype="multipart/form-data">-->
+          <!--            <input type="hidden" name="isNew" th:value="${isNew}" />  확인 -->
 
 
-            <div id="subpage1" class="subpage active">
-              <h6>이메일</h6>
-              <input type="email" id="email" name="email" class="sub-input" placeholder="이메일을 입력해주세요" required>
-              <div class="identi">
-                <div>
-                  <h6>성명(개인)</h6>
-                  <input type="text" id="name" name="name" class="sub-input-half" required maxlength="4" minlength="2">
-                </div>
-                <div class="id-num">
-                  <h6>주민등록번호</h6>
-                  <div class="identinum">
-                    <div><input type="text" class="sub-input-dhalf" name="identiNum1" id="identi_num1" required maxlength="6" minlength="6" ></div>
-                    <div class="dash">-</div>
-                    <div><input type="text" class="sub-input-dhalf" name="identiNum2" id="identi_num2" required maxlength="7" minlength="7" ></div>
-                  </div>
-                </div>
+          <div id="subpage1" class="subpage active">
+            <h6>이메일</h6>
+            <input type="email" id="email" name="email" class="sub-input" placeholder="이메일을 입력해주세요" required>
+            <div class="identi">
+              <div>
+                <h6>성명(개인)</h6>
+                <input type="text" id="name" name="name" class="sub-input-half" required maxlength="4" minlength="2">
               </div>
-              <h6>주소</h6>
-              <input type="text" class="sub-input" id="address" name="address" placeholder="주소를 입력해주세요" required maxlength="30" minlength="10">
-              <h6>신분증 첨부</h6>
-              <div class="id-text">
-                개인 창작자의 경우 신분증의 주민등록번호 뒷 6자리를 가린 상태로 등록해주세요. 주민등록증, 운전면허증, 여권을 제출하실 수 있습니다. 가림 처리 없이 제출한 신분증은 즉시 파기되며, 본인확인이 이루어지지 않은 것으로 간주하여 프로젝트가 반려됩니다.
-              </div>
-              <button type="button" class="upload-button" onclick="onClickUpload()" ;=""><i class="fa-solid fa-arrow-up-from-bracket"></i> 파일 업로드</button>
-              <input id="p0_businessAttach" class="file" name="p0BusinessAttach" type="file">
-              <p id="fileNameDisplay1">선택 파일 없음</p>
-              <div class="tupload">
-                <div class="buttonWrap buttonWrap2">
-                  <button type="button" id="cancel1" class="box3_btn1 tbutton">취소</button>
+              <div class="id-num">
+                <h6>주민등록번호</h6>
+                <div class="identinum">
+                  <div><input type="text" class="sub-input-dhalf" name="identiNum1" id="identi_num1" required maxlength="6" minlength="6" ></div>
+                  <div class="dash">-</div>
+                  <div><input type="text" class="sub-input-dhalf" name="identiNum2" id="identi_num2" required maxlength="7" minlength="7" ></div>
                 </div>
               </div>
             </div>
-
-            <div id="subpage2" class="subpage active">
-              <h6>이메일</h6>
-              <input type="email" id="p1_email" name="email" class="sub-input" placeholder="이메일을 입력해주세요" required>
-              <div class="identi">
-                <div>
-                  <h6>상호명(사업자)</h6>
-                  <input type="text" id="p1_acc_user_nm" name="accUserNm" class="sub-input-half" required minlength="2" maxlength="30">
-                </div>
-                <div class="id-num">
-                  <h6>사업자 번호</h6>
-                  <input type="text" class="sub-input-halft" id="p1_business_num" name="businessNum" required maxlength="10" minlength="10" onkeydown="return checkNumber(event);">
-                </div>
-              </div>
-              <h6>대표자명</h6>
-              <input type="text" class="sub-input" id="p1_ceo_nm" name="ceoNm" placeholder="세금 계산서 발행을 위해 대표자명을 입력해주세요" required minlength="2" maxlength="4">
-              <h6>주소</h6>
-              <input type="text" id="p1_address" name="address" class="sub-input" placeholder="주소를 입력해주세요" required maxlength="30" minlength="10">
-              <h6>사업자 등록증 첨부</h6>
-              <button type="button" class="upload-button2" onclick="onClickUpload2();"><i class="fa-solid fa-arrow-up-from-bracket"></i> 파일 업로드</button>
-              <input id="p1_businessAttach" class="file" name="p1BusinessAttach" type="file">
-              <p id="fileNameDisplay2">선택 파일 없음</p>
-              <div class="tupload">
-                <div>
-                  <button type="button" id="cancel2" class="tbutton">취소</button>
-                </div>
+            <h6>주소</h6>
+            <input type="text" class="sub-input" id="address" name="address" placeholder="주소를 입력해주세요" required maxlength="30" minlength="10">
+            <div class="tupload">
+              <div class="buttonWrap buttonWrap2">
+                <button type="button" id="cancel1" class="box3_btn1 tbutton">취소</button>
               </div>
             </div>
+          </div>
+
+          <div id="subpage2" class="subpage active">
+            <h6>이메일</h6>
+            <input type="email" id="p1_email" name="email" class="sub-input" placeholder="이메일을 입력해주세요" required>
+            <div class="identi">
+              <div>
+                <h6>상호명(사업자)</h6>
+                <input type="text" id="p1_acc_user_nm" name="accUserNm" class="sub-input-half" required minlength="2" maxlength="30">
+              </div>
+              <div class="id-num">
+                <h6>사업자 번호</h6>
+                <input type="text" class="sub-input-halft" id="p1_business_num" name="businessNum" required maxlength="10" minlength="10" onkeydown="return checkNumber(event);">
+              </div>
+            </div>
+            <h6>대표자명</h6>
+            <input type="text" class="sub-input" id="p1_ceo_nm" name="ceoNm" placeholder="세금 계산서 발행을 위해 대표자명을 입력해주세요" required minlength="2" maxlength="4">
+            <h6>주소</h6>
+            <input type="text" id="p1_address" name="address" class="sub-input" placeholder="주소를 입력해주세요" required maxlength="30" minlength="10">
+            <div class="tupload">
+              <div>
+                <button type="button" id="cancel2" class="tbutton">취소</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </form>
+<!--  </form>-->
   <div class="first_button_div">
-    <button type="submit" id="btn_submit" class="first_button">저장</button>
+    <button type="submit" id="btn_submit" class="first_button" onclick="final();">저장</button>
   </div>
 </main>
 <div id="msgValue" th:if="${msgValue != null}" style="display: none;">
@@ -276,12 +228,12 @@
 <script>
 
   $("#btn_submit").click(function(){
-      console.log('--------------->', $("#issue_type").val())
-      if($("#issue_type").val() == '1') { // 1이면 사업자
-        $("#frm").attr("action", "/projectReg/creatorRegSeller").submit();
-      } else { // 0이면 개인
-        $("#frm").attr("action", "/projectReg/creatorRegUser").submit();
-      }
+    console.log('--------------->', $("#issue_type").val())
+    if($("#issue_type").val() == '1') { // 1이면 사업자
+      $("#frm").attr("action", "/projectReg/creatorRegSeller").submit();
+    } else { // 0이면 개인
+      $("#frm").attr("action", "/projectReg/creatorRegUser").submit();
+    }
   });
 
   const imageButton = document.getElementById('image-button')
@@ -297,6 +249,7 @@
   const filePersonal=document.getElementById('p0_businessAttach')
   const fileBusiness=document.getElementById('p1_businessAttach')
   const sub=document.querySelector('.sub')
+  const btnSubmit=document.getElementById('btn_submit')
 
   $(document).ready(function(){
     var msgValue = $('#msgValue p').text();
@@ -307,7 +260,9 @@
     }
   });
 
-
+function final() {
+  alert('정상적으로 등록되었습니다.')
+}
 
   function fn_issue_type(div) {
     $("#issue_type").val(div);
@@ -443,8 +398,8 @@
 
   function fn_crType0(crType) {
 
-      personalbtn.style.border = "2px solid #7C1CD8"
-      $('#cr_type').val(crType);
+    personalbtn.style.border = "2px solid #7C1CD8"
+    $('#cr_type').val(crType);
   }
 
   function fn_crType1(crType) {

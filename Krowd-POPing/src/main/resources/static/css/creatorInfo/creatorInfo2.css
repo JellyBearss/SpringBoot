@@ -136,7 +136,7 @@ body {
 }
 
 header{
-    min-width: 1200px;
+    min-width: 100%;
 
     background-color:rgb(255, 255, 255);
     border-bottom: 1px solid lightgray;

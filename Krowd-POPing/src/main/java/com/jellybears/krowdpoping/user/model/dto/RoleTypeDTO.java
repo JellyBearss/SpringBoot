@@ -5,12 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jellybears.krowdpoping.funding_process.model.dto.AddressDTO;
 import com.jellybears.krowdpoping.funding_process.model.dto.ProductDTO;
 import lombok.*;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Date;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;

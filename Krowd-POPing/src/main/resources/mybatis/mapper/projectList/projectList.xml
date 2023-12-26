@@ -13,4 +13,19 @@
         where p.judge_status = #{judgeStatus}
         </if>
     </select>
+
+    <select id="selectImage" parameterType="com.jellybears.krowdpoping.projectList.model.dto.ProjectDTO" resultType="com.jellybears.krowdpoping.projectList.model.dto.ProjectImageDTO">
+        select pf.projectfile_code,
+               pf.project_code,
+               pf.original_name,
+               pf.saved_name,
+               pf.save_path,
+               pf.file_type,
+               pf.thumbnail_path,
+               pf.whether_deleted,
+               pf.update_date
+        from project_files pf right outer join project p
+        on p.project_code=pf.project_code
+        where pf.project_code=#{projectCode}
+    </select>
 </mapper>

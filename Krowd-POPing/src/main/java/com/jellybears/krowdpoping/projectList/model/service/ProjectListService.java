@@ -2,6 +2,7 @@ package com.jellybears.krowdpoping.projectList.model.service;
 
 import com.jellybears.krowdpoping.projectList.model.dao.ProjectListMapper;
 import com.jellybears.krowdpoping.projectList.model.dto.ProjectDTO;
+import com.jellybears.krowdpoping.projectList.model.dto.ProjectImageDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,5 +18,9 @@ public class ProjectListService {
 
     public List<ProjectDTO> selectProjectList(ProjectDTO projectDTO) {
             return projectListMapper.selectProjectList(projectDTO);
+    }
+
+    public List<ProjectImageDTO> selectImage(ProjectImageDTO projectImageDTO) {
+        return projectListMapper.selectImage(projectImageDTO);
     }
 }

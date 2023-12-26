@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jellybears.krowdpoping.projectRegister.section02.model.dao.PolicyMapper">
+
+    <!-- POLICY_CODE 및 FILE_CODE 생성값 조회 -->
+    <select id="selectPolicyFileCode" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.PolicyDTO">
+        SELECT (SELECT IFNULL(MAX(POLICY_CODE),0)+1 AS POLICY_CODE FROM POLICY) AS POLICY_CODE
+             , (SELECT IFNULL(MAX(FILE_CODE),0)+1 AS FILE_CODE FROM POLICY_FILE) AS FILE_CODE
+    </select>
+
+    <!-- policy 테이블 입력 -->
+    <insert id="insertPolicy" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.PolicyDTO">
+        INSERT INTO POLICY
+        ( POLICY_CODE
+        , PROJECT_CODE
+        , FILE_CODE
+        , BASIC_POLICY
+        , DIFFICULTY_INFO
+        , PRODUCT_TYPE
+        , PRODUCT_NAME
+        , SIZE
+        , MATERIAL
+        , SPECIFICATION
+        , CAUTION
+        )
+        VALUES
+            ( #{policyCode}
+            , #{projectCode}
+            , #{fileCode}
+            , #{basicPolicy}
+            , #{difficultyInfo}
+            , #{productType}
+            , #{productName}
+            , #{size}
+            , #{material}
+            , #{specification}
+            , #{caution}
+            )
+    </insert>
+
+    <!-- policy_file 테이블 입력 -->
+    <insert id="insertPolicyFile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.PolicyDTO">
+        INSERT INTO POLICY_FILE
+        ( FILE_CODE
+        , FILE_SEQ
+        , FILE_NAME
+        , SAVE_NAME
+        , FILE_PATH
+        )
+        VALUES
+            ( #{fileCode}
+            , #{fileSeq}
+            , #{fileName}
+            , #{saveName}
+            , #{filePath}
+            )
+    </insert>
+
+</mapper>

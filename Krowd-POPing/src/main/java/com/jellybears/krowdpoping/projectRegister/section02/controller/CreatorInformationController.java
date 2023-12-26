@@ -3,7 +3,6 @@ package com.jellybears.krowdpoping.projectRegister.section02.controller;
 import com.jellybears.krowdpoping.projectRegister.section02.model.dto.CBusinessDTO;
 import com.jellybears.krowdpoping.projectRegister.section02.model.dto.CPersonalDTO;
 import com.jellybears.krowdpoping.projectRegister.section02.model.service.CreatorService;
-import com.jellybears.krowdpoping.projectRegister.section02.model.service.FileService;
 import com.jellybears.krowdpoping.user.model.dto.RoleTypeDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CreatorInformationController {
 
     private final CreatorService creatorService;
-    private final FileService fileService;
+
 
     @GetMapping("/creator")
     public String goCreator(){
@@ -30,12 +29,24 @@ public class CreatorInformationController {
 
     @PostMapping("/creatorRegSeller") // 사업자
     public String postSeller(Model model, CBusinessDTO cBusiness) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
+//      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        // AuthenticationService에서 반환하는 UserDetails를 가져옴
+//        UserDetails userDetails = authenticationService.loadUserByUsername(authentication.getName());
 //
-//        cBusiness.setUserCode(userCode);
+//        if (userDetails instanceof RoleTypeDTO) {
+//            // RoleTypeDTO인 경우 UserDTO를 추출
+//            UserDTO loggedInUser = ((RoleTypeDTO) userDetails).getUserDTO();
+//
+//            CBusinessDTO cBusinessDTO = new CBusinessDTO();
+//            cBusinessDTO.setUserCode(loggedInUser.getUser_code());
+//        }
+//
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
 
-        cBusiness.setUserCode(38);
+        cBusiness.setUserCode(userCode);
+
+
 //        creator = creatorService.getCreator(creator);
 //        // 창작자 정보 없음
 //        if(creator == null) {
@@ -49,13 +60,25 @@ public class CreatorInformationController {
         return "redirect:/projectReg/creator";
     }
 
+
     @PostMapping("/creatorRegUser") // 개인
     public String postUser(Model model, CPersonalDTO cPersonal) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        UserDetails userDetails = authenticationService.loadUserByUsername(authentication.getName());
+
+//        if (userDetails instanceof RoleTypeDTO) {
+//            // RoleTypeDTO인 경우 UserDTO를 추출
+//            UserDTO loggedInUser = ((RoleTypeDTO) userDetails).getUserDTO();
+//
+//            CPersonalDTO cPersonalDTO = new CPersonalDTO();
+//            cPersonalDTO.setUserCode(loggedInUser.getUser_code());
+//        }
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         int userCode = ((RoleTypeDTO) authentication.getPrincipal()).getUserDTO().getUser_code();
         cPersonal.setUserCode(userCode);
+        System.out.println("userCode ======================= " + userCode);
         creatorService.insertCreator(cPersonal);
-        fileService.uploadFile(cPersonal.getFileInput(),userCode);
         System.out.println("cPersonal ============================ " + cPersonal);
         return "redirect:/projectReg/creator";
     }
