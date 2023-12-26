@@ -11,7 +11,7 @@
     
 </head>
 <body>
-    <img src="/icon/kpop_login_logo.png" alt="" class="login_logo">
+    <img src="/icon/kpop_login_logo.png" alt="" class="login_logo" th:onclick="'location.href=\'/krowdpoping/mainpage\''">
     <div id="login_container">
         <div class="login_title">로그인</div>
         <form id="loginForm" th:action="@{/user/login}" method="post">

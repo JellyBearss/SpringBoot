@@ -40,7 +40,7 @@
                 </ul>
                 <ul class="mplist2">
                     <li>신고</li>
-                    <li>고객센터</li>
+                    <li th:onclick="'location.href=\'/inquiry/inquiryForm\''">고객센터</li>
                     <a th:href="@{/user/logout}"><li>로그아웃</li></a>
                     <li class="delete_user" th:onclick="'location.href=\'/user/delete?id='+ @{${ #authentication.getPrincipal().userDTO.getUserId() }} + '\''">회원탈퇴</li>
                 </ul>

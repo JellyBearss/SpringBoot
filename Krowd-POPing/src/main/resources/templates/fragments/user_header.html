@@ -22,7 +22,7 @@
         <!-- <div class="menu-item"><img src ="resources/icon/likebutton.svg" alt="" width="35px" height="35px"></div> -->
         <div class="menu-item1"><img src="/icon/likebutton.svg" alt="" width="35px" height="35px"></div>
         <div class="menu-item2"><img src="/icon/alarmbutton.svg" alt="" width="37px" height="35.36px"></div>
-        <div class="menu-item3"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></div>
+        <div class="menu-item3" th:onclick="'location.href=\'/startProject/start\''"><img src="/icon/uploadbutton.svg" alt="" width="118px" height="35.36px"></div>
 
         <th:block sec:authorize="isAnonymous()">
             <div class="menu-item5"> <a th:href="@{/user/login}" id="login">
