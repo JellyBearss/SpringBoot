@@ -4,88 +4,88 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jellybears.krowdpoping.projectRegister.section02.model.dao.CreatorMapper">
 
-    <select id="selectCreator" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
-        select cr_type
-             , business_num
-             , address
-             , user_code
-             , phone
-             , email
-             , introduce
-             , identi_num
-             , issue_type
-             , acc_user_nm
-             , ceo_nm
-             , creator_nm
-        from creator
-        where user_code = #{userCode}
-    </select>
+<!--    <select id="selectCreator" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">-->
+<!--        select cr_type-->
+<!--             , business_num-->
+<!--             , address-->
+<!--             , user_code-->
+<!--             , phone-->
+<!--             , email-->
+<!--             , introduce-->
+<!--             , identi_num-->
+<!--             , issue_type-->
+<!--             , acc_user_nm-->
+<!--             , ceo_nm-->
+<!--             , creator_nm-->
+<!--        from creator-->
+<!--        where user_code = #{userCode}-->
+<!--    </select>-->
 
-    <insert id="insertPersonal" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CPersonalDTO">
-        insert into creator (
-                            creator_nm
-                             , cr_type
-                             , user_code
-                             , address
-                             , phone
-                             , email
-                             , name
-                             , introduce
-                             , inquiry_email
-                             , identi_num1
-                             , identi_num2
-                             , issue_type
+<!--    <insert id="insertPersonal" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CPersonalDTO">-->
+<!--        insert into creator (-->
+<!--                            creator_nm-->
+<!--                             , cr_type-->
+<!--                             , user_code-->
+<!--                             , address-->
+<!--                             , phone-->
+<!--                             , email-->
+<!--                             , name-->
+<!--                             , introduce-->
+<!--                             , inquiry_email-->
+<!--                             , identi_num1-->
+<!--                             , identi_num2-->
+<!--                             , issue_type-->
 
 
-         ) values (
-                   #{creatorNm}
-                  , #{crType}
-                  , #{userCode}
-                  , #{address}
-                  , #{phone}
-                  , #{email}
-                  , #{name}
-                  , #{introduce}
-                  , #{inquiryEmail}
-                  , #{identiNum1}
-                  , #{identiNum2}
-                  , #{issueType}
+<!--         ) values (-->
+<!--                   #{creatorNm}-->
+<!--                  , #{crType}-->
+<!--                  , #{userCode}-->
+<!--                  , #{address}-->
+<!--                  , #{phone}-->
+<!--                  , #{email}-->
+<!--                  , #{name}-->
+<!--                  , #{introduce}-->
+<!--                  , #{inquiryEmail}-->
+<!--                  , #{identiNum1}-->
+<!--                  , #{identiNum2}-->
+<!--                  , #{issueType}-->
 
-          )
-    </insert>
+<!--          )-->
+<!--    </insert>-->
 
-    <insert id="insertBusiness" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CBusinessDTO">
-        insert into creator(
-                             creator_nm
-                           , cr_type
-                           , user_code
-                           , address
-                           , phone
-                           , email
-                           , name
-                           , introduce
-                           , inquiry_email
-                           , acc_user_nm
-                           , ceo_nm
-                           , business_num
-                           , issue_type
-        )
-        values (
-                #{creatorNm},
-                #{crType},
-                #{userCode},
-                #{address},
-                #{phone},
-                #{email},
-                #{name},
-                #{introduce},
-                #{inquiryEmail},
-                #{accUserNm},
-                #{ceoNm},
-                #{businessNum},
-                #{issueType}
-               )
-    </insert>
+<!--    <insert id="insertBusiness" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CBusinessDTO">-->
+<!--        insert into creator(-->
+<!--                             creator_nm-->
+<!--                           , cr_type-->
+<!--                           , user_code-->
+<!--                           , address-->
+<!--                           , phone-->
+<!--                           , email-->
+<!--                           , name-->
+<!--                           , introduce-->
+<!--                           , inquiry_email-->
+<!--                           , acc_user_nm-->
+<!--                           , ceo_nm-->
+<!--                           , business_num-->
+<!--                           , issue_type-->
+<!--        )-->
+<!--        values (-->
+<!--                #{creatorNm},-->
+<!--                #{crType},-->
+<!--                #{userCode},-->
+<!--                #{address},-->
+<!--                #{phone},-->
+<!--                #{email},-->
+<!--                #{name},-->
+<!--                #{introduce},-->
+<!--                #{inquiryEmail},-->
+<!--                #{accUserNm},-->
+<!--                #{ceoNm},-->
+<!--                #{businessNum},-->
+<!--                #{issueType}-->
+<!--               )-->
+<!--    </insert>-->
 
 <!--    <update id="updateCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">-->
 <!--        update creator set user_code = #{userCode}-->
