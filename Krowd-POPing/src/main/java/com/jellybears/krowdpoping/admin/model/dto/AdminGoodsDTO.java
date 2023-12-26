@@ -2,15 +2,15 @@ package com.jellybears.krowdpoping.admin.model.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @ToString
 public class AdminGoodsDTO {
 
     private int goodsCode;
-    private String name;
+    private String goodsName;
     private int quantity;
     private int projectCode;
     private int amount;

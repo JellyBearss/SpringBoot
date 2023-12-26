@@ -4,9 +4,7 @@ import com.jellybears.krowdpoping.admin.model.dto.AdminFundingDTO;
 import com.jellybears.krowdpoping.admin.model.dto.AdminSponsorshipDTO;
 import com.jellybears.krowdpoping.admin.model.dto.NoticeDTO;
 import com.jellybears.krowdpoping.admin.model.service.*;
-import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeModifyException;
-import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeRegistException;
-import com.jellybears.krowdpoping.common.exception.admin.notice.NoticeRemoveException;
+import com.jellybears.krowdpoping.common.exception.admin.notice.*;
 import com.jellybears.krowdpoping.inquiry.model.dto.InquiryDTO;
 import com.jellybears.krowdpoping.report.model.dto.ProjectReportDTO;
 import com.jellybears.krowdpoping.user.model.dto.UserDTO;
@@ -18,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -72,10 +73,26 @@ public class AdminController {
     }
     /* 펀딩 상세 */
     @GetMapping("fundingDetail")
-    public String goFundingDetail() { return "/admin/admin_fundingDetail";}
+    public String goFundingDetail(@RequestParam int projectCode, Model model) {
+
+        AdminFundingDTO fundingDetail = adminFundingService.selectFundingDetail(projectCode);
+        model.addAttribute("funding", fundingDetail);
+        return "/admin/admin_fundingDetail";}
     /* 펀딩 수정 */
     @GetMapping("fundingModify")
-    public String goFundingModify() { return "/admin/admin_fundingModify"; }
+    public String goFundingModify(@RequestParam int projectCode, Model model) {
+
+        AdminFundingDTO funding = adminFundingService.selectFundingDetail(projectCode);
+        model.addAttribute("funding", funding);
+        return "/admin/admin_fundingModify";
+    }
+    @PostMapping("fundingModify")
+    public String fundingModify(@ModelAttribute AdminFundingDTO funding, RedirectAttributes rttr) throws FundingModifyException {
+
+        adminFundingService.fundingModify(funding);
+        rttr.addFlashAttribute("message", "펀딩 수정을 성공하였습니다.");
+        return "redirect:/admin/fundingList";
+    }
     /* ----------------------------------------------------------------------------------------------------------------- */
     /* 후원 목록 */
     @GetMapping("sponsorshipList")
@@ -96,7 +113,27 @@ public class AdminController {
     }
     /* 프로젝트 상세 */
     @GetMapping("projectDetail")
-    public String goProjectDetail() { return "/admin/admin_projectDetail";}
+    public String goProjectDetail(@RequestParam("projectCode") int projectCode, Model model) {
+
+        AdminFundingDTO projectDetail = adminProjectService.selectProjectDetail(projectCode);
+        model.addAttribute("project", projectDetail);
+        return "/admin/admin_projectDetail";
+    }
+
+    /* 프로젝트 승인 */
+
+    @PostMapping("/fundingAccept")
+    public String fundingAccept(@ModelAttribute AdminFundingDTO adminFundingDTO, RedirectAttributes rttr) throws FundingAcceptException {
+
+        adminProjectService.fundingAccept(adminFundingDTO);
+
+        rttr.addFlashAttribute("message", "승인 성공하였습니다.");
+        return "redirect:/admin/projectList";
+    }
+
+
+    /* 프로젝트 반려 */
+
     /* ----------------------------------------------------------------------------------------------------------------- */
     /* 카테고리 목록 */
     @GetMapping("categoryList")

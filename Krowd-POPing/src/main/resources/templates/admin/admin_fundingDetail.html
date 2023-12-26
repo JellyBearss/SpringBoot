@@ -20,72 +20,58 @@
                             <form>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">펀딩 제목</label>
+                                    <label class="col-sm-2 col-form-label">프로젝트제목</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" disabled>
+                                        <p type="text" class="form-control" id="title" th:text="${ funding.title }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">카테고리</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" disabled>
+                                        <p type="text" class="form-control" id="categoryTitle" th:text="${ funding.categoryDTO.categoryTitle }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">프로젝트 소개</label>
+                                    <label class="col-sm-2 col-form-label">프로젝트소개</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" style="height: 100px" disabled></textarea>
+                                        <p type="text" class="form-control" style="height: 100px" id="content" th:value="${ funding.content }" th:text="${ funding.content }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">펀딩 시작일</label>
+                                    <label class="col-sm-2 col-form-label">펀딩시작일</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control; form-control" disabled>
+                                        <p type="date" class="form-control; form-control" id="startDate" th:text="${ funding.startDate }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">펀딩 종료일</label>
+                                    <label class="col-sm-2 col-form-label">펀딩종료일</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control; form-control" disabled>
+                                        <p type="date" class="form-control; form-control" id="endDate" th:text="${ funding.endDate }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">목표금액</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" disabled>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">모인금액</label>
-                                    <div class="col-sm-10">
-                                        <input type="password" class="form-control" disabled>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">펀딩률</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" disabled>
+                                        <p type="password" class="form-control" id="targetAmount" th:text="${ funding.targetAmount }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">신청자ID</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" disabled>
+                                        <p type="number" class="form-control" id="userId" th:text="${ funding.userDTO.userId }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">상호명</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" disabled>
+                                        <p type="text" class="form-control" id="accUserNm" th:text="${ funding.creatorDTO.accUserNm }"></p>
                                     </div>
                                 </div>
 
@@ -93,21 +79,16 @@
                                     <label class="col-sm-2 col-form-label">선물</label>
                                     <div class="col-sm-10">
                                         <select class="form-select" multiple aria-label="multiple select example" disabled>
-                                            <option selected>얼리버드 : 100,000원</option>
-                                            <option value="1">선물(1) : 10,000원</option>
-                                            <option value="2">선물(2) : 20,000원</option>
-                                            <option value="3">선물(3) : 30,000원</option>
-                                            <option value="3">선물(4) : 40,000원</option>
-                                            <option value="3">선물(5) : 50,000원</option>
+                                            <option id="goodsName" th:text="${ funding.goodsDTO.goodsName }" selected></option>
 
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">사업자 번호</label>
+                                    <label class="col-sm-2 col-form-label">사업자번호</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" disabled>
+                                        <p type="text" class="form-control" id="businessNum" th:text="${ funding.creatorDTO.businessNum }"></p>
                                     </div>
                                 </div>
 
@@ -160,7 +141,6 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">대표 사진</label>
                                     <div class="col-sm-10">
-
                                         <!-- Slides with indicators -->
                                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                                             <div class="carousel-indicators">
@@ -195,37 +175,54 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">내용</label>
+                                    <label class="col-sm-2 col-form-label">소개</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" style="height: 500px" disabled></textarea>
+                                        <p class="form-control" style="height: 200px" id="planContent" th:text="${ funding.planContent }"></p>
                                     </div>
                                 </div>
-
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">예산</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control" style="height: 200px" id="budgetContent" th:text="${ funding.budgetContent }"></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">일정</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control" style="height: 200px" id="infoContent" th:text="${ funding.infoContent }"></p>
+                                    </div>
+                                </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" style="float: right; margin-left: 8px;">수정하기</button>
-                                        <div class="modal fade" id="basicModal" tabindex="-1">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">수정 페이지로 이동하시겠습니까?</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                        <a type="button" class="btn btn-primary" href="/admin/fundingModify">이동하기</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- End Basic Modal-->
-                                        <a href="/admin/fundingList" type="submit" class="btn btn-primary1" style="float: right;">뒤로가기</a>
+                                        <a type="submit" class="btn btn-primary" href="/admin/fundingList" style="float: right; margin-left: 8px;">확인</a>
                                     </div>
                                 </div>
+<!--                                <div class="row mb-3">-->
+<!--                                    <label class="col-sm-2 col-form-label"></label>-->
+<!--                                    <div class="col-sm-10">-->
+<!--                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal" style="float: right; margin-left: 8px;">수정하기</button>-->
+<!--                                        <div class="modal fade" id="basicModal" tabindex="-1">-->
+<!--                                            <div class="modal-dialog">-->
+<!--                                                <div class="modal-content">-->
+<!--                                                    <div class="modal-header">-->
+<!--                                                        <h5 class="modal-title">수정 페이지로 이동하시겠습니까?</h5>-->
+<!--                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="modal-body">-->
+<!--                                                        Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.-->
+<!--                                                    </div>-->
+<!--                                                    <div class="modal-footer">-->
+<!--                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>-->
+<!--                                                        <a type="button" class="btn btn-primary" th:onclick="'location.href=\'/admin/fundingModify?projectCode=' + @{${ funding.projectCode }} + '\''">이동하기</a>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>&lt;!&ndash; End Basic Modal&ndash;&gt;-->
+<!--                                        <a href="/admin/fundingList" type="submit" class="btn btn-primary1" style="float: right;">뒤로가기</a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </form><!-- End General Form Elements -->
 
                         </div>

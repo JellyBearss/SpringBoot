@@ -13,12 +13,12 @@
                         <div class="card-body">
                             <h5 class="card-title">공지사항 수정 페이지</h5>
                             <!-- General Form Elements -->
-                            <form id="noticeUpdateForm" th:action="@{/admin/noticeModify}" method="post">
+                            <form th:action="@{/admin/noticeModify}" method="post">
                             <input type="hidden" id="noticeCode" name="noticeCode" th:value="${ notice.noticeCode }">
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">공지사항 제목</label>
                                     <div class="col-sm-10">
-                                        <td><input type="text" id="title" name="title" class="form-control" th:value="${ notice.title }"></td>
+                                        <input type="text" id="title" name="title" class="form-control" th:value="${ notice.title }">
                                     </div>
                                 </div>
 

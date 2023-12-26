@@ -35,7 +35,7 @@
             </nav>
 
             <!-- Default Table -->
-            <table class="table">     
+            <table class="table table-hover" id="listArea">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -73,6 +73,33 @@
               <a href="#">&raquo;</a>
             </div>
             <!-- End 페이징 처리 -->
+            </script>
+
+            <!-- 리스트를 누르면 디테일로 가는 이벤트처리 -->
+            <script th:inline="javascript">
+              /*<![CDATA[*/
+              let message = '[[${message}]]';
+              if(message != null && message !== 'null') {
+                alert(message);
+              }
+              /*]]>*/
+
+              /* 게시글 리스트에서 해당 게시글에 마우스를 올릴 떄에 대한 스타일 처리 */
+              if (document.querySelectorAll("#listArea td")) {
+                const $tds = document.querySelectorAll("#listArea td");
+                for (let i = 0; i < $tds.length; i++) {
+
+                  $tds[i].onmouseenter = function() {
+                    this.parentNode.style.cursor = "pointer";
+                  }
+
+                  $tds[i].onclick = function() {
+                    const no = this.parentNode.children[0].innerText;
+                    location.href = "/admin/projectDetail?projectCode=" + no;
+                  }
+                }
+              }
+            </script>
           </div>
         </div>
       </div>

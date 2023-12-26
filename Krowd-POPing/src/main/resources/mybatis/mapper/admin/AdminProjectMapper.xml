@@ -7,7 +7,6 @@
     <resultMap id="AdminFundingResultMap" type="com.jellybears.krowdpoping.admin.model.dto.AdminFundingDTO">
         <id property="projectCode" column="PROJECT_CODE"/>
         <result property="title" column="title"/>
-        <result property="categoryCode" column="category_code"/>
         <result property="content" column="content"/>
         <result property="startDate" column="start_date"/>
         <result property="endDate" column="end_date"/>
@@ -18,12 +17,17 @@
         <result property="planContent" column="plan_content"/>
         <result property="budgetContent" column="budget_content"/>
         <result property="infoContent" column="info_content"/>
-        <result property="user_code" column="user_code"/>
         <result property="editStatus" column="edit_status"/>
         <result property="sumPayAmount" column="sum_pay_amount"/>
         <result property="judgeStatus" column="judge_status"/>
+        <result property="user_code" column="user_code"/>
+        <result property="categoryCode" column="category_code"/>
         <result property="pricePlanCode" column="priceplan_code"/>
+
+        <association property="categoryDTO" resultMap="CategoryResultMap"/>
         <association property="userDTO" resultMap="UserResultMap"/>
+        <association property="creatorDTO" resultMap="CreatorResultMap"/>
+        <association property="goodsDTO" resultMap="GoodsResultMap"/>
     </resultMap>
 
     <resultMap id="UserResultMap" type="com.jellybears.krowdpoping.user.model.dto.UserDTO">
@@ -36,6 +40,37 @@
         <result property="email" column="EMAIL"/>
         <result property="phone_number" column="PHONE_NUMBER"/>
         <result property="user_status" column="USER_STATUS"/>
+    </resultMap>
+
+    <resultMap id="CategoryResultMap" type="com.jellybears.krowdpoping.category.model.dto.CategoryDTO">
+        <id property="categoryCode" column="category_code"/>
+        <result property="categoryTitle" column="category_title"/>
+        <result property="upperCategoryCode" column="upper_category_code"/>
+    </resultMap>
+
+    <resultMap id="CreatorResultMap" type="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
+        <id property="crType" column="cr_type"/>
+        <result property="businessNum" column="business_num"/>
+        <result property="address" column="address"/>
+        <result property="user_code" column="user_code"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="introduce" column="introduce"/>
+        <result property="identiNum" column="identi_num"/>
+        <result property="issueType" column="issue_type"/>
+        <result property="accUserNm" column="acc_user_nm"/>
+        <result property="ceoNm" column="ceo_nm"/>
+        <result property="creatorNm" column="creator_nm"/>
+        <result property="f_confirmdate" column="f_confirmdate"/>
+        <result property="f_acceptor" column="f_acceptor"/>
+    </resultMap>
+
+    <resultMap id="GoodsResultMap" type="com.jellybears.krowdpoping.projectRegister.section01.model.dto.GoodsDTO">
+        <id property="goodsCode" column="goods_code"/>
+        <result property="goodsName" column="name"/>
+        <result property="quantity" column="quantity"/>
+        <result property="projectCode" column="project_code"/>
+        <result property="amount" column="amount"/>
     </resultMap>
 
     <!-- 프로젝트 전체 목록 조회 -->
@@ -52,4 +87,38 @@
         JOIN USER_INFO B ON (A.user_code = b.user_code)
         ORDER BY PROJECT_CODE DESC
     </select>
+
+    <!-- 프로젝트 상세 목록 조회 -->
+    <select id="selectProjectDetail" parameterType="int" resultMap="AdminFundingResultMap">
+        select  A.project_code,
+                A.title,
+                A.content,
+                A.start_date,
+                A.end_date,
+                A.target_amount,
+                A.plan_content,
+                A.budget_content,
+                A.info_content,
+                B.id,
+                C.category_title,
+                D.acc_user_nm,
+                D.business_num,
+                E.name
+        --                 F.update_name,
+--                 G.changed_file_name,
+        FROM PROJECT A
+        JOIN USER_INFO B ON (A.user_code = B.user_code)
+        JOIN CATEGORY C ON (A.category_code = C.category_code)
+        JOIN CREATOR D ON (B.user_code = D.user_code)
+        JOIN GOODS E
+        WHERE A.project_code = #{ projectCode }
+        ORDER BY PROJECT_CODE DESC
+    </select>
+
+    <update id="fundingAccept" parameterType="com.jellybears.krowdpoping.admin.model.dto.AdminFundingDTO">
+        update project
+        set judge_status = '진행중'
+        where project_code = #{ projectCode }
+    </update>
+
 </mapper>

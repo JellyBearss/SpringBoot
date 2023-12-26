@@ -52,7 +52,7 @@
                   <th th:text="${ notice.noticeCode }"></th>
                   <td th:text="${ notice.type }"></td>
                   <td th:text="${ notice.title }"></td>
-                  <td th:text="${ notice.updateDate }"></td>
+                  <td th:text="${ #dates.format(notice.updateDate, 'yyyy-MM-dd') }"></td>
                   <td th:text="${ notice.userDTO.nickname }"></td>
 <!--                  <td>조회수값</td>-->
                 </tr>
