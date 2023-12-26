@@ -90,7 +90,8 @@
         from project A
                  join user_info B on A.user_code = B.user_code
         left join project_files C on A.project_code = C.project_code
---         where judge_status = '심사완료'
+            where A.judge_status = '진행중'
+
         order by project_code desc
 
 
@@ -134,8 +135,11 @@
                    D.category_code
                from category D
                where D.upper_category_code = 1)
+          and A.judge_status = '진행중'
         order by project_code desc
 --         order by end_date
+
+
 
     </select>
 
@@ -157,7 +161,7 @@
                  left join project_files D on A.project_code = D.project_code
 
         where category_code = #{ categoryId }
---         where category_code = 8
+          and A.judge_status = '진행중'
         order by project_code desc
     </select>
 
@@ -185,6 +189,8 @@
                    D.category_code
                from category D
                where D.upper_category_code = 2)
+          and A.judge_status = '진행중'
+
         order by project_code desc
 
     </select>
@@ -208,6 +214,8 @@
                  left join project_files D on A.project_code = D.project_code
 
         where category_code = #{ categoryId }
+          and A.judge_status = '진행중'
+
         order by project_code desc
     </select>
 
@@ -237,6 +245,8 @@
              from category D
              where D.upper_category_code = 3
         )
+          and A.judge_status = '진행중'
+
         order by A.project_code desc
     </select>
 
@@ -258,6 +268,8 @@
         left join project_files D on A.project_code = D.project_code
 
         where category_code = #{ categoryId }
+          and A.judge_status = '진행중'
+
         order by A.project_code desc
     </select>
 
@@ -286,6 +298,8 @@
                from category D
                where D.upper_category_code = 4
               )
+          and A.judge_status = '진행중'
+
         order by A.project_code desc
     </select>
 
@@ -307,6 +321,8 @@
                  left join project_files D on A.project_code = D.project_code
 
         where category_code = #{ categoryId }
+          and A.judge_status = '진행중'
+
         order by A.project_code desc
     </select>
 
@@ -335,6 +351,8 @@
                from category D
                where D.upper_category_code = 5
               )
+          and A.judge_status = '진행중'
+
         order by A.project_code desc
     </select>
 
@@ -356,6 +374,8 @@
                  left join project_files D on A.project_code = D.project_code
 
         where category_code = #{ categoryId }
+          and A.judge_status = '진행중'
+
         order by A.project_code desc
     </select>
 
@@ -384,6 +404,8 @@
                from category D
                where D.upper_category_code = 6
               )
+          and A.judge_status = '진행중'
+
         order by A.project_code desc
     </select>
 
@@ -405,6 +427,8 @@
                  left join project_files D on A.project_code = D.project_code
 
         where category_code = #{ categoryId }
+          and A.judge_status = '진행중'
+
         order by A.project_code desc
     </select>
 
@@ -429,6 +453,8 @@
                      left join project_files D on A.project_code = D.project_code
 
             where category_code = 7
+              and A.judge_status = '진행중'
+
             order by project_code desc
 
 
