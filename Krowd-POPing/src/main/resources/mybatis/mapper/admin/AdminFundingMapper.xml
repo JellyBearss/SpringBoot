@@ -26,7 +26,7 @@
 
         <association property="categoryDTO" resultMap="CategoryResultMap"/>
         <association property="userDTO" resultMap="UserResultMap"/>
-        <association property="creatorDTO" resultMap="CreatorResultMap"/>
+        <association property="adminCreatorDTO" resultMap="CreatorResultMap"/>
         <association property="goodsDTO" resultMap="GoodsResultMap"/>
     </resultMap>
 
@@ -48,7 +48,7 @@
         <result property="upperCategoryCode" column="upper_category_code"/>
     </resultMap>
 
-    <resultMap id="CreatorResultMap" type="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">
+    <resultMap id="CreatorResultMap" type="com.jellybears.krowdpoping.admin.model.dto.AdminCreatorDTO">
         <id property="crType" column="cr_type"/>
         <result property="businessNum" column="business_num"/>
         <result property="address" column="address"/>
@@ -101,8 +101,8 @@
                 D.acc_user_nm,
                 D.business_num,
                 E.name
-        <!--                /* creator_files */ profile_code, update_name,-->
-        <!--                /* project_files */ projectfile_code, changed_file_name-->
+--         /* creator_files */ profile_code, update_name,
+--         /* project_files */ projectfile_code, changed_file_name
         FROM PROJECT A
         JOIN USER_INFO B ON (A.user_code = B.user_code)
         JOIN CATEGORY C ON (A.category_code = C.category_code)
