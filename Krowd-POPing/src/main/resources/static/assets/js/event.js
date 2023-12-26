@@ -21,4 +21,11 @@ window.onload = function() {
             location.href = "/admin/noticeModify";
         }
     }
+
+    if(document.getElementById("projectDetail")) {
+        const $update = document.getElementById("projectDetail");
+        $update.onclick = function() {
+            location.href = "/admin/projectDetail";
+        }
+    }
 }

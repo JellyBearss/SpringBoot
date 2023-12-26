@@ -17,104 +17,78 @@
                             <h5 class="card-title">펀딩 수정 페이지</h5>
 
                             <!-- General Form Elements -->
-                            <form>
-
+                            <form id="fundingUpdateForm" th:action="@{/admin/fundingModify}" method="post">
+                                <input type="hidden" id="projectCode" name="projectCode" th:value="${ funding.projectCode }">
                                 <div class="row mb-3">
-                                    <label for="inputTitle" class="col-sm-2 col-form-label">펀딩 제목</label>
+                                    <label class="col-sm-2 col-form-label">프로젝트제목</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="title" th:value="${ funding.title }">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputCategory" class="col-sm-2 col-form-label">카테고리</label>
+                                    <label class="col-sm-2 col-form-label">카테고리</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control">
+                                        <p type="text" class="form-control" id="categoryTitle" th:text="${ funding.categoryDTO.categoryTitle }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputIntroduction" class="col-sm-2 col-form-label">프로젝트 소개</label>
+                                    <label class="col-sm-2 col-form-label">프로젝트소개</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" style="height: 100px"></textarea>
+                                        <textarea type="text" class="form-control" style="height: 100px" id="content" th:value="${ funding.content }" th:text="${ funding.content }"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputStartDate" class="col-sm-2 col-form-label">펀딩 시작일</label>
+                                    <label class="col-sm-2 col-form-label">펀딩시작일</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control; form-control">
+                                        <p type="date" class="form-control; form-control" id="startDate" th:text="${ funding.startDate }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputEndDate" class="col-sm-2 col-form-label">펀딩 종료일</label>
+                                    <label class="col-sm-2 col-form-label">펀딩종료일</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control; form-control">
+                                        <p type="date" class="form-control; form-control" id="endDate" th:text="${ funding.endDate }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputTarget" class="col-sm-2 col-form-label">목표금액</label>
+                                    <label class="col-sm-2 col-form-label">목표금액</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control">
+                                        <p type="password" class="form-control" id="targetAmount" th:text="${ funding.targetAmount }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputTarget" class="col-sm-2 col-form-label">모인금액</label>
+                                    <label class="col-sm-2 col-form-label">신청자ID</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control">
+                                        <p type="number" class="form-control" id="userId" th:text="${ funding.userDTO.userId }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputRate" class="col-sm-2 col-form-label">펀딩률</label>
+                                    <label class="col-sm-2 col-form-label">상호명</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="inputID" class="col-sm-2 col-form-label">신청자ID</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="inputCompany" class="col-sm-2 col-form-label">상호명</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control">
+                                        <p type="text" class="form-control" id="accUserNm" th:text="${ funding.creatorDTO.accUserNm }"></p>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">선물</label>
                                     <div class="col-sm-10">
-                                        <select class="form-select" multiple aria-label="multiple select example">
-                                            <option selected>얼리버드 : 100,000원</option>
-                                            <option value="1">선물(1) : 10,000원</option>
-                                            <option value="2">선물(2) : 20,000원</option>
-                                            <option value="3">선물(3) : 30,000원</option>
-                                            <option value="3">선물(4) : 40,000원</option>
-                                            <option value="3">선물(5) : 50,000원</option>
+                                        <select class="form-select" multiple aria-label="multiple select example" disabled>
+                                            <option id="goodsName" th:text="${ funding.goodsDTO.goodsName }" selected></option>
 
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputTitle" class="col-sm-2 col-form-label">사업자 번호</label>
+                                    <label class="col-sm-2 col-form-label">사업자번호</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="inputNumber" class="col-sm-2 col-form-label">파일업로드</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="file" id="formFile">
+                                        <p type="text" class="form-control" id="businessNum" th:text="${ funding.creatorDTO.businessNum }"></p>
                                     </div>
                                 </div>
 
@@ -165,21 +139,14 @@
                             <form>
 
                                 <div class="row mb-3">
-                                    <label for="inputNumber" class="col-sm-2 col-form-label">파일업로드</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="file" id="formFile">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">대표 사진</label>
                                     <div class="col-sm-10">
                                         <!-- Slides with indicators -->
-                                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                        <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
                                             <div class="carousel-indicators">
-                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                                <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                             </div>
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active">
@@ -193,11 +160,11 @@
                                                 </div>
                                             </div>
 
-                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
                                             </button>
-                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Next</span>
                                             </button>
@@ -208,9 +175,21 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label for="inputContent" class="col-sm-2 col-form-label">내용</label>
+                                    <label class="col-sm-2 col-form-label">소개</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" style="height: 500px"></textarea>
+                                        <textarea class="form-control" style="height: 200px" id="planContent" th:value="${ funding.planContent }" th:text="${ funding.planContent }"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">예산</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" style="height: 200px" id="budgetContent" th:value="${ funding.budgetContent }" th:text="${ funding.budgetContent }"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">일정</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" style="height: 200px" id="infoContent" th:value="${ funding.infoContent }" th:text="${ funding.infoContent }"></textarea>
                                     </div>
                                 </div>
 
@@ -231,7 +210,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                                        <a type="button" class="btn btn-primary" href="/admin/fundingDetail">등록</a>
+                                                        <button type="submit" class="btn btn-primary" th:onclick="'location.href=\'/admin/fundingDetail?projectCode=' + @{${ funding.projectCode }} + '\''">확인</button>
                                                     </div>
                                                 </div>
                                             </div>
