@@ -22,12 +22,12 @@ public interface UserService {
 
     /*-------------회원 탈퇴------------*/
     public void removeUser(UserDTO user) throws UserRemoveException;
-
+    /*-------------이메일로 아이디 찾기 ------------*/
     public UserDTO findIdByEmail(String email) throws Exception;
     public int findIdCheck(String email) throws Exception;
-
+    /*-------------이메일로 비밀번호 찾기------------*/
     public void find_pwd(HttpServletResponse response, UserDTO user) throws Exception;
-
+    /*------------임시 비밀번호 보내기------------*/
     public String send_PwdMail(UserDTO user) throws Exception;
 
 

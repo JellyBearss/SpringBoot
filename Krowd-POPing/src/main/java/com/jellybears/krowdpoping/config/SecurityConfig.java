@@ -35,11 +35,7 @@ public class SecurityConfig {
     }
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        http// 페이지 권한 설정
-//                .authorizeHttpRequests(auth ->{
-//                    auth.requestMatchers("/*").permitAll();// 모든 리소스를 권한 없이 사용가능
-//                    auth.anyRequest().authenticated();
-//                })
+        http
                 // 로그인 설정
                 .formLogin(login -> {
                     login.loginPage("/user/login");   //커스텀 로그인 페이지 사용
@@ -67,7 +63,11 @@ public class SecurityConfig {
         return http.build();
     }
 
-}
+}// 페이지 권한 설정
+//                .authorizeHttpRequests(auth ->{
+//                    auth.requestMatchers("/*").permitAll();// 모든 리소스를 권한 없이 사용가능
+//                    auth.anyRequest().authenticated();
+//                })
 
 
 
