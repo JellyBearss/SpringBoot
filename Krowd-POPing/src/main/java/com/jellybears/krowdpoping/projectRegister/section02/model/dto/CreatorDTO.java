@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -13,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class CreatorDTO {
 
     private String creatorNm; // 창작자 프로필명
-    private int crType; // 창작자 유형
+    private Integer crType; // 창작자 유형
     private String introduce; // 소개
     private String inquiryEmail; // 문의 이메일
     private String email; // user의 email 가져오기
@@ -22,7 +21,7 @@ public class CreatorDTO {
     private String name;  // user의 name 가져오기
     private String address; // 주소
     private int userCode;
-    private MultipartFile fileInput;
+
 
 
 }

@@ -23,35 +23,36 @@
 
     <insert id="insertPersonal" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CPersonalDTO">
         insert into creator (
-                            creator_nm
-                             , cr_type
-                             , user_code
-                             , address
-                             , phone
-                             , email
-                             , name
-                             , introduce
-                             , inquiry_email
-                             , identi_num1
-                             , identi_num2
-                             , issue_type
+                              creator_nm
+                            , cr_type
+                            , address
+                            , phone
+                            , email
+                            , name
+                            , introduce
+                            , inquiry_email
+                            , identi_num1
+                            , identi_num2
+                            , issue_type
+                            , user_code
 
 
-         ) values (
-                   #{creatorNm}
-                  , #{crType}
-                  , #{userCode}
-                  , #{address}
-                  , #{phone}
-                  , #{email}
-                  , #{name}
-                  , #{introduce}
-                  , #{inquiryEmail}
-                  , #{identiNum1}
-                  , #{identiNum2}
-                  , #{issueType}
+        ) values (
+                    #{creatorNm}
+                 , #{crType}
+                 , #{address}
+                 , #{phone}
+                 , #{email}
+                 , #{name}
+                 , #{introduce}
+                 , #{inquiryEmail}
+                 , #{identiNum1}
+                 , #{identiNum2}
+                 , #{issueType}
+                 , #{userCode}
+                 )
 
-          )
+
     </insert>
 
     <insert id="insertBusiness" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CBusinessDTO">
@@ -69,92 +70,96 @@
                            , ceo_nm
                            , business_num
                            , issue_type
+
         )
         values (
-                #{creatorNm},
-                #{crType},
-                #{userCode},
-                #{address},
-                #{phone},
-                #{email},
-                #{name},
-                #{introduce},
-                #{inquiryEmail},
-                #{accUserNm},
-                #{ceoNm},
-                #{businessNum},
-                #{issueType}
+                   #{creatorNm},
+                   #{crType},
+                   #{userCode},
+                   #{address},
+                   #{phone},
+                   #{email},
+                   #{name},
+                   #{introduce},
+                   #{inquiryEmail},
+                   #{accUserNm},
+                   #{ceoNm},
+                   #{businessNum},
+                   #{issueType}
                )
+
+
+
     </insert>
 
-<!--    <update id="updateCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">-->
-<!--        update creator set user_code = #{userCode}-->
-<!--                            <if test = 'crType gte 0'>-->
-<!--                                , cr_type = #{crType}-->
-<!--                            </if>-->
-<!--                            <if test = 'businessNum != null and !"".equals(businessNum)'>-->
-<!--                                , business_num = #{businessNum}-->
-<!--                            </if>-->
-<!--                            <if test = 'address != null and !"".equals(address)'>-->
-<!--                                , address = #{address}-->
-<!--                            </if>-->
-<!--                            <if test = 'phone != null and !"".equals(phone)'>-->
-<!--                                , phone = #{phone}-->
-<!--                            </if>-->
-<!--                            <if test = 'email != null and !"".equals(email)'>-->
-<!--                                , email = #{email}-->
-<!--                            </if>-->
-<!--                            <if test = 'introduce != null and !"".equals(introduce)'>-->
-<!--                                , introduce = #{introduce}-->
-<!--                            </if>-->
-<!--                            <if test = 'identiNum != null and !"".equals(identiNum)'>-->
-<!--                                , identi_num = #{identiNum}-->
-<!--                            </if>-->
-<!--                            <if test = 'ceoNm != null and !"".equals(ceoNm)'>-->
-<!--                                , ceo_nm = #{ceoNm}-->
-<!--                            </if>-->
-<!--                            <if test = 'accUserNm != null and !"".equals(accUserNm)'>-->
-<!--                                , acc_user_nm = #{accUserNm}-->
-<!--                            </if>-->
-<!--                            <if test = "issueType gte 0">-->
-<!--                                , issue_type = #{issueType}-->
-<!--                            </if>-->
-<!--                            <if test = 'creatorNm != null and !"".equals(creatorNm)'>-->
-<!--                                , creator_nm = #{creatorNm}-->
-<!--                            </if>-->
-<!--        where user_code = #{userCode}-->
-<!--    </update>-->
+    <!--    <update id="updateCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">-->
+    <!--        update creator set user_code = #{userCode}-->
+    <!--                            <if test = 'crType gte 0'>-->
+    <!--                                , cr_type = #{crType}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'businessNum != null and !"".equals(businessNum)'>-->
+    <!--                                , business_num = #{businessNum}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'address != null and !"".equals(address)'>-->
+    <!--                                , address = #{address}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'phone != null and !"".equals(phone)'>-->
+    <!--                                , phone = #{phone}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'email != null and !"".equals(email)'>-->
+    <!--                                , email = #{email}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'introduce != null and !"".equals(introduce)'>-->
+    <!--                                , introduce = #{introduce}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'identiNum != null and !"".equals(identiNum)'>-->
+    <!--                                , identi_num = #{identiNum}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'ceoNm != null and !"".equals(ceoNm)'>-->
+    <!--                                , ceo_nm = #{ceoNm}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'accUserNm != null and !"".equals(accUserNm)'>-->
+    <!--                                , acc_user_nm = #{accUserNm}-->
+    <!--                            </if>-->
+    <!--                            <if test = "issueType gte 0">-->
+    <!--                                , issue_type = #{issueType}-->
+    <!--                            </if>-->
+    <!--                            <if test = 'creatorNm != null and !"".equals(creatorNm)'>-->
+    <!--                                , creator_nm = #{creatorNm}-->
+    <!--                            </if>-->
+    <!--        where user_code = #{userCode}-->
+    <!--    </update>-->
 
-<!--    <delete id="deleteCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">-->
-<!--        delete from creator where user_code = #{userCode}-->
-<!--    </delete>-->
+    <!--    <delete id="deleteCreator" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorDTO">-->
+    <!--        delete from creator where user_code = #{userCode}-->
+    <!--    </delete>-->
 
-<!--    <delete id="deleteCreatorProfile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">-->
-<!--        delete from creator_files where user_code = #{userCode}-->
-<!--    </delete>-->
+    <!--    <delete id="deleteCreatorProfile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">-->
+    <!--        delete from creator_files where user_code = #{userCode}-->
+    <!--    </delete>-->
 
-<!--    <insert id="insertCreatorProfile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">-->
-<!--        insert into creator_files (-->
-<!--                    origin_name-->
-<!--                    , update_name-->
-<!--                    , register_date-->
-<!--                    , delete_opt-->
-<!--                    , user_code-->
-<!--                    , file_type-->
-<!--        ) values (-->
-<!--                #{originName}-->
-<!--                 , #{updateName}-->
-<!--                 , NOW()-->
-<!--                 , 1-->
-<!--                 , #{userCode}-->
-<!--                 , #{fileType}-->
-<!--                 )-->
-<!--    </insert>-->
+    <!--    <insert id="insertCreatorProfile" parameterType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">-->
+    <!--        insert into creator_files (-->
+    <!--                    origin_name-->
+    <!--                    , update_name-->
+    <!--                    , register_date-->
+    <!--                    , delete_opt-->
+    <!--                    , user_code-->
+    <!--                    , file_type-->
+    <!--        ) values (-->
+    <!--                #{originName}-->
+    <!--                 , #{updateName}-->
+    <!--                 , NOW()-->
+    <!--                 , 1-->
+    <!--                 , #{userCode}-->
+    <!--                 , #{fileType}-->
+    <!--                 )-->
+    <!--    </insert>-->
 
-<!--    <select id="selectFilesInfo" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">-->
-<!--        select * from creator_files-->
-<!--        where user_code = #{userCode}-->
-<!--        and file_type = #{fileType}-->
-<!--    </select>-->
+    <!--    <select id="selectFilesInfo" resultType="com.jellybears.krowdpoping.projectRegister.section02.model.dto.CreatorProfileDTO">-->
+    <!--        select * from creator_files-->
+    <!--        where user_code = #{userCode}-->
+    <!--        and file_type = #{fileType}-->
+    <!--    </select>-->
 </mapper>
 

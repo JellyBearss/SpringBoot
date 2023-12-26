@@ -8,17 +8,15 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class PolicyDTO {
-    private String basicPolicy;
     private int policyCode;
+    private int fileCode;
+    private int projectCode;
+    private String basicPolicy;
     private String difficultyInfo;
     private String productType;
-    private String productName;
+    private int productName;
     private String size;
     private String material;
     private String specification;
     private String caution;
-    private int fileCode;
-    private int projectCode;
-
-
 }

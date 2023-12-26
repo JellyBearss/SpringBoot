@@ -50,16 +50,16 @@
       <div class="info-title">모금액</div>
       <ul>
         <li class="info-row">
-          <div class="info-label">총 모금액<span th:text="'('+${calculate.sumPayAmountCount}+'명)'"></span></div>
-          <div class="info-data" th:text="${calculate.sumPayAmount}+'원'">0원</div>
+          <div class="info-label">총 모금액<span>(1명)</span></div>
+          <div class="info-data" th:text="${calculate.sumPayAmount}?'30000'+'원'">0원</div>
         </li>
         <li class="info-row">
-          <div class="info-label">결제 취소<span th:text="'('+${calculate.cancelCount}+'명)'"></span></div>
-          <div class="info-data" th:text="${calculate.cancellationAmount}+'원'"></div>
+          <div class="info-label">결제 취소<span th:text="'('+${calculate.cancelCount}?:0+'명'"></span></div>
+          <div class="info-data" th:text="${calculate.cancellationAmount}?:30000+'원'"></div>
         </li>
         <li class="info-row">
-          <div class="info-label-total">A.총 결제금액<span th:text="'('+${calculate.payCount}+'명)'"></span></div>
-          <div class="info-data-total" th:text="${calculate.pay}+'원'"></div>
+          <div class="info-label-total">A.총 결제금액<span th:text="'('+${calculate.payCount}?:1+'명)'"></span></div>
+          <div class="info-data-total" th:text="${calculate.pay}?30000+'원'"></div>
         </li>
       </ul>
     </div>
@@ -69,7 +69,6 @@
         수수료는 펀딩 성공 프로젝트에만 부과되며, 무산된 프로젝트는 수수료가 면제됩니다.</p>
       <div class="fee">
         <div class="fee-label"><span th:text="${calculate.name}"></span>님의 요금제: <span th:text="${calculate.type}"></span> - Krowd Popping 수수료 <span th:text="${calculate.percent}+'%'"></span> </div>
-        <div><a href="#">수수료 정책 바로가기</a></div>
       </div>
       <ul>
         <li class="info-row">
@@ -78,7 +77,7 @@
         </li>
         <li class="info-row">
           <div class="info-label">소속사 수수료</div>
-          <div class="info-data" th:text="${calculate.entertainmentFee}">29,700원</div>
+          <div class="info-data" th:text="${calculate.entertainmentFee}?:1500+'원'">29,700원</div>
         </li>
         <li class="info-row">
           <div class="info-label-total">B.수수료 총계</div>

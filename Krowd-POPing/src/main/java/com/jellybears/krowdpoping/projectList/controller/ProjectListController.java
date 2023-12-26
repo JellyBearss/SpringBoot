@@ -1,6 +1,7 @@
 package com.jellybears.krowdpoping.projectList.controller;
 
 import com.jellybears.krowdpoping.projectList.model.dto.ProjectDTO;
+import com.jellybears.krowdpoping.projectList.model.dto.ProjectImageDTO;
 import com.jellybears.krowdpoping.projectList.model.service.ProjectListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,12 +23,23 @@ public class ProjectListController {
     }
 
     @GetMapping("/projectList")
-    public String goList(Model model,@ModelAttribute ProjectDTO projectDTO) {
+    public String goList(Model model, @ModelAttribute ProjectDTO projectDTO,@ModelAttribute ProjectImageDTO projectImageDTO) {
 
         List<ProjectDTO> projectList=projectListService.selectProjectList(projectDTO);
+        projectImageDTO.setProjectCode(projectDTO.getProjectCode());
+        List<ProjectImageDTO> projectImageList=projectListService.selectImage(projectImageDTO);
         System.out.println("------------------------------------------");
         System.out.println(projectList);
+        System.out.println("===========================>>>" + projectImageList);
+        if(projectImageList.size() > 0){
+            for (int i = 0; i < projectList.size(); i++) {
+                projectList.get(i).setThumbnailFileName(projectImageList.get(i).getSavedName());
+            }
+        }
+        System.out.println("===========================>>>" + projectList);
         model.addAttribute("projectList",projectList);
+
+        model.addAttribute("projectImageList",projectImageList);
         return "projectList/projectList";
     }
 
